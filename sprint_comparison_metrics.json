@@ -1,0 +1,364 @@
+{
+  "sprints": {
+    "sprint-Arthur": {
+      "total_issues": 156,
+      "overall_done_pct": 82.7,
+      "status_cat": {
+        "done": 129,
+        "new": 23,
+        "indeterminate": 4
+      },
+      "buckets": {
+        "Defect": {
+          "count": 13,
+          "done": 13,
+          "done_pct": 100.0
+        },
+        "Subtask (all types)": {
+          "count": 87,
+          "done": 87,
+          "done_pct": 100.0
+        },
+        "Task": {
+          "count": 18,
+          "done": 17,
+          "done_pct": 94.4
+        },
+        "Escape Defect": {
+          "count": 9,
+          "done": 9,
+          "done_pct": 100.0
+        },
+        "Other": {
+          "count": 29,
+          "done": 3,
+          "done_pct": 10.3
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 0,
+        "sum_done_all_types": 0,
+        "completion_of_estimated_sp_pct": null,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 402.6,
+        "sum_aggregatetimespent_non_subtask_h": 410.6,
+        "sum_original_estimate_direct_h": 561.6,
+        "sum_aggregate_original_estimate_non_subtask_h": 569.6
+      },
+      "unassigned_count": 2,
+      "unassigned_pct": 1.3
+    },
+    "sprint-Bertha": {
+      "total_issues": 227,
+      "overall_done_pct": 86.8,
+      "status_cat": {
+        "done": 197,
+        "new": 24,
+        "indeterminate": 6
+      },
+      "buckets": {
+        "Escape Defect": {
+          "count": 15,
+          "done": 15,
+          "done_pct": 100.0
+        },
+        "Subtask (all types)": {
+          "count": 149,
+          "done": 149,
+          "done_pct": 100.0
+        },
+        "Defect": {
+          "count": 10,
+          "done": 10,
+          "done_pct": 100.0
+        },
+        "Story": {
+          "count": 7,
+          "done": 7,
+          "done_pct": 100.0
+        },
+        "Task": {
+          "count": 19,
+          "done": 14,
+          "done_pct": 73.7
+        },
+        "Other": {
+          "count": 27,
+          "done": 2,
+          "done_pct": 7.4
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 137.0,
+        "sum_done_all_types": 137.0,
+        "completion_of_estimated_sp_pct": 100.0,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 900.4,
+        "sum_aggregatetimespent_non_subtask_h": 900.4,
+        "sum_original_estimate_direct_h": 1012.0,
+        "sum_aggregate_original_estimate_non_subtask_h": 1012.0
+      },
+      "unassigned_count": 4,
+      "unassigned_pct": 1.8
+    },
+    "sprint-Cristobal": {
+      "total_issues": 167,
+      "overall_done_pct": 97.0,
+      "status_cat": {
+        "done": 162,
+        "new": 1,
+        "indeterminate": 4
+      },
+      "buckets": {
+        "Escape Defect": {
+          "count": 11,
+          "done": 10,
+          "done_pct": 90.9
+        },
+        "Subtask (all types)": {
+          "count": 106,
+          "done": 104,
+          "done_pct": 98.1
+        },
+        "Defect": {
+          "count": 22,
+          "done": 22,
+          "done_pct": 100.0
+        },
+        "Task": {
+          "count": 22,
+          "done": 21,
+          "done_pct": 95.5
+        },
+        "Other": {
+          "count": 4,
+          "done": 3,
+          "done_pct": 75.0
+        },
+        "Story": {
+          "count": 2,
+          "done": 2,
+          "done_pct": 100.0
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 9.0,
+        "sum_done_all_types": 9.0,
+        "completion_of_estimated_sp_pct": 100.0,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 795.5,
+        "sum_aggregatetimespent_non_subtask_h": 803.5,
+        "sum_original_estimate_direct_h": 886.5,
+        "sum_aggregate_original_estimate_non_subtask_h": 894.5
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 0.6
+    },
+    "sprint-Dolly": {
+      "total_issues": 63,
+      "overall_done_pct": 90.5,
+      "status_cat": {
+        "done": 57,
+        "new": 2,
+        "indeterminate": 4
+      },
+      "buckets": {
+        "Escape Defect": {
+          "count": 5,
+          "done": 5,
+          "done_pct": 100.0
+        },
+        "Subtask (all types)": {
+          "count": 30,
+          "done": 30,
+          "done_pct": 100.0
+        },
+        "Defect": {
+          "count": 1,
+          "done": 1,
+          "done_pct": 100.0
+        },
+        "Other": {
+          "count": 5,
+          "done": 4,
+          "done_pct": 80.0
+        },
+        "Task": {
+          "count": 18,
+          "done": 15,
+          "done_pct": 83.3
+        },
+        "Story": {
+          "count": 4,
+          "done": 2,
+          "done_pct": 50.0
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 13.0,
+        "sum_done_all_types": 13.0,
+        "completion_of_estimated_sp_pct": 100.0,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 452.1,
+        "sum_aggregatetimespent_non_subtask_h": 452.1,
+        "sum_original_estimate_direct_h": 478.5,
+        "sum_aggregate_original_estimate_non_subtask_h": 478.5
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 1.6
+    },
+    "sprint-Edouard": {
+      "total_issues": 296,
+      "overall_done_pct": 77.7,
+      "status_cat": {
+        "done": 230,
+        "new": 35,
+        "indeterminate": 31
+      },
+      "buckets": {
+        "Defect": {
+          "count": 36,
+          "done": 23,
+          "done_pct": 63.9
+        },
+        "Subtask (all types)": {
+          "count": 206,
+          "done": 170,
+          "done_pct": 82.5
+        },
+        "Task": {
+          "count": 20,
+          "done": 10,
+          "done_pct": 50.0
+        },
+        "Escape Defect": {
+          "count": 15,
+          "done": 12,
+          "done_pct": 80.0
+        },
+        "Story": {
+          "count": 15,
+          "done": 13,
+          "done_pct": 86.7
+        },
+        "Other": {
+          "count": 4,
+          "done": 2,
+          "done_pct": 50.0
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 0,
+        "sum_done_all_types": 0,
+        "completion_of_estimated_sp_pct": null,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 1432.4,
+        "sum_aggregatetimespent_non_subtask_h": 1432.4,
+        "sum_original_estimate_direct_h": 1701.0,
+        "sum_aggregate_original_estimate_non_subtask_h": 1701.0
+      },
+      "unassigned_count": 4,
+      "unassigned_pct": 1.4
+    },
+    "sprint-Fay": {
+      "total_issues": 184,
+      "overall_done_pct": 84.8,
+      "status_cat": {
+        "done": 156,
+        "new": 7,
+        "indeterminate": 21
+      },
+      "buckets": {
+        "Defect": {
+          "count": 13,
+          "done": 8,
+          "done_pct": 61.5
+        },
+        "Subtask (all types)": {
+          "count": 124,
+          "done": 113,
+          "done_pct": 91.1
+        },
+        "Escape Defect": {
+          "count": 9,
+          "done": 8,
+          "done_pct": 88.9
+        },
+        "Task": {
+          "count": 16,
+          "done": 12,
+          "done_pct": 75.0
+        },
+        "Story": {
+          "count": 15,
+          "done": 13,
+          "done_pct": 86.7
+        },
+        "Other": {
+          "count": 7,
+          "done": 2,
+          "done_pct": 28.6
+        }
+      },
+      "story_points": {
+        "sum_on_all_types": 0,
+        "sum_done_all_types": 0,
+        "completion_of_estimated_sp_pct": null,
+        "on_stories_only": 0,
+        "on_stories_done": 0,
+        "stories_with_sp_populated": 0
+      },
+      "hours": {
+        "sum_timespent_direct_h": 797.5,
+        "sum_aggregatetimespent_non_subtask_h": 797.5,
+        "sum_original_estimate_direct_h": 882.5,
+        "sum_aggregate_original_estimate_non_subtask_h": 882.5
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 0.5
+    }
+  },
+  "averages_across_sprints": {
+    "avg_issues_per_sprint": 182.2,
+    "avg_overall_done_pct": 86.6,
+    "avg_story_points_total": 26.5,
+    "avg_story_points_completed": 26.5,
+    "avg_hours_direct": 796.8,
+    "avg_hours_rollup_non_subtask": 799.4
+  },
+  "velocity_story_points_done_per_sprint": {
+    "sprint-Arthur": 0,
+    "sprint-Bertha": 137.0,
+    "sprint-Cristobal": 9.0,
+    "sprint-Dolly": 13.0,
+    "sprint-Edouard": 0,
+    "sprint-Fay": 0
+  },
+  "notes": [
+    "Counts are per sprint board snapshot (issues can appear in multiple sprint names if carried over).",
+    "Subtask bucket includes Dev, QA, Automation, Sub-task, etc.",
+    "Hours: sum_timespent_direct_h sums only work logged on each issue (no double-count from hierarchy).",
+    "Hours: sum_aggregatetimespent_non_subtask_h sums Jira rollup on parents only (includes child work once per tree).",
+    "Story Points field: customfield_10005; may be null on many issue types."
+  ]
+}

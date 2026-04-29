@@ -1,0 +1,12 @@
+=== Completed
+headers count 26
+['Issue Type', 'Issue key', 'Summary', 'Parent key', 'Parent type', 'Assignee', 'Status', 'Resolution', 'Priority', 'Created', 'Resolved', 'Updated', 'Sprint', 'Time Spent', 'Original Est', 'Project', 'Labels', 'Blockers', None, None, None, None, None, None, None, None]
+row2: ['Dev', 'PRODUCT24-4069', 'FE implementation addition of MS Teams and GChat activity in Case Manager', 'PRODUCT24-3991', 'Story', 'Amit Shirke', 'Done', '', 'P3', datetime.datetime(2026, 3, 12, 4, 14, 24, 93000), None, datetime.datetime(2026, 4, 17, 9, 55, 39, 652000), 'sprint-Cases-Hanna', 8.0, 6.0, 'PRODUCT24', 'Capitalized-Feature', '', None, None, None, None, None, None, None, None]
+=== Not Completed
+headers count 26
+['Issue Type', 'Issue key', 'Summary', 'Parent key', 'Parent type', 'Assignee', 'Status', 'Resolution', 'Priority', 'Created', 'Resolved', 'Updated', 'Sprint', 'Time Spent', 'Original Est', 'Project', 'Labels', 'Blockers', None, None, None, None, None, None, None, None]
+row2: ['Dev', 'PRODUCT24-4047', 'Investigate and potentially reduce DB timeout settings', 'PRODUCT24-3992', 'Task', 'Dhruv Raj', 'In Progress', '', 'P3', datetime.datetime(2026, 3, 9, 8, 47, 32, 44000), None, datetime.datetime(2026, 4, 27, 4, 0, 37, 466000), 'sprint-Cases-Hanna', 0.0, 4.0, 'PRODUCT24', '', '', None, None, None, None, None, None, None, None]
+=== Removed
+headers count 26
+['Issue Type', 'Issue key', 'Summary', 'Parent key', 'Parent type', 'Assignee', 'Status', 'Resolution', 'Priority', 'Created', 'Resolved', 'Updated', 'Sprint', 'Time Spent', 'Original Est', 'Project', 'Labels', 'Blockers', None, None, None, None, None, None, None, None]
+row2: ['Dev', 'PRODUCT24-3729', 'Code analysis and discuss + rough plan to migrating get contacts API', 'PRODUCT24-4187', '', 'Dhruv Raj', 'Code Review', '', '', None, None, None, 'sprint-Cases-Hanna', 0.0, 8.0, 'PRODUCT24', '', '', None, None, None, None, None, None, None, None]

@@ -1,0 +1,1887 @@
+{
+  "generated_at": "2026-04-21T18:06:34.264541+00:00",
+  "jira_base": "https://securly.atlassian.net",
+  "methodology": {
+    "planned": "Issues in sprint per JQL (see each cell metrics.jql).",
+    "completed": "statusCategory.key == done",
+    "primary_track_metric": "original_estimate_hours: sum of timeoriginalestimate (hours) on scope vs on Done; missing estimate = 0.",
+    "story_points_field": "customfield_10005",
+    "story_points_note": "Reference only; not the primary track bar."
+  },
+  "rows": [
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Arthur\")",
+        "planned_scope_issues": 123,
+        "completed_issues": 122,
+        "completion_rate_pct": 99.2,
+        "original_estimate_hours_planned_sum": 504.8,
+        "original_estimate_hours_done_sum": 496.8,
+        "original_estimate_hours_completion_pct": 98.4,
+        "issues_without_original_estimate": 11,
+        "timespent_hours_sum": 498.18,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 123,
+        "issue_type_counts": {
+          "Dev": 40,
+          "QA": 40,
+          "Defect": 18,
+          "Automation": 12,
+          "Story": 11,
+          "Sub-task": 1,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Bertha\")",
+        "planned_scope_issues": 137,
+        "completed_issues": 137,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 716.9,
+        "original_estimate_hours_done_sum": 716.9,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 16,
+        "timespent_hours_sum": 672.75,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 137,
+        "issue_type_counts": {
+          "Dev": 47,
+          "QA": 42,
+          "Automation": 18,
+          "Story": 17,
+          "Defect": 10,
+          "Escape Defect": 1,
+          "Sub-task": 1,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-02",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Cristobal\")",
+        "planned_scope_issues": 98,
+        "completed_issues": 98,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 431.66,
+        "original_estimate_hours_done_sum": 431.66,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 9,
+        "timespent_hours_sum": 391.42,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 98,
+        "issue_type_counts": {
+          "Dev": 36,
+          "QA": 26,
+          "Automation": 14,
+          "Story": 13,
+          "Defect": 6,
+          "Escape Defect": 1,
+          "Sub-task": 1,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-02",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Dolly\")",
+        "planned_scope_issues": 65,
+        "completed_issues": 65,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 415.58,
+        "original_estimate_hours_done_sum": 415.58,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 7,
+        "timespent_hours_sum": 292.83,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 65,
+        "issue_type_counts": {
+          "Dev": 24,
+          "QA": 20,
+          "Defect": 9,
+          "Story": 7,
+          "Support Request": 2,
+          "Automation": 1,
+          "Escape Defect": 1,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-03",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Edouard\")",
+        "planned_scope_issues": 147,
+        "completed_issues": 145,
+        "completion_rate_pct": 98.6,
+        "original_estimate_hours_planned_sum": 779.0,
+        "original_estimate_hours_done_sum": 771.0,
+        "original_estimate_hours_completion_pct": 99.0,
+        "issues_without_original_estimate": 36,
+        "timespent_hours_sum": 709.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 48.0,
+        "story_points_completed_sum": 48.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 145,
+        "issue_type_counts": {
+          "Dev": 53,
+          "QA": 45,
+          "Automation": 19,
+          "Story": 13,
+          "Defect": 12,
+          "Escape Defect": 3,
+          "Task": 2
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-03",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Home-Fay"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Home-Fay\")",
+        "planned_scope_issues": 78,
+        "completed_issues": 76,
+        "completion_rate_pct": 97.4,
+        "original_estimate_hours_planned_sum": 402.58,
+        "original_estimate_hours_done_sum": 394.58,
+        "original_estimate_hours_completion_pct": 98.0,
+        "issues_without_original_estimate": 24,
+        "timespent_hours_sum": 398.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 78,
+        "issue_type_counts": {
+          "Dev": 30,
+          "QA": 22,
+          "Story": 7,
+          "Task": 6,
+          "Defect": 5,
+          "Escape Defect": 5,
+          "Automation": 2,
+          "Test Case Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprints": [
+        "sprint-Aware-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = HOME AND sprint in (\"sprint-Aware-Arthur\")",
+        "planned_scope_issues": 0,
+        "completed_issues": 0,
+        "completion_rate_pct": 0.0,
+        "original_estimate_hours_planned_sum": 0.0,
+        "original_estimate_hours_done_sum": 0.0,
+        "original_estimate_hours_completion_pct": null,
+        "issues_without_original_estimate": 0,
+        "timespent_hours_sum": 0.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 0,
+        "issue_type_counts": {}
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-01",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Arthur\")",
+        "planned_scope_issues": 124,
+        "completed_issues": 118,
+        "completion_rate_pct": 95.2,
+        "original_estimate_hours_planned_sum": 500.69,
+        "original_estimate_hours_done_sum": 484.69,
+        "original_estimate_hours_completion_pct": 96.8,
+        "issues_without_original_estimate": 18,
+        "timespent_hours_sum": 501.42,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 124,
+        "issue_type_counts": {
+          "Dev": 35,
+          "QA": 27,
+          "Defect": 23,
+          "Task": 16,
+          "Escape Defect": 11,
+          "Story": 5,
+          "Support Request": 3,
+          "Test Case Creation": 2,
+          "Automation": 1,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-01",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Bertha\")",
+        "planned_scope_issues": 156,
+        "completed_issues": 142,
+        "completion_rate_pct": 91.0,
+        "original_estimate_hours_planned_sum": 786.33,
+        "original_estimate_hours_done_sum": 694.33,
+        "original_estimate_hours_completion_pct": 88.3,
+        "issues_without_original_estimate": 36,
+        "timespent_hours_sum": 802.13,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 156,
+        "issue_type_counts": {
+          "Dev": 57,
+          "QA": 36,
+          "Task": 16,
+          "Defect": 11,
+          "Story": 11,
+          "Support Request": 8,
+          "Escape Defect": 6,
+          "Automation": 4,
+          "Test Case Creation": 4,
+          "Release": 2,
+          "Enhancement": 1
+        }
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-02",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Cristobal\")",
+        "planned_scope_issues": 196,
+        "completed_issues": 176,
+        "completion_rate_pct": 89.8,
+        "original_estimate_hours_planned_sum": 1037.75,
+        "original_estimate_hours_done_sum": 925.75,
+        "original_estimate_hours_completion_pct": 89.2,
+        "issues_without_original_estimate": 60,
+        "timespent_hours_sum": 1024.63,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 196,
+        "issue_type_counts": {
+          "Dev": 70,
+          "QA": 42,
+          "Support Request": 19,
+          "Story": 15,
+          "Task": 14,
+          "Defect": 13,
+          "Automation": 8,
+          "Test Case Creation": 8,
+          "Escape Defect": 6,
+          "Release": 1
+        }
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-02",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Dolly\")",
+        "planned_scope_issues": 304,
+        "completed_issues": 279,
+        "completion_rate_pct": 91.8,
+        "original_estimate_hours_planned_sum": 1292.51,
+        "original_estimate_hours_done_sum": 1051.51,
+        "original_estimate_hours_completion_pct": 81.4,
+        "issues_without_original_estimate": 96,
+        "timespent_hours_sum": 1129.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 304,
+        "issue_type_counts": {
+          "Dev": 105,
+          "QA": 75,
+          "Defect": 35,
+          "Task": 22,
+          "Story": 16,
+          "Escape Defect": 14,
+          "Automation": 12,
+          "Support Request": 11,
+          "Test Case Creation": 7,
+          "Release": 5,
+          "Feature": 1,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-03",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Edouard\")",
+        "planned_scope_issues": 235,
+        "completed_issues": 180,
+        "completion_rate_pct": 76.6,
+        "original_estimate_hours_planned_sum": 998.09,
+        "original_estimate_hours_done_sum": 694.34,
+        "original_estimate_hours_completion_pct": 69.6,
+        "issues_without_original_estimate": 82,
+        "timespent_hours_sum": 697.83,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 235,
+        "issue_type_counts": {
+          "Dev": 78,
+          "QA": 60,
+          "Defect": 22,
+          "Story": 20,
+          "Support Request": 14,
+          "Task": 14,
+          "Escape Defect": 12,
+          "Automation": 6,
+          "Test Case Creation": 6,
+          "Release": 2,
+          "Feature": 1
+        }
+      }
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-03",
+      "jira_project": "MDMCLASS",
+      "sprints": [
+        "sprint-MDMCL-Fay"
+      ],
+      "metrics": {
+        "jql": "project = MDMCLASS AND sprint in (\"sprint-MDMCL-Fay\")",
+        "planned_scope_issues": 219,
+        "completed_issues": 146,
+        "completion_rate_pct": 66.7,
+        "original_estimate_hours_planned_sum": 1251.51,
+        "original_estimate_hours_done_sum": 841.76,
+        "original_estimate_hours_completion_pct": 67.3,
+        "issues_without_original_estimate": 76,
+        "timespent_hours_sum": 991.25,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 219,
+        "issue_type_counts": {
+          "Dev": 81,
+          "QA": 56,
+          "Defect": 18,
+          "Escape Defect": 14,
+          "Story": 14,
+          "Task": 12,
+          "Support Request": 10,
+          "Automation": 6,
+          "Test Case Creation": 5,
+          "Release": 2,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-01",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Arthur\")",
+        "planned_scope_issues": 93,
+        "completed_issues": 80,
+        "completion_rate_pct": 86.0,
+        "original_estimate_hours_planned_sum": 397.5,
+        "original_estimate_hours_done_sum": 353.5,
+        "original_estimate_hours_completion_pct": 88.9,
+        "issues_without_original_estimate": 15,
+        "timespent_hours_sum": 356.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 30.0,
+        "story_points_completed_sum": 30.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 84,
+        "issue_type_counts": {
+          "Dev": 32,
+          "QA": 22,
+          "Automation": 14,
+          "Code Review": 8,
+          "Defect": 6,
+          "Story": 6,
+          "Test Case Creation": 3,
+          "Escape Defect": 1,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-01",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Bertha\")",
+        "planned_scope_issues": 159,
+        "completed_issues": 144,
+        "completion_rate_pct": 90.6,
+        "original_estimate_hours_planned_sum": 783.67,
+        "original_estimate_hours_done_sum": 745.67,
+        "original_estimate_hours_completion_pct": 95.2,
+        "issues_without_original_estimate": 23,
+        "timespent_hours_sum": 632.17,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 73.0,
+        "story_points_completed_sum": 68.0,
+        "story_points_completion_pct": 93.2,
+        "issues_without_story_points": 136,
+        "issue_type_counts": {
+          "Dev": 64,
+          "QA": 36,
+          "Automation": 17,
+          "Story": 10,
+          "Defect": 9,
+          "Code Review": 8,
+          "Escape Defect": 5,
+          "Task": 5,
+          "Test Case Creation": 3,
+          "Debug": 1,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-02",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Cristobal\")",
+        "planned_scope_issues": 68,
+        "completed_issues": 68,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 257.5,
+        "original_estimate_hours_done_sum": 257.5,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 6,
+        "timespent_hours_sum": 248.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 67.0,
+        "story_points_completed_sum": 67.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 52,
+        "issue_type_counts": {
+          "Dev": 30,
+          "QA": 17,
+          "Defect": 8,
+          "Story": 4,
+          "Task": 3,
+          "Automation": 2,
+          "Test Case Creation": 2,
+          "Debug": 1,
+          "Escape Defect": 1
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-02",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Dolly\")",
+        "planned_scope_issues": 73,
+        "completed_issues": 72,
+        "completion_rate_pct": 98.6,
+        "original_estimate_hours_planned_sum": 279.67,
+        "original_estimate_hours_done_sum": 279.17,
+        "original_estimate_hours_completion_pct": 99.8,
+        "issues_without_original_estimate": 12,
+        "timespent_hours_sum": 232.37,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 13.0,
+        "story_points_completed_sum": 12.0,
+        "story_points_completion_pct": 92.3,
+        "issues_without_story_points": 68,
+        "issue_type_counts": {
+          "Dev": 37,
+          "QA": 13,
+          "Story": 11,
+          "Task": 5,
+          "Defect": 3,
+          "Escape Defect": 2,
+          "Test Case Creation": 2
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-03",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Cases-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Cases-Edouard\")",
+        "planned_scope_issues": 69,
+        "completed_issues": 69,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 161.75,
+        "original_estimate_hours_done_sum": 161.75,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 15,
+        "timespent_hours_sum": 163.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 26.0,
+        "story_points_completed_sum": 26.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 59,
+        "issue_type_counts": {
+          "Dev": 24,
+          "QA": 19,
+          "Defect": 7,
+          "Story": 6,
+          "Escape Defect": 5,
+          "Test Case Creation": 5,
+          "Task": 3
+        }
+      }
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-03",
+      "jira_project": "PRODUCT24",
+      "sprints": [
+        "sprint-Cases-Fay"
+      ],
+      "metrics": {
+        "jql": "project = PRODUCT24 AND sprint in (\"sprint-Cases-Fay\")",
+        "planned_scope_issues": 110,
+        "completed_issues": 102,
+        "completion_rate_pct": 92.7,
+        "original_estimate_hours_planned_sum": 360.75,
+        "original_estimate_hours_done_sum": 318.75,
+        "original_estimate_hours_completion_pct": 88.4,
+        "issues_without_original_estimate": 33,
+        "timespent_hours_sum": 346.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 26.0,
+        "story_points_completed_sum": 26.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 103,
+        "issue_type_counts": {
+          "Dev": 44,
+          "QA": 27,
+          "Story": 13,
+          "Task": 9,
+          "Test Case Creation": 9,
+          "Escape Defect": 7,
+          "Defect": 1
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-01",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Arthur\")",
+        "planned_scope_issues": 49,
+        "completed_issues": 36,
+        "completion_rate_pct": 73.5,
+        "original_estimate_hours_planned_sum": 188.0,
+        "original_estimate_hours_done_sum": 188.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 24,
+        "timespent_hours_sum": 120.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 43.0,
+        "story_points_completed_sum": 43.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 40,
+        "issue_type_counts": {
+          "Dev": 16,
+          "Code Review": 13,
+          "Story": 12,
+          "QA": 8
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-01",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Bertha\")",
+        "planned_scope_issues": 55,
+        "completed_issues": 42,
+        "completion_rate_pct": 76.4,
+        "original_estimate_hours_planned_sum": 200.0,
+        "original_estimate_hours_done_sum": 200.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 26,
+        "timespent_hours_sum": 134.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 43.0,
+        "story_points_completed_sum": 43.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 46,
+        "issue_type_counts": {
+          "Dev": 19,
+          "Story": 14,
+          "Code Review": 13,
+          "QA": 8,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-02",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Cristobal\")",
+        "planned_scope_issues": 4,
+        "completed_issues": 4,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 17.0,
+        "original_estimate_hours_done_sum": 17.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 0,
+        "timespent_hours_sum": 14.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 5.0,
+        "story_points_completed_sum": 5.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 3,
+        "issue_type_counts": {
+          "Automation": 1,
+          "Dev": 1,
+          "QA": 1,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-02",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Dolly\")",
+        "planned_scope_issues": 6,
+        "completed_issues": 6,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 29.0,
+        "original_estimate_hours_done_sum": 29.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 2,
+        "timespent_hours_sum": 29.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 6.0,
+        "story_points_completed_sum": 6.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 5,
+        "issue_type_counts": {
+          "Dev": 4,
+          "Story": 2
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-03",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Cases-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Cases-Edouard\")",
+        "planned_scope_issues": 9,
+        "completed_issues": 9,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 84.0,
+        "original_estimate_hours_done_sum": 84.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 3,
+        "timespent_hours_sum": 82.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 12.0,
+        "story_points_completed_sum": 12.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 8,
+        "issue_type_counts": {
+          "Dev": 4,
+          "Story": 2,
+          "Escape Defect": 1,
+          "QA": 1,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-03",
+      "jira_project": "RESP",
+      "sprints": [
+        "sprint-Cases-Fay"
+      ],
+      "metrics": {
+        "jql": "project = RESP AND sprint in (\"sprint-Cases-Fay\")",
+        "planned_scope_issues": 35,
+        "completed_issues": 35,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 233.0,
+        "original_estimate_hours_done_sum": 233.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 15,
+        "timespent_hours_sum": 245.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 29.0,
+        "story_points_completed_sum": 29.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 31,
+        "issue_type_counts": {
+          "Dev": 19,
+          "QA": 8,
+          "Story": 4,
+          "Defect": 3,
+          "Task": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-01",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Arthur\")",
+        "planned_scope_issues": 156,
+        "completed_issues": 129,
+        "completion_rate_pct": 82.7,
+        "original_estimate_hours_planned_sum": 561.58,
+        "original_estimate_hours_done_sum": 542.08,
+        "original_estimate_hours_completion_pct": 96.5,
+        "issues_without_original_estimate": 41,
+        "timespent_hours_sum": 402.6,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 156,
+        "issue_type_counts": {
+          "Dev": 34,
+          "QA": 28,
+          "Automation": 24,
+          "Code Review": 24,
+          "Task": 18,
+          "Defect": 10,
+          "Escape Defect": 9,
+          "Debug": 4,
+          "Bug (OLD - use Defect instead)": 3,
+          "Epic": 1,
+          "Test Case Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-01",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Bertha\")",
+        "planned_scope_issues": 227,
+        "completed_issues": 201,
+        "completion_rate_pct": 88.5,
+        "original_estimate_hours_planned_sum": 1012.0,
+        "original_estimate_hours_done_sum": 1004.5,
+        "original_estimate_hours_completion_pct": 99.3,
+        "issues_without_original_estimate": 53,
+        "timespent_hours_sum": 900.35,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 137.0,
+        "story_points_completed_sum": 137.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 213,
+        "issue_type_counts": {
+          "Dev": 55,
+          "QA": 54,
+          "Automation": 39,
+          "Code Review": 24,
+          "Task": 19,
+          "Escape Defect": 15,
+          "Defect": 10,
+          "Story": 7,
+          "Debug": 3,
+          "Sub-task": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-02",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Cristobal\")",
+        "planned_scope_issues": 167,
+        "completed_issues": 163,
+        "completion_rate_pct": 97.6,
+        "original_estimate_hours_planned_sum": 886.5,
+        "original_estimate_hours_done_sum": 874.5,
+        "original_estimate_hours_completion_pct": 98.6,
+        "issues_without_original_estimate": 15,
+        "timespent_hours_sum": 795.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 9.0,
+        "story_points_completed_sum": 9.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 165,
+        "issue_type_counts": {
+          "Dev": 47,
+          "QA": 38,
+          "Defect": 22,
+          "Task": 22,
+          "Automation": 20,
+          "Escape Defect": 11,
+          "Debug": 2,
+          "Story": 2,
+          "Epic": 1,
+          "Sub-task": 1,
+          "Support Escalation (OLD)": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-02",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Dolly\")",
+        "planned_scope_issues": 63,
+        "completed_issues": 57,
+        "completion_rate_pct": 90.5,
+        "original_estimate_hours_planned_sum": 478.5,
+        "original_estimate_hours_done_sum": 428.5,
+        "original_estimate_hours_completion_pct": 89.6,
+        "issues_without_original_estimate": 8,
+        "timespent_hours_sum": 452.1,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 13.0,
+        "story_points_completed_sum": 13.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 62,
+        "issue_type_counts": {
+          "Task": 18,
+          "Dev": 16,
+          "Automation": 7,
+          "QA": 7,
+          "Escape Defect": 5,
+          "Story": 4,
+          "Debug": 3,
+          "Defect": 1,
+          "Epic": 1,
+          "Support Escalation (OLD)": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-03",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Edouard\")",
+        "planned_scope_issues": 296,
+        "completed_issues": 236,
+        "completion_rate_pct": 79.7,
+        "original_estimate_hours_planned_sum": 1708.0,
+        "original_estimate_hours_done_sum": 1392.0,
+        "original_estimate_hours_completion_pct": 81.5,
+        "issues_without_original_estimate": 57,
+        "timespent_hours_sum": 1445.4,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 296,
+        "issue_type_counts": {
+          "Dev": 98,
+          "QA": 72,
+          "Defect": 36,
+          "Automation": 35,
+          "Task": 20,
+          "Escape Defect": 15,
+          "Story": 15,
+          "Debug": 3,
+          "Support Request": 1,
+          "Test Case Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-03",
+      "jira_project": "FILTER",
+      "sprints": [
+        "sprint-Fay"
+      ],
+      "metrics": {
+        "jql": "project = FILTER AND sprint in (\"sprint-Fay\")",
+        "planned_scope_issues": 184,
+        "completed_issues": 161,
+        "completion_rate_pct": 87.5,
+        "original_estimate_hours_planned_sum": 882.5,
+        "original_estimate_hours_done_sum": 812.5,
+        "original_estimate_hours_completion_pct": 92.1,
+        "issues_without_original_estimate": 66,
+        "timespent_hours_sum": 804.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 184,
+        "issue_type_counts": {
+          "Dev": 56,
+          "QA": 43,
+          "Automation": 25,
+          "Task": 16,
+          "Story": 15,
+          "Defect": 13,
+          "Escape Defect": 9,
+          "Debug": 5,
+          "Support Request": 2
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-01",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 40"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 40\")",
+        "planned_scope_issues": 133,
+        "completed_issues": 109,
+        "completion_rate_pct": 82.0,
+        "original_estimate_hours_planned_sum": 763.5,
+        "original_estimate_hours_done_sum": 581.5,
+        "original_estimate_hours_completion_pct": 76.2,
+        "issues_without_original_estimate": 82,
+        "timespent_hours_sum": 3098.67,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 405.0,
+        "story_points_completed_sum": 376.0,
+        "story_points_completion_pct": 92.8,
+        "issues_without_story_points": 75,
+        "issue_type_counts": {
+          "Task": 53,
+          "Bug (OLD - use Defect instead)": 24,
+          "Escape Defect": 19,
+          "Sub-task": 11,
+          "QA": 9,
+          "Dev": 5,
+          "Story": 4,
+          "Automation": 3,
+          "Defect": 2,
+          "TC Creation": 2,
+          "Feature (migrated)": 1
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-01",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 41"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 41\")",
+        "planned_scope_issues": 154,
+        "completed_issues": 128,
+        "completion_rate_pct": 83.1,
+        "original_estimate_hours_planned_sum": 930.5,
+        "original_estimate_hours_done_sum": 724.5,
+        "original_estimate_hours_completion_pct": 77.9,
+        "issues_without_original_estimate": 78,
+        "timespent_hours_sum": 3284.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 368.0,
+        "story_points_completed_sum": 347.0,
+        "story_points_completion_pct": 94.3,
+        "issues_without_story_points": 99,
+        "issue_type_counts": {
+          "Task": 49,
+          "Bug (OLD - use Defect instead)": 30,
+          "QA": 14,
+          "Escape Defect": 13,
+          "Dev": 12,
+          "Sub-task": 11,
+          "Automation": 9,
+          "Story": 7,
+          "Test Case Creation": 4,
+          "TC Creation": 2,
+          "Defect": 1,
+          "Feature (migrated)": 1,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-02",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 42"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 42\")",
+        "planned_scope_issues": 166,
+        "completed_issues": 149,
+        "completion_rate_pct": 89.8,
+        "original_estimate_hours_planned_sum": 908.0,
+        "original_estimate_hours_done_sum": 734.0,
+        "original_estimate_hours_completion_pct": 80.8,
+        "issues_without_original_estimate": 77,
+        "timespent_hours_sum": 3267.15,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 286.0,
+        "story_points_completed_sum": 265.0,
+        "story_points_completion_pct": 92.7,
+        "issues_without_story_points": 116,
+        "issue_type_counts": {
+          "Task": 46,
+          "Bug (OLD - use Defect instead)": 25,
+          "Dev": 19,
+          "QA": 19,
+          "Automation": 12,
+          "Escape Defect": 12,
+          "Sub-task": 11,
+          "Story": 7,
+          "Test Case Creation": 7,
+          "Defect": 5,
+          "TC Creation": 2,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-02",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 43"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 43\")",
+        "planned_scope_issues": 155,
+        "completed_issues": 123,
+        "completion_rate_pct": 79.4,
+        "original_estimate_hours_planned_sum": 922.5,
+        "original_estimate_hours_done_sum": 598.5,
+        "original_estimate_hours_completion_pct": 64.9,
+        "issues_without_original_estimate": 75,
+        "timespent_hours_sum": 3362.08,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 357.0,
+        "story_points_completed_sum": 318.0,
+        "story_points_completion_pct": 89.1,
+        "issues_without_story_points": 111,
+        "issue_type_counts": {
+          "Task": 39,
+          "Dev": 23,
+          "Bug (OLD - use Defect instead)": 22,
+          "QA": 18,
+          "Automation": 13,
+          "Story": 12,
+          "Sub-task": 10,
+          "Escape Defect": 9,
+          "Test Case Creation": 6,
+          "Defect": 2,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-03",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 44"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 44\")",
+        "planned_scope_issues": 190,
+        "completed_issues": 146,
+        "completion_rate_pct": 76.8,
+        "original_estimate_hours_planned_sum": 996.0,
+        "original_estimate_hours_done_sum": 609.5,
+        "original_estimate_hours_completion_pct": 61.2,
+        "issues_without_original_estimate": 100,
+        "timespent_hours_sum": 3970.92,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 488.0,
+        "story_points_completed_sum": 449.0,
+        "story_points_completion_pct": 92.0,
+        "issues_without_story_points": 125,
+        "issue_type_counts": {
+          "Task": 48,
+          "Dev": 30,
+          "Bug (OLD - use Defect instead)": 24,
+          "QA": 21,
+          "Story": 17,
+          "Sub-task": 16,
+          "Automation": 13,
+          "Escape Defect": 8,
+          "Defect": 7,
+          "Test Case Creation": 4,
+          "Support Request": 1,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "PASS",
+      "month": "2026-03",
+      "jira_project": "PASS",
+      "sprints": [
+        "PASS Sprint 45"
+      ],
+      "metrics": {
+        "jql": "project = PASS AND sprint in (\"PASS Sprint 45\")",
+        "planned_scope_issues": 157,
+        "completed_issues": 108,
+        "completion_rate_pct": 68.8,
+        "original_estimate_hours_planned_sum": 792.5,
+        "original_estimate_hours_done_sum": 356.0,
+        "original_estimate_hours_completion_pct": 44.9,
+        "issues_without_original_estimate": 97,
+        "timespent_hours_sum": 3925.57,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 486.0,
+        "story_points_completed_sum": 447.0,
+        "story_points_completion_pct": 92.0,
+        "issues_without_story_points": 89,
+        "issue_type_counts": {
+          "Task": 54,
+          "Bug (OLD - use Defect instead)": 26,
+          "Dev": 18,
+          "QA": 13,
+          "Sub-task": 13,
+          "Story": 9,
+          "Automation": 8,
+          "Escape Defect": 6,
+          "TC Creation": 3,
+          "Test Case Creation": 3,
+          "Support Request": 2,
+          "Defect": 1,
+          "Epic": 1
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-01",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 128"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 128\")",
+        "planned_scope_issues": 42,
+        "completed_issues": 42,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 270.49,
+        "original_estimate_hours_done_sum": 270.49,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 10,
+        "timespent_hours_sum": 356.75,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 42,
+        "issue_type_counts": {
+          "Task": 14,
+          "QA": 8,
+          "Dev": 5,
+          "Story": 5,
+          "Automation": 2,
+          "Bug (OLD - use Defect instead)": 2,
+          "Defect": 2,
+          "Escape Defect": 2,
+          "TC Creation": 1,
+          "Test Case Creation": 1
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-01",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 129"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 129\")",
+        "planned_scope_issues": 69,
+        "completed_issues": 60,
+        "completion_rate_pct": 87.0,
+        "original_estimate_hours_planned_sum": 654.33,
+        "original_estimate_hours_done_sum": 593.33,
+        "original_estimate_hours_completion_pct": 90.7,
+        "issues_without_original_estimate": 16,
+        "timespent_hours_sum": 486.83,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 69,
+        "issue_type_counts": {
+          "Dev": 17,
+          "QA": 14,
+          "Task": 11,
+          "Automation": 7,
+          "Escape Defect": 6,
+          "Story": 6,
+          "Test Case Creation": 4,
+          "Defect": 2,
+          "Sub-task": 1,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-02",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 130"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 130\")",
+        "planned_scope_issues": 56,
+        "completed_issues": 48,
+        "completion_rate_pct": 85.7,
+        "original_estimate_hours_planned_sum": 535.0,
+        "original_estimate_hours_done_sum": 474.0,
+        "original_estimate_hours_completion_pct": 88.6,
+        "issues_without_original_estimate": 10,
+        "timespent_hours_sum": 386.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 56,
+        "issue_type_counts": {
+          "Dev": 14,
+          "QA": 12,
+          "Task": 7,
+          "Automation": 6,
+          "Story": 5,
+          "Defect": 4,
+          "Test Case Creation": 4,
+          "Escape Defect": 1,
+          "Sub-task": 1,
+          "Support Request": 1,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-02",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 131"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 131\")",
+        "planned_scope_issues": 42,
+        "completed_issues": 36,
+        "completion_rate_pct": 85.7,
+        "original_estimate_hours_planned_sum": 430.0,
+        "original_estimate_hours_done_sum": 366.0,
+        "original_estimate_hours_completion_pct": 85.1,
+        "issues_without_original_estimate": 7,
+        "timespent_hours_sum": 354.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 42,
+        "issue_type_counts": {
+          "Dev": 12,
+          "Task": 9,
+          "QA": 5,
+          "Automation": 3,
+          "Escape Defect": 3,
+          "Story": 3,
+          "Test Case Creation": 3,
+          "Defect": 2,
+          "Sub-task": 1,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-03",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 132"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 132\")",
+        "planned_scope_issues": 62,
+        "completed_issues": 53,
+        "completion_rate_pct": 85.5,
+        "original_estimate_hours_planned_sum": 585.0,
+        "original_estimate_hours_done_sum": 469.0,
+        "original_estimate_hours_completion_pct": 80.2,
+        "issues_without_original_estimate": 10,
+        "timespent_hours_sum": 435.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 62,
+        "issue_type_counts": {
+          "Dev": 17,
+          "QA": 11,
+          "Task": 10,
+          "Escape Defect": 7,
+          "Automation": 4,
+          "Test Case Creation": 4,
+          "Story": 3,
+          "Defect": 2,
+          "Sub-task": 2,
+          "Support Request": 2
+        }
+      }
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-03",
+      "jira_project": "FLEX",
+      "sprints": [
+        "FLEX/COM Sprint 133"
+      ],
+      "metrics": {
+        "jql": "project = FLEX AND sprint in (\"FLEX/COM Sprint 133\")",
+        "planned_scope_issues": 42,
+        "completed_issues": 38,
+        "completion_rate_pct": 90.5,
+        "original_estimate_hours_planned_sum": 483.0,
+        "original_estimate_hours_done_sum": 439.0,
+        "original_estimate_hours_completion_pct": 90.9,
+        "issues_without_original_estimate": 8,
+        "timespent_hours_sum": 378.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 42,
+        "issue_type_counts": {
+          "Dev": 11,
+          "QA": 8,
+          "Task": 7,
+          "Story": 4,
+          "Support Request": 3,
+          "Automation": 2,
+          "Escape Defect": 2,
+          "Sub-task": 2,
+          "Test Case Creation": 2,
+          "Epic": 1
+        }
+      }
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-01",
+      "jira_project": "AWARE",
+      "sprints": [
+        "sprint-Aware-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = AWARE AND sprint in (\"sprint-Aware-Bertha\")",
+        "planned_scope_issues": 85,
+        "completed_issues": 79,
+        "completion_rate_pct": 92.9,
+        "original_estimate_hours_planned_sum": 293.0,
+        "original_estimate_hours_done_sum": 249.0,
+        "original_estimate_hours_completion_pct": 85.0,
+        "issues_without_original_estimate": 10,
+        "timespent_hours_sum": 260.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 85,
+        "issue_type_counts": {
+          "Dev": 23,
+          "QA": 22,
+          "Escape Defect": 13,
+          "Defect": 9,
+          "Task": 9,
+          "Story": 5,
+          "Automation": 2,
+          "Epic": 1,
+          "Test Case Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-02",
+      "jira_project": "AWARE",
+      "sprints": [
+        "sprint-Aware-Cristobal"
+      ],
+      "metrics": {
+        "jql": "project = AWARE AND sprint in (\"sprint-Aware-Cristobal\")",
+        "planned_scope_issues": 66,
+        "completed_issues": 66,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 240.0,
+        "original_estimate_hours_done_sum": 240.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 6,
+        "timespent_hours_sum": 210.67,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 66,
+        "issue_type_counts": {
+          "Dev": 19,
+          "QA": 17,
+          "Escape Defect": 10,
+          "Task": 7,
+          "Defect": 4,
+          "Story": 4,
+          "Automation": 2,
+          "Epic": 1,
+          "Support Request": 1,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-02",
+      "jira_project": "AWARE",
+      "sprints": [
+        "sprint-Aware-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = AWARE AND sprint in (\"sprint-Aware-Dolly\")",
+        "planned_scope_issues": 86,
+        "completed_issues": 86,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 281.5,
+        "original_estimate_hours_done_sum": 281.5,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 15,
+        "timespent_hours_sum": 222.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 4.0,
+        "story_points_completed_sum": 4.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 85,
+        "issue_type_counts": {
+          "Dev": 26,
+          "QA": 20,
+          "Story": 16,
+          "Task": 8,
+          "Automation": 6,
+          "Defect": 3,
+          "Test Case Creation": 2,
+          "Epic": 1,
+          "Escape Defect": 1,
+          "Sub-task": 1,
+          "Support Escalation (OLD)": 1,
+          "TC Creation": 1
+        }
+      }
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-03",
+      "jira_project": "AWARE",
+      "sprints": [
+        "sprint-Aware-Edouard"
+      ],
+      "metrics": {
+        "jql": "project = AWARE AND sprint in (\"sprint-Aware-Edouard\")",
+        "planned_scope_issues": 75,
+        "completed_issues": 70,
+        "completion_rate_pct": 93.3,
+        "original_estimate_hours_planned_sum": 254.0,
+        "original_estimate_hours_done_sum": 205.0,
+        "original_estimate_hours_completion_pct": 80.7,
+        "issues_without_original_estimate": 13,
+        "timespent_hours_sum": 196.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 75,
+        "issue_type_counts": {
+          "Dev": 20,
+          "QA": 19,
+          "Task": 12,
+          "Defect": 10,
+          "Story": 7,
+          "Escape Defect": 5,
+          "Automation": 1,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-03",
+      "jira_project": "AWARE",
+      "sprints": [
+        "sprint-Aware-Fay"
+      ],
+      "metrics": {
+        "jql": "project = AWARE AND sprint in (\"sprint-Aware-Fay\")",
+        "planned_scope_issues": 38,
+        "completed_issues": 34,
+        "completion_rate_pct": 89.5,
+        "original_estimate_hours_planned_sum": 180.0,
+        "original_estimate_hours_done_sum": 148.0,
+        "original_estimate_hours_completion_pct": 82.2,
+        "issues_without_original_estimate": 6,
+        "timespent_hours_sum": 168.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 8.0,
+        "story_points_completed_sum": 8.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 37,
+        "issue_type_counts": {
+          "Dev": 9,
+          "QA": 8,
+          "Task": 5,
+          "Escape Defect": 4,
+          "Story": 4,
+          "Automation": 3,
+          "Defect": 2,
+          "Support Request": 2,
+          "Support Escalation (OLD)": 1
+        }
+      }
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-01",
+      "jira_project": "AICHAT",
+      "sprints": [
+        "sprint-AIChat-Zephyr",
+        "sprint-AIChat-Arthur"
+      ],
+      "metrics": {
+        "jql": "project = AICHAT AND sprint in (\"sprint-AIChat-Zephyr\", \"sprint-AIChat-Arthur\")",
+        "planned_scope_issues": 48,
+        "completed_issues": 48,
+        "completion_rate_pct": 100.0,
+        "original_estimate_hours_planned_sum": 370.5,
+        "original_estimate_hours_done_sum": 370.5,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 10,
+        "timespent_hours_sum": 334.17,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 2.0,
+        "story_points_completed_sum": 2.0,
+        "story_points_completion_pct": 100.0,
+        "issues_without_story_points": 47,
+        "issue_type_counts": {
+          "Task": 25,
+          "Defect": 11,
+          "Sub-task": 5,
+          "Bug": 3,
+          "Epic": 2,
+          "Improvement": 2
+        }
+      }
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-02",
+      "jira_project": "AICHAT",
+      "sprints": [
+        "sprint-AIChat-Bertha",
+        "sprint-AIChat-38",
+        "sprint-AIChat-39"
+      ],
+      "metrics": {
+        "jql": "project = AICHAT AND sprint in (\"sprint-AIChat-Bertha\", \"sprint-AIChat-38\", \"sprint-AIChat-39\")",
+        "planned_scope_issues": 11,
+        "completed_issues": 10,
+        "completion_rate_pct": 90.9,
+        "original_estimate_hours_planned_sum": 63.0,
+        "original_estimate_hours_done_sum": 63.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 3,
+        "timespent_hours_sum": 75.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 11,
+        "issue_type_counts": {
+          "Defect": 3,
+          "Epic": 3,
+          "Task": 3,
+          "Escape Defect": 1,
+          "Improvement": 1
+        }
+      }
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprints": [
+        "sprint-AIChat-41",
+        "sprint-AIChat-42",
+        "sprint-AIChat-43",
+        "sprint-AIChat-44",
+        "sprint-AIChat-45"
+      ],
+      "metrics": {
+        "jql": "project = AICHAT AND sprint in (\"sprint-AIChat-41\", \"sprint-AIChat-42\", \"sprint-AIChat-43\", \"sprint-AIChat-44\", \"sprint-AIChat-45\")",
+        "planned_scope_issues": 47,
+        "completed_issues": 41,
+        "completion_rate_pct": 87.2,
+        "original_estimate_hours_planned_sum": 350.0,
+        "original_estimate_hours_done_sum": 342.0,
+        "original_estimate_hours_completion_pct": 97.7,
+        "issues_without_original_estimate": 13,
+        "timespent_hours_sum": 389.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 47,
+        "issue_type_counts": {
+          "Task": 26,
+          "Defect": 8,
+          "Feature (migrated)": 4,
+          "Epic": 3,
+          "Escape Defect": 2,
+          "Improvement": 2,
+          "Release": 1,
+          "Support Request": 1
+        }
+      }
+    },
+    {
+      "product": "Platform",
+      "month": "2026-01",
+      "jira_project": "PLATFORM",
+      "sprints": [
+        "sprint-Platform-Arthur",
+        "sprint-Platform-Bertha"
+      ],
+      "metrics": {
+        "jql": "project = PLATFORM AND sprint in (\"sprint-Platform-Arthur\", \"sprint-Platform-Bertha\")",
+        "planned_scope_issues": 18,
+        "completed_issues": 17,
+        "completion_rate_pct": 94.4,
+        "original_estimate_hours_planned_sum": 59.0,
+        "original_estimate_hours_done_sum": 59.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 5,
+        "timespent_hours_sum": 15.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 18,
+        "issue_type_counts": {
+          "Defect": 9,
+          "Epic": 6,
+          "Task": 3
+        }
+      }
+    },
+    {
+      "product": "Platform",
+      "month": "2026-02",
+      "jira_project": "PLATFORM",
+      "sprints": [
+        "sprint-Platform-Cristobal",
+        "sprint-Platform-Dolly"
+      ],
+      "metrics": {
+        "jql": "project = PLATFORM AND sprint in (\"sprint-Platform-Cristobal\", \"sprint-Platform-Dolly\")",
+        "planned_scope_issues": 21,
+        "completed_issues": 20,
+        "completion_rate_pct": 95.2,
+        "original_estimate_hours_planned_sum": 125.0,
+        "original_estimate_hours_done_sum": 125.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 4,
+        "timespent_hours_sum": 49.5,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 21,
+        "issue_type_counts": {
+          "Defect": 10,
+          "Task": 8,
+          "Epic": 3
+        }
+      }
+    },
+    {
+      "product": "Platform",
+      "month": "2026-03",
+      "jira_project": "PLATFORM",
+      "sprints": [
+        "sprint-Platform-Edouard",
+        "sprint-Platform-Fay"
+      ],
+      "metrics": {
+        "jql": "project = PLATFORM AND sprint in (\"sprint-Platform-Edouard\", \"sprint-Platform-Fay\")",
+        "planned_scope_issues": 77,
+        "completed_issues": 75,
+        "completion_rate_pct": 97.4,
+        "original_estimate_hours_planned_sum": 483.0,
+        "original_estimate_hours_done_sum": 483.0,
+        "original_estimate_hours_completion_pct": 100.0,
+        "issues_without_original_estimate": 22,
+        "timespent_hours_sum": 545.0,
+        "story_points_field": "customfield_10005",
+        "story_points_planned_sum": 0.0,
+        "story_points_completed_sum": 0.0,
+        "story_points_completion_pct": null,
+        "issues_without_story_points": 77,
+        "issue_type_counts": {
+          "Dev": 25,
+          "Task": 24,
+          "QA": 19,
+          "Epic": 4,
+          "Defect": 2,
+          "Sub-task": 2,
+          "Escape Defect": 1
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,32 @@
+{
+  "project_context": "Securly Filter — India PM baseline for Dev / Manual QA / Automation subtask estimates",
+  "reference_sprints": [
+    "sprint-Arthur",
+    "sprint-Bertha",
+    "sprint-Cristobal",
+    "sprint-Dolly",
+    "sprint-Edouard",
+    "sprint-Fay",
+    "sprint-Gonzalo"
+  ],
+  "local_raw_files": {
+    "sprint-Arthur": "raw/sprint-Arthur.jsonl",
+    "sprint-Bertha": "raw/sprint-Bertha.jsonl",
+    "sprint-Cristobal": "raw/sprint-Cristobal.jsonl",
+    "sprint-Dolly": "raw/sprint-Dolly.jsonl",
+    "sprint-Edouard": "raw/sprint-Edouard.jsonl",
+    "sprint-Fay": "raw/sprint-Fay.jsonl",
+    "sprint-Gonzalo": "raw/sprint-Gonzalo.jsonl"
+  },
+  "last_full_export_utc": null,
+  "jql_used_per_sprint": {},
+  "issue_counts_per_file": {},
+  "recommended_jql_template": "Replace SPRINT_NAME and adjust for your Jira sprint field syntax.\nExample patterns:\n  sprint = \"sprint-Arthur\" AND statusCategory = Done\n  \"Sprint\" in (\"sprint-Arthur\") AND status in (Done, Closed)\n  Sprint in (12345)  -- if using sprint id from board",
+  "export_fields_note": "Capture all fields needed for lossless analysis: key, issuetype, parent, subtasks, summary, status, resolution, resolutiondate, created, updated, assignee, reporter, priority, labels, components, fixVersions, Sprint, timeoriginalestimate, timeestimate, aggregatetimeoriginalestimate, aggregatetimeestimate, timespent, aggregatetimespent, workratio, description, issuelinks, comment (optional), plus story points custom field id for your site.",
+  "format": "jsonl",
+  "format_rules": [
+    "One line = one JSON object (single Jira issue REST payload or normalized row).",
+    "Do not strip description or changelog if you need auditability; use .jsonl + zip for size.",
+    "After export, set last_full_export_utc (ISO-8601) and issue_counts_per_file."
+  ]
+}

@@ -1,0 +1,1354 @@
+{
+  "generated_at": "2026-04-21T08:41:24.564255+00:00",
+  "jira_base": "https://securly.atlassian.net",
+  "product": "product_FILTER",
+  "jira_project": "FILTER",
+  "story_points_field": "customfield_10005",
+  "roster_source": "Securly-PjM-Skills.md",
+  "roster_explicit": [
+    "Arun Thakur",
+    "Ashish Modak",
+    "Ashish Temurnikar",
+    "Harsh Verma",
+    "Harshada Kude",
+    "Prateek Fotedar",
+    "Pratik Tiwari",
+    "Ravi Raj",
+    "Sagar Satpute",
+    "Shailendra Singh",
+    "Swaroop Chavhan",
+    "Vaibhav Kumbhar",
+    "Altamash Heroli",
+    "Surabhi Choudhary",
+    "Ayesha Kamde",
+    "Amit Shete",
+    "Rachit Mishra"
+  ],
+  "members_ordered": [
+    "Arun Thakur",
+    "Ashish Modak",
+    "Ashish Temurnikar",
+    "Harsh Verma",
+    "Harshada Kude",
+    "Prateek Fotedar",
+    "Pratik Tiwari",
+    "Ravi Raj",
+    "Sagar Satpute",
+    "Shailendra Singh",
+    "Swaroop Chavhan",
+    "Vaibhav Kumbhar",
+    "Altamash Heroli",
+    "Surabhi Choudhary",
+    "Ayesha Kamde",
+    "Amit Shete",
+    "Rachit Mishra",
+    "(Unassigned)"
+  ],
+  "methodology": {
+    "velocity_hours_done": "Sum of original estimate (timeoriginalestimate, seconds\u2192hours) per issue; only issues with status category Done. Missing estimate \u2192 0 unless FILTER_VELOCITY_ESTIMATE_USE_AGGREGATE=1 (then aggregatetimeoriginalestimate when direct estimate null).",
+    "velocity_story_points_done": "Sum of story points on issues in sprint scope with status category Done.",
+    "assignee": "Current assignee field; empty assignee \u2192 (Unassigned).",
+    "sprint_scope": "Same JQL as sprint matrix: project FILTER AND sprint in (...).",
+    "estimate_aggregate_fallback": false
+  },
+  "sprints": [
+    {
+      "month": "2026-01",
+      "sprint_names": [
+        "sprint-Arthur"
+      ],
+      "column_label": "2026-01 \u00b7 sprint-Arthur",
+      "jql": "project = FILTER AND sprint in (\"sprint-Arthur\")",
+      "issue_count": 156,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 33,
+          "issues_done": 33,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 86.0,
+          "estimate_hours_done": 86.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 15,
+          "issues_done": 15,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 48.0,
+          "estimate_hours_done": 48.0
+        },
+        "Prateek Fotedar": {
+          "issues_in_scope": 13,
+          "issues_done": 13,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 36.5,
+          "estimate_hours_done": 36.5
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 10,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 46.0,
+          "estimate_hours_done": 34.0
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 52.08,
+          "estimate_hours_done": 52.08
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 22.0,
+          "estimate_hours_done": 22.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 38.0,
+          "estimate_hours_done": 38.0
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 6,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 30.0,
+          "estimate_hours_done": 30.0
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 6,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 39.0,
+          "estimate_hours_done": 39.0
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 6,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 52.0,
+          "estimate_hours_done": 52.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 6,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 3.0,
+          "estimate_hours_done": 3.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 5,
+          "issues_done": 5,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 19.0,
+          "estimate_hours_done": 19.0
+        },
+        "Shailendra Singh": {
+          "issues_in_scope": 5,
+          "issues_done": 5,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 24.0,
+          "estimate_hours_done": 24.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 4,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 6.5,
+          "estimate_hours_done": 6.0
+        },
+        "Rachit Mishra": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 15.5,
+          "estimate_hours_done": 15.5
+        },
+        "Jacob Burkamper": {
+          "issues_in_scope": 3,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 26.0,
+          "estimate_hours_done": 26.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 7.0,
+          "estimate_hours_done": 0.0
+        },
+        "Jayesh Agrawal": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Nilesh Patil": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Apoorva Landge": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 6.0,
+          "estimate_hours_done": 6.0
+        },
+        "Dhruv Raj": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 2.0,
+          "estimate_hours_done": 2.0
+        },
+        "Ekta Goyal": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Gaurav Lonkar": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Goutham Balashanmugam": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 2.0,
+          "estimate_hours_done": 2.0
+        },
+        "Nicolas Lemaitre": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Riddhish Mandaliya": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Shreyas Moghe": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 1.0,
+          "estimate_hours_done": 1.0
+        },
+        "Yash Darvhankar": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        }
+      }
+    },
+    {
+      "month": "2026-01",
+      "sprint_names": [
+        "sprint-Bertha"
+      ],
+      "column_label": "2026-01 \u00b7 sprint-Bertha",
+      "jql": "project = FILTER AND sprint in (\"sprint-Bertha\")",
+      "issue_count": 227,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 40,
+          "issues_done": 40,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 34.0,
+          "estimate_hours_done": 34.0
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 34,
+          "issues_done": 34,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 134.0,
+          "estimate_hours_done": 134.0
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 17,
+          "issues_done": 17,
+          "story_points_in_scope": 113.0,
+          "story_points_done": 113.0,
+          "estimate_hours_in_scope": 193.0,
+          "estimate_hours_done": 193.0
+        },
+        "Prateek Fotedar": {
+          "issues_in_scope": 15,
+          "issues_done": 15,
+          "story_points_in_scope": 24.0,
+          "story_points_done": 24.0,
+          "estimate_hours_in_scope": 106.5,
+          "estimate_hours_done": 106.5
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 13,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 88.0,
+          "estimate_hours_done": 88.0
+        },
+        "Shreyas Moghe": {
+          "issues_in_scope": 13,
+          "issues_done": 13,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 19.0,
+          "estimate_hours_done": 19.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 10,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 49.0,
+          "estimate_hours_done": 49.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 9,
+          "issues_done": 9,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 33.0,
+          "estimate_hours_done": 33.0
+        },
+        "Rachit Mishra": {
+          "issues_in_scope": 9,
+          "issues_done": 9,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 54.0,
+          "estimate_hours_done": 54.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 7,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 15.0,
+          "estimate_hours_done": 14.5
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 42.0,
+          "estimate_hours_done": 42.0
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 22.5,
+          "estimate_hours_done": 22.5
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 6,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 76.0,
+          "estimate_hours_done": 76.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 4,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 7.0,
+          "estimate_hours_done": 0.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 42.0,
+          "estimate_hours_done": 42.0
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 34.0,
+          "estimate_hours_done": 34.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 4,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 30.0,
+          "estimate_hours_done": 30.0
+        },
+        "Jacob Burkamper": {
+          "issues_in_scope": 3,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Oleksii Tkachenko": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 7.0,
+          "estimate_hours_done": 7.0
+        },
+        "Jayesh Agrawal": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Nilesh Patil": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Apoorva Landge": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Avinash Patil": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 4.0,
+          "estimate_hours_done": 4.0
+        },
+        "Dhruv Raj": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 2.0,
+          "estimate_hours_done": 2.0
+        },
+        "Ekta Goyal": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Gaurav Lonkar": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Harshada Kude": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 14.0,
+          "estimate_hours_done": 14.0
+        },
+        "Parul Bhat": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Riddhish Mandaliya": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Shailendra Singh": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 6.0,
+          "estimate_hours_done": 6.0
+        },
+        "Yash Darvhankar": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        }
+      }
+    },
+    {
+      "month": "2026-02",
+      "sprint_names": [
+        "sprint-Cristobal"
+      ],
+      "column_label": "2026-02 \u00b7 sprint-Cristobal",
+      "jql": "project = FILTER AND sprint in (\"sprint-Cristobal\")",
+      "issue_count": 167,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 38,
+          "issues_done": 38,
+          "story_points_in_scope": 9.0,
+          "story_points_done": 9.0,
+          "estimate_hours_in_scope": 87.0,
+          "estimate_hours_done": 87.0
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 12,
+          "issues_done": 12,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 51.0,
+          "estimate_hours_done": 51.0
+        },
+        "Rachit Mishra": {
+          "issues_in_scope": 12,
+          "issues_done": 12,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 65.0,
+          "estimate_hours_done": 65.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 12,
+          "issues_done": 12,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 101.0,
+          "estimate_hours_done": 101.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 11,
+          "issues_done": 11,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 37.0,
+          "estimate_hours_done": 37.0
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 10,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 74.0,
+          "estimate_hours_done": 74.0
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 10,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 16.5,
+          "estimate_hours_done": 16.5
+        },
+        "Shailendra Singh": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 21.0,
+          "estimate_hours_done": 21.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 6,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 18.5,
+          "estimate_hours_done": 18.5
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 6,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 60.0,
+          "estimate_hours_done": 60.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 5,
+          "issues_done": 5,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 61.0,
+          "estimate_hours_done": 61.0
+        },
+        "Amol Mithari": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 35.0,
+          "estimate_hours_done": 35.0
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 17.0,
+          "estimate_hours_done": 17.0
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 4,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 44.0,
+          "estimate_hours_done": 44.0
+        },
+        "Harshada Kude": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 40.0,
+          "estimate_hours_done": 40.0
+        },
+        "Prateek Fotedar": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 23.5,
+          "estimate_hours_done": 23.5
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 52.0,
+          "estimate_hours_done": 52.0
+        },
+        "Oleksii Tkachenko": {
+          "issues_in_scope": 3,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 8.0,
+          "estimate_hours_done": 8.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 40.0,
+          "estimate_hours_done": 40.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 4.0,
+          "estimate_hours_done": 4.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Jacob Burkamper": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 12.0,
+          "estimate_hours_done": 0.0
+        },
+        "Parul Bhat": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 8.0,
+          "estimate_hours_done": 8.0
+        },
+        "Ramani Cheruvu": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Riddhish Mandaliya": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 8.0,
+          "estimate_hours_done": 8.0
+        },
+        "Surbhi Jain": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 3.0,
+          "estimate_hours_done": 3.0
+        }
+      }
+    },
+    {
+      "month": "2026-02",
+      "sprint_names": [
+        "sprint-Dolly"
+      ],
+      "column_label": "2026-02 \u00b7 sprint-Dolly",
+      "jql": "project = FILTER AND sprint in (\"sprint-Dolly\")",
+      "issue_count": 63,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 12,
+          "issues_done": 10,
+          "story_points_in_scope": 13.0,
+          "story_points_done": 13.0,
+          "estimate_hours_in_scope": 37.0,
+          "estimate_hours_done": 37.0
+        },
+        "Amol Mithari": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 56.0,
+          "estimate_hours_done": 56.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 7,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 66.0,
+          "estimate_hours_done": 66.0
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 5,
+          "issues_done": 5,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 52.0,
+          "estimate_hours_done": 52.0
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 4,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 44.0,
+          "estimate_hours_done": 28.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 44.0,
+          "estimate_hours_done": 44.0
+        },
+        "Harshada Kude": {
+          "issues_in_scope": 3,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 64.0,
+          "estimate_hours_done": 40.0
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 20.0,
+          "estimate_hours_done": 20.0
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 28.0,
+          "estimate_hours_done": 28.0
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 8.0,
+          "estimate_hours_done": 8.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 7.0,
+          "estimate_hours_done": 7.0
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 21.0,
+          "estimate_hours_done": 21.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 2,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 20.0,
+          "estimate_hours_done": 10.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.5,
+          "estimate_hours_done": 0.5
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 2.0,
+          "estimate_hours_done": 2.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 4.0,
+          "estimate_hours_done": 4.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 4.0,
+          "estimate_hours_done": 4.0
+        },
+        "Dmitri Zhylienkov": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Oleksii Tkachenko": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 1.0,
+          "estimate_hours_done": 1.0
+        }
+      }
+    },
+    {
+      "month": "2026-03",
+      "sprint_names": [
+        "sprint-Edouard"
+      ],
+      "column_label": "2026-03 \u00b7 sprint-Edouard",
+      "jql": "project = FILTER AND sprint in (\"sprint-Edouard\")",
+      "issue_count": 296,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 63,
+          "issues_done": 46,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 117.0,
+          "estimate_hours_done": 79.0
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 31,
+          "issues_done": 30,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 238.0,
+          "estimate_hours_done": 236.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 28,
+          "issues_done": 24,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 108.0,
+          "estimate_hours_done": 90.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 26,
+          "issues_done": 16,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 73.0,
+          "estimate_hours_done": 48.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 22,
+          "issues_done": 14,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 98.0,
+          "estimate_hours_done": 56.0
+        },
+        "Prateek Fotedar": {
+          "issues_in_scope": 20,
+          "issues_done": 15,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 180.0,
+          "estimate_hours_done": 142.0
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 16,
+          "issues_done": 16,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 103.0,
+          "estimate_hours_done": 103.0
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 14,
+          "issues_done": 9,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 129.0,
+          "estimate_hours_done": 85.0
+        },
+        "Harshada Kude": {
+          "issues_in_scope": 10,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 80.0,
+          "estimate_hours_done": 80.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 10,
+          "issues_done": 10,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 94.0,
+          "estimate_hours_done": 94.0
+        },
+        "Shailendra Singh": {
+          "issues_in_scope": 9,
+          "issues_done": 9,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 131.0,
+          "estimate_hours_done": 131.0
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 8,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 66.0,
+          "estimate_hours_done": 58.0
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 7,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 54.0,
+          "estimate_hours_done": 48.0
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 5,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 53.0,
+          "estimate_hours_done": 45.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 16.0,
+          "estimate_hours_done": 16.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 4,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 40.0,
+          "estimate_hours_done": 32.0
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 4,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 44.0,
+          "estimate_hours_done": 0.0
+        },
+        "Rachit Mishra": {
+          "issues_in_scope": 4,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 23.0,
+          "estimate_hours_done": 23.0
+        },
+        "Amol Mithari": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 12.0,
+          "estimate_hours_done": 12.0
+        },
+        "Oleksii Tkachenko": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 3.0,
+          "estimate_hours_done": 3.0
+        },
+        "Shreyas Moghe": {
+          "issues_in_scope": 2,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 10.0,
+          "estimate_hours_done": 0.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 2,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 20.0,
+          "estimate_hours_done": 0.0
+        },
+        "Jayesh Agrawal": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Suhas Pawar": {
+          "issues_in_scope": 1,
+          "issues_done": 0,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 10.0,
+          "estimate_hours_done": 0.0
+        },
+        "Yash Darvhankar": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 6.0,
+          "estimate_hours_done": 6.0
+        }
+      }
+    },
+    {
+      "month": "2026-03",
+      "sprint_names": [
+        "sprint-Fay"
+      ],
+      "column_label": "2026-03 \u00b7 sprint-Fay",
+      "jql": "project = FILTER AND sprint in (\"sprint-Fay\")",
+      "issue_count": 184,
+      "by_assignee": {
+        "Shashank Tiwari": {
+          "issues_in_scope": 32,
+          "issues_done": 28,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 27.0,
+          "estimate_hours_done": 25.0
+        },
+        "Amit Shete": {
+          "issues_in_scope": 20,
+          "issues_done": 19,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 24.0,
+          "estimate_hours_done": 24.0
+        },
+        "Ayesha Kamde": {
+          "issues_in_scope": 17,
+          "issues_done": 14,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 47.0,
+          "estimate_hours_done": 41.0
+        },
+        "Altamash Heroli": {
+          "issues_in_scope": 16,
+          "issues_done": 15,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 178.0,
+          "estimate_hours_done": 176.0
+        },
+        "Arun Thakur": {
+          "issues_in_scope": 13,
+          "issues_done": 12,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 39.0,
+          "estimate_hours_done": 33.0
+        },
+        "Harshada Kude": {
+          "issues_in_scope": 13,
+          "issues_done": 13,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 86.5,
+          "estimate_hours_done": 86.5
+        },
+        "Sagar Satpute": {
+          "issues_in_scope": 11,
+          "issues_done": 11,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 58.0,
+          "estimate_hours_done": 58.0
+        },
+        "Prateek Fotedar": {
+          "issues_in_scope": 9,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 41.0,
+          "estimate_hours_done": 35.0
+        },
+        "Ravi Raj": {
+          "issues_in_scope": 8,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 56.0,
+          "estimate_hours_done": 32.0
+        },
+        "Swaroop Chavhan": {
+          "issues_in_scope": 8,
+          "issues_done": 7,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 88.0,
+          "estimate_hours_done": 88.0
+        },
+        "Harsh Verma": {
+          "issues_in_scope": 7,
+          "issues_done": 6,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 48.0,
+          "estimate_hours_done": 28.0
+        },
+        "Pratik Tiwari": {
+          "issues_in_scope": 7,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 53.0,
+          "estimate_hours_done": 49.0
+        },
+        "Vaibhav Kumbhar": {
+          "issues_in_scope": 6,
+          "issues_done": 5,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 44.0,
+          "estimate_hours_done": 44.0
+        },
+        "Surabhi Choudhary": {
+          "issues_in_scope": 5,
+          "issues_done": 4,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 53.0,
+          "estimate_hours_done": 53.0
+        },
+        "Amol Mithari": {
+          "issues_in_scope": 3,
+          "issues_done": 3,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 9.0,
+          "estimate_hours_done": 9.0
+        },
+        "Ashish Temurnikar": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 9.0,
+          "estimate_hours_done": 9.0
+        },
+        "Rachit Mishra": {
+          "issues_in_scope": 2,
+          "issues_done": 2,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 9.0,
+          "estimate_hours_done": 9.0
+        },
+        "(Unassigned)": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Ashish Modak": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 8.0,
+          "estimate_hours_done": 8.0
+        },
+        "Jayesh Agrawal": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        },
+        "Oleksii Tkachenko": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 5.0,
+          "estimate_hours_done": 5.0
+        },
+        "Shreyas Moghe": {
+          "issues_in_scope": 1,
+          "issues_done": 1,
+          "story_points_in_scope": 0.0,
+          "story_points_done": 0.0,
+          "estimate_hours_in_scope": 0.0,
+          "estimate_hours_done": 0.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sprint matrix — scope vs completion</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --surface2: #243044;
+      --text: #e7ecf3;
+      --muted: #8b9cb3;
+      --accent: #5b9fd4;
+      --border: #2d3d52;
+      --good: #3d9a6d;
+      --good-bg: rgba(61, 154, 109, 0.15);
+      --mid: #c9a227;
+      --mid-bg: rgba(201, 162, 39, 0.15);
+      --low: #c44c4c;
+      --low-bg: rgba(196, 76, 76, 0.15);
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin: 0; }
+    .subtitle a { color: var(--accent); text-decoration: none; }
+    .subtitle a:hover { text-decoration: underline; }
+
+    .method {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .method strong { color: var(--text); }
+    .method ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+    }
+    .card-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+    }
+    .card-stat { margin-bottom: 0.35rem; }
+    .card-stat .big { font-size: 1.75rem; font-weight: 700; color: var(--text); }
+    .card-stat .unit { font-size: 0.85rem; color: var(--muted); margin-left: 0.25rem; }
+    .card-meta { font-size: 0.8rem; color: var(--muted); }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: var(--text);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1100px;
+    }
+    thead th {
+      text-align: left;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      background: var(--surface2);
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th.num, td.num { text-align: right; }
+    tbody td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(91, 159, 212, 0.06); }
+    .product { font-weight: 500; white-space: nowrap; }
+    .sprints { font-size: 0.88rem; color: #b8c5d6; max-width: 320px; }
+    .open { color: #e0a84f; }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+    .sp { font-size: 0.88rem; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .pct-good { background: var(--good-bg); color: #6dccb0; }
+    .pct-mid { background: var(--mid-bg); color: #e8c65c; }
+    .pct-low { background: var(--low-bg); color: #e88a8a; }
+    .pct-na { background: var(--surface2); color: var(--muted); }
+
+    .row-error td { background: rgba(196, 76, 76, 0.08); }
+    .err { color: #e88a8a; font-size: 0.88rem; }
+
+    .pivot-wrap table.pivot { min-width: 520px; }
+    .pivot-note { color: var(--muted); font-size: 0.9rem; margin: -0.5rem 0 1rem; }
+    tr.pivot-footer td { background: var(--surface2); border-top: 2px solid var(--border); }
+
+    .all-products-p1 h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--text);
+    }
+    .wide-p1-monthly table { min-width: 1180px; }
+    details.jql-verify { margin: 1rem 0 1.5rem; }
+    details.jql-verify summary { cursor: pointer; color: var(--accent); }
+    details.jql-verify summary:hover { text-decoration: underline; }
+    details.jql-verify pre {
+      margin: 0.5rem 0 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    details.jql-verify p { margin: 0.5rem 0; }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media print {
+      body { background: #fff; color: #111; }
+      .wrap { max-width: none; padding: 0; }
+      :root {
+        --bg: #fff;
+        --surface: #f6f8fb;
+        --surface2: #e8ecf2;
+        --text: #111;
+        --muted: #555;
+        --border: #ccc;
+      }
+      .cards { break-inside: avoid; }
+      tbody tr:hover td { background: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Sprint matrix — planned scope vs completed</h1>
+      <p class="subtitle">Generated <strong>2026-04-21T17:57:55.513675+00:00</strong> · Source <a href="https://securly.atlassian.net" target="_blank" rel="noopener">https://securly.atlassian.net</a></p>
+    </header>
+
+    <div class="method">
+      <strong>Definitions</strong>
+      <ul>
+        <li><strong>Scope</strong> — issues matching each cell&rsquo;s JQL (sprint assignment in Jira).</li>
+        <li><strong>Done</strong> — status category &ldquo;Done&rdquo; (includes Closed, Done, Closed without action, etc.).</li>
+        <li><strong>Open</strong> — scope minus done (not yet in Done category).</li>
+        <li><strong>Track (primary)</strong> — <strong>Original estimate</strong> hours from Jira (<code>timeoriginalestimate</code>): sum on Done issues ÷ sum on all in-scope issues. Missing estimate counts as 0. <strong>Est. %</strong> uses color bands; <strong>Issue %</strong> is shown for reference only.</li>
+        <li><strong>Story points</strong> — not used for the track bar; SP may still exist on issues for backlog sizing only.</li>
+        <li><strong>PHP / Go migration</strong> — no separate product row (project <code>GM</code>). Work scheduled in other teams&rsquo; sprints appears under those products; use <code>project = GM</code> for migration-only issues.</li>
+      </ul>
+    </div>
+
+<h2>Monthly view — completion % (Jan–Mar 2026)</h2>
+<p class="subtitle pivot-note">Rows: your product list. <strong>Avg</strong> column: mean of Jan–Mar values where data exists. Footer <strong>Avg</strong>: mean of product rates for that month.</p>
+<div class="table-scroll pivot-wrap">
+  <table class="pivot">
+    <thead><tr><th>Product</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Avg</th></tr></thead>
+    <tbody>
+<tr><td class="product">AIChat</td><td class="num"><span class="badge pct-good">100.0%</span></td><td class="num"><span class="badge pct-good">90.9%</span></td><td class="num"><span class="badge pct-mid">87.2%</span></td><td class="num"><span class="badge pct-good">92.7%</span></td></tr>
+<tr><td class="product">FLEX &amp; COM</td><td class="num"><span class="badge pct-good">91.9%</span></td><td class="num"><span class="badge pct-mid">85.7%</span></td><td class="num"><span class="badge pct-mid">87.5%</span></td><td class="num"><span class="badge pct-mid">88.4%</span></td></tr>
+<tr><td class="product">PASS</td><td class="num"><span class="badge pct-mid">82.6%</span></td><td class="num"><span class="badge pct-mid">84.7%</span></td><td class="num"><span class="badge pct-mid">73.2%</span></td><td class="num"><span class="badge pct-mid">80.2%</span></td></tr>
+<tr><td class="product">Platform</td><td class="num"><span class="badge pct-good">94.4%</span></td><td class="num"><span class="badge pct-good">95.2%</span></td><td class="num"><span class="badge pct-good">97.4%</span></td><td class="num"><span class="badge pct-good">95.7%</span></td></tr>
+<tr><td class="product">product_aware</td><td class="num"><span class="badge pct-good">92.9%</span></td><td class="num"><span class="badge pct-good">100.0%</span></td><td class="num"><span class="badge pct-good">92.0%</span></td><td class="num"><span class="badge pct-good">95.0%</span></td></tr>
+<tr><td class="product">product_FILTER</td><td class="num"><span class="badge pct-mid">86.2%</span></td><td class="num"><span class="badge pct-good">95.7%</span></td><td class="num"><span class="badge pct-mid">82.7%</span></td><td class="num"><span class="badge pct-mid">88.2%</span></td></tr>
+<tr><td class="product">product_home</td><td class="num"><span class="badge pct-good">99.6%</span></td><td class="num"><span class="badge pct-good">100.0%</span></td><td class="num"><span class="badge pct-good">98.2%</span></td><td class="num"><span class="badge pct-good">99.3%</span></td></tr>
+<tr><td class="product">product_MDM_CLASSROOM</td><td class="num"><span class="badge pct-good">92.9%</span></td><td class="num"><span class="badge pct-good">91.0%</span></td><td class="num"><span class="badge pct-mid">71.8%</span></td><td class="num"><span class="badge pct-mid">85.2%</span></td></tr>
+<tr><td class="product">product_oncall</td><td class="num"><span class="badge pct-mid">88.9%</span></td><td class="num"><span class="badge pct-good">99.3%</span></td><td class="num"><span class="badge pct-good">95.5%</span></td><td class="num"><span class="badge pct-good">94.6%</span></td></tr>
+<tr><td class="product">product_RESPOND</td><td class="num"><span class="badge pct-mid">75.0%</span></td><td class="num"><span class="badge pct-good">100.0%</span></td><td class="num"><span class="badge pct-good">100.0%</span></td><td class="num"><span class="badge pct-good">91.7%</span></td></tr>
+<tr class="pivot-footer"><td><strong>Avg</strong></td><td class="num"><span class="badge pct-good">90.4%</span></td><td class="num"><span class="badge pct-good">94.2%</span></td><td class="num"><span class="badge pct-mid">88.5%</span></td><td class="num"><span class="badge pct-good">91.0%</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2>Avg concurrent P1 Escape Defects per sprint (Jan–Mar 2026)</h2>
+<p class="subtitle pivot-note">Per sprint: count Escape Defect + P1 where <code>statusCategory != Done</code>. Each <strong>month</strong> cell is the <strong>average</strong> of those counts across all sprints in that month for the product. <strong>Avg</strong> column = mean of Jan–Mar. Point-in-time snapshot.</p>
+<div class="table-scroll pivot-wrap">
+  <table class="pivot">
+    <thead><tr><th>Product</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Avg</th></tr></thead>
+    <tbody>
+<tr><td class="product">AIChat</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">FLEX &amp; COM</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">PASS</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">Platform</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">product_aware</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">product_FILTER</td><td class="num">0.0</td><td class="num">0.5</td><td class="num">0.0</td><td class="num">0.2</td></tr>
+<tr><td class="product">product_home</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">product_MDM_CLASSROOM</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">product_oncall</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr><td class="product">product_RESPOND</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+<tr class="pivot-footer"><td><strong>Avg</strong></td><td class="num">0.0</td><td class="num">0.1</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<section class="all-products-p1">
+<h2>P1 Escape Defect — all products (WIP vs cap &amp; monthly inflow, 2026)</h2>
+<p class="subtitle pivot-note">Snapshot <strong>2026-04-20T10:58:36.187063+00:00</strong>. <strong>WIP:</strong> Escape Defect + P1 + statusCategory != Done. <strong>Cap (comparison):</strong> ≤ 3. <strong>Monthly inflow:</strong> Escape Defect + P1 + created in calendar month.</p>
+<h3>WIP vs cap (concurrent open)</h3>
+<div class="table-scroll">
+  <table>
+    <thead><tr><th>Product</th><th>Jira</th><th class="num">WIP</th><th class="num">Cap</th><th class="num">Status</th></tr></thead>
+    <tbody>
+<tr><td class="product">AIChat</td><td><code>AICHAT</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">FLEX &amp; COM</td><td><code>FLEX</code></td><td class="num">2</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">PASS</td><td><code>PASS</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">Platform</td><td><code>PLATFORM</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">product_aware</td><td><code>AWARE</code></td><td class="num">2</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">product_FILTER</td><td><code>FILTER</code></td><td class="num">10</td><td class="num">3</td><td class="num"><span class="badge pct-low">FAIL</span></td></tr>
+<tr><td class="product">product_home</td><td><code>HOME</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">product_MDM_CLASSROOM</td><td><code>MDMCLASS</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">product_oncall</td><td><code>PRODUCT24</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+<tr><td class="product">product_RESPOND</td><td><code>RESP</code></td><td class="num">0</td><td class="num">3</td><td class="num"><span class="badge pct-good">PASS</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3>Monthly inflow — P1 Escape Defect created per month</h3>
+<div class="table-scroll wide-p1-monthly">
+  <table>
+    <thead><tr><th>Product</th><th>Jira</th><th class="num">Jan 2026</th><th class="num">Feb 2026</th><th class="num">Mar 2026</th><th class="num">Apr 2026</th><th class="num">May 2026</th><th class="num">Jun 2026</th><th class="num">Jul 2026</th><th class="num">Aug 2026</th><th class="num">Sep 2026</th><th class="num">Oct 2026</th><th class="num">Nov 2026</th><th class="num">Dec 2026</th><th class="num">YTD</th></tr></thead>
+    <tbody>
+<tr><td class="product">AIChat</td><td><code>AICHAT</code></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>0</strong></td></tr>
+<tr><td class="product">FLEX &amp; COM</td><td><code>FLEX</code></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>2</strong></td></tr>
+<tr><td class="product">PASS</td><td><code>PASS</code></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>0</strong></td></tr>
+<tr><td class="product">Platform</td><td><code>PLATFORM</code></td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>2</strong></td></tr>
+<tr><td class="product">product_aware</td><td><code>AWARE</code></td><td class="num">2</td><td class="num">0</td><td class="num">5</td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>13</strong></td></tr>
+<tr><td class="product">product_FILTER</td><td><code>FILTER</code></td><td class="num">6</td><td class="num">9</td><td class="num">5</td><td class="num">8</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>28</strong></td></tr>
+<tr><td class="product">product_home</td><td><code>HOME</code></td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>1</strong></td></tr>
+<tr><td class="product">product_MDM_CLASSROOM</td><td><code>MDMCLASS</code></td><td class="num">0</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>2</strong></td></tr>
+<tr><td class="product">product_oncall</td><td><code>PRODUCT24</code></td><td class="num">3</td><td class="num">0</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>5</strong></td></tr>
+<tr><td class="product">product_RESPOND</td><td><code>RESP</code></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><strong>0</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+<details class="method jql-verify">
+  <summary><strong>JQL — verify monthly inflow in Jira</strong></summary>
+  <p>Replace <code>PROJECT_KEY</code> with the Jira project column above. Issue counts should match each month column (and YTD = full-year query).</p>
+  <pre><code>project = PROJECT_KEY AND issuetype = &quot;Escape Defect&quot; AND priority = P1 AND created &gt;= YYYY-MM-DD AND created &lt;= YYYY-MM-DD</code></pre>
+  <p><strong>Example (2026 April, FILTER):</strong></p>
+  <pre><code>project = FILTER AND issuetype = &quot;Escape Defect&quot; AND priority = P1 AND created &gt;= 2026-04-01 AND created &lt;= 2026-04-30</code></pre>
+  <p><strong>2026 <code>created</code> date range per month</strong> (inclusive, same as this report):</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Month</th><th><code>created &gt;=</code></th><th><code>created &lt;=</code></th></tr></thead>
+      <tbody>
+<tr><td>Jan 2026</td><td><code>2026-01-01</code></td><td><code>2026-01-31</code></td></tr>
+<tr><td>Feb 2026</td><td><code>2026-02-01</code></td><td><code>2026-02-28</code></td></tr>
+<tr><td>Mar 2026</td><td><code>2026-03-01</code></td><td><code>2026-03-31</code></td></tr>
+<tr><td>Apr 2026</td><td><code>2026-04-01</code></td><td><code>2026-04-30</code></td></tr>
+<tr><td>May 2026</td><td><code>2026-05-01</code></td><td><code>2026-05-31</code></td></tr>
+<tr><td>Jun 2026</td><td><code>2026-06-01</code></td><td><code>2026-06-30</code></td></tr>
+<tr><td>Jul 2026</td><td><code>2026-07-01</code></td><td><code>2026-07-31</code></td></tr>
+<tr><td>Aug 2026</td><td><code>2026-08-01</code></td><td><code>2026-08-31</code></td></tr>
+<tr><td>Sep 2026</td><td><code>2026-09-01</code></td><td><code>2026-09-30</code></td></tr>
+<tr><td>Oct 2026</td><td><code>2026-10-01</code></td><td><code>2026-10-31</code></td></tr>
+<tr><td>Nov 2026</td><td><code>2026-11-01</code></td><td><code>2026-11-30</code></td></tr>
+<tr><td>Dec 2026</td><td><code>2026-12-01</code></td><td><code>2026-12-31</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>WIP (concurrent)</strong> uses:</p>
+  <pre><code>project = PROJECT_KEY AND issuetype = &quot;Escape Defect&quot; AND priority = P1 AND statusCategory != Done</code></pre>
+</details>
+</section>
+
+
+    <h2>By product (original-estimate hours done % — weighted across sprint cells)</h2>
+    <div class="cards">
+<div class="card">
+  <div class="card-label">AIChat</div>
+  <div class="card-stat"><span class="big">99.0</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">775.5 / 783.5 h · issue avg 92.7% · 99 / 106 issues · 3 cells</div>
+</div><div class="card">
+  <div class="card-label">FLEX &amp; COM</div>
+  <div class="card-stat"><span class="big">88.3</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">2,611.8 / 2,957.8 h · issue avg 89.1% · 277 / 313 issues · 6 cells</div>
+</div><div class="card">
+  <div class="card-label">PASS</div>
+  <div class="card-stat"><span class="big">67.8</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">3,604.0 / 5,313.0 h · issue avg 80.0% · 763 / 955 issues · 6 cells</div>
+</div><div class="card">
+  <div class="card-label">Platform</div>
+  <div class="card-stat"><span class="big">100.0</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">667.0 / 667.0 h · issue avg 95.7% · 112 / 116 issues · 3 cells</div>
+</div><div class="card">
+  <div class="card-label">product_FILTER</div>
+  <div class="card-stat"><span class="big">91.4</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">5,054.1 / 5,529.1 h · issue avg 87.8% · 947 / 1,093 issues · 6 cells</div>
+</div><div class="card">
+  <div class="card-label">product_MDM_CLASSROOM</div>
+  <div class="card-stat"><span class="big">80.0</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">4,692.4 / 5,866.9 h · issue avg 85.2% · 1,041 / 1,234 issues · 6 cells</div>
+</div><div class="card">
+  <div class="card-label">product_RESPOND</div>
+  <div class="card-stat"><span class="big">100.0</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">751.0 / 751.0 h · issue avg 91.6% · 132 / 158 issues · 6 cells</div>
+</div><div class="card">
+  <div class="card-label">product_aware</div>
+  <div class="card-stat"><span class="big">90.0</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">1,123.5 / 1,248.5 h · issue avg 95.1% · 335 / 350 issues · 5 cells</div>
+</div><div class="card">
+  <div class="card-label">product_home</div>
+  <div class="card-stat"><span class="big">99.3</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">3,226.5 / 3,250.5 h · issue avg 99.2% · 643 / 648 issues · 7 cells</div>
+</div><div class="card">
+  <div class="card-label">product_oncall</div>
+  <div class="card-stat"><span class="big">94.4</span><span class="unit">% est. (h) done</span></div>
+  <div class="card-meta">2,116.3 / 2,240.8 h · issue avg 94.6% · 535 / 572 issues · 6 cells</div>
+</div>
+    </div>
+
+    <h2>Full matrix</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Month</th>
+            <th>Sprint(s)</th>
+            <th class="num">Scope</th>
+            <th class="num">Done</th>
+            <th class="num">Open</th>
+            <th class="num">Issue %</th>
+            <th class="num">Est. h</th>
+            <th class="num">Est. h done</th>
+            <th class="num">Est. %</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr>
+  <td class="product">product_home</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Home-Arthur</td>
+  <td class="num">123</td>
+  <td class="num">122</td>
+  <td class="num open">1</td>
+  <td class="num muted">99.2%</td>
+  <td class="num">504.8</td>
+  <td class="num">496.8</td>
+  <td class="num"><span class="badge pct-good">98.4%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Home-Bertha</td>
+  <td class="num">137</td>
+  <td class="num">137</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">716.9</td>
+  <td class="num">716.9</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Home-Cristobal</td>
+  <td class="num">98</td>
+  <td class="num">98</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">431.66</td>
+  <td class="num">431.66</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Home-Dolly</td>
+  <td class="num">65</td>
+  <td class="num">65</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">415.58</td>
+  <td class="num">415.58</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Home-Edouard</td>
+  <td class="num">147</td>
+  <td class="num">145</td>
+  <td class="num open">2</td>
+  <td class="num muted">98.6%</td>
+  <td class="num">779</td>
+  <td class="num">771</td>
+  <td class="num"><span class="badge pct-good">99%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Home-Fay</td>
+  <td class="num">78</td>
+  <td class="num">76</td>
+  <td class="num open">2</td>
+  <td class="num muted">97.4%</td>
+  <td class="num">402.58</td>
+  <td class="num">394.58</td>
+  <td class="num"><span class="badge pct-good">98%</span></td>
+</tr><tr>
+  <td class="product">product_home</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Aware-Arthur</td>
+  <td class="num">0</td>
+  <td class="num">0</td>
+  <td class="num open">0</td>
+  <td class="num muted">0.0%</td>
+  <td class="num">0</td>
+  <td class="num">0</td>
+  <td class="num"><span class="muted" title="No original estimates on scope">—</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-MDMCL-Arthur</td>
+  <td class="num">124</td>
+  <td class="num">118</td>
+  <td class="num open">6</td>
+  <td class="num muted">95.2%</td>
+  <td class="num">500.69</td>
+  <td class="num">484.69</td>
+  <td class="num"><span class="badge pct-good">96.8%</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-MDMCL-Bertha</td>
+  <td class="num">156</td>
+  <td class="num">142</td>
+  <td class="num open">14</td>
+  <td class="num muted">91.0%</td>
+  <td class="num">786.33</td>
+  <td class="num">694.33</td>
+  <td class="num"><span class="badge pct-mid">88.3%</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-MDMCL-Cristobal</td>
+  <td class="num">196</td>
+  <td class="num">176</td>
+  <td class="num open">20</td>
+  <td class="num muted">89.8%</td>
+  <td class="num">1037.75</td>
+  <td class="num">925.75</td>
+  <td class="num"><span class="badge pct-mid">89.2%</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-MDMCL-Dolly</td>
+  <td class="num">304</td>
+  <td class="num">279</td>
+  <td class="num open">25</td>
+  <td class="num muted">91.8%</td>
+  <td class="num">1292.51</td>
+  <td class="num">1051.51</td>
+  <td class="num"><span class="badge pct-mid">81.4%</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-MDMCL-Edouard</td>
+  <td class="num">235</td>
+  <td class="num">180</td>
+  <td class="num open">55</td>
+  <td class="num muted">76.6%</td>
+  <td class="num">998.09</td>
+  <td class="num">694.34</td>
+  <td class="num"><span class="badge pct-low">69.6%</span></td>
+</tr><tr>
+  <td class="product">product_MDM_CLASSROOM</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-MDMCL-Fay</td>
+  <td class="num">219</td>
+  <td class="num">146</td>
+  <td class="num open">73</td>
+  <td class="num muted">66.7%</td>
+  <td class="num">1251.51</td>
+  <td class="num">841.76</td>
+  <td class="num"><span class="badge pct-low">67.3%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Arthur</td>
+  <td class="num">93</td>
+  <td class="num">80</td>
+  <td class="num open">13</td>
+  <td class="num muted">86.0%</td>
+  <td class="num">397.5</td>
+  <td class="num">353.5</td>
+  <td class="num"><span class="badge pct-mid">88.9%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Bertha</td>
+  <td class="num">159</td>
+  <td class="num">144</td>
+  <td class="num open">15</td>
+  <td class="num muted">90.6%</td>
+  <td class="num">783.67</td>
+  <td class="num">745.67</td>
+  <td class="num"><span class="badge pct-good">95.2%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Cristobal</td>
+  <td class="num">68</td>
+  <td class="num">68</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">257.5</td>
+  <td class="num">257.5</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Dolly</td>
+  <td class="num">73</td>
+  <td class="num">72</td>
+  <td class="num open">1</td>
+  <td class="num muted">98.6%</td>
+  <td class="num">279.67</td>
+  <td class="num">279.17</td>
+  <td class="num"><span class="badge pct-good">99.8%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Cases-Edouard</td>
+  <td class="num">69</td>
+  <td class="num">69</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">161.75</td>
+  <td class="num">161.75</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_oncall</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Cases-Fay</td>
+  <td class="num">110</td>
+  <td class="num">102</td>
+  <td class="num open">8</td>
+  <td class="num muted">92.7%</td>
+  <td class="num">360.75</td>
+  <td class="num">318.75</td>
+  <td class="num"><span class="badge pct-mid">88.4%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Arthur</td>
+  <td class="num">49</td>
+  <td class="num">36</td>
+  <td class="num open">13</td>
+  <td class="num muted">73.5%</td>
+  <td class="num">188</td>
+  <td class="num">188</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Bertha</td>
+  <td class="num">55</td>
+  <td class="num">42</td>
+  <td class="num open">13</td>
+  <td class="num muted">76.4%</td>
+  <td class="num">200</td>
+  <td class="num">200</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Cristobal</td>
+  <td class="num">4</td>
+  <td class="num">4</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">17</td>
+  <td class="num">17</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Dolly</td>
+  <td class="num">6</td>
+  <td class="num">6</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">29</td>
+  <td class="num">29</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Cases-Edouard</td>
+  <td class="num">9</td>
+  <td class="num">9</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">84</td>
+  <td class="num">84</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_RESPOND</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Cases-Fay</td>
+  <td class="num">35</td>
+  <td class="num">35</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">233</td>
+  <td class="num">233</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Arthur</td>
+  <td class="num">156</td>
+  <td class="num">129</td>
+  <td class="num open">27</td>
+  <td class="num muted">82.7%</td>
+  <td class="num">561.58</td>
+  <td class="num">542.08</td>
+  <td class="num"><span class="badge pct-good">96.5%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Bertha</td>
+  <td class="num">227</td>
+  <td class="num">201</td>
+  <td class="num open">26</td>
+  <td class="num muted">88.5%</td>
+  <td class="num">1012</td>
+  <td class="num">1004.5</td>
+  <td class="num"><span class="badge pct-good">99.3%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Cristobal</td>
+  <td class="num">167</td>
+  <td class="num">163</td>
+  <td class="num open">4</td>
+  <td class="num muted">97.6%</td>
+  <td class="num">886.5</td>
+  <td class="num">874.5</td>
+  <td class="num"><span class="badge pct-good">98.6%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Dolly</td>
+  <td class="num">63</td>
+  <td class="num">57</td>
+  <td class="num open">6</td>
+  <td class="num muted">90.5%</td>
+  <td class="num">478.5</td>
+  <td class="num">428.5</td>
+  <td class="num"><span class="badge pct-mid">89.6%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Edouard</td>
+  <td class="num">296</td>
+  <td class="num">236</td>
+  <td class="num open">60</td>
+  <td class="num muted">79.7%</td>
+  <td class="num">1708</td>
+  <td class="num">1392</td>
+  <td class="num"><span class="badge pct-mid">81.5%</span></td>
+</tr><tr>
+  <td class="product">product_FILTER</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Fay</td>
+  <td class="num">184</td>
+  <td class="num">161</td>
+  <td class="num open">23</td>
+  <td class="num muted">87.5%</td>
+  <td class="num">882.5</td>
+  <td class="num">812.5</td>
+  <td class="num"><span class="badge pct-good">92.1%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Jan 2026</td>
+  <td class="sprints">PASS Sprint 40</td>
+  <td class="num">133</td>
+  <td class="num">109</td>
+  <td class="num open">24</td>
+  <td class="num muted">82.0%</td>
+  <td class="num">763.5</td>
+  <td class="num">581.5</td>
+  <td class="num"><span class="badge pct-mid">76.2%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Jan 2026</td>
+  <td class="sprints">PASS Sprint 41</td>
+  <td class="num">154</td>
+  <td class="num">128</td>
+  <td class="num open">26</td>
+  <td class="num muted">83.1%</td>
+  <td class="num">930.5</td>
+  <td class="num">724.5</td>
+  <td class="num"><span class="badge pct-mid">77.9%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Feb 2026</td>
+  <td class="sprints">PASS Sprint 42</td>
+  <td class="num">166</td>
+  <td class="num">149</td>
+  <td class="num open">17</td>
+  <td class="num muted">89.8%</td>
+  <td class="num">908</td>
+  <td class="num">734</td>
+  <td class="num"><span class="badge pct-mid">80.8%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Feb 2026</td>
+  <td class="sprints">PASS Sprint 43</td>
+  <td class="num">155</td>
+  <td class="num">123</td>
+  <td class="num open">32</td>
+  <td class="num muted">79.4%</td>
+  <td class="num">922.5</td>
+  <td class="num">598.5</td>
+  <td class="num"><span class="badge pct-low">64.9%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Mar 2026</td>
+  <td class="sprints">PASS Sprint 44</td>
+  <td class="num">190</td>
+  <td class="num">146</td>
+  <td class="num open">44</td>
+  <td class="num muted">76.8%</td>
+  <td class="num">996</td>
+  <td class="num">609.5</td>
+  <td class="num"><span class="badge pct-low">61.2%</span></td>
+</tr><tr>
+  <td class="product">PASS</td>
+  <td>Mar 2026</td>
+  <td class="sprints">PASS Sprint 45</td>
+  <td class="num">157</td>
+  <td class="num">108</td>
+  <td class="num open">49</td>
+  <td class="num muted">68.8%</td>
+  <td class="num">792.5</td>
+  <td class="num">356</td>
+  <td class="num"><span class="badge pct-low">44.9%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Jan 2026</td>
+  <td class="sprints">FLEX/COM Sprint 128</td>
+  <td class="num">42</td>
+  <td class="num">42</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">270.49</td>
+  <td class="num">270.49</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Jan 2026</td>
+  <td class="sprints">FLEX/COM Sprint 129</td>
+  <td class="num">69</td>
+  <td class="num">60</td>
+  <td class="num open">9</td>
+  <td class="num muted">87.0%</td>
+  <td class="num">654.33</td>
+  <td class="num">593.33</td>
+  <td class="num"><span class="badge pct-good">90.7%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Feb 2026</td>
+  <td class="sprints">FLEX/COM Sprint 130</td>
+  <td class="num">56</td>
+  <td class="num">48</td>
+  <td class="num open">8</td>
+  <td class="num muted">85.7%</td>
+  <td class="num">535</td>
+  <td class="num">474</td>
+  <td class="num"><span class="badge pct-mid">88.6%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Feb 2026</td>
+  <td class="sprints">FLEX/COM Sprint 131</td>
+  <td class="num">42</td>
+  <td class="num">36</td>
+  <td class="num open">6</td>
+  <td class="num muted">85.7%</td>
+  <td class="num">430</td>
+  <td class="num">366</td>
+  <td class="num"><span class="badge pct-mid">85.1%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Mar 2026</td>
+  <td class="sprints">FLEX/COM Sprint 132</td>
+  <td class="num">62</td>
+  <td class="num">53</td>
+  <td class="num open">9</td>
+  <td class="num muted">85.5%</td>
+  <td class="num">585</td>
+  <td class="num">469</td>
+  <td class="num"><span class="badge pct-mid">80.2%</span></td>
+</tr><tr>
+  <td class="product">FLEX &amp; COM</td>
+  <td>Mar 2026</td>
+  <td class="sprints">FLEX/COM Sprint 133</td>
+  <td class="num">42</td>
+  <td class="num">38</td>
+  <td class="num open">4</td>
+  <td class="num muted">90.5%</td>
+  <td class="num">483</td>
+  <td class="num">439</td>
+  <td class="num"><span class="badge pct-good">90.9%</span></td>
+</tr><tr>
+  <td class="product">product_aware</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Aware-Bertha</td>
+  <td class="num">85</td>
+  <td class="num">79</td>
+  <td class="num open">6</td>
+  <td class="num muted">92.9%</td>
+  <td class="num">293</td>
+  <td class="num">249</td>
+  <td class="num"><span class="badge pct-mid">85%</span></td>
+</tr><tr>
+  <td class="product">product_aware</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Aware-Cristobal</td>
+  <td class="num">66</td>
+  <td class="num">66</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">240</td>
+  <td class="num">240</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_aware</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Aware-Dolly</td>
+  <td class="num">86</td>
+  <td class="num">86</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">281.5</td>
+  <td class="num">281.5</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">product_aware</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Aware-Edouard</td>
+  <td class="num">75</td>
+  <td class="num">70</td>
+  <td class="num open">5</td>
+  <td class="num muted">93.3%</td>
+  <td class="num">254</td>
+  <td class="num">205</td>
+  <td class="num"><span class="badge pct-mid">80.7%</span></td>
+</tr><tr>
+  <td class="product">product_aware</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Aware-Fay</td>
+  <td class="num">38</td>
+  <td class="num">34</td>
+  <td class="num open">4</td>
+  <td class="num muted">89.5%</td>
+  <td class="num">180</td>
+  <td class="num">148</td>
+  <td class="num"><span class="badge pct-mid">82.2%</span></td>
+</tr><tr>
+  <td class="product">AIChat</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-AIChat-Zephyr, sprint-AIChat-Arthur</td>
+  <td class="num">48</td>
+  <td class="num">48</td>
+  <td class="num open">0</td>
+  <td class="num muted">100.0%</td>
+  <td class="num">370.5</td>
+  <td class="num">370.5</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">AIChat</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-AIChat-Bertha, sprint-AIChat-38, sprint-AIChat-39</td>
+  <td class="num">11</td>
+  <td class="num">10</td>
+  <td class="num open">1</td>
+  <td class="num muted">90.9%</td>
+  <td class="num">63</td>
+  <td class="num">63</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">AIChat</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-AIChat-41, sprint-AIChat-42, sprint-AIChat-43, sprint-AIChat-44, sprint-AIChat-45</td>
+  <td class="num">47</td>
+  <td class="num">41</td>
+  <td class="num open">6</td>
+  <td class="num muted">87.2%</td>
+  <td class="num">350</td>
+  <td class="num">342</td>
+  <td class="num"><span class="badge pct-good">97.7%</span></td>
+</tr><tr>
+  <td class="product">Platform</td>
+  <td>Jan 2026</td>
+  <td class="sprints">sprint-Platform-Arthur, sprint-Platform-Bertha</td>
+  <td class="num">18</td>
+  <td class="num">17</td>
+  <td class="num open">1</td>
+  <td class="num muted">94.4%</td>
+  <td class="num">59</td>
+  <td class="num">59</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">Platform</td>
+  <td>Feb 2026</td>
+  <td class="sprints">sprint-Platform-Cristobal, sprint-Platform-Dolly</td>
+  <td class="num">21</td>
+  <td class="num">20</td>
+  <td class="num open">1</td>
+  <td class="num muted">95.2%</td>
+  <td class="num">125</td>
+  <td class="num">125</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr><tr>
+  <td class="product">Platform</td>
+  <td>Mar 2026</td>
+  <td class="sprints">sprint-Platform-Edouard, sprint-Platform-Fay</td>
+  <td class="num">77</td>
+  <td class="num">75</td>
+  <td class="num open">2</td>
+  <td class="num muted">97.4%</td>
+  <td class="num">483</td>
+  <td class="num">483</td>
+  <td class="num"><span class="badge pct-good">100%</span></td>
+</tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Regenerate: <code>python build_sprint_matrix_report.py</code> ·
+      <code>python sprint_matrix_monthly_pivot.py</code> (TSV/MD) ·
+      <code>python escape_p1_open_monthly.py</code> (P1 Escape per sprint) ·
+      <code>python all_products_p1_escape_metrics.py</code> (all products WIP + monthly inflow) ·
+      <code>python render_sprint_matrix_html.py</code>
+    </footer>
+  </div>
+</body>
+</html>

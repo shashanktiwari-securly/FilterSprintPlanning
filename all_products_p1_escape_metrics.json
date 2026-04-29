@@ -1,0 +1,579 @@
+{
+  "generated_at": "2026-04-20T10:58:36.187063+00:00",
+  "jira_base": "https://securly.atlassian.net",
+  "year": 2026,
+  "cap": 3,
+  "methodology": {
+    "wip": "Escape Defect + P1 + statusCategory != Done",
+    "monthly": "Escape Defect + P1 + created in calendar month"
+  },
+  "products": [
+    {
+      "product_label": "AIChat",
+      "jira_project": "AICHAT",
+      "wip_jql": "project = AICHAT AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 0,
+        "Mar 2026": 0,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 0,
+      "open_issues": []
+    },
+    {
+      "product_label": "FLEX & COM",
+      "jira_project": "FLEX",
+      "wip_jql": "project = FLEX AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 2,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 2,
+        "Feb 2026": 0,
+        "Mar 2026": 0,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 2,
+      "open_issues": [
+        {
+          "key": "FLEX-3893",
+          "status": "In Progress",
+          "summary": "P1 Escalation-Load times for pages taking a long time - Herndon HS & James W Robinson (Fairfax County Schools)"
+        },
+        {
+          "key": "FLEX-3555",
+          "status": "QA in Progress",
+          "summary": "(Fixed in phases) P1 Escalation-Load time for pages taking longer than normal - Multiple schools"
+        }
+      ]
+    },
+    {
+      "product_label": "PASS",
+      "jira_project": "PASS",
+      "wip_jql": "project = PASS AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 0,
+        "Mar 2026": 0,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 0,
+      "open_issues": []
+    },
+    {
+      "product_label": "Platform",
+      "jira_project": "PLATFORM",
+      "wip_jql": "project = PLATFORM AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 0,
+        "Mar 2026": 1,
+        "Apr 2026": 1,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 2,
+      "open_issues": []
+    },
+    {
+      "product_label": "product_aware",
+      "jira_project": "AWARE",
+      "wip_jql": "project = AWARE AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 2,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 2,
+        "Feb 2026": 0,
+        "Mar 2026": 5,
+        "Apr 2026": 6,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 13,
+      "open_issues": [
+        {
+          "key": "AWARE-7109",
+          "status": "In Progress",
+          "summary": "On expiry of login session, error pop appears which does not get disappear on clicking cancle or ok once"
+        },
+        {
+          "key": "AWARE-7084",
+          "status": "In Progress",
+          "summary": "MT User  and Support tool users not able to access Aware Safety Console."
+        }
+      ]
+    },
+    {
+      "product_label": "product_FILTER",
+      "jira_project": "FILTER",
+      "wip_jql": "project = FILTER AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 10,
+      "max_concurrent": 3,
+      "compliant": false,
+      "wip_status": "FAIL",
+      "monthly_opened": {
+        "Jan 2026": 6,
+        "Feb 2026": 9,
+        "Mar 2026": 5,
+        "Apr 2026": 8,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 28,
+      "open_issues": [
+        {
+          "key": "FILTER-13534",
+          "status": "Open",
+          "summary": "P1 QA- In prod: Yes, SPAC: \"Restrict Google logins to these domains\" not working for Gmail (mail.google.com) login with different domain user"
+        },
+        {
+          "key": "FILTER-13117",
+          "status": "Waiting on support",
+          "summary": "P1 Escalation-Students bypassing Filter using scrlybrkr"
+        },
+        {
+          "key": "FILTER-13105",
+          "status": "QA READY",
+          "summary": "P1 Escalation-Looking for solution for HTML Editor vulnerabilities "
+        },
+        {
+          "key": "FILTER-13086",
+          "status": "Open",
+          "summary": "P1 Escalation-Fix reCAPTCHA / google.com/recaptcha failures when Securly SmartPAC (and related proxy paths) MITM-proxies traffic to Google | Seattle "
+        },
+        {
+          "key": "FILTER-12476",
+          "status": "In Progress",
+          "summary": "P1 Escalation-Extension Bypass - Opening new tab"
+        },
+        {
+          "key": "FILTER-12262",
+          "status": "In Progress",
+          "summary": "P1 Escalation-Spike in Google Captchas starting 02.24.26"
+        },
+        {
+          "key": "FILTER-12119",
+          "status": "In Progress",
+          "summary": "P1 Escalation-Investigate and address the use of about:blank pages as a filter loophole"
+        },
+        {
+          "key": "FILTER-11610",
+          "status": "In Progress",
+          "summary": "P1 Escalation-CORs Errors at BlueBeam and Boomerang S3 Amazon domains | St. Vrain"
+        },
+        {
+          "key": "FILTER-10053",
+          "status": "Open",
+          "summary": "Chrome Extension is causing specific form not to load"
+        },
+        {
+          "key": "FILTER-7666",
+          "status": "QA READY",
+          "summary": "P1 Escalation-File downloading in Image Google Search"
+        }
+      ]
+    },
+    {
+      "product_label": "product_home",
+      "jira_project": "HOME",
+      "wip_jql": "project = HOME AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 0,
+        "Mar 2026": 1,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 1,
+      "open_issues": []
+    },
+    {
+      "product_label": "product_MDM_CLASSROOM",
+      "jira_project": "MDMCLASS",
+      "wip_jql": "project = MDMCLASS AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 2,
+        "Mar 2026": 0,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 2,
+      "open_issues": []
+    },
+    {
+      "product_label": "product_oncall",
+      "jira_project": "PRODUCT24",
+      "wip_jql": "project = PRODUCT24 AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 3,
+        "Feb 2026": 0,
+        "Mar 2026": 2,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 5,
+      "open_issues": []
+    },
+    {
+      "product_label": "product_RESPOND",
+      "jira_project": "RESP",
+      "wip_jql": "project = RESP AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done",
+      "wip_count": 0,
+      "max_concurrent": 3,
+      "compliant": true,
+      "wip_status": "PASS",
+      "monthly_opened": {
+        "Jan 2026": 0,
+        "Feb 2026": 0,
+        "Mar 2026": 0,
+        "Apr 2026": 0,
+        "May 2026": 0,
+        "Jun 2026": 0,
+        "Jul 2026": 0,
+        "Aug 2026": 0,
+        "Sep 2026": 0,
+        "Oct 2026": 0,
+        "Nov 2026": 0,
+        "Dec 2026": 0
+      },
+      "ytd_opened_total": 0,
+      "open_issues": []
+    }
+  ],
+  "comparison_wip": [
+    {
+      "Product": "AIChat",
+      "Jira": "AICHAT",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "FLEX & COM",
+      "Jira": "FLEX",
+      "WIP": 2,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "PASS",
+      "Jira": "PASS",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "Platform",
+      "Jira": "PLATFORM",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "product_aware",
+      "Jira": "AWARE",
+      "WIP": 2,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "product_FILTER",
+      "Jira": "FILTER",
+      "WIP": 10,
+      "Cap": 3,
+      "Status": "FAIL"
+    },
+    {
+      "Product": "product_home",
+      "Jira": "HOME",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "product_MDM_CLASSROOM",
+      "Jira": "MDMCLASS",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "product_oncall",
+      "Jira": "PRODUCT24",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    },
+    {
+      "Product": "product_RESPOND",
+      "Jira": "RESP",
+      "WIP": 0,
+      "Cap": 3,
+      "Status": "PASS"
+    }
+  ],
+  "comparison_monthly": [
+    {
+      "Product": "AIChat",
+      "Jira": "AICHAT",
+      "Jan 2026": 0,
+      "Feb 2026": 0,
+      "Mar 2026": 0,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 0
+    },
+    {
+      "Product": "FLEX & COM",
+      "Jira": "FLEX",
+      "Jan 2026": 2,
+      "Feb 2026": 0,
+      "Mar 2026": 0,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 2
+    },
+    {
+      "Product": "PASS",
+      "Jira": "PASS",
+      "Jan 2026": 0,
+      "Feb 2026": 0,
+      "Mar 2026": 0,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 0
+    },
+    {
+      "Product": "Platform",
+      "Jira": "PLATFORM",
+      "Jan 2026": 0,
+      "Feb 2026": 0,
+      "Mar 2026": 1,
+      "Apr 2026": 1,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 2
+    },
+    {
+      "Product": "product_aware",
+      "Jira": "AWARE",
+      "Jan 2026": 2,
+      "Feb 2026": 0,
+      "Mar 2026": 5,
+      "Apr 2026": 6,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 13
+    },
+    {
+      "Product": "product_FILTER",
+      "Jira": "FILTER",
+      "Jan 2026": 6,
+      "Feb 2026": 9,
+      "Mar 2026": 5,
+      "Apr 2026": 8,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 28
+    },
+    {
+      "Product": "product_home",
+      "Jira": "HOME",
+      "Jan 2026": 0,
+      "Feb 2026": 0,
+      "Mar 2026": 1,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 1
+    },
+    {
+      "Product": "product_MDM_CLASSROOM",
+      "Jira": "MDMCLASS",
+      "Jan 2026": 0,
+      "Feb 2026": 2,
+      "Mar 2026": 0,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 2
+    },
+    {
+      "Product": "product_oncall",
+      "Jira": "PRODUCT24",
+      "Jan 2026": 3,
+      "Feb 2026": 0,
+      "Mar 2026": 2,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 5
+    },
+    {
+      "Product": "product_RESPOND",
+      "Jira": "RESP",
+      "Jan 2026": 0,
+      "Feb 2026": 0,
+      "Mar 2026": 0,
+      "Apr 2026": 0,
+      "May 2026": 0,
+      "Jun 2026": 0,
+      "Jul 2026": 0,
+      "Aug 2026": 0,
+      "Sep 2026": 0,
+      "Oct 2026": 0,
+      "Nov 2026": 0,
+      "Dec 2026": 0,
+      "YTD": 0
+    }
+  ]
+}

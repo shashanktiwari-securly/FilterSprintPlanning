@@ -1,0 +1,950 @@
+{
+  "sprints": {
+    "sprint-Arthur": {
+      "total_issues": 156,
+      "release_complete_pct_done_category": 82.7,
+      "done_issues": 129,
+      "not_done_issues": 27,
+      "in_release_named_status_count": 14,
+      "tasks_total": 18,
+      "tasks_done": 17,
+      "tasks_done_pct": 94.4,
+      "unplanned_tasks_highlighted": 11,
+      "unplanned_tasks_pct_of_tasks": 61.1,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-11407",
+          "summary": "Fix the Math.fun Signatures",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2025-12-10",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-10740",
+          "summary": "[sprox] C++ securly init connection function calling",
+          "status": "Closed",
+          "done": true,
+          "created": "2025-11-10",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11013",
+          "summary": "Pkg-35 Regression testing",
+          "status": "Closed without action",
+          "done": true,
+          "created": "2025-11-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11458",
+          "summary": "[sprox] Function translation to sprox - Part 2",
+          "status": "Closed",
+          "done": true,
+          "created": "2025-12-17",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11563",
+          "summary": "case when securlyCustomListId is invalid",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-02",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11588",
+          "summary": "Helping classroom team for PR review and Technical discussions",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-05",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11589",
+          "summary": "Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for their dashobard requir",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-05",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11605",
+          "summary": "Create a plan to improve the performance of Angular applications",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-08",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11608",
+          "summary": "Squid coredump issue on Ohio",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-01-08",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11626",
+          "summary": "Crextn giving proxy category for clever.com and s3",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-13",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11701",
+          "summary": "[sprox] Redis connection for wrapper & redis config separation",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Bertha": {
+      "total_issues": 227,
+      "release_complete_pct_done_category": 86.8,
+      "done_issues": 197,
+      "not_done_issues": 30,
+      "in_release_named_status_count": 19,
+      "tasks_total": 19,
+      "tasks_done": 14,
+      "tasks_done_pct": 73.7,
+      "unplanned_tasks_highlighted": 14,
+      "unplanned_tasks_pct_of_tasks": 73.7,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-9827",
+          "summary": "free to use",
+          "status": "Open",
+          "done": false,
+          "created": "2025-08-29",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-10744",
+          "summary": "[sprox] SQS connection service implementation",
+          "status": "Closed",
+          "done": true,
+          "created": "2025-11-10",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-10745",
+          "summary": "[sprox] Td-Agent service implementation",
+          "status": "Closed",
+          "done": true,
+          "created": "2025-11-10",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11695",
+          "summary": "Helping classroom team for PR review and Technical discussions",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11696",
+          "summary": "Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for their dashobard requir",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11698",
+          "summary": "Do a POC on CMS and its consumption in different products ",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-01-19",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11707",
+          "summary": "RAILROAD hotfix is handling the deleted user case but isn't handling the disabled user case.",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11714",
+          "summary": "[sprox] Implementation of Github action & workflow decisions",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-19",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11716",
+          "summary": "[sprox] Broker & Blocked redirection implementation with interpret header call",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11727",
+          "summary": "Unplanned automation execution request",
+          "status": "Closed without action",
+          "done": true,
+          "created": "2026-01-20",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11770",
+          "summary": "Fix GitHub Action build issue ",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-01-22",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11783",
+          "summary": "RAILROAD Hotfix | Check if archived users are not getting imported through OU import",
+          "status": "Release in Progress",
+          "done": true,
+          "created": "2026-01-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11787",
+          "summary": "Remove school.pepikutan.net - rammerhead from vector expansion config.json",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11822",
+          "summary": "Manual QA Post release validation",
+          "status": "Closed without action",
+          "done": true,
+          "created": "2026-01-29",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Cristobal": {
+      "total_issues": 167,
+      "release_complete_pct_done_category": 97.0,
+      "done_issues": 162,
+      "not_done_issues": 5,
+      "in_release_named_status_count": 20,
+      "tasks_total": 22,
+      "tasks_done": 21,
+      "tasks_done_pct": 95.5,
+      "unplanned_tasks_highlighted": 11,
+      "unplanned_tasks_pct_of_tasks": 50.0,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-11577",
+          "summary": "Lookup tool changes for uncatagorized block fixes",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-01-05",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11898",
+          "summary": "Helping classroom team for PR review and Technical discussions",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-30",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11899",
+          "summary": "Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for their dashobard requir",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-30",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11910",
+          "summary": "Fix Invalid student_email parameter causing 400 error in postMonitoringNotice API on UK cluster",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-01-30",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11919",
+          "summary": "Continuation task on -  FILTER-11698 - Do a POC on CMS and its consumption in different products",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-02",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-11942",
+          "summary": "Missing Source Field icon Issue",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-02-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11958",
+          "summary": "Retrieve / provide account expiry logs for FID securly@dcpschools.org (trial, creation, expiry)",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-04",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11962",
+          "summary": "Change Blocked APIs code to not work for Categorized Queue and allow those APIs",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-04",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12016",
+          "summary": "POC for extension api fortification",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-11",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12041",
+          "summary": "Migrate P0API DNS Site/Category Test Suite to Use DNS Resolver Library",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-12",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12049",
+          "summary": "Tracking ticket for AICHAT",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-02-13",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Dolly": {
+      "total_issues": 63,
+      "release_complete_pct_done_category": 90.5,
+      "done_issues": 57,
+      "not_done_issues": 6,
+      "in_release_named_status_count": 3,
+      "tasks_total": 18,
+      "tasks_done": 15,
+      "tasks_done_pct": 83.3,
+      "unplanned_tasks_highlighted": 12,
+      "unplanned_tasks_pct_of_tasks": 66.7,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-12016",
+          "summary": "POC for extension api fortification",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-11",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12050",
+          "summary": "Helping classroom team for PR review and Technical discussions",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-13",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12051",
+          "summary": "Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for their dashobard requir",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-13",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12130",
+          "summary": "Add IWF changes to go broker and back-merge the requried PRs",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12131",
+          "summary": "Create a document with target date for extension release",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12135",
+          "summary": "Move JS extension code to sprint-master",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12146",
+          "summary": "Helping team with Accessibility",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-24",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12250",
+          "summary": "Migrate P0API DNS Test Suite for Custom Policy, Take Home Policy and PerIpPolicy for Sites to Use DNS Resolver",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-26",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12309",
+          "summary": "Verified access POC",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-02",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12313",
+          "summary": "Fix for DEVOPS-10128 (High CPU on uk-mysql-securly )",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-02",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12318",
+          "summary": "fix: breaking testcases for securly-extension repo",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-02",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12375",
+          "summary": "Helping team with PR reviews, Accessibility",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-06",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Edouard": {
+      "total_issues": 296,
+      "release_complete_pct_done_category": 77.7,
+      "done_issues": 230,
+      "not_done_issues": 66,
+      "in_release_named_status_count": 27,
+      "tasks_total": 20,
+      "tasks_done": 10,
+      "tasks_done_pct": 50.0,
+      "unplanned_tasks_highlighted": 16,
+      "unplanned_tasks_pct_of_tasks": 80.0,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-12199",
+          "summary": "SPROX - Automation Testing",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-02-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12143",
+          "summary": "[sprox] Check requirement of populating msg wth NULL in processSocialMediaMsg   ",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-02-23",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11934",
+          "summary": "Publish an OpenAPI specs for all Chrome Extension Endpoints using Cursor for High Level Security Review",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-5401",
+          "summary": "Support Tool - improve search/display of FIDs",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2024-09-20",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-5679",
+          "summary": "Support Tool - Allow search by FID where no domain or sub-domain is present",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2024-10-21",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11931",
+          "summary": "Revaluate all APIs that are sending data to PS. (from broker, squid, GoBrokers, etc.)",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-02-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11742",
+          "summary": "Phase 2: Fixing Dependabot Issues for Filter",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-01-20",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12291",
+          "summary": "Helping classroom team for PR review and Technical discussions",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-02-27",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12292",
+          "summary": "Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for their dashobard requir",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-02-27",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-4949",
+          "summary": "Support Tool - Account Search by Sub-Domain",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2024-05-17",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12365",
+          "summary": "Tracking card for AICHAT tasks",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-05",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12372",
+          "summary": "Update Query to consider the current quarter only, instead of the last 90 days, when deleting the data",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-06",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12375",
+          "summary": "Helping team with PR reviews, Accessibility",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-06",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12389",
+          "summary": "P0 Escalation-[Extension] Youtube keyword blocking is not working",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-03-09",
+          "reason": [
+            "created>=p75(sprint scope)"
+          ]
+        },
+        {
+          "key": "FILTER-12402",
+          "summary": "Fix dependabot alerts for Extensions repositories",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-10",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12486",
+          "summary": "[sprox] Refactor broker URL handling: only strip broker hash when request is not from redirect",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-16",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Fay": {
+      "total_issues": 184,
+      "release_complete_pct_done_category": 84.8,
+      "done_issues": 156,
+      "not_done_issues": 28,
+      "in_release_named_status_count": 10,
+      "tasks_total": 16,
+      "tasks_done": 12,
+      "tasks_done_pct": 75.0,
+      "unplanned_tasks_highlighted": 11,
+      "unplanned_tasks_pct_of_tasks": 68.8,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-12796",
+          "summary": "Update Cron Job for tokenization",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-27",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12342",
+          "summary": "POC - Check from last 1 month, all QA tasks can be verified with Cursor browser or playwright",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-03-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11934",
+          "summary": "Publish an OpenAPI specs for all Chrome Extension Endpoints using Cursor for High Level Security Review",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-02-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-5401",
+          "summary": "Support Tool - improve search/display of FIDs",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2024-09-20",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-5679",
+          "summary": "Support Tool - Allow search by FID where no domain or sub-domain is present",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2024-10-21",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12431",
+          "summary": "[Effort Tracking] Helping classroom team for PR review and Technical discussions",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-12",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12435",
+          "summary": "[Effort Tracking] - Helping Home Team for the overall architecture of Parent Portal design Revamp and and AI Chat for th",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-12",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12677",
+          "summary": "Update if condition for scru cookie",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12681",
+          "summary": "Fix New Translation Strategy Related Issues",
+          "status": "RELEASED TO PROD",
+          "done": true,
+          "created": "2026-03-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12693",
+          "summary": "Removed NSFW image blur feature code and related files from the securly-extensions repository",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-26",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12697",
+          "summary": "Investigate and fix case generation for On-Call demo data",
+          "status": "Closed",
+          "done": true,
+          "created": "2026-03-26",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    },
+    "sprint-Gonzalo": {
+      "total_issues": 281,
+      "release_complete_pct_done_category": 64.8,
+      "done_issues": 182,
+      "not_done_issues": 99,
+      "in_release_named_status_count": 15,
+      "tasks_total": 11,
+      "tasks_done": 2,
+      "tasks_done_pct": 18.2,
+      "unplanned_tasks_highlighted": 9,
+      "unplanned_tasks_pct_of_tasks": 81.8,
+      "unplanned_task_keys": [
+        {
+          "key": "FILTER-12199",
+          "summary": "SPROX - Automation Testing",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-02-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-10604",
+          "summary": "Placeholder task to track the efforts used for Vanta tool task completion",
+          "status": "In Progress",
+          "done": false,
+          "created": "2025-11-03",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-11697",
+          "summary": "Extension of FILTER-11605",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-01-19",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12207",
+          "summary": "TypeScript Extension testing for Chrome browser",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-02-25",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-13031",
+          "summary": "Automate performance testing for tokenization cron job",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-03-31",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-13080",
+          "summary": "Generate context for filter",
+          "status": "In Progress",
+          "done": false,
+          "created": "2026-04-01",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-13318",
+          "summary": "Security issues with SSO access token - Part 1",
+          "status": "Open",
+          "done": false,
+          "created": "2026-04-08",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-12396",
+          "summary": "Build IP lookup tool to make queries across all clusters. ",
+          "status": "QA Verified",
+          "done": true,
+          "created": "2026-03-09",
+          "reason": [
+            "label:unplanned"
+          ]
+        },
+        {
+          "key": "FILTER-13339",
+          "summary": "When Policy Name is empty, UI breaks as key is undefined",
+          "status": "Resolved",
+          "done": false,
+          "created": "2026-04-08",
+          "reason": [
+            "label:unplanned"
+          ]
+        }
+      ]
+    }
+  },
+  "methodology": {
+    "release_complete": "Percent of issues whose Jira status category is `done` (green bucket: Done, Closed without action, etc.).",
+    "unplanned_tasks": "Task issues flagged if (a) any label contains 'unplanned' (case-insensitive), OR (b) issue `created` date is on/after the 75th percentile of `created` dates for ALL issues in the same sprint (proxy for mid-sprint scope adds). Not a substitute for Jira Sprint Report 'scope change' or sprint start dates."
+  },
+  "averages": {
+    "avg_release_complete_pct": 83.5,
+    "avg_task_done_pct": 70.0
+  }
+}

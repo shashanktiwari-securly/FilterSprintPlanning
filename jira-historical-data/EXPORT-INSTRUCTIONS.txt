@@ -1,0 +1,41 @@
+Securly Filter — Jira historical export (lossless / large data)
+================================================================
+
+Purpose-------
+Populate raw/*.jsonl with COMPLETED work from these sprints (names must match your Jira Sprint field):
+  sprint-Arthur, sprint-Bertha, sprint-Cristobal, sprint-Dolly,
+  sprint-Edouard, sprint-Fay, sprint-Gonzalo
+
+One file per sprint, e.g. raw/sprint-Arthur.jsonl
+
+Why JSONL
+---------
+- One issue per line: no spreadsheet row limits, easy to append, stream-friendly.
+- Store the FULL API object per issue when possible (no dropped columns).
+
+Suggested export methods------------------------
+A) Jira Issue Navigator
+   - Build JQL scoped to ONE sprint at a time and status = Done (or your Done equivalents).
+   - Export: prefer "Export CSV (all fields)" or use ScriptRunner / REST if CSV truncates.
+
+B) Jira REST API (Cloud: /rest/api/3/search)
+   - Paginate until all issues returned (maxResults 100, use nextPageToken).
+   - Use fields=*all or list every field id you need; expand=changelog if you need history.
+   - Write each issue JSON as one line to the matching .jsonl file.
+
+C) Atlassian backup   - For a full site snapshot, use official backup tools; still keep sprint-scoped .jsonl for fast estimates.
+
+After export
+------------
+1. Update manifest.json: last_full_export_utc, jql_used_per_sprint, issue_counts_per_file.
+2. Optionally add full-export-YYYYMMDD.zip containing the same data for a frozen snapshot.
+3. Add large binaries/zips to .gitignore if not using Git LFS.
+
+JQL tips--------
+Sprint naming differs by site. In Jira Software, open the sprint on the board and copy the
+exact sprint name, or use sprint id from the REST API.
+
+Do NOT manually edit JSONL to remove fields unless you are redacting secrets; estimation quality
+depends on complete time tracking and status data.
+
+See also: Securly-PjM-Skills.md — Part 6

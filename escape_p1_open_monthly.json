@@ -1,0 +1,604 @@
+{
+  "generated_at": "2026-04-20T08:06:52.491139+00:00",
+  "jira_base": "https://securly.atlassian.net",
+  "methodology": {
+    "issue_type": "Escape Defect",
+    "priority": "P1",
+    "concurrent_definition": "statusCategory != Done",
+    "per_sprint": "For each sprint in the matrix, count matching issues (one query per sprint).",
+    "monthly_value": "Mean of per-sprint counts for that product in that calendar month.",
+    "row_avg": "Mean of Jan, Feb, and Mar monthly values."
+  },
+  "rows": [
+    {
+      "product": "AIChat",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "FLEX & COM",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "PASS",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "Platform",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "product_aware",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "product_FILTER",
+      "Jan": 0.0,
+      "Feb": 0.5,
+      "Mar": 0.0,
+      "avg": 0.2
+    },
+    {
+      "product": "product_home",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "product_oncall",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    },
+    {
+      "product": "product_RESPOND",
+      "Jan": 0.0,
+      "Feb": 0.0,
+      "Mar": 0.0,
+      "avg": 0.0
+    }
+  ],
+  "footer": {
+    "Jan": 0.0,
+    "Feb": 0.1,
+    "Mar": 0.0,
+    "Avg": 0.0
+  },
+  "sprint_breakdown": [
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-02",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-02",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-03",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-03",
+      "jira_project": "HOME",
+      "sprint": "sprint-Home-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Home-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_home",
+      "month": "2026-01",
+      "jira_project": "HOME",
+      "sprint": "sprint-Aware-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = HOME AND sprint = \"sprint-Aware-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-01",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-01",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-02",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-02",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-03",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_MDM_CLASSROOM",
+      "month": "2026-03",
+      "jira_project": "MDMCLASS",
+      "sprint": "sprint-MDMCL-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = MDMCLASS AND sprint = \"sprint-MDMCL-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-01",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-01",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-02",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-02",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-03",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Cases-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Cases-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_oncall",
+      "month": "2026-03",
+      "jira_project": "PRODUCT24",
+      "sprint": "sprint-Cases-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PRODUCT24 AND sprint = \"sprint-Cases-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-01",
+      "jira_project": "RESP",
+      "sprint": "sprint-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-01",
+      "jira_project": "RESP",
+      "sprint": "sprint-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-02",
+      "jira_project": "RESP",
+      "sprint": "sprint-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-02",
+      "jira_project": "RESP",
+      "sprint": "sprint-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-03",
+      "jira_project": "RESP",
+      "sprint": "sprint-Cases-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Cases-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_RESPOND",
+      "month": "2026-03",
+      "jira_project": "RESP",
+      "sprint": "sprint-Cases-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = RESP AND sprint = \"sprint-Cases-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-01",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FILTER AND sprint = \"sprint-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-01",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FILTER AND sprint = \"sprint-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-02",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Cristobal",
+      "concurrent_p1_escape_count": 1,
+      "jql": "project = FILTER AND sprint = \"sprint-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-02",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FILTER AND sprint = \"sprint-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-03",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FILTER AND sprint = \"sprint-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_FILTER",
+      "month": "2026-03",
+      "jira_project": "FILTER",
+      "sprint": "sprint-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FILTER AND sprint = \"sprint-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-01",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 40",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 40\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-01",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 41",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 41\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-02",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 42",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 42\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-02",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 43",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 43\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-03",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 44",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 44\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "PASS",
+      "month": "2026-03",
+      "jira_project": "PASS",
+      "sprint": "PASS Sprint 45",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PASS AND sprint = \"PASS Sprint 45\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-01",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 128",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 128\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-01",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 129",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 129\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-02",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 130",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 130\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-02",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 131",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 131\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-03",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 132",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 132\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "FLEX & COM",
+      "month": "2026-03",
+      "jira_project": "FLEX",
+      "sprint": "FLEX/COM Sprint 133",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = FLEX AND sprint = \"FLEX/COM Sprint 133\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-01",
+      "jira_project": "AWARE",
+      "sprint": "sprint-Aware-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AWARE AND sprint = \"sprint-Aware-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-02",
+      "jira_project": "AWARE",
+      "sprint": "sprint-Aware-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AWARE AND sprint = \"sprint-Aware-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-02",
+      "jira_project": "AWARE",
+      "sprint": "sprint-Aware-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AWARE AND sprint = \"sprint-Aware-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-03",
+      "jira_project": "AWARE",
+      "sprint": "sprint-Aware-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AWARE AND sprint = \"sprint-Aware-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "product_aware",
+      "month": "2026-03",
+      "jira_project": "AWARE",
+      "sprint": "sprint-Aware-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AWARE AND sprint = \"sprint-Aware-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-01",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-Zephyr",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-Zephyr\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-01",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-02",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-02",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-38",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-38\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-02",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-39",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-39\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-41",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-41\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-42",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-42\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-43",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-43\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-44",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-44\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "AIChat",
+      "month": "2026-03",
+      "jira_project": "AICHAT",
+      "sprint": "sprint-AIChat-45",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = AICHAT AND sprint = \"sprint-AIChat-45\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-01",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Arthur",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Arthur\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-01",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Bertha",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Bertha\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-02",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Cristobal",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Cristobal\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-02",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Dolly",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Dolly\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-03",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Edouard",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Edouard\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    },
+    {
+      "product": "Platform",
+      "month": "2026-03",
+      "jira_project": "PLATFORM",
+      "sprint": "sprint-Platform-Fay",
+      "concurrent_p1_escape_count": 0,
+      "jql": "project = PLATFORM AND sprint = \"sprint-Platform-Fay\" AND issuetype = \"Escape Defect\" AND priority = P1 AND (statusCategory != Done)"
+    }
+  ]
+}

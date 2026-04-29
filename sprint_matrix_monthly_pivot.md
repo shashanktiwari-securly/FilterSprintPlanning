@@ -1,0 +1,19 @@
+# Monthly completion % by product (2026 Q1)
+
+Each cell is **Done / Scope × 100** for all Jira issues in that product’s sprints for the month (multiple sprints in the same month are merged).
+
+_PHP / Go migration (project GM) is not a product row; work in other projects’ sprints is counted under those products._
+
+| Product | Jan | Feb | Mar | Avg |
+|---------|-----|-----|-----|-----|
+| AIChat | 100.0% | 90.9% | 80.9% | 90.6% |
+| FLEX & COM | 91.0% | 83.7% | 80.8% | 85.2% |
+| PASS | 82.6% | 84.7% | 73.2% | 80.2% |
+| Platform | 94.4% | 95.2% | 96.1% | 95.2% |
+| product_aware | 92.9% | 100.0% | 92.0% | 95.0% |
+| product_FILTER | 86.2% | 95.7% | 80.8% | 87.6% |
+| product_home | 99.6% | 100.0% | 98.2% | 99.3% |
+| product_MDM_CLASSROOM | 92.9% | 90.6% | 70.5% | 84.7% |
+| product_oncall | 88.9% | 99.3% | 95.5% | 94.6% |
+| product_RESPOND | 75.0% | 100.0% | 100.0% | 91.7% |
+| **Avg** | 90.3% | 94.0% | 86.8% | 90.4% |

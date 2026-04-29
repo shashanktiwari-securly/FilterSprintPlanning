@@ -1,0 +1,155 @@
+{
+  "generated_at": "2026-04-20T10:27:35.740798+00:00",
+  "jira_base": "https://securly.atlassian.net",
+  "policy": {
+    "project": "FILTER",
+    "issue_type": "Escape Defect",
+    "priority": "P1",
+    "max_concurrent_not_done": 3,
+    "wip_jql": "project = FILTER AND issuetype = \"Escape Defect\" AND priority = P1 AND statusCategory != Done"
+  },
+  "wip_compliance": {
+    "current_count": 10,
+    "max_allowed": 3,
+    "compliant": false,
+    "status": "FAIL \u2014 reduce WIP or raise limit"
+  },
+  "current_p1_escape_defects_open": [
+    {
+      "key": "FILTER-13534",
+      "summary": "P1 QA- In prod: Yes, SPAC: \"Restrict Google logins to these domains\" not working for Gmail (mail.google.com) login with different domain user",
+      "status": "Open"
+    },
+    {
+      "key": "FILTER-13117",
+      "summary": "P1 Escalation-Students bypassing Filter using scrlybrkr",
+      "status": "Waiting on support"
+    },
+    {
+      "key": "FILTER-13105",
+      "summary": "P1 Escalation-Looking for solution for HTML Editor vulnerabilities ",
+      "status": "QA READY"
+    },
+    {
+      "key": "FILTER-13086",
+      "summary": "P1 Escalation-Fix reCAPTCHA / google.com/recaptcha failures when Securly SmartPAC (and related proxy paths) MITM-proxies traffic to Google | Seattle ",
+      "status": "Open"
+    },
+    {
+      "key": "FILTER-12476",
+      "summary": "P1 Escalation-Extension Bypass - Opening new tab",
+      "status": "In Progress"
+    },
+    {
+      "key": "FILTER-12262",
+      "summary": "P1 Escalation-Spike in Google Captchas starting 02.24.26",
+      "status": "In Progress"
+    },
+    {
+      "key": "FILTER-12119",
+      "summary": "P1 Escalation-Investigate and address the use of about:blank pages as a filter loophole",
+      "status": "In Progress"
+    },
+    {
+      "key": "FILTER-11610",
+      "summary": "P1 Escalation-CORs Errors at BlueBeam and Boomerang S3 Amazon domains | St. Vrain",
+      "status": "In Progress"
+    },
+    {
+      "key": "FILTER-10053",
+      "summary": "Chrome Extension is causing specific form not to load",
+      "status": "Open"
+    },
+    {
+      "key": "FILTER-7666",
+      "summary": "P1 Escalation-File downloading in Image Google Search",
+      "status": "QA READY"
+    }
+  ],
+  "monthly_opened_in_year": [
+    {
+      "month": 1,
+      "label": "Jan 2026",
+      "created_start": "2026-01-01",
+      "created_end": "2026-01-31",
+      "p1_escape_defects_opened": 6
+    },
+    {
+      "month": 2,
+      "label": "Feb 2026",
+      "created_start": "2026-02-01",
+      "created_end": "2026-02-28",
+      "p1_escape_defects_opened": 9
+    },
+    {
+      "month": 3,
+      "label": "Mar 2026",
+      "created_start": "2026-03-01",
+      "created_end": "2026-03-31",
+      "p1_escape_defects_opened": 5
+    },
+    {
+      "month": 4,
+      "label": "Apr 2026",
+      "created_start": "2026-04-01",
+      "created_end": "2026-04-30",
+      "p1_escape_defects_opened": 8
+    },
+    {
+      "month": 5,
+      "label": "May 2026",
+      "created_start": "2026-05-01",
+      "created_end": "2026-05-31",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 6,
+      "label": "Jun 2026",
+      "created_start": "2026-06-01",
+      "created_end": "2026-06-30",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 7,
+      "label": "Jul 2026",
+      "created_start": "2026-07-01",
+      "created_end": "2026-07-31",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 8,
+      "label": "Aug 2026",
+      "created_start": "2026-08-01",
+      "created_end": "2026-08-31",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 9,
+      "label": "Sep 2026",
+      "created_start": "2026-09-01",
+      "created_end": "2026-09-30",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 10,
+      "label": "Oct 2026",
+      "created_start": "2026-10-01",
+      "created_end": "2026-10-31",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 11,
+      "label": "Nov 2026",
+      "created_start": "2026-11-01",
+      "created_end": "2026-11-30",
+      "p1_escape_defects_opened": 0
+    },
+    {
+      "month": 12,
+      "label": "Dec 2026",
+      "created_start": "2026-12-01",
+      "created_end": "2026-12-31",
+      "p1_escape_defects_opened": 0
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "per_sprint": {
+    "sprint-Arthur": {
+      "total": 156,
+      "type_counts": {
+        "Dev": 34,
+        "QA": 28,
+        "Automation": 24,
+        "Code Review": 24,
+        "Task": 18,
+        "Defect": 10,
+        "Escape Defect": 9,
+        "Debug": 4,
+        "Bug (OLD - use Defect instead)": 3,
+        "Test Case Creation": 1,
+        "Epic": 1
+      },
+      "type_pct": {
+        "Automation": 15.4,
+        "Bug (OLD - use Defect instead)": 1.9,
+        "Code Review": 15.4,
+        "Debug": 2.6,
+        "Defect": 6.4,
+        "Dev": 21.8,
+        "Epic": 0.6,
+        "Escape Defect": 5.8,
+        "QA": 17.9,
+        "Task": 11.5,
+        "Test Case Creation": 0.6
+      },
+      "status_category_pct": {
+        "done": 82.7,
+        "indeterminate": 2.6,
+        "new": 14.7
+      },
+      "priority_counts": {
+        "P1": 36,
+        "P3": 93,
+        "P2": 25,
+        "P0": 2
+      },
+      "unassigned_count": 2,
+      "unassigned_pct": 1.3,
+      "done_category_pct": 82.7,
+      "todo_category_pct": 14.7,
+      "in_progress_category_pct": 2.6,
+      "distinct_statuses": 10
+    },
+    "sprint-Bertha": {
+      "total": 227,
+      "type_counts": {
+        "Dev": 55,
+        "QA": 54,
+        "Automation": 39,
+        "Code Review": 24,
+        "Task": 19,
+        "Escape Defect": 15,
+        "Defect": 10,
+        "Story": 7,
+        "Debug": 3,
+        "Sub-task": 1
+      },
+      "type_pct": {
+        "Automation": 17.2,
+        "Code Review": 10.6,
+        "Debug": 1.3,
+        "Defect": 4.4,
+        "Dev": 24.2,
+        "Escape Defect": 6.6,
+        "QA": 23.8,
+        "Story": 3.1,
+        "Sub-task": 0.4,
+        "Task": 8.4
+      },
+      "status_category_pct": {
+        "done": 86.8,
+        "new": 10.6,
+        "indeterminate": 2.6
+      },
+      "priority_counts": {
+        "P1": 46,
+        "P3": 162,
+        "P2": 10,
+        "P0": 9
+      },
+      "unassigned_count": 4,
+      "unassigned_pct": 1.8,
+      "done_category_pct": 86.8,
+      "todo_category_pct": 10.6,
+      "in_progress_category_pct": 2.6,
+      "distinct_statuses": 10
+    },
+    "sprint-Cristobal": {
+      "total": 167,
+      "type_counts": {
+        "Dev": 47,
+        "QA": 38,
+        "Defect": 22,
+        "Task": 22,
+        "Automation": 20,
+        "Escape Defect": 11,
+        "Story": 2,
+        "Debug": 2,
+        "Sub-task": 1,
+        "Epic": 1,
+        "Support Escalation (OLD)": 1
+      },
+      "type_pct": {
+        "Automation": 12.0,
+        "Debug": 1.2,
+        "Defect": 13.2,
+        "Dev": 28.1,
+        "Epic": 0.6,
+        "Escape Defect": 6.6,
+        "QA": 22.8,
+        "Story": 1.2,
+        "Sub-task": 0.6,
+        "Support Escalation (OLD)": 0.6,
+        "Task": 13.2
+      },
+      "status_category_pct": {
+        "indeterminate": 2.4,
+        "new": 0.6,
+        "done": 97.0
+      },
+      "priority_counts": {
+        "P1": 48,
+        "P2": 47,
+        "P3": 72
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 0.6,
+      "done_category_pct": 97.0,
+      "todo_category_pct": 0.6,
+      "in_progress_category_pct": 2.4,
+      "distinct_statuses": 9
+    },
+    "sprint-Dolly": {
+      "total": 63,
+      "type_counts": {
+        "Task": 18,
+        "Dev": 16,
+        "QA": 7,
+        "Automation": 7,
+        "Escape Defect": 5,
+        "Story": 4,
+        "Debug": 3,
+        "Defect": 1,
+        "Support Escalation (OLD)": 1,
+        "Epic": 1
+      },
+      "type_pct": {
+        "Automation": 11.1,
+        "Debug": 4.8,
+        "Defect": 1.6,
+        "Dev": 25.4,
+        "Epic": 1.6,
+        "Escape Defect": 7.9,
+        "QA": 11.1,
+        "Story": 6.3,
+        "Support Escalation (OLD)": 1.6,
+        "Task": 28.6
+      },
+      "status_category_pct": {
+        "done": 90.5,
+        "new": 3.2,
+        "indeterminate": 6.3
+      },
+      "priority_counts": {
+        "P2": 12,
+        "P1": 6,
+        "P3": 44,
+        "P0": 1
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 1.6,
+      "done_category_pct": 90.5,
+      "todo_category_pct": 3.2,
+      "in_progress_category_pct": 6.3,
+      "distinct_statuses": 9
+    },
+    "sprint-Edouard": {
+      "total": 296,
+      "type_counts": {
+        "Dev": 98,
+        "QA": 72,
+        "Defect": 36,
+        "Automation": 35,
+        "Task": 20,
+        "Escape Defect": 15,
+        "Story": 15,
+        "Debug": 3,
+        "Test Case Creation": 1,
+        "Support Request": 1
+      },
+      "type_pct": {
+        "Automation": 11.8,
+        "Debug": 1.0,
+        "Defect": 12.2,
+        "Dev": 33.1,
+        "Escape Defect": 5.1,
+        "QA": 24.3,
+        "Story": 5.1,
+        "Support Request": 0.3,
+        "Task": 6.8,
+        "Test Case Creation": 0.3
+      },
+      "status_category_pct": {
+        "indeterminate": 10.5,
+        "done": 77.7,
+        "new": 11.8
+      },
+      "priority_counts": {
+        "P1": 57,
+        "P2": 81,
+        "P3": 152,
+        "P4": 4,
+        "P0": 2
+      },
+      "unassigned_count": 4,
+      "unassigned_pct": 1.4,
+      "done_category_pct": 77.7,
+      "todo_category_pct": 11.8,
+      "in_progress_category_pct": 10.5,
+      "distinct_statuses": 16
+    },
+    "sprint-Fay": {
+      "total": 184,
+      "type_counts": {
+        "Dev": 56,
+        "QA": 43,
+        "Automation": 25,
+        "Task": 16,
+        "Story": 15,
+        "Defect": 13,
+        "Escape Defect": 9,
+        "Debug": 5,
+        "Support Request": 2
+      },
+      "type_pct": {
+        "Automation": 13.6,
+        "Debug": 2.7,
+        "Defect": 7.1,
+        "Dev": 30.4,
+        "Escape Defect": 4.9,
+        "QA": 23.4,
+        "Story": 8.2,
+        "Support Request": 1.1,
+        "Task": 8.7
+      },
+      "status_category_pct": {
+        "indeterminate": 11.4,
+        "done": 84.8,
+        "new": 3.8
+      },
+      "priority_counts": {
+        "P1": 30,
+        "P2": 50,
+        "P3": 99,
+        "P0": 5
+      },
+      "unassigned_count": 1,
+      "unassigned_pct": 0.5,
+      "done_category_pct": 84.8,
+      "todo_category_pct": 3.8,
+      "in_progress_category_pct": 11.4,
+      "distinct_statuses": 14
+    }
+  },
+  "global": {
+    "total_issues": 1093,
+    "duplicate_keys_across_sprints": 124,
+    "sprint_totals": {
+      "sprint-Arthur": 156,
+      "sprint-Bertha": 227,
+      "sprint-Cristobal": 167,
+      "sprint-Dolly": 63,
+      "sprint-Edouard": 296,
+      "sprint-Fay": 184
+    },
+    "min_sprint": "sprint-Dolly",
+    "max_sprint": "sprint-Edouard",
+    "cv_issue_type_pct_across_sprints": {
+      "Dev": 0.14,
+      "QA": 0.23,
+      "Automation": 0.16,
+      "Defect": 0.55,
+      "Escape Defect": 0.17,
+      "Task": 0.57,
+      "Story": 0.72
+    },
+    "defect_triangle": {
+      "sprint-Arthur": {
+        "defect_parents": 22,
+        "with_dev_qa_auto_subtasks": 13,
+        "pct_full_triangle": 59.1,
+        "missing_dev_subtask": 5,
+        "missing_qa_subtask": 8,
+        "missing_automation_subtask": 9,
+        "avg_subtasks_per_defect": 2.18
+      },
+      "sprint-Bertha": {
+        "defect_parents": 25,
+        "with_dev_qa_auto_subtasks": 6,
+        "pct_full_triangle": 24.0,
+        "missing_dev_subtask": 10,
+        "missing_qa_subtask": 7,
+        "missing_automation_subtask": 18,
+        "avg_subtasks_per_defect": 1.64
+      },
+      "sprint-Cristobal": {
+        "defect_parents": 33,
+        "with_dev_qa_auto_subtasks": 16,
+        "pct_full_triangle": 48.5,
+        "missing_dev_subtask": 8,
+        "missing_qa_subtask": 6,
+        "missing_automation_subtask": 17,
+        "avg_subtasks_per_defect": 2.18
+      },
+      "sprint-Dolly": {
+        "defect_parents": 6,
+        "with_dev_qa_auto_subtasks": 2,
+        "pct_full_triangle": 33.3,
+        "missing_dev_subtask": 1,
+        "missing_qa_subtask": 1,
+        "missing_automation_subtask": 4,
+        "avg_subtasks_per_defect": 2.17
+      },
+      "sprint-Edouard": {
+        "defect_parents": 51,
+        "with_dev_qa_auto_subtasks": 20,
+        "pct_full_triangle": 39.2,
+        "missing_dev_subtask": 4,
+        "missing_qa_subtask": 4,
+        "missing_automation_subtask": 29,
+        "avg_subtasks_per_defect": 2.39
+      },
+      "sprint-Fay": {
+        "defect_parents": 22,
+        "with_dev_qa_auto_subtasks": 11,
+        "pct_full_triangle": 50.0,
+        "missing_dev_subtask": 0,
+        "missing_qa_subtask": 1,
+        "missing_automation_subtask": 11,
+        "avg_subtasks_per_defect": 2.64
+      }
+    },
+    "subtask_prefix_hints": {
+      "sprint-Arthur": {
+        "dev_other": 32,
+        "auto_ok": 20,
+        "qa_other": 22,
+        "qa_ok": 6,
+        "auto_other": 4,
+        "dev_ok": 2
+      },
+      "sprint-Bertha": {
+        "auto_ok": 15,
+        "qa_other": 38,
+        "dev_other": 52,
+        "qa_ok": 16,
+        "auto_other": 24,
+        "dev_ok": 3
+      },
+      "sprint-Cristobal": {
+        "dev_other": 41,
+        "qa_ok": 7,
+        "qa_other": 31,
+        "auto_other": 9,
+        "auto_ok": 11,
+        "dev_ok": 6
+      },
+      "sprint-Dolly": {
+        "dev_ok": 5,
+        "qa_ok": 2,
+        "auto_other": 5,
+        "qa_other": 5,
+        "dev_other": 11,
+        "auto_ok": 2
+      },
+      "sprint-Edouard": {
+        "dev_ok": 26,
+        "qa_ok": 22,
+        "dev_other": 72,
+        "auto_other": 29,
+        "qa_other": 50,
+        "auto_ok": 6
+      },
+      "sprint-Fay": {
+        "dev_ok": 22,
+        "qa_ok": 18,
+        "auto_other": 20,
+        "dev_other": 34,
+        "qa_other": 25,
+        "auto_ok": 5
+      }
+    }
+  }
+}

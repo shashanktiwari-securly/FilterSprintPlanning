@@ -1,0 +1,807 @@
+{
+"count": 100,
+"isLast": false,
+"nextPageToken": "CpwBY29tLnB5eGlzLmdyZWVuaG9wcGVyLmppcmE6Z2gtbGV4by1yYW5rJmN1c3RvbWZpZWxkXzEwMDEyJk9SREVSX0FTQyNTdHJpbmcmTVh4b2VtNXFiM2M2Y0RGNmVucDZkWHA2YVNFeGZHaDZibXB2ZHpwd01YcDZlbnAxZW5wNCVTdHJpbmcmUmtsTVZFVlMlSW50Jk1USTVNelU9EGQY26CnhNkzIj5wcm9qZWN0ID0gRklMVEVSIEFORCBzcHJpbnQgPSAic3ByaW50LUhhbm5hIiBPUkRFUiBCWSByYW5rIEFTQyoCW10=",
+"rows": [
+{
+"key": "FILTER-12860",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P0",
+"assignee": "Shashank Tiwari",
+"summary": "[TS Extension][Chrome/ Edge/ Chromebook-TS (All extensions)] - Blocked Google search triggers an infinite window.alert popup loop, locking the entire browser"
+},
+{
+"key": "FILTER-12861",
+"type": "Dev",
+"status": "Done",
+"priority": "P0",
+"assignee": "Ashish Modak",
+"summary": "DEV - [Edge-TS] - Blocked Google search triggers an infinite window.alert popup loop, locking the entire browser"
+},
+{
+"key": "FILTER-12862",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P0",
+"assignee": "Oleksii Tkachenko",
+"summary": "QA- [Edge-TS] - Blocked Google search triggers an infinite window.alert popup loop, locking the entire browser"
+},
+{
+"key": "FILTER-12863",
+"type": "Automation",
+"status": "Open",
+"priority": "P0",
+"assignee": "Amol Mithari",
+"summary": "QA- [Edge-TS] - Blocked Google search triggers an infinite window.alert popup loop, locking the entire browser"
+},
+{
+"key": "FILTER-12997",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P0",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI.  Cross Cluster created custom lists are not displayed in other clusters"
+},
+{
+"key": "FILTER-12998",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI.  Cross Cluster Create custom lists are not displayed in other clusters"
+},
+{
+"key": "FILTER-12999",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI.  Cross Cluster Create custom lists are not displayed in other clusters"
+},
+{
+"key": "FILTER-13000",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI.  Cross Cluster Create custom lists are not displayed in other clusters"
+},
+{
+"key": "FILTER-13542",
+"type": "Defect",
+"status": "Open",
+"priority": "P0",
+"assignee": "Shashank Tiwari",
+"summary": "Safety Console >> Filter. Admin Group. Admin user if removed from DA, looses Admin session as well"
+},
+{
+"key": "FILTER-13543",
+"type": "Dev",
+"status": "In Progress",
+"priority": "P0",
+"assignee": "Sagar Satpute",
+"summary": "DEV - Safety Console >> Filter. Admin Group. Admin user if removed from DA, looses Admin session as well"
+},
+{
+"key": "FILTER-13544",
+"type": "QA",
+"status": "Open",
+"priority": "P0",
+"assignee": "Altamash Heroli",
+"summary": "QA- Safety Console >> Filter. Admin Group. Admin user if removed from DA, looses Admin session as well"
+},
+{
+"key": "FILTER-13545",
+"type": "Automation",
+"status": "Open",
+"priority": "P0",
+"assignee": "Amit Shete",
+"summary": "QA- Safety Console >> Filter. Admin Group. Admin user if removed from DA, looses Admin session as well"
+},
+{
+"key": "FILTER-12512",
+"type": "Task",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ashish Modak",
+"summary": "[Extension API Fortification]Tasks for Verified access api"
+},
+{
+"key": "FILTER-12515",
+"type": "Automation",
+"status": "Open",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- [Extension API Fortification]Tasks for Verified access api"
+},
+{
+"key": "FILTER-12514",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "QA- [Extension API Fortification]Tasks for Verified access api"
+},
+{
+"key": "FILTER-12519",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Implement a centralized rate-limiting mechanism for Verified Access API calls to prevent abuse and excessive requests."
+},
+{
+"key": "FILTER-12520",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Ensure the implementation is backward compatible with existing authentication and device validation flows."
+},
+{
+"key": "FILTER-12521",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Document step-by-step instructions to enable Verified Access in the Google Admin Console and configure the extension."
+},
+{
+"key": "FILTER-12522",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Implement JWT-based authentication for Chrome and Edge browser extensions."
+},
+{
+"key": "FILTER-12523",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Add a JWT token refresh mechanism for Chrome and Edge browser extensions to maintain valid sessions."
+},
+{
+"key": "FILTER-12513",
+"type": "Dev",
+"status": "Done",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Implement end-to-end integration of the Verified Access API, including required Chromebook-side changes to support the API."
+},
+{
+"key": "FILTER-12516",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Integrate the Google Verified Access API using a Google Service Account for secure server-to-server communication."
+},
+{
+"key": "FILTER-12517",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Create a Google Service Account and request an increase in the Requests Per Minute (RPM) quota from Google."
+},
+{
+"key": "FILTER-12518",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Add logic to classify devices into High, Medium, and Low confidence levels based on the Verified Access response and validation checks."
+},
+{
+"key": "FILTER-12524",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Include the JWT token in request headers for all relevant APIs."
+},
+{
+"key": "FILTER-12525",
+"type": "Dev",
+"status": "Open",
+"priority": "P3",
+"assignee": "Ashish Modak",
+"summary": "Validate that existing SRE Broker APIs continue to function correctly after the Verified Access integration.\\"
+},
+{
+"key": "FILTER-12936",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Add custom list Search terms type, does not save for Match type Contains"
+},
+{
+"key": "FILTER-12937",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. Add custom list Search terms type, does not save for Match type Contains"
+},
+{
+"key": "FILTER-12938",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Add custom list Search terms type, does not save for Match type Contains"
+},
+{
+"key": "FILTER-12939",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Add custom list Search terms type, does not save for Match type Contains"
+},
+{
+"key": "FILTER-12010",
+"type": "Escape Defect",
+"status": "QA READY",
+"priority": "P1",
+"assignee": "Pratik Tiwari",
+"summary": "P1 Escalation-Extension Bypass - Bookmark + stop page"
+},
+{
+"key": "FILTER-12038",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Pratik Tiwari",
+"summary": "Chrome extension bypass via bookmark + stopping request before block page loads"
+},
+{
+"key": "FILTER-12039",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Oleksii Tkachenko",
+"summary": "Verify fix for Chrome extension bypass via bookmark + stop request"
+},
+{
+"key": "FILTER-12040",
+"type": "Automation",
+"status": "Done",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "Add regression coverage for bookmark + stop-request bypass"
+},
+{
+"key": "FILTER-12119",
+"type": "Escape Defect",
+"status": "In Progress",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "P1 Escalation-Investigate and address the use of about:blank pages as a filter loophole"
+},
+{
+"key": "FILTER-12177",
+"type": "Dev",
+"status": "In Progress",
+"priority": "P1",
+"assignee": "Vaibhav Kumbhar",
+"summary": "Investigate and close about:blank loophole used to bypass filtering and access competitor content"
+},
+{
+"key": "FILTER-12178",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "Verify about:blank loophole fix – block/redirect unless opened from allowed site"
+},
+{
+"key": "FILTER-12179",
+"type": "Automation",
+"status": "Open",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "Scripting for about:blank loophole fix – policy and redirect behavior"
+},
+{
+"key": "FILTER-12476",
+"type": "Escape Defect",
+"status": "Open",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "P1 Escalation-Extension Bypass - Opening new tab"
+},
+{
+"key": "FILTER-12540",
+"type": "Dev",
+"status": "Open",
+"priority": "P1",
+"assignee": "Pratik Tiwari",
+"summary": "DEV -Extension Bypass - Opening new tab"
+},
+{
+"key": "FILTER-12541",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "QA -Extension Bypass - Opening new tab"
+},
+{
+"key": "FILTER-12542",
+"type": "Automation",
+"status": "Open",
+"priority": "P1",
+"assignee": "Amol Mithari",
+"summary": "Automation -Extension Bypass - Opening new tab"
+},
+{
+"key": "FILTER-11654",
+"type": "Task",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Vaibhav Kumbhar",
+"summary": "P1 Escalation-Crextn blocking issue with Google Workspace apps"
+},
+{
+"key": "FILTER-11655",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Vaibhav Kumbhar",
+"summary": "Fix Crextn Not Blocking Google Workspace Apps (Docs, Slides, Meet, Drive, etc."
+},
+{
+"key": "FILTER-11656",
+"type": "Automation",
+"status": "Script in review",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "Create Automated Tests for Crextn Google Workspace Blocking"
+},
+{
+"key": "FILTER-11657",
+"type": "QA",
+"status": "QA in Progress",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "Test Crextn Google Workspace Blocking Fix"
+},
+{
+"key": "FILTER-12145",
+"type": "Task",
+"status": "Open",
+"priority": "P1",
+"assignee": "Jayesh Agrawal",
+"summary": "P1 Escalation-Auto-generate fail-CIPA list with hashed IWF/ctiru domains"
+},
+{
+"key": "FILTER-12175",
+"type": "Dev",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ashish Modak",
+"summary": "Auto-generate fail-CIPA list with hashed IWF/ctiru domains"
+},
+{
+"key": "FILTER-12176",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Surabhi Choudhary",
+"summary": "Verify Auto-generated fail-CIPA list with hashed IWF/ctiru domains"
+},
+{
+"key": "FILTER-12228",
+"type": "Defect",
+"status": "In Progress",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "JS (All Extensions): Youtube.YT logo on YT page, YT search page, YT video page and YT shorts is not clickable"
+},
+{
+"key": "FILTER-12229",
+"type": "Dev",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Arun Thakur",
+"summary": "DEV - JS (All Extensions): Youtube.YT logo on YT page, YT search page, YT video page and YT shorts is not clickable"
+},
+{
+"key": "FILTER-12230",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "QA- JS (All Extensions): Youtube.YT logo on YT page, YT search page, YT video page and YT shorts is not clickable"
+},
+{
+"key": "FILTER-12281",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "JS (ALL Extensions) Image Blur model behaves differently on GSheet, Drive, Gslide, Email, PDF, GDoc"
+},
+{
+"key": "FILTER-12282",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Arun Thakur",
+"summary": "DE- JS (ALL Extensions) Image Blur model behaves differently on GSheet, Drive, Gslide, Email, PDF, GDoc"
+},
+{
+"key": "FILTER-12283",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "QA- JS (ALL Extensions) Image Blur model behaves differently on GSheet, Drive, Gslide, Email, PDF, GDoc"
+},
+{
+"key": "FILTER-12393",
+"type": "Defect",
+"status": "Open",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "DA Filter >> Activities. DA is able to see activities of kids from other OU as well"
+},
+{
+"key": "FILTER-12701",
+"type": "Dev",
+"status": "Open",
+"priority": "P1",
+"assignee": "Prateek Fotedar",
+"summary": "BE - DA Filter >> Activities. DA is able to see activities of kids from other OU as well"
+},
+{
+"key": "FILTER-12394",
+"type": "Dev",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Arun Thakur",
+"summary": "DEV - DA Filter >> Activities. DA is able to see activities of kids from other OU as well"
+},
+{
+"key": "FILTER-12395",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ayesha Kamde",
+"summary": "QA- DA Filter >> Activities. DA is able to see activities of kids from other OU as well"
+},
+{
+"key": "FILTER-7666",
+"type": "Escape Defect",
+"status": "QA READY",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "P1 Escalation-File downloading in Image Google Search"
+},
+{
+"key": "FILTER-12418",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Pratik Tiwari",
+"summary": "Dev task for Analysis and Fix - P1 Escalation-File downloading in Image Google Search"
+},
+{
+"key": "FILTER-11243",
+"type": "Automation",
+"status": "Reopened",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "Automated E2E Regression Test: Fix Unwanted f.txt File Download on Google Image Scroll"
+},
+{
+"key": "FILTER-11244",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Oleksii Tkachenko",
+"summary": "Manual QA Validation for Unwanted f.txt File Download on Google Image Search"
+},
+{
+"key": "FILTER-12400",
+"type": "Story",
+"status": "Open",
+"priority": "P1",
+"assignee": "Ashish Modak",
+"summary": "P1 Escalation - Extension API Fortification"
+},
+{
+"key": "FILTER-12768",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Custom List table.  Listing Order is incorrect. Should be A-Z."
+},
+{
+"key": "FILTER-12769",
+"type": "Dev",
+"status": "Done",
+"priority": "P3",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. Custom List table.  Listing Order is incorrect. Should be A-Z."
+},
+{
+"key": "FILTER-12770",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P3",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table.  Listing Order is incorrect. Should be A-Z."
+},
+{
+"key": "FILTER-12771",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P3",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table.  Listing Order is incorrect. Should be A-Z."
+},
+{
+"key": "FILTER-12792",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "[TS Extension]Windows extn : TS: Log in page is not shown "
+},
+{
+"key": "FILTER-12793",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Pratik Tiwari",
+"summary": "[TS] DEV - Chrome Extension : Log in page is not shown "
+},
+{
+"key": "FILTER-12794",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Goutham Balashanmugam",
+"summary": "QA- Chrome Extension : Log in page is not shown "
+},
+{
+"key": "FILTER-12795",
+"type": "Automation",
+"status": "Done",
+"priority": "P1",
+"assignee": "Amol Mithari",
+"summary": "QA- Chrome Extension : Log in page is not shown "
+},
+{
+"key": "FILTER-12864",
+"type": "Defect",
+"status": "Open",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Custom List table >> \"Last updated by\" field is not showing value for every list"
+},
+{
+"key": "FILTER-12865",
+"type": "Dev",
+"status": "Closed without action",
+"priority": "P2",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. Custom List table >> \"Last updated by\" field is not showing value for every list"
+},
+{
+"key": "FILTER-12866",
+"type": "QA",
+"status": "Open",
+"priority": "P2",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table >> \"Last updated by\" field is not showing value for every list"
+},
+{
+"key": "FILTER-12867",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P2",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table >> \"Last updated by\" field is not showing value for every list"
+},
+{
+"key": "FILTER-12868",
+"type": "Defect",
+"status": "Open",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Custom List table >> we are able to see global lists which are created by non support tool users as well"
+},
+{
+"key": "FILTER-12869",
+"type": "Dev",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. Custom List table >> we are able to see global lists which are created by non support tool users as well"
+},
+{
+"key": "FILTER-12870",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table >> we are able to see global lists which are created by non support tool users as well"
+},
+{
+"key": "FILTER-12871",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Custom List table >> we are able to see global lists which are created by non support tool users as well"
+},
+{
+"key": "FILTER-12888",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Create custom list and Edit custom list, pages do not have * mark for Mandatory fields"
+},
+{
+"key": "FILTER-12889",
+"type": "Dev",
+"status": "Done",
+"priority": "P3",
+"assignee": "Shailendra Singh",
+"summary": "DEV - Support Tool >> Custom list UI. Create custom list and Edit custom list, pages do not have * mark for Mandatory fields"
+},
+{
+"key": "FILTER-12890",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P3",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Create custom list and Edit custom list, pages do not have * mark for Mandatory fields"
+},
+{
+"key": "FILTER-12891",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P3",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Create custom list and Edit custom list, pages do not have * mark for Mandatory fields"
+},
+{
+"key": "FILTER-12908",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Edit custom list, User can change the Type on Edit."
+},
+{
+"key": "FILTER-12909",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Shailendra Singh",
+"summary": "DEV - Support Tool >> Custom list UI. Edit custom list, User can change the Type on Edit."
+},
+{
+"key": "FILTER-12910",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Edit custom list, User can change the Type on Edit."
+},
+{
+"key": "FILTER-12911",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Edit custom list, User can change the Type on Edit."
+},
+{
+"key": "FILTER-12916",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. WEIRD CASE. Create custom list URL type, does not allow adding bunch of resources but the same list can be added individually."
+},
+{
+"key": "FILTER-12917",
+"type": "Dev",
+"status": "Done",
+"priority": "P1",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. WEIRD CASE. Create custom list URL type,does not allow adding bunch of resources but the same list can be added individually."
+},
+{
+"key": "FILTER-12918",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. WEIRD CASE. Create custom list URL type,does not allow adding bunch of resources but the same list can be added individually"
+},
+{
+"key": "FILTER-12919",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. WEIRD CASE. Create custom list URL type,does not allow adding bunch of resources but the same list can be added individually"
+},
+{
+"key": "FILTER-12928",
+"type": "Defect",
+"status": "Resolved",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Create/Edit custom list URL type, allows YT videos and Channels as well."
+},
+{
+"key": "FILTER-12929",
+"type": "Dev",
+"status": "Done",
+"priority": "P3",
+"assignee": "Prateek Fotedar",
+"summary": "DEV - Support Tool >> Custom list UI. Create/Edit custom list URL type, allows YT videos and Channels as well."
+},
+{
+"key": "FILTER-12930",
+"type": "QA",
+"status": "Ready for QA",
+"priority": "P3",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Create/Edit custom list URL type, allows YT videos and Channels as well."
+},
+{
+"key": "FILTER-12931",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P3",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Create/Edit custom list URL type, allows YT videos and Channels as well."
+},
+{
+"key": "FILTER-12932",
+"type": "Defect",
+"status": "Open",
+"priority": "P1",
+"assignee": "Shashank Tiwari",
+"summary": "Support Tool >> Custom list UI. Edit custom list Search terms type, allows changing Match type and saves it. But does not reflect the change."
+},
+{
+"key": "FILTER-12933",
+"type": "Dev",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Shailendra Singh",
+"summary": "DEV - Support Tool >> Custom list UI. Edit custom list Search terms type, allows changing Match type and saves it. But does not reflect the change."
+},
+{
+"key": "FILTER-12934",
+"type": "QA",
+"status": "Open",
+"priority": "P1",
+"assignee": "Altamash Heroli",
+"summary": "QA- Support Tool >> Custom list UI. Edit custom list Search terms type, allows changing Match type and saves it. But does not reflect the change."
+},
+{
+"key": "FILTER-12935",
+"type": "Automation",
+"status": "Closed without action",
+"priority": "P1",
+"assignee": "Amit Shete",
+"summary": "QA- Support Tool >> Custom list UI. Edit custom list Search terms type, allows changing Match type and saves it. But does not reflect the change."
+}
+]
+}

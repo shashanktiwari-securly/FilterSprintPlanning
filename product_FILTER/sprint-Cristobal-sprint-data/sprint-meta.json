@@ -1,0 +1,17 @@
+{
+  "sprint_name": "sprint-Cristobal",
+  "sprint_id": 5131,
+  "board_id": 281,
+  "origin_board_id": 281,
+  "state": "closed",
+  "goal": "",
+  "start_date": "2026-02-03",
+  "end_date": "2026-02-16",
+  "start_date_raw": "2026-02-03T00:00:00Z",
+  "end_date_raw": "2026-02-16T23:59:59Z",
+  "jira_start_date": "2026-02-03",
+  "jira_end_date": "2026-02-17",
+  "working_days": 10,
+  "api_self": "https://securly.atlassian.net/rest/agile/1.0/sprint/5131",
+  "override_applied": true
+}

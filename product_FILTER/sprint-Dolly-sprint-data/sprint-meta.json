@@ -1,0 +1,17 @@
+{
+  "sprint_name": "sprint-Dolly",
+  "sprint_id": 5297,
+  "board_id": 281,
+  "origin_board_id": 281,
+  "state": "closed",
+  "goal": "",
+  "start_date": "2026-02-17",
+  "end_date": "2026-03-02",
+  "start_date_raw": "2026-02-17T00:00:00Z",
+  "end_date_raw": "2026-03-02T23:59:59Z",
+  "jira_start_date": "2026-02-17",
+  "jira_end_date": "2026-03-03",
+  "working_days": 10,
+  "api_self": "https://securly.atlassian.net/rest/agile/1.0/sprint/5297",
+  "override_applied": true
+}

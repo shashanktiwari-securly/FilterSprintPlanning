@@ -1,0 +1,17 @@
+{
+  "sprint_name": "sprint-Edouard",
+  "sprint_id": 5298,
+  "board_id": 281,
+  "origin_board_id": 281,
+  "state": "closed",
+  "goal": "",
+  "start_date": "2026-03-03",
+  "end_date": "2026-03-16",
+  "start_date_raw": "2026-03-03T00:00:00Z",
+  "end_date_raw": "2026-03-16T23:59:59Z",
+  "jira_start_date": "2026-03-03",
+  "jira_end_date": "2026-03-15",
+  "working_days": 10,
+  "api_self": "https://securly.atlassian.net/rest/agile/1.0/sprint/5298",
+  "override_applied": true
+}
