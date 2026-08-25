@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Requires Pages to be on (Settings → Pages → Source: GitHub Actions).
+# enablement: true tries to turn that on automatically; it still needs
+# admin access on the repo, so the Settings click may be required once.
 permissions:
   contents: read
   pages: write
@@ -23,6 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
