@@ -39,14 +39,17 @@ def write_markdown(data: dict) -> str:
     lines = [
         f"# {data['title']}",
         "",
-        f"Snapshot **{data['snapshot_date']}** · Filter, Aware, On-Call, Respond · "
+        f"Snapshot **{data['snapshot_date']}** · {len(projects)} products · "
         f"Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **{data['filters']['created_from']}**.",
         "",
         "## Headline",
         "",
-        f"**{k['created']}** Zendesk-linked tickets created since 1 Aug 2026 "
-        f"({k['created_escape_defect']} Escape Defect, {k['created_support_request']} Support Request). "
-        f"**{k['created_done']}** Done · **{k['created_open']}** still open.",
+        data.get("headline")
+        or (
+            f"**{k['created']}** Zendesk-linked tickets created since 1 Jul 2026 "
+            f"({k['created_escape_defect']} Escape Defect, {k['created_support_request']} Support Request). "
+            f"**{k['created_done']}** Done · **{k['created_open']}** still open."
+        ),
         "",
         "## By product",
         "",
@@ -111,14 +114,14 @@ def write_markdown(data: dict) -> str:
         "",
         "## Live Jira views",
         "",
-        f"- [Created since 1 Aug]({data['links']['created']})",
+        f"- [Created since 1 Jul]({data['links']['created']})",
         f"- [Created and still open]({data['links']['created_open']})",
         f"- [Created and Done]({data['links']['created_done']})",
         "",
         "## Notes",
         "",
-        f"- {data['notes']['oncall_zero']}",
-        f"- {data['notes']['respond_zero']}",
+        f"- {data['notes'].get('scope', '')}",
+        f"- {data['notes'].get('window', '')}",
         f"- JQL: `{data['jql']['created']}`",
         "",
     ]
@@ -148,9 +151,9 @@ def write_html(data: dict) -> str:
   .sub {{ color:var(--muted); font-size:13px; line-height:1.5; }}
   .sub a {{ color:var(--accent); text-decoration:none; }}
   .sub a:hover {{ text-decoration:underline; }}
-  .wrap {{ padding:20px 28px 60px; max-width:1500px; margin:0 auto; }}
-  .cards {{ display:flex; gap:14px; flex-wrap:wrap; margin:18px 0 26px; }}
-  .card {{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; min-width:150px; flex:1; }}
+  .wrap {{ padding:20px 28px 60px; max-width:1800px; margin:0 auto; }}
+  .cards {{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 26px; }}
+  .card {{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; min-width:128px; flex:1 1 128px; }}
   .card .n {{ font-size:26px; font-weight:700; }}
   .card .l {{ color:var(--muted); font-size:12px; margin-top:2px; }}
   .card.warn .n {{ color:var(--warn); }}
@@ -176,6 +179,16 @@ def write_html(data: dict) -> str:
   .p-aware {{ background:#6d28d9; color:#f5f3ff; }}
   .p-oncall {{ background:#b45309; color:#fffbeb; }}
   .p-respond {{ background:#047857; color:#ecfdf5; }}
+  .p-aichat {{ background:#4f46e5; color:#eef2ff; }}
+  .p-pass {{ background:#0f766e; color:#ccfbf1; }}
+  .p-flex {{ background:#be185d; color:#fce7f3; }}
+  .p-comm {{ background:#475569; color:#e2e8f0; }}
+  .p-mdm {{ background:#c2410c; color:#ffedd5; }}
+  .p-pagescan {{ background:#4d7c0f; color:#ecfccb; }}
+  .p-dd {{ background:#a21caf; color:#fae8ff; }}
+  .p-de {{ background:#0369a1; color:#e0f2fe; }}
+  .p-devops {{ background:#334155; color:#cbd5e1; }}
+  .p-home {{ background:#9f1239; color:#ffe4e6; }}
   .links {{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 18px; }}
   .links a {{ background:var(--panel2); border:1px solid var(--line); color:var(--accent);
     text-decoration:none; border-radius:8px; padding:6px 10px; font-size:12px; }}
@@ -209,8 +222,8 @@ def write_html(data: dict) -> str:
 <header>
   <h1>Monthly Zendesk-linked dashboard</h1>
   <div class="sub">
-    Escape Defects and Support Requests · Filter, Aware, On-Call, Respond ·
-    from 1 Aug 2026 · snapshot <span id="snap"></span><br/>
+    Escape Defects and Support Requests · 14 products ·
+    from 1 Jul 2026 · snapshot <span id="snap"></span><br/>
     Source: <a href="https://securly.atlassian.net">securly.atlassian.net</a>
     · field <code>Zendesk Ticket Count</code> &gt; 0
     · grouped by calendar month
@@ -222,13 +235,13 @@ def write_html(data: dict) -> str:
   <div class="callout" id="headline"></div>
 
   <h2>Monthly created by product</h2>
-  <div class="legend">Count of Zendesk-linked Escape Defects and Support Requests created in each month. Aug 2026 is partial through the snapshot date. On-Call and Respond are included even when the count is 0.</div>
+  <div class="legend">Count of Zendesk-linked Escape Defects and Support Requests created in each month. Jul 2026 is complete. Aug 2026 is partial through the snapshot date. All listed products stay in the table even when the count is 0.</div>
   <div class="chart" id="chart"></div>
   <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
 
   <h2>Ticket list</h2>
   <div class="tabs">
-    <button class="active" data-tab="created">Created since 1 Aug</button>
+    <button class="active" data-tab="created">Created since 1 Jul</button>
     <button data-tab="open">Still open</button>
     <button data-tab="done">Created and Done</button>
   </div>
@@ -260,7 +273,12 @@ def write_html(data: dict) -> str:
 <script>
 const DATA = {payload};
 const $ = (id) => document.getElementById(id);
-const PROJ_PILL = {{FILTER:'p-filter', AWARE:'p-aware', PRODUCT24:'p-oncall', RESP:'p-respond'}};
+const PROJ_PILL = {{
+  FILTER:'p-filter', AWARE:'p-aware', PRODUCT24:'p-oncall', RESP:'p-respond',
+  AICHAT:'p-aichat', PASS:'p-pass', FLEX:'p-flex', COM:'p-comm',
+  MDMCLASS:'p-mdm', PAGESCAN:'p-pagescan', DD:'p-dd', DE:'p-de',
+  DEVOPS:'p-devops', HOME:'p-home'
+}};
 
 function pillType(t) {{
   return t === 'Escape Defect'
@@ -283,7 +301,7 @@ function pillProj(issue) {{
 
 $('snap').textContent = DATA.snapshot_date;
 $('links').innerHTML = [
-  ['Created since 1 Aug', DATA.links.created],
+  ['Created since 1 Jul', DATA.links.created],
   ['Created and still open', DATA.links.created_open],
   ['Created and Done', DATA.links.created_done],
 ].map(([l,u]) => `<a href="${{u}}" target="_blank" rel="noopener">${{l}}</a>`).join('');
@@ -294,17 +312,12 @@ const productCards = DATA.product_kpis.map(p => {{
   return [p.created, p.label, `${{p.open}} open · ${{p.done}} Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls];
 }});
 $('cards').innerHTML = [
-  [k.created, 'Created since 1 Aug', `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · 4 products`, ''],
-  [k.created_open, 'Still open from Aug cohort', `${{k.created_done}} Done of ${{k.created}}`, k.created_open > k.created_done ? 'warn' : 'good'],
+  [k.created, 'Created since 1 Jul', `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{DATA.projects.length}} products`, ''],
+  [k.created_open, 'Still open from Jul+ cohort', `${{k.created_done}} Done of ${{k.created}}`, k.created_open > k.created_done ? 'warn' : 'good'],
   ...productCards
 ].map(([n,l,s,cls]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div></div>`).join('');
 
-const filterK = DATA.product_kpis.find(p => p.key === 'FILTER');
-const awareK = DATA.product_kpis.find(p => p.key === 'AWARE');
-$('headline').innerHTML =
-  `<b>August 2026 intake is concentrated in Filter and Aware.</b>
-  Filter ${{filterK.created}} created (${{filterK.open}} still open). Aware ${{awareK.created}} created (${{awareK.done}} Done).
-  On-Call and Respond have no Zendesk-linked Escape Defect or Support Request tickets since 1 Aug.`;
+$('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
 
 const latest = DATA.monthly[DATA.monthly.length - 1];
 const maxBar = Math.max(...DATA.projects.map(p => latest.by_project[p.key].created), 1);
@@ -393,7 +406,7 @@ function render() {{
 }}
 
 $('notes').innerHTML =
-  `${{DATA.notes.oncall_zero}} ${{DATA.notes.respond_zero}}
+  `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
   JQL: <code>${{DATA.jql.created}}</code>`;
 
 render();

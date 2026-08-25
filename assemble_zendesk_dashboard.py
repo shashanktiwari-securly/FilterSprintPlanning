@@ -1,0 +1,267 @@
+"""Assemble dashboard JSON from Jira search dumps (paginated issue payloads)."""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime
+from pathlib import Path
+from urllib.parse import quote
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / "reports" / "filter-zendesk-weekly-dashboard.json"
+
+PROJECTS = [
+    {"key": "FILTER", "name": "product_FILTER", "label": "Filter"},
+    {"key": "AWARE", "name": "product_AWARE", "label": "Aware"},
+    {"key": "PRODUCT24", "name": "product_oncall", "label": "On-Call"},
+    {"key": "RESP", "name": "product_RESPOND", "label": "Respond"},
+    {"key": "AICHAT", "name": "Product_AIChat", "label": "AIChat"},
+    {"key": "PASS", "name": "Pass", "label": "Pass"},
+    {"key": "FLEX", "name": "Flex", "label": "Flex"},
+    {"key": "COM", "name": "Pass-Flex Common Services", "label": "Comm"},
+    {"key": "MDMCLASS", "name": "product_MDM_CLASSROOM", "label": "MDM Class"},
+    {"key": "PAGESCAN", "name": "prod_pagescan", "label": "PageScan"},
+    {"key": "DD", "name": "DyKnow & Reveal", "label": "DD"},
+    {"key": "DE", "name": "OPS_DE", "label": "DE"},
+    {"key": "DEVOPS", "name": "ops_devops", "label": "DevOps"},
+    {"key": "HOME", "name": "product_HOME", "label": "Home"},
+]
+PROJECT_BY_KEY = {p["key"]: p for p in PROJECTS}
+PROJECT_LIST = ", ".join(p["key"] for p in PROJECTS)
+CREATED_FROM = "2026-07-01"
+SNAPSHOT = "2026-08-25"
+SNAPSHOT_DT = datetime.fromisoformat("2026-08-25T13:40:00+00:00")
+
+MONTHS = [
+    {
+        "id": "2026-07",
+        "label": "Jul 2026",
+        "start": "2026-07-01",
+        "end": "2026-07-31",
+        "partial": False,
+    },
+    {
+        "id": "2026-08",
+        "label": "Aug 2026",
+        "start": "2026-08-01",
+        "end": "2026-08-31",
+        "partial": True,
+    },
+]
+MONTH_BY_ID = {m["id"]: m for m in MONTHS}
+
+JQL_CREATED = (
+    f"project in ({PROJECT_LIST}) AND issuetype in "
+    '("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 '
+    f'AND created >= "{CREATED_FROM}" ORDER BY created ASC'
+)
+JQL_OPEN = (
+    f"project in ({PROJECT_LIST}) AND issuetype in "
+    '("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 '
+    f'AND created >= "{CREATED_FROM}" AND statusCategory != Done ORDER BY created ASC'
+)
+JQL_DONE = (
+    f"project in ({PROJECT_LIST}) AND issuetype in "
+    '("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 '
+    f'AND created >= "{CREATED_FROM}" AND statusCategory = Done ORDER BY created ASC'
+)
+
+
+def parse_jira_dt(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    s = value
+    if len(s) >= 5 and s[-5] in "+-" and s[-4:].isdigit():
+        s = s[:-2] + ":" + s[-2:]
+    return datetime.fromisoformat(s)
+
+
+def empty_counts() -> dict:
+    return {
+        "created": 0,
+        "escape_defect": 0,
+        "support_request": 0,
+        "done": 0,
+        "open": 0,
+        "zendesk": 0,
+    }
+
+
+def bump(bucket: dict, issue: dict) -> None:
+    bucket["created"] += 1
+    if issue["type"] == "Escape Defect":
+        bucket["escape_defect"] += 1
+    else:
+        bucket["support_request"] += 1
+    if issue["is_done"]:
+        bucket["done"] += 1
+    else:
+        bucket["open"] += 1
+    bucket["zendesk"] += issue["zendesk_count"] or 0
+
+
+def month_for(created: datetime) -> dict:
+    mid = created.strftime("%Y-%m")
+    return MONTH_BY_ID.get(mid, MONTHS[-1])
+
+
+def load_issues(paths: list[Path]) -> list[dict]:
+    seen: dict[str, dict] = {}
+    for path in paths:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for raw in payload.get("issues", []):
+            fields = raw.get("fields") or {}
+            key = raw["key"]
+            project = fields.get("project") or {}
+            project_key = project.get("key")
+            if project_key not in PROJECT_BY_KEY:
+                continue
+            meta = PROJECT_BY_KEY[project_key]
+            created = parse_jira_dt(fields.get("created"))
+            if created is None:
+                continue
+            resolved = parse_jira_dt(fields.get("resolutiondate"))
+            status = fields.get("status") or {}
+            status_cat = ((status.get("statusCategory") or {}).get("name")) or ""
+            issuetype = (fields.get("issuetype") or {}).get("name") or ""
+            assignee = fields.get("assignee") or {}
+            priority = fields.get("priority") or {}
+            zd = fields.get("customfield_11201") or 0
+            try:
+                zd = int(zd)
+            except (TypeError, ValueError):
+                zd = 0
+            month = month_for(created)
+            seen[key] = {
+                "key": key,
+                "url": f"https://securly.atlassian.net/browse/{key}",
+                "summary": fields.get("summary") or "",
+                "type": issuetype,
+                "priority": priority.get("name"),
+                "zendesk_count": zd,
+                "status": status.get("name") or "",
+                "status_category": status_cat,
+                "resolution": None,
+                "assignee": assignee.get("displayName") or "Unassigned",
+                "reporter": "—",
+                "project_key": project_key,
+                "project_name": meta["name"],
+                "project_label": meta["label"],
+                "created": created.isoformat(),
+                "created_date": created.date().isoformat(),
+                "resolved": resolved.isoformat() if resolved else None,
+                "resolved_date": resolved.date().isoformat() if resolved else None,
+                "created_month": {
+                    "id": month["id"],
+                    "label": month["label"],
+                    "start": month["start"],
+                    "end": month["end"],
+                    "partial": month["partial"],
+                },
+                "is_done": status_cat == "Done",
+            }
+    issues = list(seen.values())
+    issues.sort(key=lambda i: (i["created"], i["key"]))
+    return issues
+
+
+def jira_link(jql: str) -> str:
+    return "https://securly.atlassian.net/issues/?jql=" + quote(jql, safe="")
+
+
+def main(paths: list[str]) -> None:
+    issues = load_issues([Path(p) for p in paths])
+    product_kpis = []
+    for proj in PROJECTS:
+        bucket = empty_counts()
+        for issue in issues:
+            if issue["project_key"] == proj["key"]:
+                bump(bucket, issue)
+        product_kpis.append({**proj, **bucket})
+
+    monthly = []
+    for month in MONTHS:
+        by_project = {p["key"]: empty_counts() for p in PROJECTS}
+        totals = empty_counts()
+        for issue in issues:
+            if issue["created_month"]["id"] != month["id"]:
+                continue
+            bump(by_project[issue["project_key"]], issue)
+            bump(totals, issue)
+        monthly.append({**month, "by_project": by_project, "totals": totals})
+
+    kpis = empty_counts()
+    for issue in issues:
+        bump(kpis, issue)
+
+    ranked = sorted(product_kpis, key=lambda p: (-p["created"], p["label"]))
+    top = [p for p in ranked if p["created"] > 0][:5]
+    zero = [p["label"] for p in product_kpis if p["created"] == 0]
+    top_txt = ", ".join(f"{p['label']} {p['created']}" for p in top)
+    headline = (
+        f"{kpis['created']} Zendesk-linked tickets created since 1 Jul 2026 "
+        f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
+        f"{kpis['done']} Done · {kpis['open']} still open. "
+        f"Highest intake: {top_txt}."
+    )
+    if zero:
+        headline += f" No matching tickets yet: {', '.join(zero)}."
+
+    data = {
+        "title": "Monthly Zendesk-linked Escape Defect & Support Request dashboard",
+        "generated_at": SNAPSHOT_DT.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "snapshot_date": SNAPSHOT,
+        "source": "https://securly.atlassian.net",
+        "projects": PROJECTS,
+        "filters": {
+            "issue_types": ["Escape Defect", "Support Request"],
+            "zendesk_ticket_count": "> 0",
+            "created_from": CREATED_FROM,
+            "grain": "month",
+        },
+        "jql": {
+            "created": JQL_CREATED,
+            "created_open": JQL_OPEN,
+            "created_done": JQL_DONE,
+        },
+        "links": {
+            "created": jira_link(JQL_CREATED),
+            "created_open": jira_link(JQL_OPEN),
+            "created_done": jira_link(JQL_DONE),
+        },
+        "kpis": {
+            "created": kpis["created"],
+            "created_escape_defect": kpis["escape_defect"],
+            "created_support_request": kpis["support_request"],
+            "created_done": kpis["done"],
+            "created_open": kpis["open"],
+        },
+        "product_kpis": product_kpis,
+        "monthly": monthly,
+        "created_issues": issues,
+        "headline": headline,
+        "notes": {
+            "scope": (
+                "Includes Filter, Aware, On-Call, Respond, AIChat, Pass, Flex, Comm, "
+                "MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no "
+                "Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026."
+            ),
+            "window": "Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.",
+        },
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"wrote {OUT} ({len(issues)} issues)")
+    for p in product_kpis:
+        print(
+            f"  {p['label']:16} created={p['created']:3} open={p['open']:3} "
+            f"done={p['done']:3} zd={p['zendesk']:3}"
+        )
+
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) < 2:
+        raise SystemExit("usage: assemble_zendesk_dashboard.py <jira-page.json> [...]")
+    main(sys.argv[1:])
