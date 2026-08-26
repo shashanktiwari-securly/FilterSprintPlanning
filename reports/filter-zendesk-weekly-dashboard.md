@@ -1,18 +1,37 @@
 # Monthly Zendesk-linked Escape Defect & Support Request dashboard
 
-Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **2026-07-01**.
+Snapshot **2026-08-25** · 13 products · Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **2026-07-01**.
 
 ## Headline
 
-171 Zendesk-linked tickets created since 1 Jul 2026 (41 Escape Defect, 130 Support Request). 94 Done · 77 still open. Highest intake: MDM Class 60, Filter 23, DD 16, DE 14, PageScan 12. No matching tickets yet: On-Call, Respond.
+171 Zendesk-linked tickets created since 1 Jul 2026 (41 Escape Defect, 130 Support Request). 94 Done (statusCategory = Done) vs 77 not Done (statusCategory != Done). Highest intake: MDM Class 60, Filter 23, DD 16, DE 14, PageScan 12. No matching tickets yet: Respond.
+
+## Done vs not Done
+
+**94** tickets are `statusCategory = Done` (55%). **77** are `statusCategory != Done` (45%).
+
+| Product | Key | Created | Done | Not Done | Done % | Not Done % |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Filter | FILTER | 23 | 4 | 19 | 17% | 83% |
+| Aware | AWARE | 10 | 8 | 2 | 80% | 20% |
+| Respond | RESP | 0 | 0 | 0 | 0% | 0% |
+| AIChat | AICHAT | 1 | 0 | 1 | 0% | 100% |
+| Pass | PASS | 8 | 7 | 1 | 88% | 12% |
+| Flex | FLEX | 10 | 7 | 3 | 70% | 30% |
+| Comm | COM | 6 | 4 | 2 | 67% | 33% |
+| MDM Class | MDMCLASS | 60 | 36 | 24 | 60% | 40% |
+| PageScan | PAGESCAN | 12 | 6 | 6 | 50% | 50% |
+| DD | DD | 16 | 2 | 14 | 12% | 88% |
+| DE | DE | 14 | 11 | 3 | 79% | 21% |
+| DevOps | DEVOPS | 6 | 5 | 1 | 83% | 17% |
+| Home | HOME | 5 | 4 | 1 | 80% | 20% |
 
 ## By product
 
-| Product | Key | Created | Escape Defect | Support Request | Done | Still open |
+| Product | Key | Created | Escape Defect | Support Request | Done | Not Done |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Filter | FILTER | 23 | 11 | 12 | 4 | 19 |
 | Aware | AWARE | 10 | 1 | 9 | 8 | 2 |
-| On-Call | PRODUCT24 | 0 | 0 | 0 | 0 | 0 |
 | Respond | RESP | 0 | 0 | 0 | 0 | 0 |
 | AIChat | AICHAT | 1 | 0 | 1 | 0 | 1 |
 | Pass | PASS | 8 | 5 | 3 | 7 | 1 |
@@ -27,10 +46,14 @@ Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zen
 
 ## Monthly created
 
-| Month | Filter | Aware | On-Call | Respond | AIChat | Pass | Flex | Comm | MDM Class | PageScan | DD | DE | DevOps | Home | Total | Done | Still open |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Jul 2026 | 10 | 6 | 0 | 0 | 0 | 4 | 1 | 2 | 18 | 5 | 6 | 12 | 4 | 0 | 68 | 44 | 24 |
-| Aug 2026 (partial) | 13 | 4 | 0 | 0 | 1 | 4 | 9 | 4 | 42 | 7 | 10 | 2 | 2 | 5 | 103 | 50 | 53 |
+| Month | Slice | Filter | Aware | Respond | AIChat | Pass | Flex | Comm | MDM Class | PageScan | DD | DE | DevOps | Home | Total |
+| --- | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Jul 2026 | Created | 10 | 6 | 0 | 0 | 4 | 1 | 2 | 18 | 5 | 6 | 12 | 4 | 0 | 68 |
+| Jul 2026 | Done | 2 | 5 | 0 | 0 | 4 | 1 | 2 | 14 | 3 | 0 | 9 | 4 | 0 | 44 |
+| Jul 2026 | Not Done | 8 | 1 | 0 | 0 | 0 | 0 | 0 | 4 | 2 | 6 | 3 | 0 | 0 | 24 |
+| Aug 2026 (partial) | Created | 13 | 4 | 0 | 1 | 4 | 9 | 4 | 42 | 7 | 10 | 2 | 2 | 5 | 103 |
+| Aug 2026 (partial) | Done | 2 | 3 | 0 | 0 | 3 | 6 | 2 | 22 | 3 | 2 | 2 | 1 | 4 | 50 |
+| Aug 2026 (partial) | Not Done | 11 | 1 | 0 | 1 | 1 | 3 | 2 | 20 | 4 | 8 | 0 | 1 | 1 | 53 |
 
 ## Created ticket list
 
@@ -210,12 +233,12 @@ Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zen
 
 ## Live Jira views
 
-- [Created since 1 Jul](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20PRODUCT24%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20ORDER%20BY%20created%20ASC)
-- [Created and still open](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20PRODUCT24%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC)
-- [Created and Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20PRODUCT24%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC)
+- [Created since 1 Jul](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20ORDER%20BY%20created%20ASC)
+- [statusCategory != Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC)
+- [statusCategory = Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC)
 
 ## Notes
 
-- Includes Filter, Aware, On-Call, Respond, AIChat, Pass, Flex, Comm, MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026.
+- Includes Filter, Aware, Respond (RESP), AIChat, Pass, Flex, Comm, MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.
 - Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.
-- JQL: `project in (FILTER, AWARE, PRODUCT24, RESP, AICHAT, PASS, FLEX, COM, MDMCLASS, PAGESCAN, DD, DE, DEVOPS, HOME) AND issuetype in ("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 AND created >= "2026-07-01" ORDER BY created ASC`
+- JQL: `project in (FILTER, AWARE, RESP, AICHAT, PASS, FLEX, COM, MDMCLASS, PAGESCAN, DD, DE, DEVOPS, HOME) AND issuetype in ("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 AND created >= "2026-07-01" ORDER BY created ASC`

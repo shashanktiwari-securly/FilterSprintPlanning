@@ -13,7 +13,6 @@ OUT = ROOT / "reports" / "filter-zendesk-weekly-dashboard.json"
 PROJECTS = [
     {"key": "FILTER", "name": "product_FILTER", "label": "Filter"},
     {"key": "AWARE", "name": "product_AWARE", "label": "Aware"},
-    {"key": "PRODUCT24", "name": "product_oncall", "label": "On-Call"},
     {"key": "RESP", "name": "product_RESPOND", "label": "Respond"},
     {"key": "AICHAT", "name": "Product_AIChat", "label": "AIChat"},
     {"key": "PASS", "name": "Pass", "label": "Pass"},
@@ -177,7 +176,12 @@ def main(paths: list[str]) -> None:
         for issue in issues:
             if issue["project_key"] == proj["key"]:
                 bump(bucket, issue)
-        product_kpis.append({**proj, **bucket})
+        product_kpis.append({
+            **proj,
+            **bucket,
+            "done_pct": round(100 * bucket["done"] / bucket["created"]) if bucket["created"] else 0,
+            "not_done_pct": round(100 * bucket["open"] / bucket["created"]) if bucket["created"] else 0,
+        })
 
     monthly = []
     for month in MONTHS:
@@ -201,7 +205,8 @@ def main(paths: list[str]) -> None:
     headline = (
         f"{kpis['created']} Zendesk-linked tickets created since 1 Jul 2026 "
         f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
-        f"{kpis['done']} Done · {kpis['open']} still open. "
+        f"{kpis['done']} Done (statusCategory = Done) vs {kpis['open']} not Done "
+        f"(statusCategory != Done). "
         f"Highest intake: {top_txt}."
     )
     if zero:
@@ -235,6 +240,8 @@ def main(paths: list[str]) -> None:
             "created_support_request": kpis["support_request"],
             "created_done": kpis["done"],
             "created_open": kpis["open"],
+            "done_pct": round(100 * kpis["done"] / kpis["created"]) if kpis["created"] else 0,
+            "not_done_pct": round(100 * kpis["open"] / kpis["created"]) if kpis["created"] else 0,
         },
         "product_kpis": product_kpis,
         "monthly": monthly,
@@ -242,9 +249,10 @@ def main(paths: list[str]) -> None:
         "headline": headline,
         "notes": {
             "scope": (
-                "Includes Filter, Aware, On-Call, Respond, AIChat, Pass, Flex, Comm, "
+                "Includes Filter, Aware, Respond (RESP), AIChat, Pass, Flex, Comm, "
                 "MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no "
-                "Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026."
+                "Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. "
+                "Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done."
             ),
             "window": "Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.",
         },
