@@ -1,30 +1,30 @@
-# Monthly Zendesk-linked Escape Defect & Support Request dashboard
+# Monthly Escape Defect and Support Request Dashboard
 
-Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **2026-07-01**.
+Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **2026-08-01**.
 
 ## Headline
 
-171 Zendesk-linked tickets created since 1 Jul 2026 (41 Escape Defect, 130 Support Request). 94 Done (statusCategory = Done) vs 77 not Done (statusCategory != Done). Highest intake: MDM Class 60, Filter 23, DD 16, DE 14, PageScan 12. No matching tickets yet: On-Call, Respond.
+103 Zendesk-linked tickets created since 1 Aug 2026 (27 Escape Defect, 76 Support Request). 50 Done (statusCategory = Done) vs 53 not Done (statusCategory != Done). Highest intake: MDM Class 42, Filter 13, DD 10, Flex 9, PageScan 7. No matching tickets yet: On-Call, Respond.
 
 ## Done vs not Done
 
-**94** tickets are `statusCategory = Done` (55%). **77** are `statusCategory != Done` (45%).
+**50** tickets are `statusCategory = Done` (49%). **53** are `statusCategory != Done` (51%).
 
 | Product | Key | Created | Done | Not Done | Done % | Not Done % |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | AIChat | AICHAT | 1 | 0 | 1 | 0% | 100% |
-| Aware | AWARE | 10 | 8 | 2 | 80% | 20% |
-| Comm | COM | 6 | 4 | 2 | 67% | 33% |
-| DD | DD | 16 | 2 | 14 | 12% | 88% |
-| DE | DE | 14 | 11 | 3 | 79% | 21% |
-| DevOps | DEVOPS | 6 | 5 | 1 | 83% | 17% |
-| Filter | FILTER | 23 | 4 | 19 | 17% | 83% |
-| Flex | FLEX | 10 | 7 | 3 | 70% | 30% |
+| Aware | AWARE | 4 | 3 | 1 | 75% | 25% |
+| Comm | COM | 4 | 2 | 2 | 50% | 50% |
+| DD | DD | 10 | 2 | 8 | 20% | 80% |
+| DE | DE | 2 | 2 | 0 | 100% | 0% |
+| DevOps | DEVOPS | 2 | 1 | 1 | 50% | 50% |
+| Filter | FILTER | 13 | 2 | 11 | 15% | 85% |
+| Flex | FLEX | 9 | 6 | 3 | 67% | 33% |
 | Home | HOME | 5 | 4 | 1 | 80% | 20% |
-| MDM Class | MDMCLASS | 60 | 36 | 24 | 60% | 40% |
+| MDM Class | MDMCLASS | 42 | 22 | 20 | 52% | 48% |
 | On-Call | PRODUCT24 | 0 | 0 | 0 | 0% | 0% |
-| PageScan | PAGESCAN | 12 | 6 | 6 | 50% | 50% |
-| Pass | PASS | 8 | 7 | 1 | 88% | 12% |
+| PageScan | PAGESCAN | 7 | 3 | 4 | 43% | 57% |
+| Pass | PASS | 4 | 3 | 1 | 75% | 25% |
 | Respond | RESP | 0 | 0 | 0 | 0% | 0% |
 
 ## By product
@@ -32,27 +32,24 @@ Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zen
 | Product | Key | Created | Escape Defect | Support Request | Done | Not Done |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | AIChat | AICHAT | 1 | 0 | 1 | 0 | 1 |
-| Aware | AWARE | 10 | 1 | 9 | 8 | 2 |
-| Comm | COM | 6 | 4 | 2 | 4 | 2 |
-| DD | DD | 16 | 0 | 16 | 2 | 14 |
-| DE | DE | 14 | 0 | 14 | 11 | 3 |
-| DevOps | DEVOPS | 6 | 0 | 6 | 5 | 1 |
-| Filter | FILTER | 23 | 11 | 12 | 4 | 19 |
-| Flex | FLEX | 10 | 10 | 0 | 7 | 3 |
+| Aware | AWARE | 4 | 0 | 4 | 3 | 1 |
+| Comm | COM | 4 | 3 | 1 | 2 | 2 |
+| DD | DD | 10 | 0 | 10 | 2 | 8 |
+| DE | DE | 2 | 0 | 2 | 2 | 0 |
+| DevOps | DEVOPS | 2 | 0 | 2 | 1 | 1 |
+| Filter | FILTER | 13 | 7 | 6 | 2 | 11 |
+| Flex | FLEX | 9 | 9 | 0 | 6 | 3 |
 | Home | HOME | 5 | 2 | 3 | 4 | 1 |
-| MDM Class | MDMCLASS | 60 | 7 | 53 | 36 | 24 |
+| MDM Class | MDMCLASS | 42 | 2 | 40 | 22 | 20 |
 | On-Call | PRODUCT24 | 0 | 0 | 0 | 0 | 0 |
-| PageScan | PAGESCAN | 12 | 1 | 11 | 6 | 6 |
-| Pass | PASS | 8 | 5 | 3 | 7 | 1 |
+| PageScan | PAGESCAN | 7 | 1 | 6 | 3 | 4 |
+| Pass | PASS | 4 | 3 | 1 | 3 | 1 |
 | Respond | RESP | 0 | 0 | 0 | 0 | 0 |
 
 ## Monthly created
 
 | Month | Slice | AIChat | Aware | Comm | DD | DE | DevOps | Filter | Flex | Home | MDM Class | On-Call | PageScan | Pass | Respond | Total |
 | --- | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Jul 2026 | Created | 0 | 6 | 2 | 6 | 12 | 4 | 10 | 1 | 0 | 18 | 0 | 5 | 4 | 0 | 68 |
-| Jul 2026 | Done | 0 | 5 | 2 | 0 | 9 | 4 | 2 | 1 | 0 | 14 | 0 | 3 | 4 | 0 | 44 |
-| Jul 2026 | Not Done | 0 | 1 | 0 | 6 | 3 | 0 | 8 | 0 | 0 | 4 | 0 | 2 | 0 | 0 | 24 |
 | Aug 2026 (partial) | Created | 1 | 4 | 4 | 10 | 2 | 2 | 13 | 9 | 5 | 42 | 0 | 7 | 4 | 0 | 103 |
 | Aug 2026 (partial) | Done | 0 | 3 | 2 | 2 | 2 | 1 | 2 | 6 | 4 | 22 | 0 | 3 | 3 | 0 | 50 |
 | Aug 2026 (partial) | Not Done | 1 | 1 | 2 | 8 | 0 | 1 | 11 | 3 | 1 | 20 | 0 | 4 | 1 | 0 | 53 |
@@ -61,74 +58,6 @@ Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zen
 
 | Month | Product | Key | Type | P | ZD | Created | Status | Assignee | Summary |
 | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
-| Jul 2026 | DE | [DE-803](https://securly.atlassian.net/browse/DE-803) | Support Request | P3 | 1 | 2026-07-01 | Done | Jaydev Zala | Export of all Educational sites visited in last 6 months. |
-| Jul 2026 | DE | [DE-804](https://securly.atlassian.net/browse/DE-804) | Support Request | P3 | 1 | 2026-07-01 | Done | Jayesh Agrawal | Total number of unique students who were flagged in Aware for the year |
-| Jul 2026 | DevOps | [DEVOPS-11351](https://securly.atlassian.net/browse/DEVOPS-11351) | Support Request | P3 | 1 | 2026-07-01 | Done | Alok Patil | Upload list of Vimeo URLs to Global Allow |
-| Jul 2026 | MDM Class | [MDMCLASS-18359](https://securly.atlassian.net/browse/MDMCLASS-18359) | Support Request | P3 | 1 | 2026-07-06 | Closed | Shana Good | MDM / iOS 26.5 devices unable to enroll |
-| Jul 2026 | DD | [DD-3781](https://securly.atlassian.net/browse/DD-3781) | Support Request | P3 | 1 | 2026-07-06 | Backlog | Suhas Pawar | REVEAL / Run custom report montly |
-| Jul 2026 | Pass | [PASS-7914](https://securly.atlassian.net/browse/PASS-7914) | Escape Defect | P3 | 1 | 2026-07-06 | Closed(Done) | Manasi Kulkarni | Limit Location Availability - Copy to Current School Year feature not working properly, searching and sorting not working properly |
-| Jul 2026 | DevOps | [DEVOPS-11506](https://securly.atlassian.net/browse/DEVOPS-11506) | Support Request | P2 | 1 | 2026-07-06 | Done | Himanshu Wagh | We need to clear azureAdminConsents clearing for the FID: securly@blockleyschool.gloucs.sch.uk |
-| Jul 2026 | MDM Class | [MDMCLASS-18361](https://securly.atlassian.net/browse/MDMCLASS-18361) | Support Request | P3 | 1 | 2026-07-06 | Closed | Mike Noskov | CLASSROOM / Unable to remove classes Cushman School |
-| Jul 2026 | DE | [DE-805](https://securly.atlassian.net/browse/DE-805) | Support Request | P3 | 1 | 2026-07-06 | Done | Omkar Khandekar | CSV logs of student activity under certain policies |
-| Jul 2026 | Comm | [COM-1535](https://securly.atlassian.net/browse/COM-1535) | Support Request | P3 | 1 | 2026-07-07 | Done | Ayush Hiran | Phoenix Union SD requests a list of all users with the PFA tag in Pass and Flex  |
-| Jul 2026 | DE | [DE-808](https://securly.atlassian.net/browse/DE-808) | Support Request | P3 | 1 | 2026-07-07 | Closed without action | Jayesh Agrawal | PASS / Export report to the library |
-| Jul 2026 | DE | [DE-809](https://securly.atlassian.net/browse/DE-809) | Support Request | P1 | 1 | 2026-07-07 | Done | Jayesh Agrawal | Center Grove Grove community  School corp needs a report  |
-| Jul 2026 | Filter | [FILTER-15147](https://securly.atlassian.net/browse/FILTER-15147) | Escape Defect | P3 | 1 | 2026-07-08 | Closed(Done) | Oleksii Tkachenko | Radio stations on planetradio.co.uk stop playing after 10-20 minutes on DNS filtering. |
-| Jul 2026 | Filter | [FILTER-15150](https://securly.atlassian.net/browse/FILTER-15150) | Escape Defect | P3 | 1 | 2026-07-08 | Open | Shashank Tiwari | At least 2 users appear to not be getting synced from Azure. |
-| Jul 2026 | MDM Class | [MDMCLASS-18375](https://securly.atlassian.net/browse/MDMCLASS-18375) | Support Request | P3 | 1 | 2026-07-08 | Reopened | Mike Noskov | Configure role title from Clever to accept more than 11 Characters |
-| Jul 2026 | Pass | [PASS-7922](https://securly.atlassian.net/browse/PASS-7922) | Support Request | P3 | 1 | 2026-07-08 | Done | Nilesh Vishwakarma | Visitor Data Pull Request for "For Oak Cliff" School |
-| Jul 2026 | DE | [DE-810](https://securly.atlassian.net/browse/DE-810) | Support Request | P3 | 1 | 2026-07-08 | Open | Jayesh Agrawal | Albany county School district needs a report |
-| Jul 2026 | Filter | [FILTER-15187](https://securly.atlassian.net/browse/FILTER-15187) | Support Request | P2 | 1 | 2026-07-08 | Closed without action | Shashank Tiwari | Extension Leak - Shortcut on Chrome Browser Extension - loril.hill@vbschools.com |
-| Jul 2026 | Pass | [PASS-7923](https://securly.atlassian.net/browse/PASS-7923) | Escape Defect | P2 | 5 | 2026-07-08 | Done | Manasi Kulkarni | Visitor - Visitor Adults list not recognizing users |
-| Jul 2026 | DD | [DD-3790](https://securly.atlassian.net/browse/DD-3790) | Support Request | P3 | 1 | 2026-07-09 | Backlog | David Atwell | Customer kunaschools is requesting a custom report |
-| Jul 2026 | MDM Class | [MDMCLASS-18381](https://securly.atlassian.net/browse/MDMCLASS-18381) | Support Request | P3 | 1 | 2026-07-09 | Closed | Debra Gyamfi | Securly Sync displays "Nothing was synced" error when enabling sync, despite sync later processing successfully |
-| Jul 2026 | MDM Class | [MDMCLASS-18382](https://securly.atlassian.net/browse/MDMCLASS-18382) | Support Request | P3 | 1 | 2026-07-09 | Closed | Mike Noskov | Please modify the usernames for FID: securly@mtcityschool.net |
-| Jul 2026 | Pass | [PASS-7931](https://securly.atlassian.net/browse/PASS-7931) | Support Request | P3 | 1 | 2026-07-10 | Done | Amrish Kakadiya | History Data Pull - Corpus Christi Independent School District |
-| Jul 2026 | DE | [DE-812](https://securly.atlassian.net/browse/DE-812) | Support Request | P3 | 1 | 2026-07-10 | Done | Jayesh Agrawal | All Filter Logs for a user |
-| Jul 2026 | MDM Class | [MDMCLASS-18396](https://securly.atlassian.net/browse/MDMCLASS-18396) | Escape Defect | P3 | 1 | 2026-07-13 | Done | Parul Bhat | Tab Limit not being applied |
-| Jul 2026 | DD | [DD-3798](https://securly.atlassian.net/browse/DD-3798) | Support Request | P3 | 1 | 2026-07-15 | Backlog | David Atwell | Customer wc235 is requesting screen time reports |
-| Jul 2026 | MDM Class | [MDMCLASS-18415](https://securly.atlassian.net/browse/MDMCLASS-18415) | Support Request | P3 | 2 | 2026-07-15 | In Progress | Chris Wainner | Students using full screen by pressing F11 on Chrome are unable to be monitored.  |
-| Jul 2026 | MDM Class | [MDMCLASS-18430](https://securly.atlassian.net/browse/MDMCLASS-18430) | Escape Defect | P3 | 1 | 2026-07-16 | Closed(Done) | Mike Noskov | Schools not rostering from Securly Sync |
-| Jul 2026 | DE | [DE-815](https://securly.atlassian.net/browse/DE-815) | Support Request | P3 | 1 | 2026-07-17 | Done | Omkar Khandekar | San Jose Unified School District (CA) Full Filter activity export – April 1–30 |
-| Jul 2026 | PageScan | [PAGESCAN-977](https://securly.atlassian.net/browse/PAGESCAN-977) | Support Request | P3 | 1 | 2026-07-20 | Closed(Done) | Jaydev Zala | Can these sites be recategorized.  |
-| Jul 2026 | DD | [DD-3804](https://securly.atlassian.net/browse/DD-3804) | Support Request | P3 | 1 | 2026-07-20 | Backlog | David Atwell | Custom report - AVG screentime onsite vs offsite - elmbrook |
-| Jul 2026 | MDM Class | [MDMCLASS-18456](https://securly.atlassian.net/browse/MDMCLASS-18456) | Escape Defect | P3 | 1 | 2026-07-20 | Ready for QA | Parul Bhat | Custom Field for Lost Mode Message Not Displaying Properly |
-| Jul 2026 | PageScan | [PAGESCAN-979](https://securly.atlassian.net/browse/PAGESCAN-979) | Support Request | P3 | 1 | 2026-07-21 | Backlog | Unassigned | SIlver falls school district would like us to recategorize this document and the links within. |
-| Jul 2026 | MDM Class | [MDMCLASS-18474](https://securly.atlassian.net/browse/MDMCLASS-18474) | Escape Defect | P3 | 1 | 2026-07-21 | Closed(Done) | Mike Noskov | Trial Phase Data Removal |
-| Jul 2026 | Flex | [FLEX-4469](https://securly.atlassian.net/browse/FLEX-4469) | Escape Defect | P2 | 1 | 2026-07-21 | Confirmation | Manasi Kulkarni | School year rollover broken - Center Pointe Secondary |
-| Jul 2026 | DD | [DD-3818](https://securly.atlassian.net/browse/DD-3818) | Support Request | P3 | 1 | 2026-07-22 | Backlog | Suhas Pawar | Customer fccps requesting custom report for Youtube |
-| Jul 2026 | PageScan | [PAGESCAN-980](https://securly.atlassian.net/browse/PAGESCAN-980) | Support Request | P3 | 1 | 2026-07-22 | Closed(Done) | Jaydev Zala | Malware sites - bulk categorization - userimport@lsr7.net |
-| Jul 2026 | Aware | [AWARE-8666](https://securly.atlassian.net/browse/AWARE-8666) | Support Request | P1 | 1 | 2026-07-22 | Done | Nathan Thomas | Test email not flagged by Aware - FID: securly@colonial.k12.de.us / US-East2 |
-| Jul 2026 | Aware | [AWARE-8688](https://securly.atlassian.net/browse/AWARE-8688) | Support Request | P1 | 1 | 2026-07-23 | Done | Mauricio Palacios | Unable to save OUs under Org Unit Management tab  - kathy.kimbrough@edu.forneyisd.net |
-| Jul 2026 | Filter | [FILTER-15515](https://securly.atlassian.net/browse/FILTER-15515) | Support Request | P2 | 1 | 2026-07-23 | Backlog | Craig Fearnsides | Need Ghost accounts and partially existing accounts found and deleted |
-| Jul 2026 | Filter | [FILTER-15528](https://securly.atlassian.net/browse/FILTER-15528) | Support Request | P3 | 1 | 2026-07-24 | Backlog | Unassigned | Google Earth not displaying street view |
-| Jul 2026 | Aware | [AWARE-8707](https://securly.atlassian.net/browse/AWARE-8707) | Support Request | P1 | 1 | 2026-07-24 | Done | Olu Ajayi | Flagged site not sent to Case Manager |
-| Jul 2026 | Filter | [FILTER-15533](https://securly.atlassian.net/browse/FILTER-15533) | Support Request | P2 | 1 | 2026-07-24 | Backlog | Unassigned | Anonymous/unauthenticated blocked users are not receiving blocked-activity email alerts |
-| Jul 2026 | MDM Class | [MDMCLASS-18517](https://securly.atlassian.net/browse/MDMCLASS-18517) | Support Request | P3 | 1 | 2026-07-24 | Closed | Mike Noskov | Roster Integration with Canvas not importing Classes into Classroom |
-| Jul 2026 | MDM Class | [MDMCLASS-18518](https://securly.atlassian.net/browse/MDMCLASS-18518) | Support Request | P3 | 1 | 2026-07-24 | Closed | Mike Noskov | Customer (org11967) cannot view screens in an Active Class |
-| Jul 2026 | DevOps | [DEVOPS-11534](https://securly.atlassian.net/browse/DEVOPS-11534) | Support Request | P3 | 1 | 2026-07-27 | Done | Amandeep Nehra | Please clear azureAdminConsents for the UK FID: securly@whipperleyacademytrust.co.uk |
-| Jul 2026 | DE | [DE-826](https://securly.atlassian.net/browse/DE-826) | Support Request | P2 | 2 | 2026-07-27 | Backlog | Jaydev Zala | Student Report |
-| Jul 2026 | MDM Class | [MDMCLASS-18530](https://securly.atlassian.net/browse/MDMCLASS-18530) | Escape Defect | P2 | 1 | 2026-07-27 | Done | Parul Bhat | MDM NUCLEUS / Skip username requirement in Add New WiFi modal if user uploads trusted certificates |
-| Jul 2026 | DE | [DE-824](https://securly.atlassian.net/browse/DE-824) | Support Request | P3 | 1 | 2026-07-27 | Done | Jaydev Zala | Aztec Eagles Academy Schools / Data and activity from the previous 12 months |
-| Jul 2026 | MDM Class | [MDMCLASS-18547](https://securly.atlassian.net/browse/MDMCLASS-18547) | Support Request | P3 | 1 | 2026-07-28 | Closed | Mike Noskov | CLASSROOM / Gwinnett new users not pulling location  |
-| Jul 2026 | MDM Class | [MDMCLASS-18548](https://securly.atlassian.net/browse/MDMCLASS-18548) | Support Request | P3 | 1 | 2026-07-28 | Closed | Megan McBride | Canvas not rostering students to classes |
-| Jul 2026 | Filter | [FILTER-15790](https://securly.atlassian.net/browse/FILTER-15790) | Escape Defect | P1 | 1 | 2026-07-28 | In Progress | Shashank Tiwari | P1 Escalation - (Regression) Personal Gmail can be used to bypass Extension Filtering in Windows Chrome / Utica (MI) |
-| Jul 2026 | Aware | [AWARE-8766](https://securly.atlassian.net/browse/AWARE-8766) | Support Request | P1 | 1 | 2026-07-28 | Done | Mauricio Palacios | Case Manager is not generating cases - ngamache@bsmschool.org |
-| Jul 2026 | Filter | [FILTER-15873](https://securly.atlassian.net/browse/FILTER-15873) | Escape Defect | P2 | 1 | 2026-07-29 | Open | Shashank Tiwari | Smart PAC logs IP addresses instead of URLs  |
-| Jul 2026 | DE | [DE-833](https://securly.atlassian.net/browse/DE-833) | Support Request | P2 | 1 | 2026-07-29 | Backlog | Jaydev Zala | Rugby School (rugbyschool.net) / Export User Activity from the previous 12 months |
-| Jul 2026 | Aware | [AWARE-8775](https://securly.atlassian.net/browse/AWARE-8775) | Support Request | P2 | 1 | 2026-07-29 | Open | Alex Shields | Support unable to access securly@stcatherinesinfo.onmicrosoft.com's Aware via Support Tool |
-| Jul 2026 | Aware | [AWARE-8778](https://securly.atlassian.net/browse/AWARE-8778) | Escape Defect | P1 | 3 | 2026-07-29 | Confirmation | Mauricio Palacios | Bluevalley activities tab loading error - kcorser@bluevalleyk12.org |
-| Jul 2026 | PageScan | [PAGESCAN-984](https://securly.atlassian.net/browse/PAGESCAN-984) | Support Request | P3 | 1 | 2026-07-29 | Backlog | Unassigned | Please Scan these CSVs |
-| Jul 2026 | Filter | [FILTER-15945](https://securly.atlassian.net/browse/FILTER-15945) | Support Request | P3 | 1 | 2026-07-30 | Backlog | Unassigned | iPads Not Loading Captive Portals |
-| Jul 2026 | DD | [DD-3851](https://securly.atlassian.net/browse/DD-3851) | Support Request | P3 | 1 | 2026-07-30 | Backlog | Unassigned | Custom Reports (3) for Reveal / Achievement First (New Haven CT) |
-| Jul 2026 | MDM Class | [MDMCLASS-18563](https://securly.atlassian.net/browse/MDMCLASS-18563) | Support Request | P3 | 1 | 2026-07-30 | In Review | Mike Noskov | MDM / Airprint profile does not work via MDM |
-| Jul 2026 | Comm | [COM-1566](https://securly.atlassian.net/browse/COM-1566) | Escape Defect | P2 | 11 | 2026-07-30 | Done | Manasi Kulkarni | Multiple ClassLink schools not syncing after 48 hours |
-| Jul 2026 | MDM Class | [MDMCLASS-18564](https://securly.atlassian.net/browse/MDMCLASS-18564) | Support Request | P3 | 1 | 2026-07-30 | Closed | Mike Noskov | CLASSROOM / Remove temp accounts |
-| Jul 2026 | PageScan | [PAGESCAN-986](https://securly.atlassian.net/browse/PAGESCAN-986) | Support Request | P3 | 1 | 2026-07-30 | Closed(Done) | Jaydev Zala | Categorize script.google.com domains - loril.hill@vbschools.com |
-| Jul 2026 | Filter | [FILTER-15957](https://securly.atlassian.net/browse/FILTER-15957) | Support Request | P3 | 1 | 2026-07-30 | Backlog | Unassigned | Google Maps rendering very slowly for smartPAC and DNS  |
-| Jul 2026 | DE | [DE-831](https://securly.atlassian.net/browse/DE-831) | Support Request | P1 | 1 | 2026-07-31 | Done | Tejas Chaudhari | AWARE / Missed flagged activities |
-| Jul 2026 | MDM Class | [MDMCLASS-18573](https://securly.atlassian.net/browse/MDMCLASS-18573) | Support Request | P3 | 1 | 2026-07-31 | Done | Mike Noskov | MDM / Whitelisted domain in profile shows blocked via MDM |
-| Jul 2026 | DevOps | [DEVOPS-11570](https://securly.atlassian.net/browse/DEVOPS-11570) | Support Request | P1 | 1 | 2026-07-31 | Done | Amandeep Nehra | Remove 2300+ entries from Global Block List / Pickens (SC) |
 | Aug 2026 | Home | [HOME-5559](https://securly.atlassian.net/browse/HOME-5559) | Support Request | P2 | 1 | 2026-08-03 | Closed without action | Shawn Nicol | Error when linking a new parent email to a student account |
 | Aug 2026 | Home | [HOME-5524](https://securly.atlassian.net/browse/HOME-5524) | Escape Defect | P2 | 1 | 2026-08-03 | Done | Parul Bhat | Parent subscription statuses resetting to subscribed after daily Securly Sync |
 | Aug 2026 | DE | [DE-830](https://securly.atlassian.net/browse/DE-830) | Support Request | P3 | 1 | 2026-08-03 | Done | Jaydev Zala | Southeast Delco School District – One-Year Content Filtering Data Export |
@@ -235,12 +164,12 @@ Snapshot **2026-08-25** · 14 products · Escape Defect + Support Request · Zen
 
 ## Live Jira views
 
-- [Created since 1 Jul](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20ORDER%20BY%20created%20ASC)
-- [statusCategory != Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC)
-- [statusCategory = Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC)
+- [Created since 1 Aug 2026](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-08-01%22%20ORDER%20BY%20created%20ASC)
+- [statusCategory != Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-08-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC)
+- [statusCategory = Done](https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-08-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC)
 
 ## Notes
 
-- Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.
-- Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.
-- JQL: `project in (AICHAT, AWARE, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS, RESP) AND issuetype in ("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 AND created >= "2026-07-01" ORDER BY created ASC`
+- Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.
+- Aug 2026 is partial through the snapshot date.
+- JQL: `project in (AICHAT, AWARE, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS, RESP) AND issuetype in ("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 AND created >= "2026-08-01" ORDER BY created ASC`

@@ -10,6 +10,7 @@ Reads reports/filter-zendesk-weekly-dashboard.json and writes:
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -33,10 +34,23 @@ def md_row(cells: list[object]) -> str:
     return "| " + " | ".join(str(c) for c in cells) + " |"
 
 
+def created_from_label(data: dict) -> str:
+    filters = data.get("filters") or {}
+    if filters.get("created_from_label"):
+        return filters["created_from_label"]
+    raw = filters.get("created_from") or "2026-08-01"
+    try:
+        dt = datetime.fromisoformat(raw)
+    except ValueError:
+        return raw
+    return f"{dt.day} {dt.strftime('%b')} {dt.year}"
+
+
 def write_markdown(data: dict) -> str:
     k = data["kpis"]
     projects = sorted(data["projects"], key=lambda p: p["label"].lower())
     product_kpis = sorted(data["product_kpis"], key=lambda p: p["label"].lower())
+    from_label = created_from_label(data)
     lines = [
         f"# {data['title']}",
         "",
@@ -47,7 +61,7 @@ def write_markdown(data: dict) -> str:
         "",
         data.get("headline")
         or (
-            f"**{k['created']}** Zendesk-linked tickets created since 1 Jul 2026 "
+            f"**{k['created']}** Zendesk-linked tickets created since {from_label} "
             f"({k['created_escape_defect']} Escape Defect, {k['created_support_request']} Support Request). "
             f"**{k['created_done']}** Done · **{k['created_open']}** still open."
         ),
@@ -150,7 +164,7 @@ def write_markdown(data: dict) -> str:
         "",
         "## Live Jira views",
         "",
-        f"- [Created since 1 Jul]({data['links']['created']})",
+        f"- [Created since {from_label}]({data['links']['created']})",
         f"- [statusCategory != Done]({data['links']['created_open']})",
         f"- [statusCategory = Done]({data['links']['created_done']})",
         "",
@@ -166,23 +180,50 @@ def write_markdown(data: dict) -> str:
 
 def write_html(data: dict) -> str:
     payload = json.dumps(data, ensure_ascii=True)
+    from_label = created_from_label(data)
+    title = esc(data["title"])
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>{esc(data['title'])}</title>
+<title>{title}</title>
+<script>
+(function(){{
+  try {{
+    if (localStorage.getItem('zd-dashboard-theme') === 'light') {{
+      document.documentElement.setAttribute('data-theme','light');
+    }}
+  }} catch (e) {{}}
+}})();
+</script>
 <style>
   :root {{
     --bg:#0f172a; --panel:#1e293b; --panel2:#273449; --ink:#e2e8f0; --muted:#94a3b8;
     --line:#334155; --good:#22c55e; --ok:#84cc16; --warn:#eab308; --bad:#f97316; --crit:#ef4444;
-    --accent:#38bdf8; --created:#38bdf8;
+    --accent:#38bdf8; --created:#38bdf8; --header-bg:linear-gradient(180deg,#111c33,#0f172a);
+    --hover:#20304a; --row-done:#13261c; --row-open:#2a2410; --track:#334155;
+    --tab-active-bg:#0ea5e9; --tab-active-ink:#04283b;
+  }}
+  html[data-theme="light"] {{
+    --bg:#f1f5f9; --panel:#ffffff; --panel2:#e2e8f0; --ink:#0f172a; --muted:#475569;
+    --line:#cbd5e1; --accent:#0369a1; --created:#0284c7;
+    --header-bg:linear-gradient(180deg,#ffffff,#f8fafc);
+    --hover:#e2e8f0; --row-done:#dcfce7; --row-open:#fef3c7; --track:#cbd5e1;
+    --tab-active-bg:#0284c7; --tab-active-ink:#ffffff;
   }}
   * {{ box-sizing:border-box; }}
   body {{ margin:0; background:var(--bg); color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:14px; }}
   header {{ padding:24px 28px; border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg,#111c33,#0f172a); }}
+    background:var(--header-bg); }}
+  .header-row {{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }}
+  .theme-toggle {{
+    background:var(--panel2); color:var(--ink); border:1px solid var(--line);
+    border-radius:999px; padding:8px 14px; cursor:pointer; font-size:13px; font-weight:600;
+    white-space:nowrap; flex-shrink:0;
+  }}
+  .theme-toggle:hover {{ border-color:var(--accent); color:var(--accent); }}
   h1 {{ margin:0 0 6px; font-size:22px; }}
   .sub {{ color:var(--muted); font-size:13px; line-height:1.5; }}
   .sub a {{ color:var(--accent); text-decoration:none; }}
@@ -203,12 +244,12 @@ def write_html(data: dict) -> str:
   .card.good .n {{ color:var(--good); }}
   .card.done {{ border-color:#166534; }}
   .card.open {{ border-color:#a16207; }}
-  .split {{ display:flex; height:8px; border-radius:999px; overflow:hidden; background:#334155; margin-top:8px; }}
+  .split {{ display:flex; height:8px; border-radius:999px; overflow:hidden; background:var(--track); margin-top:8px; }}
   .split .done {{ background:var(--good); }}
   .split .open {{ background:var(--warn); }}
   .cmp {{ display:grid; grid-template-columns:minmax(110px,140px) 1fr 90px; gap:8px 14px; align-items:center;
     background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }}
-  .bar.stack {{ display:flex; height:14px; border-radius:7px; overflow:hidden; background:#334155; }}
+  .bar.stack {{ display:flex; height:14px; border-radius:7px; overflow:hidden; background:var(--track); }}
   .bar.stack .done {{ background:var(--good); height:100%; }}
   .bar.stack .open {{ background:var(--warn); height:100%; }}
   .cmp-meta {{ font-size:12px; font-variant-numeric:tabular-nums; white-space:nowrap; }}
@@ -216,8 +257,8 @@ def write_html(data: dict) -> str:
   .cmp-meta .open {{ color:var(--warn); font-weight:700; }}
   td.done, th.done {{ color:var(--good); }}
   td.open, th.open {{ color:var(--warn); }}
-  tr.row-done td {{ background:#13261c; }}
-  tr.row-open td {{ background:#2a2410; }}
+  tr.row-done td {{ background:var(--row-done); }}
+  tr.row-open td {{ background:var(--row-open); }}
   tr.row-label td {{ color:var(--muted); font-weight:600; }}
   .legend .swatch {{ display:inline-block; width:10px; height:10px; border-radius:2px; margin:0 4px 0 10px; vertical-align:middle; }}
   .legend .swatch.done {{ background:var(--good); }}
@@ -233,7 +274,7 @@ def write_html(data: dict) -> str:
   th.sortable.active {{ color:var(--ink); }}
   th.sortable.active .arrow {{ opacity:1; color:var(--accent); }}
   td.num, th.num {{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }}
-  tr:hover td {{ background:#20304a; }}
+  tr:hover td {{ background:var(--hover); }}
   .scroll {{ overflow-x:auto; }}
   .pill {{ display:inline-block; padding:2px 8px; border-radius:999px; font-weight:700; font-size:11px; }}
   .p-ed {{ background:#7c3aed; color:#f5f3ff; }}
@@ -264,7 +305,7 @@ def write_html(data: dict) -> str:
   .links a:hover {{ border-color:var(--accent); }}
   .chart {{ display:grid; grid-template-columns:120px 1fr; gap:10px 16px; align-items:center;
     background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }}
-  .bar {{ height:12px; border-radius:6px; background:#334155; overflow:hidden; }}
+  .bar {{ height:12px; border-radius:6px; background:var(--track); overflow:hidden; }}
   .bar > i {{ display:block; height:100%; background:var(--created); }}
   .bar-meta {{ color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; margin-top:4px; }}
   .legend {{ color:var(--muted); font-size:12px; margin:8px 0 0; }}
@@ -276,10 +317,11 @@ def write_html(data: dict) -> str:
   .tabs {{ display:flex; gap:6px; margin:8px 0 14px; }}
   .tabs button {{ background:var(--panel2); color:var(--ink); border:1px solid var(--line);
     border-radius:8px; padding:7px 12px; cursor:pointer; }}
-  .tabs button.active {{ background:#0ea5e9; color:#04283b; border-color:#0ea5e9; font-weight:700; }}
+  .tabs button.active {{ background:var(--tab-active-bg); color:var(--tab-active-ink); border-color:var(--tab-active-bg); font-weight:700; }}
   a.key {{ color:var(--accent); text-decoration:none; font-weight:600; }}
   a.key:hover {{ text-decoration:underline; }}
   .note {{ color:var(--muted); font-size:12px; margin-top:10px; }}
+  code {{ background:var(--panel2); padding:1px 5px; border-radius:4px; }}
   footer {{ color:var(--muted); font-size:12px; padding:22px 28px; border-top:1px solid var(--line); }}
   .callout {{ background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--warn);
     border-radius:10px; padding:12px 16px; margin:8px 0 20px; color:var(--muted); }}
@@ -289,13 +331,18 @@ def write_html(data: dict) -> str:
 </head>
 <body>
 <header>
-  <h1>Monthly Zendesk-linked dashboard</h1>
-  <div class="sub">
-    Escape Defects and Support Requests · <span id="prodCount"></span> products ·
-    from 1 Jul 2026 · snapshot <span id="snap"></span><br/>
-    Source: <a href="https://securly.atlassian.net">securly.atlassian.net</a>
-    · field <code>Zendesk Ticket Count</code> &gt; 0
-    · grouped by calendar month
+  <div class="header-row">
+    <div>
+      <h1>{title}</h1>
+      <div class="sub">
+        Escape Defects and Support Requests · <span id="prodCount"></span> products ·
+        from {esc(from_label)} · snapshot <span id="snap"></span><br/>
+        Source: <a href="https://securly.atlassian.net">securly.atlassian.net</a>
+        · field <code>Zendesk Ticket Count</code> &gt; 0
+        · grouped by calendar month
+      </div>
+    </div>
+    <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
   </div>
 </header>
 <div class="wrap">
@@ -307,7 +354,7 @@ def write_html(data: dict) -> str:
   <h2>Done vs not Done</h2>
   <div class="legend">
     Comparison of Jira <b>statusCategory = Done</b> versus <b>statusCategory != Done</b>
-    for the Jul+ cohort.
+    for the Aug cohort.
     <span class="swatch done"></span>Done
     <span class="swatch open"></span>Not Done
   </div>
@@ -315,12 +362,12 @@ def write_html(data: dict) -> str:
   <div class="scroll" style="margin-top:16px"><table id="compare"></table></div>
 
   <h2>Monthly created by product</h2>
-  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Jul 2026 is complete. Aug 2026 is partial through the snapshot date. On-Call (PRODUCT24) and Respond (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
+  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Aug 2026 is partial through the snapshot date. On-Call (PRODUCT24) and Respond (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
   <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
 
   <h2>Ticket list</h2>
   <div class="tabs">
-    <button class="active" data-tab="created">Created since 1 Jul</button>
+    <button class="active" data-tab="created">Created since {esc(from_label)}</button>
     <button data-tab="open">Not Done</button>
     <button data-tab="done">Done</button>
   </div>
@@ -352,6 +399,21 @@ def write_html(data: dict) -> str:
 <script>
 const DATA = {payload};
 const $ = (id) => document.getElementById(id);
+const THEME_KEY = 'zd-dashboard-theme';
+function applyTheme(theme) {{
+  document.documentElement.setAttribute('data-theme', theme);
+  try {{ localStorage.setItem(THEME_KEY, theme); }} catch (e) {{}}
+  const btn = $('themeToggle');
+  const isLight = theme === 'light';
+  btn.textContent = isLight ? 'Dark mode' : 'Light mode';
+  btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+  btn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+}}
+applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+$('themeToggle').addEventListener('click', () => {{
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+}});
+const fromLabel = (DATA.filters && DATA.filters.created_from_label) || '{esc(from_label)}';
 const PROJ_PILL = {{
   FILTER:'p-filter', AWARE:'p-aware', PRODUCT24:'p-oncall', RESP:'p-respond',
   AICHAT:'p-aichat', PASS:'p-pass', FLEX:'p-flex', COM:'p-comm',
@@ -384,7 +446,7 @@ function pillProj(issue) {{
 $('snap').textContent = DATA.snapshot_date;
 $('prodCount').textContent = PRODUCTS.length;
 $('links').innerHTML = [
-  ['Created since 1 Jul', DATA.links.created],
+  [`Created since ${{fromLabel}}`, DATA.links.created],
   ['statusCategory != Done', DATA.links.created_open],
   ['statusCategory = Done', DATA.links.created_done],
 ].map(([l,u]) => `<a href="${{u}}" target="_blank" rel="noopener">${{l}}</a>`).join('');
@@ -394,7 +456,7 @@ const donePct = k.done_pct != null ? k.done_pct : (k.created ? Math.round(100*k.
 const openPct = k.not_done_pct != null ? k.not_done_pct : (k.created ? Math.round(100*k.created_open/k.created) : 0);
 const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`;
 $('overview').innerHTML = [
-  [k.created, 'Created since 1 Jul', `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
+  [k.created, `Created since ${{fromLabel}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
   [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
   [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
 ].map(cardHtml).join('');
