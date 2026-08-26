@@ -11,19 +11,20 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "reports" / "filter-zendesk-weekly-dashboard.json"
 
 PROJECTS = [
-    {"key": "FILTER", "name": "product_FILTER", "label": "Filter"},
-    {"key": "AWARE", "name": "product_AWARE", "label": "Aware"},
-    {"key": "RESP", "name": "product_RESPOND", "label": "Respond"},
     {"key": "AICHAT", "name": "Product_AIChat", "label": "AIChat"},
-    {"key": "PASS", "name": "Pass", "label": "Pass"},
-    {"key": "FLEX", "name": "Flex", "label": "Flex"},
+    {"key": "AWARE", "name": "product_AWARE", "label": "Aware"},
     {"key": "COM", "name": "Pass-Flex Common Services", "label": "Comm"},
-    {"key": "MDMCLASS", "name": "product_MDM_CLASSROOM", "label": "MDM Class"},
-    {"key": "PAGESCAN", "name": "prod_pagescan", "label": "PageScan"},
     {"key": "DD", "name": "DyKnow & Reveal", "label": "DD"},
     {"key": "DE", "name": "OPS_DE", "label": "DE"},
     {"key": "DEVOPS", "name": "ops_devops", "label": "DevOps"},
+    {"key": "FILTER", "name": "product_FILTER", "label": "Filter"},
+    {"key": "FLEX", "name": "Flex", "label": "Flex"},
     {"key": "HOME", "name": "product_HOME", "label": "Home"},
+    {"key": "MDMCLASS", "name": "product_MDM_CLASSROOM", "label": "MDM Class"},
+    {"key": "PRODUCT24", "name": "product_oncall", "label": "On-Call"},
+    {"key": "PAGESCAN", "name": "prod_pagescan", "label": "PageScan"},
+    {"key": "PASS", "name": "Pass", "label": "Pass"},
+    {"key": "RESP", "name": "product_RESPOND", "label": "Respond"},
 ]
 PROJECT_BY_KEY = {p["key"]: p for p in PROJECTS}
 PROJECT_LIST = ", ".join(p["key"] for p in PROJECTS)
@@ -198,9 +199,10 @@ def main(paths: list[str]) -> None:
     for issue in issues:
         bump(kpis, issue)
 
+    product_kpis.sort(key=lambda p: p["label"].lower())
     ranked = sorted(product_kpis, key=lambda p: (-p["created"], p["label"]))
     top = [p for p in ranked if p["created"] > 0][:5]
-    zero = [p["label"] for p in product_kpis if p["created"] == 0]
+    zero = sorted(p["label"] for p in product_kpis if p["created"] == 0)
     top_txt = ", ".join(f"{p['label']} {p['created']}" for p in top)
     headline = (
         f"{kpis['created']} Zendesk-linked tickets created since 1 Jul 2026 "
@@ -249,10 +251,11 @@ def main(paths: list[str]) -> None:
         "headline": headline,
         "notes": {
             "scope": (
-                "Includes Filter, Aware, Respond (RESP), AIChat, Pass, Flex, Comm, "
-                "MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no "
-                "Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. "
-                "Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done."
+                "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, "
+                "MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). "
+                "Products with 0 had no Escape Defect or Support Request with Zendesk "
+                "Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira "
+                "statusCategory = Done versus statusCategory != Done."
             ),
             "window": "Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.",
         },

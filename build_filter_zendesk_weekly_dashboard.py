@@ -35,7 +35,8 @@ def md_row(cells: list[object]) -> str:
 
 def write_markdown(data: dict) -> str:
     k = data["kpis"]
-    projects = data["projects"]
+    projects = sorted(data["projects"], key=lambda p: p["label"].lower())
+    product_kpis = sorted(data["product_kpis"], key=lambda p: p["label"].lower())
     lines = [
         f"# {data['title']}",
         "",
@@ -61,7 +62,7 @@ def write_markdown(data: dict) -> str:
         md_row(["Product", "Key", "Created", "Done", "Not Done", "Done %", "Not Done %"]),
         md_row(["---", "---", "---:", "---:", "---:", "---:", "---:"]),
     ]
-    for p in data["product_kpis"]:
+    for p in product_kpis:
         lines.append(
             md_row(
                 [
@@ -82,7 +83,7 @@ def write_markdown(data: dict) -> str:
         md_row(["Product", "Key", "Created", "Escape Defect", "Support Request", "Done", "Not Done"]),
         md_row(["---", "---", "---:", "---:", "---:", "---:", "---:"]),
     ]
-    for p in data["product_kpis"]:
+    for p in product_kpis:
         lines.append(
             md_row(
                 [
@@ -187,8 +188,15 @@ def write_html(data: dict) -> str:
   .sub a {{ color:var(--accent); text-decoration:none; }}
   .sub a:hover {{ text-decoration:underline; }}
   .wrap {{ padding:20px 28px 60px; max-width:1800px; margin:0 auto; }}
-  .cards {{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 26px; }}
+  .cards {{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 12px; }}
+  .cards.overview {{ margin-bottom:16px; }}
+  .cards.overview .card {{ min-width:200px; flex:1 1 220px; }}
+  .cards.products {{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:10px; margin:0 0 26px; }}
   .card {{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; min-width:128px; flex:1 1 128px; }}
+  .cards.products .card {{ min-width:0; flex:unset; }}
+  @media (max-width:1200px) {{
+    .cards.products {{ grid-template-columns:repeat(4, minmax(0,1fr)); }}
+  }}
   .card .n {{ font-size:26px; font-weight:700; }}
   .card .l {{ color:var(--muted); font-size:12px; margin-top:2px; }}
   .card.warn .n {{ color:var(--warn); }}
@@ -219,6 +227,11 @@ def write_html(data: dict) -> str:
   th, td {{ padding:9px 11px; text-align:left; border-bottom:1px solid var(--line); }}
   th {{ background:var(--panel2); color:var(--muted); font-weight:600; font-size:12px;
     text-transform:uppercase; letter-spacing:.03em; position:sticky; top:0; }}
+  th.sortable {{ cursor:pointer; user-select:none; white-space:nowrap; }}
+  th.sortable:hover {{ color:var(--ink); }}
+  th.sortable .arrow {{ margin-left:4px; opacity:.35; font-size:10px; }}
+  th.sortable.active {{ color:var(--ink); }}
+  th.sortable.active .arrow {{ opacity:1; color:var(--accent); }}
   td.num, th.num {{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }}
   tr:hover td {{ background:#20304a; }}
   .scroll {{ overflow-x:auto; }}
@@ -233,6 +246,7 @@ def write_html(data: dict) -> str:
   .st-todo {{ background:#1e3a5f; color:#bfdbfe; }}
   .p-filter {{ background:#0e7490; color:#ecfeff; }}
   .p-aware {{ background:#6d28d9; color:#f5f3ff; }}
+  .p-oncall {{ background:#b45309; color:#fffbeb; }}
   .p-respond {{ background:#047857; color:#ecfdf5; }}
   .p-aichat {{ background:#4f46e5; color:#eef2ff; }}
   .p-pass {{ background:#0f766e; color:#ccfbf1; }}
@@ -286,7 +300,8 @@ def write_html(data: dict) -> str:
 </header>
 <div class="wrap">
   <div class="links" id="links"></div>
-  <div class="cards" id="cards"></div>
+  <div class="cards overview" id="overview"></div>
+  <div class="cards products" id="cards"></div>
   <div class="callout" id="headline"></div>
 
   <h2>Done vs not Done</h2>
@@ -300,7 +315,7 @@ def write_html(data: dict) -> str:
   <div class="scroll" style="margin-top:16px"><table id="compare"></table></div>
 
   <h2>Monthly created by product</h2>
-  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Jul 2026 is complete. Aug 2026 is partial through the snapshot date. Respond (RESP) stays in the table even when the count is 0.</div>
+  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Jul 2026 is complete. Aug 2026 is partial through the snapshot date. On-Call (PRODUCT24) and Respond (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
   <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
 
   <h2>Ticket list</h2>
@@ -338,11 +353,14 @@ def write_html(data: dict) -> str:
 const DATA = {payload};
 const $ = (id) => document.getElementById(id);
 const PROJ_PILL = {{
-  FILTER:'p-filter', AWARE:'p-aware', RESP:'p-respond',
+  FILTER:'p-filter', AWARE:'p-aware', PRODUCT24:'p-oncall', RESP:'p-respond',
   AICHAT:'p-aichat', PASS:'p-pass', FLEX:'p-flex', COM:'p-comm',
   MDMCLASS:'p-mdm', PAGESCAN:'p-pagescan', DD:'p-dd', DE:'p-de',
   DEVOPS:'p-devops', HOME:'p-home'
 }};
+const byLabel = (a, b) => String(a.label||'').localeCompare(String(b.label||''), undefined, {{sensitivity:'base'}});
+const PRODUCTS = [...DATA.projects].sort(byLabel);
+const PRODUCT_KPIS = [...DATA.product_kpis].sort(byLabel);
 
 function pillType(t) {{
   return t === 'Escape Defect'
@@ -364,7 +382,7 @@ function pillProj(issue) {{
 }}
 
 $('snap').textContent = DATA.snapshot_date;
-$('prodCount').textContent = DATA.projects.length;
+$('prodCount').textContent = PRODUCTS.length;
 $('links').innerHTML = [
   ['Created since 1 Jul', DATA.links.created],
   ['statusCategory != Done', DATA.links.created_open],
@@ -374,24 +392,24 @@ $('links').innerHTML = [
 const k = DATA.kpis;
 const donePct = k.done_pct != null ? k.done_pct : (k.created ? Math.round(100*k.created_done/k.created) : 0);
 const openPct = k.not_done_pct != null ? k.not_done_pct : (k.created ? Math.round(100*k.created_open/k.created) : 0);
-const productCards = DATA.product_kpis.map(p => {{
+const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`;
+$('overview').innerHTML = [
+  [k.created, 'Created since 1 Jul', `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
+  [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
+  [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
+].map(cardHtml).join('');
+$('cards').innerHTML = PRODUCT_KPIS.map(p => {{
   const cls = p.created === 0 ? '' : (p.open > p.done ? 'warn' : 'good');
   const split = p.created
     ? `<div class="split"><span class="done" style="width:${{p.done_pct||0}}%"></span><span class="open" style="width:${{p.not_done_pct||0}}%"></span></div>`
     : '';
-  return [p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls, split];
-}});
-$('cards').innerHTML = [
-  [k.created, 'Created since 1 Jul', `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{DATA.projects.length}} products`, '', ''],
-  [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
-  [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
-  ...productCards
-].map(([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`).join('');
+  return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls, split]);
+}}).join('');
 
 $('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
 
-const maxCreated = Math.max(...DATA.product_kpis.map(p => p.created), 1);
-$('compareChart').innerHTML = DATA.product_kpis.map(p => {{
+const maxCreated = Math.max(...PRODUCT_KPIS.map(p => p.created), 1);
+$('compareChart').innerHTML = PRODUCT_KPIS.map(p => {{
   const doneW = p.created ? (100 * p.done / maxCreated) : 0;
   const openW = p.created ? (100 * p.open / maxCreated) : 0;
   return `<div>${{p.label}}</div>
@@ -403,7 +421,7 @@ $('compareChart').innerHTML = DATA.product_kpis.map(p => {{
 }}).join('');
 
 let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th></tr></thead><tbody>';
-for (const p of DATA.product_kpis) {{
+for (const p of PRODUCT_KPIS) {{
   ct += `<tr>
     <td>${{p.label}}</td>
     <td><code>${{p.key}}</code></td>
@@ -424,7 +442,7 @@ ct += `<tr>
 </tr></tbody>`;
 $('compare').innerHTML = ct;
 
-let mt = '<thead><tr><th>Month</th><th>Slice</th>' + DATA.projects.map(p => `<th class="num">${{p.label}}</th>`).join('') +
+let mt = '<thead><tr><th>Month</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
          '<th class="num">Total</th></tr></thead><tbody>';
 for (const m of DATA.monthly) {{
   const label = `${{m.label}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
@@ -435,7 +453,7 @@ for (const m of DATA.monthly) {{
   ];
   for (const [name, rowCls, field, numCls] of slices) {{
     mt += `<tr class="${{rowCls}}"><td>${{label}}</td><td>${{name}}</td>`;
-    for (const p of DATA.projects) {{
+    for (const p of PRODUCTS) {{
       const cls = numCls ? `num ${{numCls}}` : 'num';
       mt += `<td class="${{cls}}">${{m.by_project[p.key][field]}}</td>`;
     }}
@@ -447,7 +465,7 @@ mt += '</tbody>';
 $('monthly').innerHTML = mt;
 
 const projSel = $('projFilter');
-for (const p of DATA.projects) {{
+for (const p of PRODUCTS) {{
   const opt = document.createElement('option');
   opt.value = p.key; opt.textContent = p.label;
   projSel.appendChild(opt);
@@ -460,6 +478,22 @@ for (const m of DATA.monthly) {{
 }}
 
 let tab = 'created';
+let sortKey = 'created';
+let sortDir = 1;
+const PRIO_RANK = {{P1:1, P2:2, P3:3}};
+const ISSUE_COLS = [
+  ['month', 'Month', ''],
+  ['product', 'Product', ''],
+  ['key', 'Key', ''],
+  ['type', 'Type', ''],
+  ['prio', 'P', ''],
+  ['zd', 'ZD', 'num'],
+  ['created', 'Created', 'num'],
+  ['status', 'Status', ''],
+  ['assignee', 'Assignee', ''],
+  ['summary', 'Summary', ''],
+];
+
 document.querySelectorAll('.tabs button').forEach(btn => {{
   btn.addEventListener('click', () => {{
     document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
@@ -469,12 +503,52 @@ document.querySelectorAll('.tabs button').forEach(btn => {{
   }});
 }});
 ['projFilter','typeFilter','prioFilter','monthFilter','search'].forEach(id => $(id).addEventListener('input', render));
+$('issues').addEventListener('click', (e) => {{
+  const th = e.target.closest('th[data-sort]');
+  if (!th) return;
+  const key = th.dataset.sort;
+  if (sortKey === key) sortDir *= -1;
+  else {{ sortKey = key; sortDir = 1; }}
+  render();
+}});
 
 function sourceRows() {{
   let rows = DATA.created_issues;
   if (tab === 'open') rows = rows.filter(i => !i.is_done);
   if (tab === 'done') rows = rows.filter(i => i.is_done);
   return rows;
+}}
+
+function sortValue(i, key) {{
+  if (key === 'month') return i.created_month ? i.created_month.id : '';
+  if (key === 'product') return i.project_label || '';
+  if (key === 'key') return i.key || '';
+  if (key === 'type') return i.type || '';
+  if (key === 'prio') return PRIO_RANK[i.priority] || 99;
+  if (key === 'zd') return i.zendesk_count || 0;
+  if (key === 'created') return i.created_date || '';
+  if (key === 'status') return i.status || '';
+  if (key === 'assignee') return i.assignee || '';
+  if (key === 'summary') return i.summary || '';
+  return '';
+}}
+
+function sortRows(rows) {{
+  return [...rows].sort((a, b) => {{
+    const va = sortValue(a, sortKey);
+    const vb = sortValue(b, sortKey);
+    if (typeof va === 'number' && typeof vb === 'number') return (va - vb) * sortDir;
+    return String(va).localeCompare(String(vb), undefined, {{numeric:true, sensitivity:'base'}}) * sortDir;
+  }});
+}}
+
+function sortHeader() {{
+  return '<thead><tr>' + ISSUE_COLS.map(([key, label, cls]) => {{
+    const active = sortKey === key ? 'active' : '';
+    const arrow = sortKey === key ? (sortDir === 1 ? '▲' : '▼') : '↕';
+    const extra = cls ? ` ${{cls}}` : '';
+    return `<th class="sortable${{extra}} ${{active}}" data-sort="${{key}}">${{label}}<span class="arrow">${{arrow}}</span></th>`;
+  }}).join('') + '</tr></thead>';
 }}
 
 function render() {{
@@ -489,9 +563,10 @@ function render() {{
   if (prioF !== 'all') rows = rows.filter(i => i.priority === prioF);
   if (monthF !== 'all') rows = rows.filter(i => i.created_month && i.created_month.id === monthF);
   if (q) rows = rows.filter(i => [i.key, i.summary, i.assignee, i.status, i.project_label].join(' ').toLowerCase().includes(q));
+  rows = sortRows(rows);
   $('count').innerHTML = `<b>${{rows.length}}</b> tickets`;
 
-  let html = '<thead><tr><th>Month</th><th>Product</th><th>Key</th><th>Type</th><th>P</th><th class="num">ZD</th><th>Created</th><th>Status</th><th>Assignee</th><th>Summary</th></tr></thead><tbody>';
+  let html = sortHeader() + '<tbody>';
   if (!rows.length) html += '<tr><td colspan="10" style="color:var(--muted)">no tickets match filter</td></tr>';
   for (const i of rows) {{
     html += `<tr>
