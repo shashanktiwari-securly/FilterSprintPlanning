@@ -5,9 +5,9 @@
   "source": "https://securly.atlassian.net",
   "projects": [
     {
-      "key": "FILTER",
-      "name": "product_FILTER",
-      "label": "Filter"
+      "key": "AICHAT",
+      "name": "Product_AIChat",
+      "label": "AIChat"
     },
     {
       "key": "AWARE",
@@ -15,39 +15,9 @@
       "label": "Aware"
     },
     {
-      "key": "RESP",
-      "name": "product_RESPOND",
-      "label": "Respond"
-    },
-    {
-      "key": "AICHAT",
-      "name": "Product_AIChat",
-      "label": "AIChat"
-    },
-    {
-      "key": "PASS",
-      "name": "Pass",
-      "label": "Pass"
-    },
-    {
-      "key": "FLEX",
-      "name": "Flex",
-      "label": "Flex"
-    },
-    {
       "key": "COM",
       "name": "Pass-Flex Common Services",
       "label": "Comm"
-    },
-    {
-      "key": "MDMCLASS",
-      "name": "product_MDM_CLASSROOM",
-      "label": "MDM Class"
-    },
-    {
-      "key": "PAGESCAN",
-      "name": "prod_pagescan",
-      "label": "PageScan"
     },
     {
       "key": "DD",
@@ -65,9 +35,44 @@
       "label": "DevOps"
     },
     {
+      "key": "FILTER",
+      "name": "product_FILTER",
+      "label": "Filter"
+    },
+    {
+      "key": "FLEX",
+      "name": "Flex",
+      "label": "Flex"
+    },
+    {
       "key": "HOME",
       "name": "product_HOME",
       "label": "Home"
+    },
+    {
+      "key": "MDMCLASS",
+      "name": "product_MDM_CLASSROOM",
+      "label": "MDM Class"
+    },
+    {
+      "key": "PRODUCT24",
+      "name": "product_oncall",
+      "label": "On-Call"
+    },
+    {
+      "key": "PAGESCAN",
+      "name": "prod_pagescan",
+      "label": "PageScan"
+    },
+    {
+      "key": "PASS",
+      "name": "Pass",
+      "label": "Pass"
+    },
+    {
+      "key": "RESP",
+      "name": "product_RESPOND",
+      "label": "Respond"
     }
   ],
   "filters": {
@@ -80,14 +85,14 @@
     "grain": "month"
   },
   "jql": {
-    "created": "project in (FILTER, AWARE, RESP, AICHAT, PASS, FLEX, COM, MDMCLASS, PAGESCAN, DD, DE, DEVOPS, HOME) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" ORDER BY created ASC",
-    "created_open": "project in (FILTER, AWARE, RESP, AICHAT, PASS, FLEX, COM, MDMCLASS, PAGESCAN, DD, DE, DEVOPS, HOME) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" AND statusCategory != Done ORDER BY created ASC",
-    "created_done": "project in (FILTER, AWARE, RESP, AICHAT, PASS, FLEX, COM, MDMCLASS, PAGESCAN, DD, DE, DEVOPS, HOME) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" AND statusCategory = Done ORDER BY created ASC"
+    "created": "project in (AICHAT, AWARE, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS, RESP) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" ORDER BY created ASC",
+    "created_open": "project in (AICHAT, AWARE, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS, RESP) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" AND statusCategory != Done ORDER BY created ASC",
+    "created_done": "project in (AICHAT, AWARE, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS, RESP) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-07-01\" AND statusCategory = Done ORDER BY created ASC"
   },
   "links": {
-    "created": "https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20ORDER%20BY%20created%20ASC",
-    "created_open": "https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC",
-    "created_done": "https://securly.atlassian.net/issues/?jql=project%20in%20%28FILTER%2C%20AWARE%2C%20RESP%2C%20AICHAT%2C%20PASS%2C%20FLEX%2C%20COM%2C%20MDMCLASS%2C%20PAGESCAN%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20HOME%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC"
+    "created": "https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20ORDER%20BY%20created%20ASC",
+    "created_open": "https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%21%3D%20Done%20ORDER%20BY%20created%20ASC",
+    "created_done": "https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%2C%20RESP%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-07-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC"
   },
   "kpis": {
     "created": 171,
@@ -100,17 +105,17 @@
   },
   "product_kpis": [
     {
-      "key": "FILTER",
-      "name": "product_FILTER",
-      "label": "Filter",
-      "created": 23,
-      "escape_defect": 11,
-      "support_request": 12,
-      "done": 4,
-      "open": 19,
-      "zendesk": 32,
-      "done_pct": 17,
-      "not_done_pct": 83
+      "key": "AICHAT",
+      "name": "Product_AIChat",
+      "label": "AIChat",
+      "created": 1,
+      "escape_defect": 0,
+      "support_request": 1,
+      "done": 0,
+      "open": 1,
+      "zendesk": 2,
+      "done_pct": 0,
+      "not_done_pct": 100
     },
     {
       "key": "AWARE",
@@ -126,58 +131,6 @@
       "not_done_pct": 20
     },
     {
-      "key": "RESP",
-      "name": "product_RESPOND",
-      "label": "Respond",
-      "created": 0,
-      "escape_defect": 0,
-      "support_request": 0,
-      "done": 0,
-      "open": 0,
-      "zendesk": 0,
-      "done_pct": 0,
-      "not_done_pct": 0
-    },
-    {
-      "key": "AICHAT",
-      "name": "Product_AIChat",
-      "label": "AIChat",
-      "created": 1,
-      "escape_defect": 0,
-      "support_request": 1,
-      "done": 0,
-      "open": 1,
-      "zendesk": 2,
-      "done_pct": 0,
-      "not_done_pct": 100
-    },
-    {
-      "key": "PASS",
-      "name": "Pass",
-      "label": "Pass",
-      "created": 8,
-      "escape_defect": 5,
-      "support_request": 3,
-      "done": 7,
-      "open": 1,
-      "zendesk": 29,
-      "done_pct": 88,
-      "not_done_pct": 12
-    },
-    {
-      "key": "FLEX",
-      "name": "Flex",
-      "label": "Flex",
-      "created": 10,
-      "escape_defect": 10,
-      "support_request": 0,
-      "done": 7,
-      "open": 3,
-      "zendesk": 53,
-      "done_pct": 70,
-      "not_done_pct": 30
-    },
-    {
       "key": "COM",
       "name": "Pass-Flex Common Services",
       "label": "Comm",
@@ -189,32 +142,6 @@
       "zendesk": 16,
       "done_pct": 67,
       "not_done_pct": 33
-    },
-    {
-      "key": "MDMCLASS",
-      "name": "product_MDM_CLASSROOM",
-      "label": "MDM Class",
-      "created": 60,
-      "escape_defect": 7,
-      "support_request": 53,
-      "done": 36,
-      "open": 24,
-      "zendesk": 68,
-      "done_pct": 60,
-      "not_done_pct": 40
-    },
-    {
-      "key": "PAGESCAN",
-      "name": "prod_pagescan",
-      "label": "PageScan",
-      "created": 12,
-      "escape_defect": 1,
-      "support_request": 11,
-      "done": 6,
-      "open": 6,
-      "zendesk": 12,
-      "done_pct": 50,
-      "not_done_pct": 50
     },
     {
       "key": "DD",
@@ -256,6 +183,32 @@
       "not_done_pct": 17
     },
     {
+      "key": "FILTER",
+      "name": "product_FILTER",
+      "label": "Filter",
+      "created": 23,
+      "escape_defect": 11,
+      "support_request": 12,
+      "done": 4,
+      "open": 19,
+      "zendesk": 32,
+      "done_pct": 17,
+      "not_done_pct": 83
+    },
+    {
+      "key": "FLEX",
+      "name": "Flex",
+      "label": "Flex",
+      "created": 10,
+      "escape_defect": 10,
+      "support_request": 0,
+      "done": 7,
+      "open": 3,
+      "zendesk": 53,
+      "done_pct": 70,
+      "not_done_pct": 30
+    },
+    {
       "key": "HOME",
       "name": "product_HOME",
       "label": "Home",
@@ -267,6 +220,71 @@
       "zendesk": 6,
       "done_pct": 80,
       "not_done_pct": 20
+    },
+    {
+      "key": "MDMCLASS",
+      "name": "product_MDM_CLASSROOM",
+      "label": "MDM Class",
+      "created": 60,
+      "escape_defect": 7,
+      "support_request": 53,
+      "done": 36,
+      "open": 24,
+      "zendesk": 68,
+      "done_pct": 60,
+      "not_done_pct": 40
+    },
+    {
+      "key": "PRODUCT24",
+      "name": "product_oncall",
+      "label": "On-Call",
+      "created": 0,
+      "escape_defect": 0,
+      "support_request": 0,
+      "done": 0,
+      "open": 0,
+      "zendesk": 0,
+      "done_pct": 0,
+      "not_done_pct": 0
+    },
+    {
+      "key": "PAGESCAN",
+      "name": "prod_pagescan",
+      "label": "PageScan",
+      "created": 12,
+      "escape_defect": 1,
+      "support_request": 11,
+      "done": 6,
+      "open": 6,
+      "zendesk": 12,
+      "done_pct": 50,
+      "not_done_pct": 50
+    },
+    {
+      "key": "PASS",
+      "name": "Pass",
+      "label": "Pass",
+      "created": 8,
+      "escape_defect": 5,
+      "support_request": 3,
+      "done": 7,
+      "open": 1,
+      "zendesk": 29,
+      "done_pct": 88,
+      "not_done_pct": 12
+    },
+    {
+      "key": "RESP",
+      "name": "product_RESPOND",
+      "label": "Respond",
+      "created": 0,
+      "escape_defect": 0,
+      "support_request": 0,
+      "done": 0,
+      "open": 0,
+      "zendesk": 0,
+      "done_pct": 0,
+      "not_done_pct": 0
     }
   ],
   "monthly": [
@@ -374,6 +392,14 @@
           "zendesk": 4
         },
         "HOME": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PRODUCT24": {
           "created": 0,
           "escape_defect": 0,
           "support_request": 0,
@@ -501,6 +527,14 @@
           "done": 4,
           "open": 1,
           "zendesk": 6
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         }
       },
       "totals": {
@@ -5303,9 +5337,9 @@
       "is_done": false
     }
   ],
-  "headline": "171 Zendesk-linked tickets created since 1 Jul 2026 (41 Escape Defect, 130 Support Request). 94 Done (statusCategory = Done) vs 77 not Done (statusCategory != Done). Highest intake: MDM Class 60, Filter 23, DD 16, DE 14, PageScan 12. No matching tickets yet: Respond.",
+  "headline": "171 Zendesk-linked tickets created since 1 Jul 2026 (41 Escape Defect, 130 Support Request). 94 Done (statusCategory = Done) vs 77 not Done (statusCategory != Done). Highest intake: MDM Class 60, Filter 23, DD 16, DE 14, PageScan 12. No matching tickets yet: On-Call, Respond.",
   "notes": {
-    "scope": "Includes Filter, Aware, Respond (RESP), AIChat, Pass, Flex, Comm, MDM Class, PageScan, DD, DE, DevOps, and Home. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.",
+    "scope": "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.",
     "window": "Jul 2026 is a full month. Aug 2026 is partial through the snapshot date."
   }
 }
