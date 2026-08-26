@@ -28,18 +28,13 @@ PROJECTS = [
 ]
 PROJECT_BY_KEY = {p["key"]: p for p in PROJECTS}
 PROJECT_LIST = ", ".join(p["key"] for p in PROJECTS)
-CREATED_FROM = "2026-07-01"
+CREATED_FROM = "2026-08-01"
+CREATED_FROM_LABEL = "1 Aug 2026"
+TITLE = "Monthly Escape Defect and Support Request Dashboard"
 SNAPSHOT = "2026-08-25"
 SNAPSHOT_DT = datetime.fromisoformat("2026-08-25T13:40:00+00:00")
 
 MONTHS = [
-    {
-        "id": "2026-07",
-        "label": "Jul 2026",
-        "start": "2026-07-01",
-        "end": "2026-07-31",
-        "partial": False,
-    },
     {
         "id": "2026-08",
         "label": "Aug 2026",
@@ -120,6 +115,8 @@ def load_issues(paths: list[Path]) -> list[dict]:
             created = parse_jira_dt(fields.get("created"))
             if created is None:
                 continue
+            if created.date().isoformat() < CREATED_FROM:
+                continue
             resolved = parse_jira_dt(fields.get("resolutiondate"))
             status = fields.get("status") or {}
             status_cat = ((status.get("statusCategory") or {}).get("name")) or ""
@@ -165,12 +162,62 @@ def load_issues(paths: list[Path]) -> list[dict]:
     return issues
 
 
+def looks_like_dashboard(path: Path) -> bool:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return isinstance(payload, dict) and "created_issues" in payload
+
+
+def load_dashboard_issues(path: Path) -> list[dict]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    seen: dict[str, dict] = {}
+    for raw in payload.get("created_issues", []):
+        created = parse_jira_dt(raw.get("created"))
+        if created is None:
+            continue
+        if created.date().isoformat() < CREATED_FROM:
+            continue
+        project_key = raw.get("project_key")
+        if project_key not in PROJECT_BY_KEY:
+            continue
+        month = month_for(created)
+        issue = dict(raw)
+        issue["created_month"] = {
+            "id": month["id"],
+            "label": month["label"],
+            "start": month["start"],
+            "end": month["end"],
+            "partial": month["partial"],
+        }
+        seen[issue["key"]] = issue
+    issues = list(seen.values())
+    issues.sort(key=lambda i: (i["created"], i["key"]))
+    return issues
+
+
+def load_all(paths: list[Path]) -> list[dict]:
+    seen: dict[str, dict] = {}
+    for path in paths:
+        chunk = (
+            load_dashboard_issues(path)
+            if looks_like_dashboard(path)
+            else load_issues([path])
+        )
+        for issue in chunk:
+            seen[issue["key"]] = issue
+    issues = list(seen.values())
+    issues.sort(key=lambda i: (i["created"], i["key"]))
+    return issues
+
+
 def jira_link(jql: str) -> str:
     return "https://securly.atlassian.net/issues/?jql=" + quote(jql, safe="")
 
 
 def main(paths: list[str]) -> None:
-    issues = load_issues([Path(p) for p in paths])
+    issues = load_all([Path(p) for p in paths])
     product_kpis = []
     for proj in PROJECTS:
         bucket = empty_counts()
@@ -205,7 +252,7 @@ def main(paths: list[str]) -> None:
     zero = sorted(p["label"] for p in product_kpis if p["created"] == 0)
     top_txt = ", ".join(f"{p['label']} {p['created']}" for p in top)
     headline = (
-        f"{kpis['created']} Zendesk-linked tickets created since 1 Jul 2026 "
+        f"{kpis['created']} Zendesk-linked tickets created since {CREATED_FROM_LABEL} "
         f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
         f"{kpis['done']} Done (statusCategory = Done) vs {kpis['open']} not Done "
         f"(statusCategory != Done). "
@@ -215,7 +262,7 @@ def main(paths: list[str]) -> None:
         headline += f" No matching tickets yet: {', '.join(zero)}."
 
     data = {
-        "title": "Monthly Zendesk-linked Escape Defect & Support Request dashboard",
+        "title": TITLE,
         "generated_at": SNAPSHOT_DT.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "snapshot_date": SNAPSHOT,
         "source": "https://securly.atlassian.net",
@@ -224,6 +271,7 @@ def main(paths: list[str]) -> None:
             "issue_types": ["Escape Defect", "Support Request"],
             "zendesk_ticket_count": "> 0",
             "created_from": CREATED_FROM,
+            "created_from_label": CREATED_FROM_LABEL,
             "grain": "month",
         },
         "jql": {
@@ -254,10 +302,10 @@ def main(paths: list[str]) -> None:
                 "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, "
                 "MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). "
                 "Products with 0 had no Escape Defect or Support Request with Zendesk "
-                "Ticket Count > 0 since 1 Jul 2026. Done vs not Done uses Jira "
+                f"Ticket Count > 0 since {CREATED_FROM_LABEL}. Done vs not Done uses Jira "
                 "statusCategory = Done versus statusCategory != Done."
             ),
-            "window": "Jul 2026 is a full month. Aug 2026 is partial through the snapshot date.",
+            "window": "Aug 2026 is partial through the snapshot date.",
         },
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
