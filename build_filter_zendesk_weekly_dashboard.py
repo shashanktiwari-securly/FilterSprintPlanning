@@ -224,6 +224,7 @@ def write_html(data: dict) -> str:
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Cache-Control" content="no-store"/>
 <title>{title}</title>
 <script>
 (function(){{
@@ -265,6 +266,9 @@ def write_html(data: dict) -> str:
   .sub {{ color:var(--muted); font-size:13px; line-height:1.5; }}
   .sub a {{ color:var(--accent); text-decoration:none; }}
   .sub a:hover {{ text-decoration:underline; }}
+  #liveStatus {{ font-weight:600; }}
+  #liveStatus.ok {{ color:var(--good); }}
+  #liveStatus.stale {{ color:var(--warn); }}
   .wrap {{ padding:20px 28px 60px; max-width:1800px; margin:0 auto; }}
   .cards {{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 12px; }}
   .cards.overview {{ margin-bottom:16px; }}
@@ -376,7 +380,7 @@ def write_html(data: dict) -> str:
       <h1>{title}</h1>
       <div class="sub">
         Escape Defects and Support Requests · <span id="prodCount"></span> products ·
-        from {esc(from_label)} · snapshot <span id="snap"></span><br/>
+        from 1 Aug 2026 · <span id="liveStatus">loading Jira…</span><br/>
         Source: <a href="https://securly.atlassian.net">securly.atlassian.net</a>
         · field <code>Zendesk Ticket Count</code> &gt; 0
         · grouped by calendar month
@@ -394,7 +398,7 @@ def write_html(data: dict) -> str:
   <h2>Done vs not Done</h2>
   <div class="legend">
     Comparison of Jira <b>statusCategory = Done</b> versus <b>statusCategory != Done</b>
-    for the Aug cohort.
+    for the created cohort.
     <span class="swatch done"></span>Done
     <span class="swatch open"></span>Not Done
   </div>
@@ -413,7 +417,7 @@ def write_html(data: dict) -> str:
   <div class="scroll" style="margin-top:16px"><table id="avgTable"></table></div>
 
   <h2>Monthly created by product</h2>
-  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Aug 2026 is partial through the snapshot date. On-Call (PRODUCT24) and Respond (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
+  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. The current month is partial through the live Jira refresh. On-Call (PRODUCT24) and Case Manager (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
   <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
 
   <h2>Ticket list</h2>
@@ -443,12 +447,12 @@ def write_html(data: dict) -> str:
   <p class="note" id="notes"></p>
 </div>
 <footer>
-  Git-hosted report from <code>reports/filter-zendesk-weekly-dashboard.json</code>
-  · regenerate with <code>python3 build_filter_zendesk_weekly_dashboard.py</code>
+  Git-hosted report · live numbers refresh from Jira on each page load
+  · fallback snapshot in <code>docs/live.json</code>
   · also published at <code>docs/index.html</code> for GitHub Pages
 </footer>
 <script>
-const DATA = {payload};
+let DATA = {payload};
 const $ = (id) => document.getElementById(id);
 const THEME_KEY = 'zd-dashboard-theme';
 function applyTheme(theme) {{
@@ -464,7 +468,6 @@ applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'li
 $('themeToggle').addEventListener('click', () => {{
   applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
 }});
-const fromLabel = (DATA.filters && DATA.filters.created_from_label) || '{esc(from_label)}';
 const PROJ_PILL = {{
   FILTER:'p-filter', AWARE:'p-aware', PRODUCT24:'p-oncall', RESP:'p-respond',
   AICHAT:'p-aichat', PASS:'p-pass', FLEX:'p-flex', COM:'p-comm',
@@ -472,8 +475,11 @@ const PROJ_PILL = {{
   DEVOPS:'p-devops', HOME:'p-home'
 }};
 const byLabel = (a, b) => String(a.label||'').localeCompare(String(b.label||''), undefined, {{sensitivity:'base'}});
-const PRODUCTS = [...DATA.projects].sort(byLabel);
-const PRODUCT_KPIS = [...DATA.product_kpis].sort(byLabel);
+function products() {{ return [...DATA.projects].sort(byLabel); }}
+function productKpis() {{ return [...DATA.product_kpis].sort(byLabel); }}
+function fromLabel() {{
+  return (DATA.filters && DATA.filters.created_from_label) || '{esc(from_label)}';
+}}
 
 function fmtDays(d) {{
   if (d == null || d === '') return '—';
@@ -501,137 +507,6 @@ function pillProj(issue) {{
   return `<span class="pill ${{cls}}">${{issue.project_label}}</span>`;
 }}
 
-$('snap').textContent = DATA.snapshot_date;
-$('prodCount').textContent = PRODUCTS.length;
-$('links').innerHTML = [
-  [`Created since ${{fromLabel}}`, DATA.links.created],
-  ['statusCategory != Done', DATA.links.created_open],
-  ['statusCategory = Done', DATA.links.created_done],
-].map(([l,u]) => `<a href="${{u}}" target="_blank" rel="noopener">${{l}}</a>`).join('');
-
-const k = DATA.kpis;
-const donePct = k.done_pct != null ? k.done_pct : (k.created ? Math.round(100*k.created_done/k.created) : 0);
-const openPct = k.not_done_pct != null ? k.not_done_pct : (k.created ? Math.round(100*k.created_open/k.created) : 0);
-const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`;
-$('overview').innerHTML = [
-  [k.created, `Created since ${{fromLabel}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
-  [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
-  [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
-  [fmtDays(k.avg_days_to_done), 'Avg time to Done', `${{k.done_with_time || 0}} of ${{k.created_done}} Done tickets · created → Done`, 'good', ''],
-].map(cardHtml).join('');
-$('cards').innerHTML = PRODUCT_KPIS.map(p => {{
-  const cls = p.created === 0 ? '' : (p.open > p.done ? 'warn' : 'good');
-  const split = p.created
-    ? `<div class="split"><span class="done" style="width:${{p.done_pct||0}}%"></span><span class="open" style="width:${{p.not_done_pct||0}}%"></span></div>`
-    : '';
-  const avg = p.done ? ` · avg ${{fmtDays(p.avg_days_to_done)}} to Done` : '';
-  return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR${{avg}}`, cls, split]);
-}}).join('');
-
-$('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
-
-const maxCreated = Math.max(...PRODUCT_KPIS.map(p => p.created), 1);
-$('compareChart').innerHTML = PRODUCT_KPIS.map(p => {{
-  const doneW = p.created ? (100 * p.done / maxCreated) : 0;
-  const openW = p.created ? (100 * p.open / maxCreated) : 0;
-  return `<div>${{p.label}}</div>
-    <div class="bar stack">
-      <span class="done" style="width:${{doneW}}%"></span>
-      <span class="open" style="width:${{openW}}%"></span>
-    </div>
-    <div class="cmp-meta"><span class="done">${{p.done}}</span> / <span class="open">${{p.open}}</span></div>`;
-}}).join('');
-
-let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th><th class="num">Avg to Done</th></tr></thead><tbody>';
-for (const p of PRODUCT_KPIS) {{
-  ct += `<tr>
-    <td>${{p.label}}</td>
-    <td><code>${{p.key}}</code></td>
-    <td class="num">${{p.created}}</td>
-    <td class="num done">${{p.done}}</td>
-    <td class="num open">${{p.open}}</td>
-    <td class="num">${{p.created ? (p.done_pct + '%') : '—'}}</td>
-    <td class="num">${{p.created ? (p.not_done_pct + '%') : '—'}}</td>
-    <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
-  </tr>`;
-}}
-ct += `<tr>
-  <td><b>Total</b></td><td></td>
-  <td class="num"><b>${{k.created}}</b></td>
-  <td class="num done"><b>${{k.created_done}}</b></td>
-  <td class="num open"><b>${{k.created_open}}</b></td>
-  <td class="num"><b>${{donePct}}%</b></td>
-  <td class="num"><b>${{openPct}}%</b></td>
-  <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
-</tr></tbody>`;
-$('compare').innerHTML = ct;
-
-const maxAvg = Math.max(...PRODUCT_KPIS.map(p => p.avg_days_to_done || 0), 0.01);
-$('avgChart').innerHTML = PRODUCT_KPIS.map(p => {{
-  const w = p.avg_days_to_done != null ? (100 * p.avg_days_to_done / maxAvg) : 0;
-  const meta = p.avg_days_to_done != null
-    ? `${{fmtDays(p.avg_days_to_done)}} · n=${{p.done_with_time || 0}}`
-    : '—';
-  return `<div>${{p.label}}</div>
-    <div class="bar stack">
-      <span class="avg" style="width:${{w}}%"></span>
-    </div>
-    <div class="cmp-meta">${{meta}}</div>`;
-}}).join('');
-
-let at = '<thead><tr><th>Product</th><th>Key</th><th class="num">Done</th><th class="num">With time</th><th class="num">Avg created → Done</th></tr></thead><tbody>';
-for (const p of PRODUCT_KPIS) {{
-  at += `<tr>
-    <td>${{p.label}}</td>
-    <td><code>${{p.key}}</code></td>
-    <td class="num done">${{p.done}}</td>
-    <td class="num">${{p.done_with_time || 0}}</td>
-    <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
-  </tr>`;
-}}
-at += `<tr>
-  <td><b>Total</b></td><td></td>
-  <td class="num done"><b>${{k.created_done}}</b></td>
-  <td class="num"><b>${{k.done_with_time || 0}}</b></td>
-  <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
-</tr></tbody>`;
-$('avgTable').innerHTML = at;
-
-let mt = '<thead><tr><th>Month</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
-         '<th class="num">Total</th></tr></thead><tbody>';
-for (const m of DATA.monthly) {{
-  const label = `${{m.label}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
-  const slices = [
-    ['Created', 'row-label', 'created', null],
-    ['Done', 'row-done', 'done', 'done'],
-    ['Not Done', 'row-open', 'open', 'open'],
-  ];
-  for (const [name, rowCls, field, numCls] of slices) {{
-    mt += `<tr class="${{rowCls}}"><td>${{label}}</td><td>${{name}}</td>`;
-    for (const p of PRODUCTS) {{
-      const cls = numCls ? `num ${{numCls}}` : 'num';
-      mt += `<td class="${{cls}}">${{m.by_project[p.key][field]}}</td>`;
-    }}
-    const tcls = numCls ? `num ${{numCls}}` : 'num';
-    mt += `<td class="${{tcls}}">${{m.totals[field]}}</td></tr>`;
-  }}
-}}
-mt += '</tbody>';
-$('monthly').innerHTML = mt;
-
-const projSel = $('projFilter');
-for (const p of PRODUCTS) {{
-  const opt = document.createElement('option');
-  opt.value = p.key; opt.textContent = p.label;
-  projSel.appendChild(opt);
-}}
-const monthSel = $('monthFilter');
-for (const m of DATA.monthly) {{
-  const opt = document.createElement('option');
-  opt.value = m.id; opt.textContent = m.label;
-  monthSel.appendChild(opt);
-}}
-
 let tab = 'created';
 let sortKey = 'created';
 let sortDir = 1;
@@ -650,23 +525,168 @@ const ISSUE_COLS = [
   ['summary', 'Summary', ''],
 ];
 
-document.querySelectorAll('.tabs button').forEach(btn => {{
-  btn.addEventListener('click', () => {{
-    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    tab = btn.dataset.tab;
-    render();
-  }});
-}});
-['projFilter','typeFilter','prioFilter','monthFilter','search'].forEach(id => $(id).addEventListener('input', render));
-$('issues').addEventListener('click', (e) => {{
-  const th = e.target.closest('th[data-sort]');
-  if (!th) return;
-  const key = th.dataset.sort;
-  if (sortKey === key) sortDir *= -1;
-  else {{ sortKey = key; sortDir = 1; }}
+function setLiveStatus(text, kind) {{
+  const el = $('liveStatus');
+  el.textContent = text;
+  el.className = kind || '';
+}}
+
+function paint() {{
+  const PRODUCTS = products();
+  const PRODUCT_KPIS = productKpis();
+  const from = fromLabel();
+  document.title = DATA.title || document.title;
+  const h1 = document.querySelector('h1');
+  if (h1 && DATA.title) h1.textContent = DATA.title;
+  const createdTab = document.querySelector('.tabs button[data-tab="created"]');
+  if (createdTab) createdTab.textContent = `Created since ${{from}}`;
+  $('prodCount').textContent = PRODUCTS.length;
+  if (DATA.live) {{
+    setLiveStatus(`live from Jira · ${{DATA.generated_at || DATA.snapshot_date}}`, 'ok');
+  }} else {{
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · refresh pulls latest when the live server is running`, 'stale');
+  }}
+  $('links').innerHTML = [
+    [`Created since ${{from}}`, DATA.links.created],
+    ['statusCategory != Done', DATA.links.created_open],
+    ['statusCategory = Done', DATA.links.created_done],
+  ].map(([l,u]) => `<a href="${{u}}" target="_blank" rel="noopener">${{l}}</a>`).join('');
+
+  const k = DATA.kpis;
+  const donePct = k.done_pct != null ? k.done_pct : (k.created ? Math.round(100*k.created_done/k.created) : 0);
+  const openPct = k.not_done_pct != null ? k.not_done_pct : (k.created ? Math.round(100*k.created_open/k.created) : 0);
+  const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`;
+  $('overview').innerHTML = [
+    [k.created, `Created since ${{from}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
+    [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
+    [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
+    [fmtDays(k.avg_days_to_done), 'Avg time to Done', `${{k.done_with_time || 0}} of ${{k.created_done}} Done tickets · created → Done`, 'good', ''],
+  ].map(cardHtml).join('');
+  $('cards').innerHTML = PRODUCT_KPIS.map(p => {{
+    const cls = p.created === 0 ? '' : (p.open > p.done ? 'warn' : 'good');
+    const split = p.created
+      ? `<div class="split"><span class="done" style="width:${{p.done_pct||0}}%"></span><span class="open" style="width:${{p.not_done_pct||0}}%"></span></div>`
+      : '';
+    const avg = p.done ? ` · avg ${{fmtDays(p.avg_days_to_done)}} to Done` : '';
+    return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR${{avg}}`, cls, split]);
+  }}).join('');
+
+  $('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
+
+  const maxCreated = Math.max(...PRODUCT_KPIS.map(p => p.created), 1);
+  $('compareChart').innerHTML = PRODUCT_KPIS.map(p => {{
+    const doneW = p.created ? (100 * p.done / maxCreated) : 0;
+    const openW = p.created ? (100 * p.open / maxCreated) : 0;
+    return `<div>${{p.label}}</div>
+      <div class="bar stack">
+        <span class="done" style="width:${{doneW}}%"></span>
+        <span class="open" style="width:${{openW}}%"></span>
+      </div>
+      <div class="cmp-meta"><span class="done">${{p.done}}</span> / <span class="open">${{p.open}}</span></div>`;
+  }}).join('');
+
+  let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th><th class="num">Avg to Done</th></tr></thead><tbody>';
+  for (const p of PRODUCT_KPIS) {{
+    ct += `<tr>
+      <td>${{p.label}}</td>
+      <td><code>${{p.key}}</code></td>
+      <td class="num">${{p.created}}</td>
+      <td class="num done">${{p.done}}</td>
+      <td class="num open">${{p.open}}</td>
+      <td class="num">${{p.created ? (p.done_pct + '%') : '—'}}</td>
+      <td class="num">${{p.created ? (p.not_done_pct + '%') : '—'}}</td>
+      <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
+    </tr>`;
+  }}
+  ct += `<tr>
+    <td><b>Total</b></td><td></td>
+    <td class="num"><b>${{k.created}}</b></td>
+    <td class="num done"><b>${{k.created_done}}</b></td>
+    <td class="num open"><b>${{k.created_open}}</b></td>
+    <td class="num"><b>${{donePct}}%</b></td>
+    <td class="num"><b>${{openPct}}%</b></td>
+    <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
+  </tr></tbody>`;
+  $('compare').innerHTML = ct;
+
+  const maxAvg = Math.max(...PRODUCT_KPIS.map(p => p.avg_days_to_done || 0), 0.01);
+  $('avgChart').innerHTML = PRODUCT_KPIS.map(p => {{
+    const w = p.avg_days_to_done != null ? (100 * p.avg_days_to_done / maxAvg) : 0;
+    const meta = p.avg_days_to_done != null
+      ? `${{fmtDays(p.avg_days_to_done)}} · n=${{p.done_with_time || 0}}`
+      : '—';
+    return `<div>${{p.label}}</div>
+      <div class="bar stack">
+        <span class="avg" style="width:${{w}}%"></span>
+      </div>
+      <div class="cmp-meta">${{meta}}</div>`;
+  }}).join('');
+
+  let at = '<thead><tr><th>Product</th><th>Key</th><th class="num">Done</th><th class="num">With time</th><th class="num">Avg created → Done</th></tr></thead><tbody>';
+  for (const p of PRODUCT_KPIS) {{
+    at += `<tr>
+      <td>${{p.label}}</td>
+      <td><code>${{p.key}}</code></td>
+      <td class="num done">${{p.done}}</td>
+      <td class="num">${{p.done_with_time || 0}}</td>
+      <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
+    </tr>`;
+  }}
+  at += `<tr>
+    <td><b>Total</b></td><td></td>
+    <td class="num done"><b>${{k.created_done}}</b></td>
+    <td class="num"><b>${{k.done_with_time || 0}}</b></td>
+    <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
+  </tr></tbody>`;
+  $('avgTable').innerHTML = at;
+
+  let mt = '<thead><tr><th>Month</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
+           '<th class="num">Total</th></tr></thead><tbody>';
+  for (const m of DATA.monthly) {{
+    const label = `${{m.label}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
+    const slices = [
+      ['Created', 'row-label', 'created', null],
+      ['Done', 'row-done', 'done', 'done'],
+      ['Not Done', 'row-open', 'open', 'open'],
+    ];
+    for (const [name, rowCls, field, numCls] of slices) {{
+      mt += `<tr class="${{rowCls}}"><td>${{label}}</td><td>${{name}}</td>`;
+      for (const p of PRODUCTS) {{
+        const cls = numCls ? `num ${{numCls}}` : 'num';
+        mt += `<td class="${{cls}}">${{m.by_project[p.key][field]}}</td>`;
+      }}
+      const tcls = numCls ? `num ${{numCls}}` : 'num';
+      mt += `<td class="${{tcls}}">${{m.totals[field]}}</td></tr>`;
+    }}
+  }}
+  mt += '</tbody>';
+  $('monthly').innerHTML = mt;
+
+  const projSel = $('projFilter');
+  const prevProj = projSel.value;
+  projSel.innerHTML = '<option value="all">All products</option>';
+  for (const p of PRODUCTS) {{
+    const opt = document.createElement('option');
+    opt.value = p.key; opt.textContent = p.label;
+    projSel.appendChild(opt);
+  }}
+  if ([...projSel.options].some(o => o.value === prevProj)) projSel.value = prevProj;
+
+  const monthSel = $('monthFilter');
+  const prevMonth = monthSel.value;
+  monthSel.innerHTML = '<option value="all">All months</option>';
+  for (const m of DATA.monthly) {{
+    const opt = document.createElement('option');
+    opt.value = m.id; opt.textContent = m.label;
+    monthSel.appendChild(opt);
+  }}
+  if ([...monthSel.options].some(o => o.value === prevMonth)) monthSel.value = prevMonth;
+
+  $('notes').innerHTML =
+    `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
+    JQL: <code>${{DATA.jql.created}}</code>`;
   render();
-}});
+}}
 
 function sourceRows() {{
   let rows = DATA.created_issues;
@@ -744,11 +764,47 @@ function render() {{
   $('issues').innerHTML = html;
 }}
 
-$('notes').innerHTML =
-  `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
-  JQL: <code>${{DATA.jql.created}}</code>`;
+document.querySelectorAll('.tabs button').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tab = btn.dataset.tab;
+    render();
+  }});
+}});
+['projFilter','typeFilter','prioFilter','monthFilter','search'].forEach(id => $(id).addEventListener('input', render));
+$('issues').addEventListener('click', (e) => {{
+  const th = e.target.closest('th[data-sort]');
+  if (!th) return;
+  const key = th.dataset.sort;
+  if (sortKey === key) sortDir *= -1;
+  else {{ sortKey = key; sortDir = 1; }}
+  render();
+}});
 
-render();
+async function loadLive() {{
+  const candidates = ['api/live', 'live.json'];
+  for (const path of candidates) {{
+    try {{
+      const r = await fetch(path + '?t=' + Date.now(), {{ cache: 'no-store' }});
+      if (!r.ok) continue;
+      const data = await r.json();
+      if (data && data.kpis) {{
+        if (path === 'api/live') data.live = data.live !== false;
+        DATA = data;
+        return path;
+      }}
+    }} catch (e) {{}}
+  }}
+  return null;
+}}
+
+(async function boot() {{
+  paint();
+  setLiveStatus('refreshing from Jira…', '');
+  await loadLive();
+  paint();
+}})();
 </script>
 </body>
 </html>
@@ -763,9 +819,12 @@ def main() -> None:
     MD_PATH.write_text(md, encoding="utf-8")
     DOCS_PATH.parent.mkdir(parents=True, exist_ok=True)
     DOCS_PATH.write_text(html, encoding="utf-8")
+    live_path = DOCS_PATH.parent / "live.json"
+    live_path.write_text(json.dumps(data) + "\n", encoding="utf-8")
     print(f"wrote {HTML_PATH.relative_to(ROOT)}")
     print(f"wrote {MD_PATH.relative_to(ROOT)}")
     print(f"wrote {DOCS_PATH.relative_to(ROOT)}")
+    print(f"wrote {live_path.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
