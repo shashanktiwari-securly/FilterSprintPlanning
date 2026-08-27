@@ -543,6 +543,8 @@ function paint() {{
   $('prodCount').textContent = PRODUCTS.length;
   if (DATA.live) {{
     setLiveStatus(`live from Jira · ${{DATA.generated_at || DATA.snapshot_date}}`, 'ok');
+  }} else if (DATA._fromLiveApi) {{
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · set JIRA_EMAIL / JIRA_API_TOKEN to re-query on refresh`, 'stale');
   }} else {{
     setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · refresh pulls latest when the live server is running`, 'stale');
   }}
@@ -790,8 +792,8 @@ async function loadLive() {{
       if (!r.ok) continue;
       const data = await r.json();
       if (data && data.kpis) {{
-        if (path === 'api/live') data.live = data.live !== false;
         DATA = data;
+        DATA._fromLiveApi = path === 'api/live';
         return path;
       }}
     }} catch (e) {{}}
