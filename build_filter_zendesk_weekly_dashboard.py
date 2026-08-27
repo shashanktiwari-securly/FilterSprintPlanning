@@ -34,6 +34,18 @@ def md_row(cells: list[object]) -> str:
     return "| " + " | ".join(str(c) for c in cells) + " |"
 
 
+def fmt_days(value: object) -> str:
+    if value is None or value == "":
+        return "—"
+    try:
+        days = float(value)
+    except (TypeError, ValueError):
+        return "—"
+    if days < 1:
+        return f"{days * 24:.1f}h"
+    return f"{days:.1f}d"
+
+
 def created_from_label(data: dict) -> str:
     filters = data.get("filters") or {}
     if filters.get("created_from_label"):
@@ -73,8 +85,8 @@ def write_markdown(data: dict) -> str:
         f"**{k['created_open']}** are `statusCategory != Done` "
         f"({k.get('not_done_pct', 0)}%).",
         "",
-        md_row(["Product", "Key", "Created", "Done", "Not Done", "Done %", "Not Done %"]),
-        md_row(["---", "---", "---:", "---:", "---:", "---:", "---:"]),
+        md_row(["Product", "Key", "Created", "Done", "Not Done", "Done %", "Not Done %", "Avg to Done"]),
+        md_row(["---", "---", "---:", "---:", "---:", "---:", "---:", "---:"]),
     ]
     for p in product_kpis:
         lines.append(
@@ -87,6 +99,30 @@ def write_markdown(data: dict) -> str:
                     p["open"],
                     f"{p.get('done_pct', 0)}%",
                     f"{p.get('not_done_pct', 0)}%",
+                    fmt_days(p.get("avg_days_to_done")),
+                ]
+            )
+        )
+    lines += [
+        "",
+        "## Average time to Done",
+        "",
+        f"Mean calendar time from Jira **created** to **statusCategory = Done** "
+        f"for this snapshot. Overall average: **{fmt_days(k.get('avg_days_to_done'))}** "
+        f"({k.get('done_with_time', 0)} of {k['created_done']} Done tickets).",
+        "",
+        md_row(["Product", "Key", "Done", "With time", "Avg created → Done"]),
+        md_row(["---", "---", "---:", "---:", "---:"]),
+    ]
+    for p in product_kpis:
+        lines.append(
+            md_row(
+                [
+                    p["label"],
+                    p["key"],
+                    p["done"],
+                    p.get("done_with_time", 0),
+                    fmt_days(p.get("avg_days_to_done")),
                 ]
             )
         )
@@ -139,8 +175,8 @@ def write_markdown(data: dict) -> str:
         "",
         "## Created ticket list",
         "",
-        md_row(["Month", "Product", "Key", "Type", "P", "ZD", "Created", "Status", "Assignee", "Summary"]),
-        md_row(["---", "---", "---", "---", "---", "---:", "---", "---", "---", "---"]),
+        md_row(["Month", "Product", "Key", "Type", "P", "ZD", "Created", "To Done", "Status", "Assignee", "Summary"]),
+        md_row(["---", "---", "---", "---", "---", "---:", "---", "---:", "---", "---", "---"]),
     ]
     for issue in data["created_issues"]:
         month = issue["created_month"]["label"] if issue.get("created_month") else ""
@@ -154,6 +190,7 @@ def write_markdown(data: dict) -> str:
                     issue["priority"] or "",
                     issue["zendesk_count"],
                     issue["created_date"],
+                    fmt_days(issue.get("time_to_done_days")),
                     issue["status"],
                     issue["assignee"],
                     issue["summary"].replace("|", "/"),
@@ -249,9 +286,11 @@ def write_html(data: dict) -> str:
   .split .open {{ background:var(--warn); }}
   .cmp {{ display:grid; grid-template-columns:minmax(110px,140px) 1fr 90px; gap:8px 14px; align-items:center;
     background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }}
+  .cmp.avg {{ grid-template-columns:minmax(110px,140px) 1fr 120px; }}
   .bar.stack {{ display:flex; height:14px; border-radius:7px; overflow:hidden; background:var(--track); }}
   .bar.stack .done {{ background:var(--good); height:100%; }}
   .bar.stack .open {{ background:var(--warn); height:100%; }}
+  .bar.stack .avg {{ background:var(--accent); height:100%; }}
   .cmp-meta {{ font-size:12px; font-variant-numeric:tabular-nums; white-space:nowrap; }}
   .cmp-meta .done {{ color:var(--good); font-weight:700; }}
   .cmp-meta .open {{ color:var(--warn); font-weight:700; }}
@@ -263,6 +302,7 @@ def write_html(data: dict) -> str:
   .legend .swatch {{ display:inline-block; width:10px; height:10px; border-radius:2px; margin:0 4px 0 10px; vertical-align:middle; }}
   .legend .swatch.done {{ background:var(--good); }}
   .legend .swatch.open {{ background:var(--warn); }}
+  .legend .swatch.avg {{ background:var(--accent); }}
   h2 {{ font-size:16px; margin:30px 0 12px; border-left:3px solid var(--accent); padding-left:10px; }}
   table {{ border-collapse:collapse; width:100%; background:var(--panel); border-radius:10px; overflow:hidden; }}
   th, td {{ padding:9px 11px; text-align:left; border-bottom:1px solid var(--line); }}
@@ -361,6 +401,17 @@ def write_html(data: dict) -> str:
   <div class="cmp" id="compareChart" style="margin-top:12px"></div>
   <div class="scroll" style="margin-top:16px"><table id="compare"></table></div>
 
+  <h2>Average time to Done</h2>
+  <div class="legend">
+    Mean calendar time from Jira <b>created</b> to the ticket being marked
+    <b>statusCategory = Done</b>, by product. Still-open tickets are excluded.
+    Uses <code>statuscategorychangedate</code>, falling back to <code>resolutiondate</code>
+    when the category-change date is missing or after the snapshot.
+    <span class="swatch avg"></span>Avg created → Done
+  </div>
+  <div class="cmp avg" id="avgChart" style="margin-top:12px"></div>
+  <div class="scroll" style="margin-top:16px"><table id="avgTable"></table></div>
+
   <h2>Monthly created by product</h2>
   <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. Aug 2026 is partial through the snapshot date. On-Call (PRODUCT24) and Respond (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
   <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
@@ -424,6 +475,13 @@ const byLabel = (a, b) => String(a.label||'').localeCompare(String(b.label||''),
 const PRODUCTS = [...DATA.projects].sort(byLabel);
 const PRODUCT_KPIS = [...DATA.product_kpis].sort(byLabel);
 
+function fmtDays(d) {{
+  if (d == null || d === '') return '—';
+  const n = Number(d);
+  if (!Number.isFinite(n)) return '—';
+  if (n < 1) return (n * 24).toFixed(1) + 'h';
+  return n.toFixed(1) + 'd';
+}}
 function pillType(t) {{
   return t === 'Escape Defect'
     ? '<span class="pill p-ed">Escape Defect</span>'
@@ -459,13 +517,15 @@ $('overview').innerHTML = [
   [k.created, `Created since ${{fromLabel}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
   [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
   [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
+  [fmtDays(k.avg_days_to_done), 'Avg time to Done', `${{k.done_with_time || 0}} of ${{k.created_done}} Done tickets · created → Done`, 'good', ''],
 ].map(cardHtml).join('');
 $('cards').innerHTML = PRODUCT_KPIS.map(p => {{
   const cls = p.created === 0 ? '' : (p.open > p.done ? 'warn' : 'good');
   const split = p.created
     ? `<div class="split"><span class="done" style="width:${{p.done_pct||0}}%"></span><span class="open" style="width:${{p.not_done_pct||0}}%"></span></div>`
     : '';
-  return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls, split]);
+  const avg = p.done ? ` · avg ${{fmtDays(p.avg_days_to_done)}} to Done` : '';
+  return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR${{avg}}`, cls, split]);
 }}).join('');
 
 $('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
@@ -482,7 +542,7 @@ $('compareChart').innerHTML = PRODUCT_KPIS.map(p => {{
     <div class="cmp-meta"><span class="done">${{p.done}}</span> / <span class="open">${{p.open}}</span></div>`;
 }}).join('');
 
-let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th></tr></thead><tbody>';
+let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th><th class="num">Avg to Done</th></tr></thead><tbody>';
 for (const p of PRODUCT_KPIS) {{
   ct += `<tr>
     <td>${{p.label}}</td>
@@ -492,6 +552,7 @@ for (const p of PRODUCT_KPIS) {{
     <td class="num open">${{p.open}}</td>
     <td class="num">${{p.created ? (p.done_pct + '%') : '—'}}</td>
     <td class="num">${{p.created ? (p.not_done_pct + '%') : '—'}}</td>
+    <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
   </tr>`;
 }}
 ct += `<tr>
@@ -501,8 +562,40 @@ ct += `<tr>
   <td class="num open"><b>${{k.created_open}}</b></td>
   <td class="num"><b>${{donePct}}%</b></td>
   <td class="num"><b>${{openPct}}%</b></td>
+  <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
 </tr></tbody>`;
 $('compare').innerHTML = ct;
+
+const maxAvg = Math.max(...PRODUCT_KPIS.map(p => p.avg_days_to_done || 0), 0.01);
+$('avgChart').innerHTML = PRODUCT_KPIS.map(p => {{
+  const w = p.avg_days_to_done != null ? (100 * p.avg_days_to_done / maxAvg) : 0;
+  const meta = p.avg_days_to_done != null
+    ? `${{fmtDays(p.avg_days_to_done)}} · n=${{p.done_with_time || 0}}`
+    : '—';
+  return `<div>${{p.label}}</div>
+    <div class="bar stack">
+      <span class="avg" style="width:${{w}}%"></span>
+    </div>
+    <div class="cmp-meta">${{meta}}</div>`;
+}}).join('');
+
+let at = '<thead><tr><th>Product</th><th>Key</th><th class="num">Done</th><th class="num">With time</th><th class="num">Avg created → Done</th></tr></thead><tbody>';
+for (const p of PRODUCT_KPIS) {{
+  at += `<tr>
+    <td>${{p.label}}</td>
+    <td><code>${{p.key}}</code></td>
+    <td class="num done">${{p.done}}</td>
+    <td class="num">${{p.done_with_time || 0}}</td>
+    <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
+  </tr>`;
+}}
+at += `<tr>
+  <td><b>Total</b></td><td></td>
+  <td class="num done"><b>${{k.created_done}}</b></td>
+  <td class="num"><b>${{k.done_with_time || 0}}</b></td>
+  <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
+</tr></tbody>`;
+$('avgTable').innerHTML = at;
 
 let mt = '<thead><tr><th>Month</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
          '<th class="num">Total</th></tr></thead><tbody>';
@@ -551,6 +644,7 @@ const ISSUE_COLS = [
   ['prio', 'P', ''],
   ['zd', 'ZD', 'num'],
   ['created', 'Created', 'num'],
+  ['toDone', 'To Done', 'num'],
   ['status', 'Status', ''],
   ['assignee', 'Assignee', ''],
   ['summary', 'Summary', ''],
@@ -589,6 +683,7 @@ function sortValue(i, key) {{
   if (key === 'prio') return PRIO_RANK[i.priority] || 99;
   if (key === 'zd') return i.zendesk_count || 0;
   if (key === 'created') return i.created_date || '';
+  if (key === 'toDone') return i.time_to_done_days == null ? -1 : Number(i.time_to_done_days);
   if (key === 'status') return i.status || '';
   if (key === 'assignee') return i.assignee || '';
   if (key === 'summary') return i.summary || '';
@@ -629,7 +724,7 @@ function render() {{
   $('count').innerHTML = `<b>${{rows.length}}</b> tickets`;
 
   let html = sortHeader() + '<tbody>';
-  if (!rows.length) html += '<tr><td colspan="10" style="color:var(--muted)">no tickets match filter</td></tr>';
+  if (!rows.length) html += '<tr><td colspan="11" style="color:var(--muted)">no tickets match filter</td></tr>';
   for (const i of rows) {{
     html += `<tr>
       <td>${{i.created_month ? i.created_month.label : '—'}}</td>
@@ -639,6 +734,7 @@ function render() {{
       <td>${{pillPrio(i.priority)}}</td>
       <td class="num">${{i.zendesk_count}}</td>
       <td class="num">${{i.created_date || '—'}}</td>
+      <td class="num">${{fmtDays(i.time_to_done_days)}}</td>
       <td>${{pillStatus(i)}}</td>
       <td>${{i.assignee}}</td>
       <td class="summary">${{i.summary}}</td>

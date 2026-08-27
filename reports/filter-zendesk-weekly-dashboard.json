@@ -102,7 +102,9 @@
     "created_done": 50,
     "created_open": 53,
     "done_pct": 49,
-    "not_done_pct": 51
+    "not_done_pct": 51,
+    "avg_days_to_done": 4.74,
+    "done_with_time": 50
   },
   "product_kpis": [
     {
@@ -116,7 +118,9 @@
       "open": 1,
       "zendesk": 2,
       "done_pct": 0,
-      "not_done_pct": 100
+      "not_done_pct": 100,
+      "avg_days_to_done": null,
+      "done_with_time": 0
     },
     {
       "key": "AWARE",
@@ -129,7 +133,9 @@
       "open": 1,
       "zendesk": 4,
       "done_pct": 75,
-      "not_done_pct": 25
+      "not_done_pct": 25,
+      "avg_days_to_done": 11.29,
+      "done_with_time": 3
     },
     {
       "key": "COM",
@@ -142,7 +148,9 @@
       "open": 2,
       "zendesk": 4,
       "done_pct": 50,
-      "not_done_pct": 50
+      "not_done_pct": 50,
+      "avg_days_to_done": 4.04,
+      "done_with_time": 2
     },
     {
       "key": "DD",
@@ -155,7 +163,9 @@
       "open": 8,
       "zendesk": 11,
       "done_pct": 20,
-      "not_done_pct": 80
+      "not_done_pct": 80,
+      "avg_days_to_done": 9.78,
+      "done_with_time": 2
     },
     {
       "key": "DE",
@@ -168,7 +178,9 @@
       "open": 0,
       "zendesk": 2,
       "done_pct": 100,
-      "not_done_pct": 0
+      "not_done_pct": 0,
+      "avg_days_to_done": 7.01,
+      "done_with_time": 2
     },
     {
       "key": "DEVOPS",
@@ -181,7 +193,9 @@
       "open": 1,
       "zendesk": 2,
       "done_pct": 50,
-      "not_done_pct": 50
+      "not_done_pct": 50,
+      "avg_days_to_done": 0.38,
+      "done_with_time": 1
     },
     {
       "key": "FILTER",
@@ -194,7 +208,9 @@
       "open": 11,
       "zendesk": 22,
       "done_pct": 15,
-      "not_done_pct": 85
+      "not_done_pct": 85,
+      "avg_days_to_done": 8.52,
+      "done_with_time": 2
     },
     {
       "key": "FLEX",
@@ -207,7 +223,9 @@
       "open": 3,
       "zendesk": 52,
       "done_pct": 67,
-      "not_done_pct": 33
+      "not_done_pct": 33,
+      "avg_days_to_done": 2.84,
+      "done_with_time": 6
     },
     {
       "key": "HOME",
@@ -220,7 +238,9 @@
       "open": 1,
       "zendesk": 6,
       "done_pct": 80,
-      "not_done_pct": 20
+      "not_done_pct": 20,
+      "avg_days_to_done": 5.83,
+      "done_with_time": 4
     },
     {
       "key": "MDMCLASS",
@@ -233,7 +253,9 @@
       "open": 20,
       "zendesk": 49,
       "done_pct": 52,
-      "not_done_pct": 48
+      "not_done_pct": 48,
+      "avg_days_to_done": 2.85,
+      "done_with_time": 22
     },
     {
       "key": "PRODUCT24",
@@ -246,7 +268,9 @@
       "open": 0,
       "zendesk": 0,
       "done_pct": 0,
-      "not_done_pct": 0
+      "not_done_pct": 0,
+      "avg_days_to_done": null,
+      "done_with_time": 0
     },
     {
       "key": "PAGESCAN",
@@ -259,7 +283,9 @@
       "open": 4,
       "zendesk": 7,
       "done_pct": 43,
-      "not_done_pct": 57
+      "not_done_pct": 57,
+      "avg_days_to_done": 8.91,
+      "done_with_time": 3
     },
     {
       "key": "PASS",
@@ -272,7 +298,9 @@
       "open": 1,
       "zendesk": 21,
       "done_pct": 75,
-      "not_done_pct": 25
+      "not_done_pct": 25,
+      "avg_days_to_done": 4.73,
+      "done_with_time": 3
     },
     {
       "key": "RESP",
@@ -285,7 +313,9 @@
       "open": 0,
       "zendesk": 0,
       "done_pct": 0,
-      "not_done_pct": 0
+      "not_done_pct": 0,
+      "avg_days_to_done": null,
+      "done_with_time": 0
     }
   ],
   "monthly": [
@@ -446,7 +476,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-06T05:41:38.205000-04:00",
+      "done_at": "2026-08-06T05:41:38.205000-04:00",
+      "done_date": "2026-08-06",
+      "time_to_done_days": 2.96
     },
     {
       "key": "HOME-5524",
@@ -474,7 +508,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-05T03:15:36.924000-04:00",
+      "done_at": "2026-08-05T03:15:36.924000-04:00",
+      "done_date": "2026-08-05",
+      "time_to_done_days": 1.8
     },
     {
       "key": "DE-830",
@@ -502,7 +540,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T12:48:41.309000-04:00",
+      "done_at": "2026-08-17T12:48:41.309000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 14.0
     },
     {
       "key": "PAGESCAN-988",
@@ -530,7 +572,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-19T01:58:24.861000-04:00",
+      "done_at": "2026-08-19T01:58:24.861000-04:00",
+      "done_date": "2026-08-19",
+      "time_to_done_days": 15.53
     },
     {
       "key": "AWARE-8869",
@@ -558,7 +604,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-14T15:38:10.617000-04:00",
+      "done_at": "2026-08-14T15:38:10.617000-04:00",
+      "done_date": "2026-08-14",
+      "time_to_done_days": 11.01
     },
     {
       "key": "AICHAT-690",
@@ -586,7 +636,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "HOME-5537",
@@ -614,7 +667,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "PAGESCAN-989",
@@ -642,7 +698,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-12T06:46:48.380000-04:00",
+      "done_at": "2026-08-12T06:46:48.380000-04:00",
+      "done_date": "2026-08-12",
+      "time_to_done_days": 8.59
     },
     {
       "key": "DD-3858",
@@ -670,7 +730,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18613",
@@ -689,8 +752,8 @@
       "project_label": "MDM Class",
       "created": "2026-08-04T10:30:47.468000-04:00",
       "created_date": "2026-08-04",
-      "resolved": null,
-      "resolved_date": null,
+      "resolved": "2026-08-25T13:34:13.334000-04:00",
+      "resolved_date": "2026-08-25",
       "created_month": {
         "id": "2026-08",
         "label": "Aug 2026",
@@ -698,7 +761,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-25T13:34:13.417000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "HOME-5551",
@@ -726,7 +793,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-18T06:20:21.845000-04:00",
+      "done_at": "2026-08-18T06:20:21.845000-04:00",
+      "done_date": "2026-08-18",
+      "time_to_done_days": 13.74
     },
     {
       "key": "DD-3859",
@@ -754,7 +825,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "PASS-8060",
@@ -782,7 +856,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-18T10:19:46.450000-04:00",
+      "done_at": "2026-08-18T10:19:46.450000-04:00",
+      "done_date": "2026-08-18",
+      "time_to_done_days": 13.25
     },
     {
       "key": "PASS-8061",
@@ -810,7 +888,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18620",
@@ -838,7 +919,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T09:06:46.071000-04:00",
+      "done_at": "2026-08-20T09:06:46.071000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 14.96
     },
     {
       "key": "AWARE-9024",
@@ -866,7 +951,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-24T12:21:54.482000-04:00",
+      "done_at": "2026-08-24T12:21:54.482000-04:00",
+      "done_date": "2026-08-24",
+      "time_to_done_days": 18.96
     },
     {
       "key": "DD-3860",
@@ -894,7 +983,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-19T08:46:25.322000-04:00",
+      "done_at": "2026-08-19T08:46:25.322000-04:00",
+      "done_date": "2026-08-19",
+      "time_to_done_days": 13.74
     },
     {
       "key": "MDMCLASS-18627",
@@ -922,7 +1015,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16154",
@@ -950,7 +1046,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "DD-3864",
@@ -978,7 +1077,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "DD-3866",
@@ -1006,7 +1108,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16187",
@@ -1034,7 +1139,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18634",
@@ -1062,7 +1170,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-07T12:47:42.415000-04:00",
+      "done_at": "2026-08-07T12:47:42.415000-04:00",
+      "done_date": "2026-08-07",
+      "time_to_done_days": 0.15
     },
     {
       "key": "MDMCLASS-18635",
@@ -1090,7 +1202,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18636",
@@ -1118,7 +1233,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16192",
@@ -1146,7 +1264,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-18T00:50:56.940000-04:00",
+      "done_at": "2026-08-18T00:50:56.940000-04:00",
+      "done_date": "2026-08-18",
+      "time_to_done_days": 10.28
     },
     {
       "key": "FLEX-4537",
@@ -1174,7 +1296,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-13T03:11:38.931000-04:00",
+      "done_at": "2026-08-13T03:11:38.931000-04:00",
+      "done_date": "2026-08-13",
+      "time_to_done_days": 2.72
     },
     {
       "key": "MDMCLASS-18643",
@@ -1202,7 +1328,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18645",
@@ -1230,7 +1359,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-11T00:43:07.924000-04:00",
+      "done_at": "2026-08-11T00:43:07.924000-04:00",
+      "done_date": "2026-08-11",
+      "time_to_done_days": 0.37
     },
     {
       "key": "MDMCLASS-18653",
@@ -1258,7 +1391,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-11T11:03:49.495000-04:00",
+      "done_at": "2026-08-11T11:03:49.495000-04:00",
+      "done_date": "2026-08-11",
+      "time_to_done_days": 0.13
     },
     {
       "key": "MDMCLASS-18654",
@@ -1286,7 +1423,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-18T08:58:27.748000-04:00",
+      "done_at": "2026-08-18T08:58:27.748000-04:00",
+      "done_date": "2026-08-18",
+      "time_to_done_days": 6.63
     },
     {
       "key": "MDMCLASS-18657",
@@ -1314,7 +1455,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T18:42:07.243000-04:00",
+      "done_at": "2026-08-17T18:42:07.243000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 5.56
     },
     {
       "key": "PAGESCAN-992",
@@ -1342,7 +1487,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18664",
@@ -1370,7 +1518,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-14T08:55:52.784000-04:00",
+      "done_at": "2026-08-14T08:55:52.784000-04:00",
+      "done_date": "2026-08-14",
+      "time_to_done_days": 1.99
     },
     {
       "key": "DD-3896",
@@ -1398,7 +1550,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "HOME-5610",
@@ -1426,7 +1581,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T09:27:23.720000-04:00",
+      "done_at": "2026-08-17T09:27:23.720000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 4.84
     },
     {
       "key": "FILTER-16318",
@@ -1454,7 +1613,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-19T10:09:24.452000-04:00",
+      "done_at": "2026-08-19T10:09:24.452000-04:00",
+      "done_date": "2026-08-19",
+      "time_to_done_days": 6.75
     },
     {
       "key": "PAGESCAN-993",
@@ -1482,7 +1645,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "DD-3907",
@@ -1510,7 +1676,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18675",
@@ -1538,7 +1707,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-14T09:28:07.524000-04:00",
+      "done_at": "2026-08-14T09:28:07.524000-04:00",
+      "done_date": "2026-08-14",
+      "time_to_done_days": 0.7
     },
     {
       "key": "FILTER-16357",
@@ -1566,7 +1739,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4549",
@@ -1594,7 +1770,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "COM-1576",
@@ -1622,7 +1801,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18676",
@@ -1650,7 +1832,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T18:43:00.721000-04:00",
+      "done_at": "2026-08-17T18:43:00.721000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 3.27
     },
     {
       "key": "PAGESCAN-994",
@@ -1678,7 +1864,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T02:42:59.218000-04:00",
+      "done_at": "2026-08-17T02:42:59.218000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 2.6
     },
     {
       "key": "MDMCLASS-18685",
@@ -1706,7 +1896,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16364",
@@ -1734,7 +1927,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18686",
@@ -1762,7 +1958,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T03:56:09.202000-04:00",
+      "done_at": "2026-08-20T03:56:09.202000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 5.5
     },
     {
       "key": "COM-1577",
@@ -1790,7 +1990,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T06:17:56.151000-04:00",
+      "done_at": "2026-08-21T06:17:56.151000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 6.58
     },
     {
       "key": "DD-3909",
@@ -1818,7 +2022,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T12:40:09.125000-04:00",
+      "done_at": "2026-08-20T12:40:09.125000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 5.81
     },
     {
       "key": "MDMCLASS-18689",
@@ -1846,7 +2054,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T06:38:44.271000-04:00",
+      "done_at": "2026-08-17T06:38:44.271000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 0.67
     },
     {
       "key": "MDMCLASS-18691",
@@ -1874,7 +2086,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18692",
@@ -1902,7 +2117,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T12:23:03.839000-04:00",
+      "done_at": "2026-08-17T12:23:03.839000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 0.11
     },
     {
       "key": "MDMCLASS-18693",
@@ -1930,7 +2149,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T11:48:22.848000-04:00",
+      "done_at": "2026-08-21T11:48:22.848000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 4.03
     },
     {
       "key": "DE-843",
@@ -1958,7 +2181,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T12:26:42.584000-04:00",
+      "done_at": "2026-08-17T12:26:42.584000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 0.02
     },
     {
       "key": "MDMCLASS-18694",
@@ -1986,7 +2213,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-18T11:06:22.812000-04:00",
+      "done_at": "2026-08-18T11:06:22.812000-04:00",
+      "done_date": "2026-08-18",
+      "time_to_done_days": 0.92
     },
     {
       "key": "FLEX-4558",
@@ -2014,7 +2245,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-25T16:08:43.332000-04:00",
+      "done_at": "2026-08-20T01:16:54.223000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 2.49
     },
     {
       "key": "MDMCLASS-18695",
@@ -2042,7 +2277,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-17T14:12:28.902000-04:00",
+      "done_at": "2026-08-17T14:12:28.902000-04:00",
+      "done_date": "2026-08-17",
+      "time_to_done_days": 0.01
     },
     {
       "key": "DD-3910",
@@ -2070,7 +2309,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4559",
@@ -2098,7 +2340,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16404",
@@ -2126,7 +2371,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18700",
@@ -2154,7 +2402,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-25T10:08:26.721000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18705",
@@ -2182,7 +2434,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16428",
@@ -2210,7 +2465,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4562",
@@ -2238,7 +2496,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-25T09:23:04.698000-04:00",
+      "done_at": "2026-08-25T09:23:04.698000-04:00",
+      "done_date": "2026-08-25",
+      "time_to_done_days": 6.96
     },
     {
       "key": "COM-1582",
@@ -2266,7 +2528,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T02:24:54.227000-04:00",
+      "done_at": "2026-08-20T02:24:54.227000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 1.51
     },
     {
       "key": "MDMCLASS-18732",
@@ -2294,7 +2560,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18735",
@@ -2322,7 +2591,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-24T12:29:47.242000-04:00",
+      "done_at": "2026-08-24T12:29:47.242000-04:00",
+      "done_date": "2026-08-24",
+      "time_to_done_days": 5.77
     },
     {
       "key": "PASS-8113",
@@ -2350,7 +2623,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-19T04:19:24.839000-04:00",
+      "done_at": "2026-08-19T04:19:24.839000-04:00",
+      "done_date": "2026-08-19",
+      "time_to_done_days": 0.21
     },
     {
       "key": "MDMCLASS-18736",
@@ -2378,7 +2655,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-25T06:37:38.160000-04:00",
+      "done_at": "2026-08-25T06:37:38.160000-04:00",
+      "done_date": "2026-08-25",
+      "time_to_done_days": 5.87
     },
     {
       "key": "PAGESCAN-995",
@@ -2406,7 +2687,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-27T02:09:58.435000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18741",
@@ -2434,7 +2719,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18742",
@@ -2462,7 +2750,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T17:44:24.503000-04:00",
+      "done_at": "2026-08-20T17:44:24.503000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 1.15
     },
     {
       "key": "FILTER-16485",
@@ -2490,7 +2782,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18745",
@@ -2518,7 +2813,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T05:28:20.640000-04:00",
+      "done_at": "2026-08-20T05:28:20.640000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 0.58
     },
     {
       "key": "FILTER-16488",
@@ -2546,7 +2845,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4566",
@@ -2574,7 +2876,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "DEVOPS-11815",
@@ -2602,7 +2907,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-20T03:38:44.058000-04:00",
+      "done_at": "2026-08-20T03:38:44.058000-04:00",
+      "done_date": "2026-08-20",
+      "time_to_done_days": 0.38
     },
     {
       "key": "MDMCLASS-18751",
@@ -2630,7 +2939,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "PASS-8119",
@@ -2658,7 +2970,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T03:38:27.629000-04:00",
+      "done_at": "2026-08-21T03:38:27.629000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 0.72
     },
     {
       "key": "MDMCLASS-18752",
@@ -2686,7 +3002,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T13:06:37.889000-04:00",
+      "done_at": "2026-08-21T13:06:37.889000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 1.1
     },
     {
       "key": "PAGESCAN-997",
@@ -2714,7 +3034,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4569",
@@ -2742,7 +3065,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T10:21:03.751000-04:00",
+      "done_at": "2026-08-21T10:21:03.751000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 0.82
     },
     {
       "key": "AWARE-9179",
@@ -2770,7 +3097,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-24T13:16:24.562000-04:00",
+      "done_at": "2026-08-24T13:16:24.562000-04:00",
+      "done_date": "2026-08-24",
+      "time_to_done_days": 3.9
     },
     {
       "key": "MDMCLASS-18754",
@@ -2798,7 +3129,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-21T08:30:47.918000-04:00",
+      "done_at": "2026-08-21T08:30:47.918000-04:00",
+      "done_date": "2026-08-21",
+      "time_to_done_days": 0.61
     },
     {
       "key": "DEVOPS-11878",
@@ -2826,7 +3161,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-26T10:50:31.973000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18755",
@@ -2854,7 +3193,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-24T01:32:27.804000-04:00",
+      "done_at": "2026-08-24T01:32:27.804000-04:00",
+      "done_date": "2026-08-24",
+      "time_to_done_days": 2.71
     },
     {
       "key": "MDMCLASS-18757",
@@ -2882,7 +3225,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16526",
@@ -2910,7 +3256,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "DD-3920",
@@ -2938,7 +3287,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4570",
@@ -2966,7 +3318,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-25T02:49:58.049000-04:00",
+      "done_at": "2026-08-25T02:49:58.049000-04:00",
+      "done_date": "2026-08-25",
+      "time_to_done_days": 3.49
     },
     {
       "key": "MDMCLASS-18764",
@@ -2994,7 +3350,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18767",
@@ -3022,7 +3381,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "COM-1585",
@@ -3050,7 +3412,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16563",
@@ -3078,7 +3443,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FILTER-16569",
@@ -3106,7 +3474,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "AWARE-9226",
@@ -3134,7 +3505,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18770",
@@ -3162,7 +3536,10 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18771",
@@ -3181,8 +3558,8 @@
       "project_label": "MDM Class",
       "created": "2026-08-24T13:02:38.356000-04:00",
       "created_date": "2026-08-24",
-      "resolved": null,
-      "resolved_date": null,
+      "resolved": "2026-08-25T13:06:02.691000-04:00",
+      "resolved_date": "2026-08-25",
       "created_month": {
         "id": "2026-08",
         "label": "Aug 2026",
@@ -3190,7 +3567,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-25T13:06:02.778000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18772",
@@ -3209,8 +3590,8 @@
       "project_label": "MDM Class",
       "created": "2026-08-24T14:38:54.991000-04:00",
       "created_date": "2026-08-24",
-      "resolved": null,
-      "resolved_date": null,
+      "resolved": "2026-08-26T13:26:10.701000-04:00",
+      "resolved_date": "2026-08-26",
       "created_month": {
         "id": "2026-08",
         "label": "Aug 2026",
@@ -3218,7 +3599,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-26T13:26:10.772000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "FLEX-4571",
@@ -3246,7 +3631,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": true
+      "is_done": true,
+      "statuscategorychangedate": "2026-08-25T03:29:38.445000-04:00",
+      "done_at": "2026-08-25T03:29:38.445000-04:00",
+      "done_date": "2026-08-25",
+      "time_to_done_days": 0.53
     },
     {
       "key": "MDMCLASS-18773",
@@ -3265,8 +3654,8 @@
       "project_label": "MDM Class",
       "created": "2026-08-24T15:09:26.292000-04:00",
       "created_date": "2026-08-24",
-      "resolved": null,
-      "resolved_date": null,
+      "resolved": "2026-08-26T12:40:21.375000-04:00",
+      "resolved_date": "2026-08-26",
       "created_month": {
         "id": "2026-08",
         "label": "Aug 2026",
@@ -3274,7 +3663,11 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "statuscategorychangedate": "2026-08-26T12:40:21.470000-04:00",
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     },
     {
       "key": "MDMCLASS-18777",
@@ -3302,12 +3695,15 @@
         "end": "2026-08-31",
         "partial": true
       },
-      "is_done": false
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
     }
   ],
-  "headline": "103 Zendesk-linked tickets created since 1 Aug 2026 (27 Escape Defect, 76 Support Request). 50 Done (statusCategory = Done) vs 53 not Done (statusCategory != Done). Highest intake: MDM Class 42, Filter 13, DD 10, Flex 9, PageScan 7. No matching tickets yet: On-Call, Respond.",
+  "headline": "103 Zendesk-linked tickets created since 1 Aug 2026 (27 Escape Defect, 76 Support Request). 50 Done (statusCategory = Done) vs 53 not Done (statusCategory != Done). Average time from created to Done is 4.7 days across 50 of 50 Done tickets. Highest intake: MDM Class 42, Filter 13, DD 10, Flex 9, PageScan 7. No matching tickets yet: On-Call, Respond.",
   "notes": {
-    "scope": "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done.",
+    "scope": "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done. Average time to Done is created \u2192 statuscategorychangedate (when the ticket entered Done), falling back to resolutiondate if the category-change date is missing or after the snapshot (for example if the ticket was later reopened).",
     "window": "Aug 2026 is partial through the snapshot date."
   }
 }

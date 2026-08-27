@@ -9,6 +9,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "reports" / "filter-zendesk-weekly-dashboard.json"
+DONE_AT_PATH = ROOT / "reports" / "jira-done-at.json"
 
 PROJECTS = [
     {"key": "AICHAT", "name": "Product_AIChat", "label": "AIChat"},
@@ -118,6 +119,7 @@ def load_issues(paths: list[Path]) -> list[dict]:
             if created.date().isoformat() < CREATED_FROM:
                 continue
             resolved = parse_jira_dt(fields.get("resolutiondate"))
+            status_cat_changed = parse_jira_dt(fields.get("statuscategorychangedate"))
             status = fields.get("status") or {}
             status_cat = ((status.get("statusCategory") or {}).get("name")) or ""
             issuetype = (fields.get("issuetype") or {}).get("name") or ""
@@ -148,6 +150,9 @@ def load_issues(paths: list[Path]) -> list[dict]:
                 "created_date": created.date().isoformat(),
                 "resolved": resolved.isoformat() if resolved else None,
                 "resolved_date": resolved.date().isoformat() if resolved else None,
+                "statuscategorychangedate": (
+                    status_cat_changed.isoformat() if status_cat_changed else None
+                ),
                 "created_month": {
                     "id": month["id"],
                     "label": month["label"],
@@ -216,19 +221,81 @@ def jira_link(jql: str) -> str:
     return "https://securly.atlassian.net/issues/?jql=" + quote(jql, safe="")
 
 
+def load_done_at_overlay(path: Path) -> dict[str, dict]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return payload if isinstance(payload, dict) else {}
+
+
+def apply_done_at_overlay(issues: list[dict], overlay: dict[str, dict]) -> None:
+    for issue in issues:
+        rec = overlay.get(issue["key"]) or {}
+        if rec.get("statuscategorychangedate"):
+            issue["statuscategorychangedate"] = rec["statuscategorychangedate"]
+        if rec.get("resolved") and not issue.get("resolved"):
+            issue["resolved"] = rec["resolved"]
+            resolved = parse_jira_dt(rec["resolved"])
+            issue["resolved_date"] = resolved.date().isoformat() if resolved else issue.get("resolved_date")
+
+
+def snapshot_done_at(issue: dict) -> datetime | None:
+    if not issue.get("is_done"):
+        return None
+    created = parse_jira_dt(issue.get("created"))
+    scc = parse_jira_dt(issue.get("statuscategorychangedate"))
+    resolved = parse_jira_dt(issue.get("resolved"))
+    if scc and scc <= SNAPSHOT_DT and (created is None or scc >= created):
+        return scc
+    if resolved and resolved <= SNAPSHOT_DT and (created is None or resolved >= created):
+        return resolved
+    if resolved and created and resolved >= created:
+        return resolved
+    return None
+
+
+def round_days(seconds: float) -> float:
+    return round(seconds / 86400, 2)
+
+
+def attach_time_to_done(issues: list[dict]) -> None:
+    for issue in issues:
+        done_at = snapshot_done_at(issue)
+        created = parse_jira_dt(issue.get("created"))
+        issue["done_at"] = done_at.isoformat() if done_at else None
+        issue["done_date"] = done_at.date().isoformat() if done_at else None
+        if done_at and created:
+            issue["time_to_done_days"] = round_days((done_at - created).total_seconds())
+        else:
+            issue["time_to_done_days"] = None
+
+
+def avg_days(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return round(sum(values) / len(values), 2)
+
+
 def main(paths: list[str]) -> None:
     issues = load_all([Path(p) for p in paths])
+    apply_done_at_overlay(issues, load_done_at_overlay(DONE_AT_PATH))
+    attach_time_to_done(issues)
     product_kpis = []
     for proj in PROJECTS:
         bucket = empty_counts()
+        times: list[float] = []
         for issue in issues:
             if issue["project_key"] == proj["key"]:
                 bump(bucket, issue)
+                if issue.get("time_to_done_days") is not None:
+                    times.append(issue["time_to_done_days"])
         product_kpis.append({
             **proj,
             **bucket,
             "done_pct": round(100 * bucket["done"] / bucket["created"]) if bucket["created"] else 0,
             "not_done_pct": round(100 * bucket["open"] / bucket["created"]) if bucket["created"] else 0,
+            "avg_days_to_done": avg_days(times),
+            "done_with_time": len(times),
         })
 
     monthly = []
@@ -243,8 +310,12 @@ def main(paths: list[str]) -> None:
         monthly.append({**month, "by_project": by_project, "totals": totals})
 
     kpis = empty_counts()
+    all_times: list[float] = []
     for issue in issues:
         bump(kpis, issue)
+        if issue.get("time_to_done_days") is not None:
+            all_times.append(issue["time_to_done_days"])
+    avg_to_done = avg_days(all_times)
 
     product_kpis.sort(key=lambda p: p["label"].lower())
     ranked = sorted(product_kpis, key=lambda p: (-p["created"], p["label"]))
@@ -256,7 +327,13 @@ def main(paths: list[str]) -> None:
         f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
         f"{kpis['done']} Done (statusCategory = Done) vs {kpis['open']} not Done "
         f"(statusCategory != Done). "
-        f"Highest intake: {top_txt}."
+        + (
+            f"Average time from created to Done is {avg_to_done:.1f} days "
+            f"across {len(all_times)} of {kpis['done']} Done tickets. "
+            if avg_to_done is not None else
+            "No Done tickets have a usable created-to-Done timestamp. "
+        )
+        + f"Highest intake: {top_txt}."
     )
     if zero:
         headline += f" No matching tickets yet: {', '.join(zero)}."
@@ -292,6 +369,8 @@ def main(paths: list[str]) -> None:
             "created_open": kpis["open"],
             "done_pct": round(100 * kpis["done"] / kpis["created"]) if kpis["created"] else 0,
             "not_done_pct": round(100 * kpis["open"] / kpis["created"]) if kpis["created"] else 0,
+            "avg_days_to_done": avg_to_done,
+            "done_with_time": len(all_times),
         },
         "product_kpis": product_kpis,
         "monthly": monthly,
@@ -303,7 +382,10 @@ def main(paths: list[str]) -> None:
                 "MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). "
                 "Products with 0 had no Escape Defect or Support Request with Zendesk "
                 f"Ticket Count > 0 since {CREATED_FROM_LABEL}. Done vs not Done uses Jira "
-                "statusCategory = Done versus statusCategory != Done."
+                "statusCategory = Done versus statusCategory != Done. Average time to Done "
+                "is created → statuscategorychangedate (when the ticket entered Done), "
+                "falling back to resolutiondate if the category-change date is missing or "
+                "after the snapshot (for example if the ticket was later reopened)."
             ),
             "window": "Aug 2026 is partial through the snapshot date.",
         },
@@ -314,7 +396,8 @@ def main(paths: list[str]) -> None:
     for p in product_kpis:
         print(
             f"  {p['label']:16} created={p['created']:3} open={p['open']:3} "
-            f"done={p['done']:3} zd={p['zendesk']:3}"
+            f"done={p['done']:3} avg_to_done={p['avg_days_to_done'] or '—'} "
+            f"zd={p['zendesk']:3}"
         )
 
 
