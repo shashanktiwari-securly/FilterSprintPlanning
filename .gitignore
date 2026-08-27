@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+reports/jira-live-issues.json
+reports/.jira-live-page.json

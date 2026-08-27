@@ -3,16 +3,20 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+import os
+from calendar import monthrange
+from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "reports" / "filter-zendesk-weekly-dashboard.json"
+DONE_AT_PATH = ROOT / "reports" / "jira-done-at.json"
 
 PROJECTS = [
     {"key": "AICHAT", "name": "Product_AIChat", "label": "AIChat"},
     {"key": "AWARE", "name": "product_AWARE", "label": "Aware"},
+    {"key": "RESP", "name": "product_CaseManager", "label": "Case Manager"},
     {"key": "COM", "name": "Pass-Flex Common Services", "label": "Comm"},
     {"key": "DD", "name": "DyKnow & Reveal", "label": "DD"},
     {"key": "DE", "name": "OPS_DE", "label": "DE"},
@@ -24,26 +28,31 @@ PROJECTS = [
     {"key": "PRODUCT24", "name": "product_oncall", "label": "On-Call"},
     {"key": "PAGESCAN", "name": "prod_pagescan", "label": "PageScan"},
     {"key": "PASS", "name": "Pass", "label": "Pass"},
-    {"key": "RESP", "name": "product_RESPOND", "label": "Respond"},
 ]
 PROJECT_BY_KEY = {p["key"]: p for p in PROJECTS}
 PROJECT_LIST = ", ".join(p["key"] for p in PROJECTS)
 CREATED_FROM = "2026-08-01"
 CREATED_FROM_LABEL = "1 Aug 2026"
 TITLE = "Monthly Escape Defect and Support Request Dashboard"
-SNAPSHOT = "2026-08-25"
-SNAPSHOT_DT = datetime.fromisoformat("2026-08-25T13:40:00+00:00")
-
-MONTHS = [
-    {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": True,
-    },
+JIRA_URL = os.environ.get("JIRA_URL", "https://securly.atlassian.net").rstrip("/")
+ISSUE_FIELDS = [
+    "summary",
+    "status",
+    "issuetype",
+    "priority",
+    "created",
+    "updated",
+    "resolutiondate",
+    "statuscategorychangedate",
+    "project",
+    "assignee",
+    "customfield_11201",
 ]
-MONTH_BY_ID = {m["id"]: m for m in MONTHS}
+
+SNAPSHOT = ""
+SNAPSHOT_DT = datetime.min.replace(tzinfo=timezone.utc)
+MONTHS: list[dict] = []
+MONTH_BY_ID: dict[str, dict] = {}
 
 JQL_CREATED = (
     f"project in ({PROJECT_LIST}) AND issuetype in "
@@ -60,6 +69,43 @@ JQL_DONE = (
     '("Escape Defect", "Support Request") AND "Zendesk Ticket Count" > 0 '
     f'AND created >= "{CREATED_FROM}" AND statusCategory = Done ORDER BY created ASC'
 )
+
+
+def build_months(start: date, end: date) -> list[dict]:
+    months: list[dict] = []
+    year, month = start.year, start.month
+    while (year, month) <= (end.year, end.month):
+        last_day = monthrange(year, month)[1]
+        start_d = date(year, month, 1)
+        end_d = date(year, month, last_day)
+        months.append(
+            {
+                "id": f"{year:04d}-{month:02d}",
+                "label": start_d.strftime("%b %Y"),
+                "start": start_d.isoformat(),
+                "end": end_d.isoformat(),
+                "partial": end < end_d,
+            }
+        )
+        if month == 12:
+            year, month = year + 1, 1
+        else:
+            month += 1
+    return months
+
+
+def set_clock(now: datetime | None = None) -> None:
+    global SNAPSHOT, SNAPSHOT_DT, MONTHS, MONTH_BY_ID
+    snapshot = now or datetime.now(timezone.utc)
+    if snapshot.tzinfo is None:
+        snapshot = snapshot.replace(tzinfo=timezone.utc)
+    SNAPSHOT_DT = snapshot
+    SNAPSHOT = snapshot.date().isoformat()
+    MONTHS = build_months(date.fromisoformat(CREATED_FROM), snapshot.date())
+    MONTH_BY_ID = {m["id"]: m for m in MONTHS}
+
+
+set_clock()
 
 
 def parse_jira_dt(value: str | None) -> datetime | None:
@@ -118,6 +164,7 @@ def load_issues(paths: list[Path]) -> list[dict]:
             if created.date().isoformat() < CREATED_FROM:
                 continue
             resolved = parse_jira_dt(fields.get("resolutiondate"))
+            status_cat_changed = parse_jira_dt(fields.get("statuscategorychangedate"))
             status = fields.get("status") or {}
             status_cat = ((status.get("statusCategory") or {}).get("name")) or ""
             issuetype = (fields.get("issuetype") or {}).get("name") or ""
@@ -148,6 +195,9 @@ def load_issues(paths: list[Path]) -> list[dict]:
                 "created_date": created.date().isoformat(),
                 "resolved": resolved.isoformat() if resolved else None,
                 "resolved_date": resolved.date().isoformat() if resolved else None,
+                "statuscategorychangedate": (
+                    status_cat_changed.isoformat() if status_cat_changed else None
+                ),
                 "created_month": {
                     "id": month["id"],
                     "label": month["label"],
@@ -216,19 +266,122 @@ def jira_link(jql: str) -> str:
     return "https://securly.atlassian.net/issues/?jql=" + quote(jql, safe="")
 
 
-def main(paths: list[str]) -> None:
-    issues = load_all([Path(p) for p in paths])
+def load_done_at_overlay(path: Path) -> dict[str, dict]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return payload if isinstance(payload, dict) else {}
+
+
+def apply_done_at_overlay(issues: list[dict], overlay: dict[str, dict]) -> None:
+    for issue in issues:
+        rec = overlay.get(issue["key"]) or {}
+        if rec.get("statuscategorychangedate") and not issue.get("statuscategorychangedate"):
+            issue["statuscategorychangedate"] = rec["statuscategorychangedate"]
+        if rec.get("resolved") and not issue.get("resolved"):
+            issue["resolved"] = rec["resolved"]
+            resolved = parse_jira_dt(rec["resolved"])
+            issue["resolved_date"] = resolved.date().isoformat() if resolved else issue.get("resolved_date")
+
+
+def snapshot_done_at(issue: dict) -> datetime | None:
+    if not issue.get("is_done"):
+        return None
+    created = parse_jira_dt(issue.get("created"))
+    scc = parse_jira_dt(issue.get("statuscategorychangedate"))
+    resolved = parse_jira_dt(issue.get("resolved"))
+    if scc and scc <= SNAPSHOT_DT and (created is None or scc >= created):
+        return scc
+    if resolved and resolved <= SNAPSHOT_DT and (created is None or resolved >= created):
+        return resolved
+    if resolved and created and resolved >= created:
+        return resolved
+    return None
+
+
+def round_days(seconds: float) -> float:
+    return round(seconds / 86400, 2)
+
+
+def attach_time_to_done(issues: list[dict]) -> None:
+    for issue in issues:
+        done_at = snapshot_done_at(issue)
+        created = parse_jira_dt(issue.get("created"))
+        issue["done_at"] = done_at.isoformat() if done_at else None
+        issue["done_date"] = done_at.date().isoformat() if done_at else None
+        if done_at and created:
+            issue["time_to_done_days"] = round_days((done_at - created).total_seconds())
+        else:
+            issue["time_to_done_days"] = None
+
+
+def avg_days(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return round(sum(values) / len(values), 2)
+
+
+def window_note() -> str:
+    labels = []
+    for month in MONTHS:
+        label = month["label"]
+        if month.get("partial"):
+            label += " (partial)"
+        labels.append(label)
+    joined = ", ".join(labels) if labels else SNAPSHOT
+    return f"{joined} through the live Jira refresh."
+
+
+def fetch_jira_search_pages() -> list[dict]:
+    from build_sprint_matrix_report import search_jql_page
+
+    issues: list[dict] = []
+    token: str | None = None
+    while True:
+        page = search_jql_page(JIRA_URL, JQL_CREATED, ISSUE_FIELDS, 100, token)
+        issues.extend(page.get("issues") or [])
+        token = page.get("nextPageToken")
+        if page.get("isLast", not token) or not token:
+            break
+    return issues
+
+
+def fetch_jira_issues() -> list[dict]:
+    if not os.environ.get("JIRA_EMAIL") or not os.environ.get("JIRA_API_TOKEN"):
+        raise RuntimeError("JIRA_EMAIL and JIRA_API_TOKEN are required for a live Jira pull")
+    return load_issue_payload({"issues": fetch_jira_search_pages()})
+
+
+def load_issue_payload(payload: dict) -> list[dict]:
+    tmp = ROOT / "reports" / ".jira-live-page.json"
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    tmp.write_text(json.dumps(payload), encoding="utf-8")
+    try:
+        return load_issues([tmp])
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+
+
+def build_dashboard(issues: list[dict], live: bool = False) -> dict:
+    apply_done_at_overlay(issues, load_done_at_overlay(DONE_AT_PATH))
+    attach_time_to_done(issues)
     product_kpis = []
     for proj in PROJECTS:
         bucket = empty_counts()
+        times: list[float] = []
         for issue in issues:
             if issue["project_key"] == proj["key"]:
                 bump(bucket, issue)
+                if issue.get("time_to_done_days") is not None:
+                    times.append(issue["time_to_done_days"])
         product_kpis.append({
             **proj,
             **bucket,
             "done_pct": round(100 * bucket["done"] / bucket["created"]) if bucket["created"] else 0,
             "not_done_pct": round(100 * bucket["open"] / bucket["created"]) if bucket["created"] else 0,
+            "avg_days_to_done": avg_days(times),
+            "done_with_time": len(times),
         })
 
     monthly = []
@@ -243,8 +396,12 @@ def main(paths: list[str]) -> None:
         monthly.append({**month, "by_project": by_project, "totals": totals})
 
     kpis = empty_counts()
+    all_times: list[float] = []
     for issue in issues:
         bump(kpis, issue)
+        if issue.get("time_to_done_days") is not None:
+            all_times.append(issue["time_to_done_days"])
+    avg_to_done = avg_days(all_times)
 
     product_kpis.sort(key=lambda p: p["label"].lower())
     ranked = sorted(product_kpis, key=lambda p: (-p["created"], p["label"]))
@@ -256,16 +413,23 @@ def main(paths: list[str]) -> None:
         f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
         f"{kpis['done']} Done (statusCategory = Done) vs {kpis['open']} not Done "
         f"(statusCategory != Done). "
-        f"Highest intake: {top_txt}."
+        + (
+            f"Average time from created to Done is {avg_to_done:.1f} days "
+            f"across {len(all_times)} of {kpis['done']} Done tickets. "
+            if avg_to_done is not None else
+            "No Done tickets have a usable created-to-Done timestamp. "
+        )
+        + f"Highest intake: {top_txt}."
     )
     if zero:
         headline += f" No matching tickets yet: {', '.join(zero)}."
 
-    data = {
+    return {
         "title": TITLE,
         "generated_at": SNAPSHOT_DT.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "snapshot_date": SNAPSHOT,
-        "source": "https://securly.atlassian.net",
+        "live": live,
+        "source": JIRA_URL,
         "projects": PROJECTS,
         "filters": {
             "issue_types": ["Escape Defect", "Support Request"],
@@ -292,6 +456,8 @@ def main(paths: list[str]) -> None:
             "created_open": kpis["open"],
             "done_pct": round(100 * kpis["done"] / kpis["created"]) if kpis["created"] else 0,
             "not_done_pct": round(100 * kpis["open"] / kpis["created"]) if kpis["created"] else 0,
+            "avg_days_to_done": avg_to_done,
+            "done_with_time": len(all_times),
         },
         "product_kpis": product_kpis,
         "monthly": monthly,
@@ -299,28 +465,67 @@ def main(paths: list[str]) -> None:
         "headline": headline,
         "notes": {
             "scope": (
-                "Includes AIChat, Aware, Comm, DD, DE, DevOps, Filter, Flex, Home, "
-                "MDM Class, On-Call (PRODUCT24), PageScan, Pass, and Respond (RESP). "
+                "Includes AIChat, Aware, Case Manager (RESP), Comm, DD, DE, DevOps, Filter, "
+                "Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, and Pass. "
                 "Products with 0 had no Escape Defect or Support Request with Zendesk "
                 f"Ticket Count > 0 since {CREATED_FROM_LABEL}. Done vs not Done uses Jira "
-                "statusCategory = Done versus statusCategory != Done."
+                "statusCategory = Done versus statusCategory != Done. Average time to Done "
+                "is created → statuscategorychangedate (when the ticket entered Done), "
+                "falling back to resolutiondate if the category-change date is missing or "
+                "after the snapshot (for example if the ticket was later reopened)."
             ),
-            "window": "Aug 2026 is partial through the snapshot date.",
+            "window": window_note(),
         },
     }
+
+
+def write_dashboard(data: dict) -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
-    print(f"wrote {OUT} ({len(issues)} issues)")
-    for p in product_kpis:
+    print(f"wrote {OUT} ({len(data.get('created_issues') or [])} issues)")
+    for p in data["product_kpis"]:
         print(
             f"  {p['label']:16} created={p['created']:3} open={p['open']:3} "
-            f"done={p['done']:3} zd={p['zendesk']:3}"
+            f"done={p['done']:3} avg_to_done={p['avg_days_to_done'] or '—'} "
+            f"zd={p['zendesk']:3}"
         )
+
+
+def live_dashboard() -> dict:
+    set_clock()
+    dump = ROOT / "reports" / "jira-live-issues.json"
+    try:
+        issues = fetch_jira_issues()
+        print(f"live Jira pull: {len(issues)} issues", flush=True)
+        return build_dashboard(issues, live=True)
+    except Exception as exc:
+        print(f"live Jira pull unavailable ({exc}); using local snapshot", flush=True)
+    if dump.exists():
+        return build_dashboard(load_all([dump]), live=False)
+    if OUT.exists():
+        return build_dashboard(load_all([OUT]), live=False)
+    raise RuntimeError(
+        "No Jira credentials and no local snapshot. Set JIRA_EMAIL and "
+        "JIRA_API_TOKEN, or provide reports/jira-live-issues.json."
+    )
+
+
+def main(paths: list[str]) -> None:
+    set_clock()
+    issues = load_all([Path(p) for p in paths])
+    data = build_dashboard(issues, live=False)
+    write_dashboard(data)
 
 
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) < 2:
-        raise SystemExit("usage: assemble_zendesk_dashboard.py <jira-page.json> [...]")
-    main(sys.argv[1:])
+    if len(sys.argv) == 2 and sys.argv[1] in {"--live", "live"}:
+        write_dashboard(live_dashboard())
+    elif len(sys.argv) < 2:
+        raise SystemExit(
+            "usage: assemble_zendesk_dashboard.py <jira-page.json> [...]"
+            " | assemble_zendesk_dashboard.py --live"
+        )
+    else:
+        main(sys.argv[1:])

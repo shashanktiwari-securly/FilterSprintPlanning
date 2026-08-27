@@ -1,0 +1,39 @@
+name: Refresh Jira dashboard
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull live Jira issues and rebuild
+        env:
+          JIRA_URL: ${{ secrets.JIRA_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          if [ -z "$JIRA_API_TOKEN" ] || [ -z "$JIRA_EMAIL" ]; then
+            echo "JIRA_EMAIL / JIRA_API_TOKEN secrets are not set; skip live refresh."
+            exit 0
+          fi
+          export JIRA_URL="${JIRA_URL:-https://securly.atlassian.net}"
+          python3 assemble_zendesk_dashboard.py --live
+          python3 build_filter_zendesk_weekly_dashboard.py
+      - name: Commit refreshed dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/filter-zendesk-weekly-dashboard.json reports/filter-zendesk-weekly-dashboard.html reports/filter-zendesk-weekly-dashboard.md docs/index.html docs/live.json
+          git diff --cached --quiet && echo "No dashboard changes" && exit 0
+          git commit -m "chore: refresh dashboard from live Jira"
+          git push
