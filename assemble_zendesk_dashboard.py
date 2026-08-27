@@ -4,8 +4,7 @@ from __future__ import annotations
 
 import json
 import os
-from calendar import monthrange
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
@@ -51,8 +50,8 @@ ISSUE_FIELDS = [
 
 SNAPSHOT = ""
 SNAPSHOT_DT = datetime.min.replace(tzinfo=timezone.utc)
-MONTHS: list[dict] = []
-MONTH_BY_ID: dict[str, dict] = {}
+WEEKS: list[dict] = []
+WEEK_BY_ID: dict[str, dict] = {}
 
 JQL_CREATED = (
     f"project in ({PROJECT_LIST}) AND issuetype in "
@@ -71,38 +70,61 @@ JQL_DONE = (
 )
 
 
-def build_months(start: date, end: date) -> list[dict]:
-    months: list[dict] = []
-    year, month = start.year, start.month
-    while (year, month) <= (end.year, end.month):
-        last_day = monthrange(year, month)[1]
-        start_d = date(year, month, 1)
-        end_d = date(year, month, last_day)
-        months.append(
-            {
-                "id": f"{year:04d}-{month:02d}",
-                "label": start_d.strftime("%b %Y"),
-                "start": start_d.isoformat(),
-                "end": end_d.isoformat(),
-                "partial": end < end_d,
-            }
+def monday_of(day: date) -> date:
+    return day - timedelta(days=day.weekday())
+
+
+def format_date_range(start: date, end: date) -> str:
+    if start == end:
+        return f"{start.day} {start.strftime('%b')}"
+    if start.year != end.year:
+        return (
+            f"{start.day} {start.strftime('%b %Y')} – {end.day} {end.strftime('%b %Y')}"
         )
-        if month == 12:
-            year, month = year + 1, 1
-        else:
-            month += 1
-    return months
+    return f"{start.day} {start.strftime('%b')} – {end.day} {end.strftime('%b')}"
+
+
+def build_weeks(start: date, end: date) -> list[dict]:
+    weeks: list[dict] = []
+    cursor = monday_of(start)
+    while cursor <= end:
+        iso_end = cursor + timedelta(days=6)
+        period_start = max(cursor, start)
+        period_end = min(iso_end, end)
+        if period_end >= start:
+            iso = period_start.isocalendar()
+            weeks.append(
+                {
+                    "id": f"{iso.year}-W{iso.week:02d}",
+                    "label": format_date_range(period_start, period_end),
+                    "start": period_start.isoformat(),
+                    "end": period_end.isoformat(),
+                    "partial": period_start > cursor or period_end < iso_end,
+                }
+            )
+        cursor += timedelta(days=7)
+    return weeks
+
+
+def period_fields(period: dict) -> dict:
+    return {
+        "id": period["id"],
+        "label": period["label"],
+        "start": period["start"],
+        "end": period["end"],
+        "partial": period["partial"],
+    }
 
 
 def set_clock(now: datetime | None = None) -> None:
-    global SNAPSHOT, SNAPSHOT_DT, MONTHS, MONTH_BY_ID
+    global SNAPSHOT, SNAPSHOT_DT, WEEKS, WEEK_BY_ID
     snapshot = now or datetime.now(timezone.utc)
     if snapshot.tzinfo is None:
         snapshot = snapshot.replace(tzinfo=timezone.utc)
     SNAPSHOT_DT = snapshot
     SNAPSHOT = snapshot.date().isoformat()
-    MONTHS = build_months(date.fromisoformat(CREATED_FROM), snapshot.date())
-    MONTH_BY_ID = {m["id"]: m for m in MONTHS}
+    WEEKS = build_weeks(date.fromisoformat(CREATED_FROM), snapshot.date())
+    WEEK_BY_ID = {w["id"]: w for w in WEEKS}
 
 
 set_clock()
@@ -141,9 +163,12 @@ def bump(bucket: dict, issue: dict) -> None:
     bucket["zendesk"] += issue["zendesk_count"] or 0
 
 
-def month_for(created: datetime) -> dict:
-    mid = created.strftime("%Y-%m")
-    return MONTH_BY_ID.get(mid, MONTHS[-1])
+def week_for(created: datetime) -> dict:
+    day = created.date().isoformat()
+    for week in WEEKS:
+        if week["start"] <= day <= week["end"]:
+            return week
+    return WEEKS[-1]
 
 
 def load_issues(paths: list[Path]) -> list[dict]:
@@ -175,7 +200,7 @@ def load_issues(paths: list[Path]) -> list[dict]:
                 zd = int(zd)
             except (TypeError, ValueError):
                 zd = 0
-            month = month_for(created)
+            week = week_for(created)
             seen[key] = {
                 "key": key,
                 "url": f"https://securly.atlassian.net/browse/{key}",
@@ -198,13 +223,7 @@ def load_issues(paths: list[Path]) -> list[dict]:
                 "statuscategorychangedate": (
                     status_cat_changed.isoformat() if status_cat_changed else None
                 ),
-                "created_month": {
-                    "id": month["id"],
-                    "label": month["label"],
-                    "start": month["start"],
-                    "end": month["end"],
-                    "partial": month["partial"],
-                },
+                "created_week": period_fields(week),
                 "is_done": status_cat == "Done",
             }
     issues = list(seen.values())
@@ -232,15 +251,10 @@ def load_dashboard_issues(path: Path) -> list[dict]:
         project_key = raw.get("project_key")
         if project_key not in PROJECT_BY_KEY:
             continue
-        month = month_for(created)
+        week = week_for(created)
         issue = dict(raw)
-        issue["created_month"] = {
-            "id": month["id"],
-            "label": month["label"],
-            "start": month["start"],
-            "end": month["end"],
-            "partial": month["partial"],
-        }
+        issue["created_week"] = period_fields(week)
+        issue.pop("created_month", None)
         seen[issue["key"]] = issue
     issues = list(seen.values())
     issues.sort(key=lambda i: (i["created"], i["key"]))
@@ -323,13 +337,13 @@ def avg_days(values: list[float]) -> float | None:
 
 def window_note() -> str:
     labels = []
-    for month in MONTHS:
-        label = month["label"]
-        if month.get("partial"):
+    for week in WEEKS:
+        label = week["label"]
+        if week.get("partial"):
             label += " (partial)"
         labels.append(label)
     joined = ", ".join(labels) if labels else SNAPSHOT
-    return f"{joined} through the live Jira refresh."
+    return f"Weeks {joined} (Mon–Sun, clipped to the dashboard window) through the live Jira refresh."
 
 
 def fetch_jira_search_pages() -> list[dict]:
@@ -384,16 +398,17 @@ def build_dashboard(issues: list[dict], live: bool = False) -> dict:
             "done_with_time": len(times),
         })
 
-    monthly = []
-    for month in MONTHS:
+    weekly = []
+    for week in WEEKS:
         by_project = {p["key"]: empty_counts() for p in PROJECTS}
         totals = empty_counts()
         for issue in issues:
-            if issue["created_month"]["id"] != month["id"]:
+            period = issue.get("created_week") or {}
+            if period.get("id") != week["id"]:
                 continue
             bump(by_project[issue["project_key"]], issue)
             bump(totals, issue)
-        monthly.append({**month, "by_project": by_project, "totals": totals})
+        weekly.append({**week, "by_project": by_project, "totals": totals})
 
     kpis = empty_counts()
     all_times: list[float] = []
@@ -413,12 +428,6 @@ def build_dashboard(issues: list[dict], live: bool = False) -> dict:
         f"({kpis['escape_defect']} Escape Defect, {kpis['support_request']} Support Request). "
         f"{kpis['done']} Done (statusCategory = Done) vs {kpis['open']} not Done "
         f"(statusCategory != Done). "
-        + (
-            f"Average time from created to Done is {avg_to_done:.1f} days "
-            f"across {len(all_times)} of {kpis['done']} Done tickets. "
-            if avg_to_done is not None else
-            "No Done tickets have a usable created-to-Done timestamp. "
-        )
         + f"Highest intake: {top_txt}."
     )
     if zero:
@@ -436,7 +445,7 @@ def build_dashboard(issues: list[dict], live: bool = False) -> dict:
             "zendesk_ticket_count": "> 0",
             "created_from": CREATED_FROM,
             "created_from_label": CREATED_FROM_LABEL,
-            "grain": "month",
+            "grain": "week",
         },
         "jql": {
             "created": JQL_CREATED,
@@ -460,7 +469,7 @@ def build_dashboard(issues: list[dict], live: bool = False) -> dict:
             "done_with_time": len(all_times),
         },
         "product_kpis": product_kpis,
-        "monthly": monthly,
+        "weekly": weekly,
         "created_issues": issues,
         "headline": headline,
         "notes": {
@@ -469,10 +478,8 @@ def build_dashboard(issues: list[dict], live: bool = False) -> dict:
                 "Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, and Pass. "
                 "Products with 0 had no Escape Defect or Support Request with Zendesk "
                 f"Ticket Count > 0 since {CREATED_FROM_LABEL}. Done vs not Done uses Jira "
-                "statusCategory = Done versus statusCategory != Done. Average time to Done "
-                "is created → statuscategorychangedate (when the ticket entered Done), "
-                "falling back to resolutiondate if the category-change date is missing or "
-                "after the snapshot (for example if the ticket was later reopened)."
+                "statusCategory = Done versus statusCategory != Done. Created tickets are "
+                "grouped into Monday–Sunday weeks with the date range shown for each week."
             ),
             "window": window_note(),
         },
