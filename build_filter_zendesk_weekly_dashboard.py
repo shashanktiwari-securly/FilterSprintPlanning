@@ -1,4 +1,4 @@
-"""Render the Zendesk monthly dashboard as standalone HTML + Markdown.
+"""Render the Zendesk weekly dashboard as standalone HTML + Markdown.
 
 Reads reports/filter-zendesk-weekly-dashboard.json and writes:
 
@@ -67,7 +67,7 @@ def write_markdown(data: dict) -> str:
         f"# {data['title']}",
         "",
         f"Snapshot **{data['snapshot_date']}** · {len(projects)} products · "
-        f"Escape Defect + Support Request · Zendesk Ticket Count > 0 · monthly from **{data['filters']['created_from']}**.",
+        f"Escape Defect + Support Request · Zendesk Ticket Count > 0 · weekly from **{data['filters']['created_from']}**.",
         "",
         "## Headline",
         "",
@@ -85,8 +85,8 @@ def write_markdown(data: dict) -> str:
         f"**{k['created_open']}** are `statusCategory != Done` "
         f"({k.get('not_done_pct', 0)}%).",
         "",
-        md_row(["Product", "Key", "Created", "Done", "Not Done", "Done %", "Not Done %", "Avg to Done"]),
-        md_row(["---", "---", "---:", "---:", "---:", "---:", "---:", "---:"]),
+        md_row(["Product", "Key", "Created", "Done", "Not Done", "Done %", "Not Done %"]),
+        md_row(["---", "---", "---:", "---:", "---:", "---:", "---:"]),
     ]
     for p in product_kpis:
         lines.append(
@@ -99,30 +99,6 @@ def write_markdown(data: dict) -> str:
                     p["open"],
                     f"{p.get('done_pct', 0)}%",
                     f"{p.get('not_done_pct', 0)}%",
-                    fmt_days(p.get("avg_days_to_done")),
-                ]
-            )
-        )
-    lines += [
-        "",
-        "## Average time to Done",
-        "",
-        f"Mean calendar time from Jira **created** to **statusCategory = Done** "
-        f"for this snapshot. Overall average: **{fmt_days(k.get('avg_days_to_done'))}** "
-        f"({k.get('done_with_time', 0)} of {k['created_done']} Done tickets).",
-        "",
-        md_row(["Product", "Key", "Done", "With time", "Avg created → Done"]),
-        md_row(["---", "---", "---:", "---:", "---:"]),
-    ]
-    for p in product_kpis:
-        lines.append(
-            md_row(
-                [
-                    p["label"],
-                    p["key"],
-                    p["done"],
-                    p.get("done_with_time", 0),
-                    fmt_days(p.get("avg_days_to_done")),
                 ]
             )
         )
@@ -149,13 +125,13 @@ def write_markdown(data: dict) -> str:
         )
     lines += [
         "",
-        "## Monthly created",
+        "## Weekly created",
         "",
     ]
-    header = ["Month", "Slice"] + [p["label"] for p in projects] + ["Total"]
+    header = ["Week", "Slice"] + [p["label"] for p in projects] + ["Total"]
     lines.append(md_row(header))
     lines.append(md_row(["---", "---"] + [":---:" for _ in header[2:]]))
-    for m in data["monthly"]:
+    for m in data.get("weekly") or data.get("monthly") or []:
         label = m["label"] + (" (partial)" if m.get("partial") else "")
         created_cells = [label, "Created"]
         done_cells = [label, "Done"]
@@ -175,22 +151,22 @@ def write_markdown(data: dict) -> str:
         "",
         "## Created ticket list",
         "",
-        md_row(["Month", "Product", "Key", "Type", "P", "ZD", "Created", "To Done", "Status", "Assignee", "Summary"]),
-        md_row(["---", "---", "---", "---", "---", "---:", "---", "---:", "---", "---", "---"]),
+        md_row(["Week", "Product", "Key", "Type", "P", "ZD", "Created", "Status", "Assignee", "Summary"]),
+        md_row(["---", "---", "---", "---", "---", "---:", "---", "---", "---", "---"]),
     ]
     for issue in data["created_issues"]:
-        month = issue["created_month"]["label"] if issue.get("created_month") else ""
+        week = (issue.get("created_week") or issue.get("created_month") or {})
+        period = week.get("label") or ""
         lines.append(
             md_row(
                 [
-                    month,
+                    period,
                     issue["project_label"],
                     f"[{issue['key']}]({issue['url']})",
                     issue["type"],
                     issue["priority"] or "",
                     issue["zendesk_count"],
                     issue["created_date"],
-                    fmt_days(issue.get("time_to_done_days")),
                     issue["status"],
                     issue["assignee"],
                     issue["summary"].replace("|", "/"),
@@ -383,7 +359,7 @@ def write_html(data: dict) -> str:
         from 1 Aug 2026 · <span id="liveStatus">loading Jira…</span><br/>
         Source: <a href="https://securly.atlassian.net">securly.atlassian.net</a>
         · field <code>Zendesk Ticket Count</code> &gt; 0
-        · grouped by calendar month
+        · grouped by calendar week (Mon–Sun)
       </div>
     </div>
     <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
@@ -405,20 +381,9 @@ def write_html(data: dict) -> str:
   <div class="cmp" id="compareChart" style="margin-top:12px"></div>
   <div class="scroll" style="margin-top:16px"><table id="compare"></table></div>
 
-  <h2>Average time to Done</h2>
-  <div class="legend">
-    Mean calendar time from Jira <b>created</b> to the ticket being marked
-    <b>statusCategory = Done</b>, by product. Still-open tickets are excluded.
-    Uses <code>statuscategorychangedate</code>, falling back to <code>resolutiondate</code>
-    when the category-change date is missing or after the snapshot.
-    <span class="swatch avg"></span>Avg created → Done
-  </div>
-  <div class="cmp avg" id="avgChart" style="margin-top:12px"></div>
-  <div class="scroll" style="margin-top:16px"><table id="avgTable"></table></div>
-
-  <h2>Monthly created by product</h2>
-  <div class="legend">Each month is split into Created, Done, and Not Done so the statusCategory comparison is visible by month. The current month is partial through the live Jira refresh. On-Call (PRODUCT24) and Case Manager (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
-  <div class="scroll" style="margin-top:16px"><table id="monthly"></table></div>
+  <h2>Weekly created by product</h2>
+  <div class="legend">Each week is split into Created, Done, and Not Done so the statusCategory comparison is visible by week. Weeks run Monday–Sunday; the first and last weeks are clipped to the dashboard window and show that date range. On-Call (PRODUCT24) and Case Manager (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
+  <div class="scroll" style="margin-top:16px"><table id="weekly"></table></div>
 
   <h2>Ticket list</h2>
   <div class="tabs">
@@ -439,7 +404,7 @@ def write_html(data: dict) -> str:
       <option value="P2">P2</option>
       <option value="P3">P3</option>
     </select>
-    <select id="monthFilter"><option value="all">All months</option></select>
+    <select id="weekFilter"><option value="all">All weeks</option></select>
     <input id="search" placeholder="search key, summary, assignee…"/>
   </div>
   <div class="legend" id="count"></div>
@@ -477,6 +442,8 @@ const PROJ_PILL = {{
 const byLabel = (a, b) => String(a.label||'').localeCompare(String(b.label||''), undefined, {{sensitivity:'base'}});
 function products() {{ return [...DATA.projects].sort(byLabel); }}
 function productKpis() {{ return [...DATA.product_kpis].sort(byLabel); }}
+function periods() {{ return DATA.weekly || DATA.monthly || []; }}
+function issuePeriod(i) {{ return i.created_week || i.created_month || null; }}
 function fromLabel() {{
   return (DATA.filters && DATA.filters.created_from_label) || '{esc(from_label)}';
 }}
@@ -512,14 +479,13 @@ let sortKey = 'created';
 let sortDir = 1;
 const PRIO_RANK = {{P1:1, P2:2, P3:3}};
 const ISSUE_COLS = [
-  ['month', 'Month', ''],
+  ['week', 'Week', ''],
   ['product', 'Product', ''],
   ['key', 'Key', ''],
   ['type', 'Type', ''],
   ['prio', 'P', ''],
   ['zd', 'ZD', 'num'],
   ['created', 'Created', 'num'],
-  ['toDone', 'To Done', 'num'],
   ['status', 'Status', ''],
   ['assignee', 'Assignee', ''],
   ['summary', 'Summary', ''],
@@ -562,15 +528,13 @@ function paint() {{
     [k.created, `Created since ${{from}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
     [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
     [k.created_open, 'Not Done', `statusCategory != Done · ${{openPct}}% of created`, k.created_open > k.created_done ? 'warn open' : 'open', ''],
-    [fmtDays(k.avg_days_to_done), 'Avg time to Done', `${{k.done_with_time || 0}} of ${{k.created_done}} Done tickets · created → Done`, 'good', ''],
   ].map(cardHtml).join('');
   $('cards').innerHTML = PRODUCT_KPIS.map(p => {{
     const cls = p.created === 0 ? '' : (p.open > p.done ? 'warn' : 'good');
     const split = p.created
       ? `<div class="split"><span class="done" style="width:${{p.done_pct||0}}%"></span><span class="open" style="width:${{p.not_done_pct||0}}%"></span></div>`
       : '';
-    const avg = p.done ? ` · avg ${{fmtDays(p.avg_days_to_done)}} to Done` : '';
-    return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR${{avg}}`, cls, split]);
+    return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls, split]);
   }}).join('');
 
   $('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
@@ -587,7 +551,7 @@ function paint() {{
       <div class="cmp-meta"><span class="done">${{p.done}}</span> / <span class="open">${{p.open}}</span></div>`;
   }}).join('');
 
-  let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th><th class="num">Avg to Done</th></tr></thead><tbody>';
+  let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th></tr></thead><tbody>';
   for (const p of PRODUCT_KPIS) {{
     ct += `<tr>
       <td>${{p.label}}</td>
@@ -597,7 +561,6 @@ function paint() {{
       <td class="num open">${{p.open}}</td>
       <td class="num">${{p.created ? (p.done_pct + '%') : '—'}}</td>
       <td class="num">${{p.created ? (p.not_done_pct + '%') : '—'}}</td>
-      <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
     </tr>`;
   }}
   ct += `<tr>
@@ -607,44 +570,12 @@ function paint() {{
     <td class="num open"><b>${{k.created_open}}</b></td>
     <td class="num"><b>${{donePct}}%</b></td>
     <td class="num"><b>${{openPct}}%</b></td>
-    <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
   </tr></tbody>`;
   $('compare').innerHTML = ct;
 
-  const maxAvg = Math.max(...PRODUCT_KPIS.map(p => p.avg_days_to_done || 0), 0.01);
-  $('avgChart').innerHTML = PRODUCT_KPIS.map(p => {{
-    const w = p.avg_days_to_done != null ? (100 * p.avg_days_to_done / maxAvg) : 0;
-    const meta = p.avg_days_to_done != null
-      ? `${{fmtDays(p.avg_days_to_done)}} · n=${{p.done_with_time || 0}}`
-      : '—';
-    return `<div>${{p.label}}</div>
-      <div class="bar stack">
-        <span class="avg" style="width:${{w}}%"></span>
-      </div>
-      <div class="cmp-meta">${{meta}}</div>`;
-  }}).join('');
-
-  let at = '<thead><tr><th>Product</th><th>Key</th><th class="num">Done</th><th class="num">With time</th><th class="num">Avg created → Done</th></tr></thead><tbody>';
-  for (const p of PRODUCT_KPIS) {{
-    at += `<tr>
-      <td>${{p.label}}</td>
-      <td><code>${{p.key}}</code></td>
-      <td class="num done">${{p.done}}</td>
-      <td class="num">${{p.done_with_time || 0}}</td>
-      <td class="num">${{fmtDays(p.avg_days_to_done)}}</td>
-    </tr>`;
-  }}
-  at += `<tr>
-    <td><b>Total</b></td><td></td>
-    <td class="num done"><b>${{k.created_done}}</b></td>
-    <td class="num"><b>${{k.done_with_time || 0}}</b></td>
-    <td class="num"><b>${{fmtDays(k.avg_days_to_done)}}</b></td>
-  </tr></tbody>`;
-  $('avgTable').innerHTML = at;
-
-  let mt = '<thead><tr><th>Month</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
+  let mt = '<thead><tr><th>Week</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
            '<th class="num">Total</th></tr></thead><tbody>';
-  for (const m of DATA.monthly) {{
+  for (const m of periods()) {{
     const label = `${{m.label}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
     const slices = [
       ['Created', 'row-label', 'created', null],
@@ -662,7 +593,7 @@ function paint() {{
     }}
   }}
   mt += '</tbody>';
-  $('monthly').innerHTML = mt;
+  $('weekly').innerHTML = mt;
 
   const projSel = $('projFilter');
   const prevProj = projSel.value;
@@ -674,15 +605,15 @@ function paint() {{
   }}
   if ([...projSel.options].some(o => o.value === prevProj)) projSel.value = prevProj;
 
-  const monthSel = $('monthFilter');
-  const prevMonth = monthSel.value;
-  monthSel.innerHTML = '<option value="all">All months</option>';
-  for (const m of DATA.monthly) {{
+  const weekSel = $('weekFilter');
+  const prevWeek = weekSel.value;
+  weekSel.innerHTML = '<option value="all">All weeks</option>';
+  for (const m of periods()) {{
     const opt = document.createElement('option');
-    opt.value = m.id; opt.textContent = m.label;
-    monthSel.appendChild(opt);
+    opt.value = m.id; opt.textContent = m.partial ? `${{m.label}} (partial)` : m.label;
+    weekSel.appendChild(opt);
   }}
-  if ([...monthSel.options].some(o => o.value === prevMonth)) monthSel.value = prevMonth;
+  if ([...weekSel.options].some(o => o.value === prevWeek)) weekSel.value = prevWeek;
 
   $('notes').innerHTML =
     `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
@@ -698,14 +629,13 @@ function sourceRows() {{
 }}
 
 function sortValue(i, key) {{
-  if (key === 'month') return i.created_month ? i.created_month.id : '';
+  if (key === 'week') return issuePeriod(i) ? issuePeriod(i).id : '';
   if (key === 'product') return i.project_label || '';
   if (key === 'key') return i.key || '';
   if (key === 'type') return i.type || '';
   if (key === 'prio') return PRIO_RANK[i.priority] || 99;
   if (key === 'zd') return i.zendesk_count || 0;
   if (key === 'created') return i.created_date || '';
-  if (key === 'toDone') return i.time_to_done_days == null ? -1 : Number(i.time_to_done_days);
   if (key === 'status') return i.status || '';
   if (key === 'assignee') return i.assignee || '';
   if (key === 'summary') return i.summary || '';
@@ -734,29 +664,29 @@ function render() {{
   const projF = $('projFilter').value;
   const typeF = $('typeFilter').value;
   const prioF = $('prioFilter').value;
-  const monthF = $('monthFilter').value;
+  const weekF = $('weekFilter').value;
   const q = $('search').value.trim().toLowerCase();
   let rows = sourceRows();
   if (projF !== 'all') rows = rows.filter(i => i.project_key === projF);
   if (typeF !== 'all') rows = rows.filter(i => i.type === typeF);
   if (prioF !== 'all') rows = rows.filter(i => i.priority === prioF);
-  if (monthF !== 'all') rows = rows.filter(i => i.created_month && i.created_month.id === monthF);
+  if (weekF !== 'all') rows = rows.filter(i => issuePeriod(i) && issuePeriod(i).id === weekF);
   if (q) rows = rows.filter(i => [i.key, i.summary, i.assignee, i.status, i.project_label].join(' ').toLowerCase().includes(q));
   rows = sortRows(rows);
   $('count').innerHTML = `<b>${{rows.length}}</b> tickets`;
 
   let html = sortHeader() + '<tbody>';
-  if (!rows.length) html += '<tr><td colspan="11" style="color:var(--muted)">no tickets match filter</td></tr>';
+  if (!rows.length) html += '<tr><td colspan="10" style="color:var(--muted)">no tickets match filter</td></tr>';
   for (const i of rows) {{
+    const period = issuePeriod(i);
     html += `<tr>
-      <td>${{i.created_month ? i.created_month.label : '—'}}</td>
+      <td>${{period ? period.label : '—'}}</td>
       <td>${{pillProj(i)}}</td>
       <td><a class="key" href="${{i.url}}" target="_blank" rel="noopener">${{i.key}}</a></td>
       <td>${{pillType(i.type)}}</td>
       <td>${{pillPrio(i.priority)}}</td>
       <td class="num">${{i.zendesk_count}}</td>
       <td class="num">${{i.created_date || '—'}}</td>
-      <td class="num">${{fmtDays(i.time_to_done_days)}}</td>
       <td>${{pillStatus(i)}}</td>
       <td>${{i.assignee}}</td>
       <td class="summary">${{i.summary}}</td>
@@ -774,7 +704,7 @@ document.querySelectorAll('.tabs button').forEach(btn => {{
     render();
   }});
 }});
-['projFilter','typeFilter','prioFilter','monthFilter','search'].forEach(id => $(id).addEventListener('input', render));
+['projFilter','typeFilter','prioFilter','weekFilter','search'].forEach(id => $(id).addEventListener('input', render));
 $('issues').addEventListener('click', (e) => {{
   const th = e.target.closest('th[data-sort]');
   if (!th) return;

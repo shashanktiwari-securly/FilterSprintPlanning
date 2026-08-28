@@ -1,6 +1,6 @@
 {
   "title": "Monthly Escape Defect and Support Request Dashboard",
-  "generated_at": "2026-08-27T07:25:09Z",
+  "generated_at": "2026-08-27T10:38:29Z",
   "snapshot_date": "2026-08-27",
   "live": false,
   "source": "https://securly.atlassian.net",
@@ -84,7 +84,7 @@
     "zendesk_ticket_count": "> 0",
     "created_from": "2026-08-01",
     "created_from_label": "1 Aug 2026",
-    "grain": "month"
+    "grain": "week"
   },
   "jql": {
     "created": "project in (AICHAT, AWARE, RESP, COM, DD, DE, DEVOPS, FILTER, FLEX, HOME, MDMCLASS, PRODUCT24, PAGESCAN, PASS) AND issuetype in (\"Escape Defect\", \"Support Request\") AND \"Zendesk Ticket Count\" > 0 AND created >= \"2026-08-01\" ORDER BY created ASC",
@@ -319,29 +319,29 @@
       "done_with_time": 3
     }
   ],
-  "monthly": [
+  "weekly": [
     {
-      "id": "2026-08",
-      "label": "Aug 2026",
+      "id": "2026-W31",
+      "label": "1 Aug \u2013 2 Aug",
       "start": "2026-08-01",
-      "end": "2026-08-31",
+      "end": "2026-08-02",
       "partial": true,
       "by_project": {
         "AICHAT": {
-          "created": 1,
+          "created": 0,
           "escape_defect": 0,
-          "support_request": 1,
+          "support_request": 0,
           "done": 0,
-          "open": 1,
-          "zendesk": 2
+          "open": 0,
+          "zendesk": 0
         },
         "AWARE": {
-          "created": 6,
+          "created": 0,
           "escape_defect": 0,
-          "support_request": 6,
-          "done": 3,
-          "open": 3,
-          "zendesk": 6
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "RESP": {
           "created": 0,
@@ -352,22 +352,119 @@
           "zendesk": 0
         },
         "COM": {
-          "created": 6,
-          "escape_defect": 5,
-          "support_request": 1,
-          "done": 2,
-          "open": 4,
-          "zendesk": 6
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "DD": {
-          "created": 12,
+          "created": 0,
           "escape_defect": 0,
-          "support_request": 12,
-          "done": 2,
-          "open": 10,
-          "zendesk": 14
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "DE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DEVOPS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "FILTER": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "FLEX": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "HOME": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "MDMCLASS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PAGESCAN": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PASS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        }
+      },
+      "totals": {
+        "created": 0,
+        "escape_defect": 0,
+        "support_request": 0,
+        "done": 0,
+        "open": 0,
+        "zendesk": 0
+      }
+    },
+    {
+      "id": "2026-W32",
+      "label": "3 Aug \u2013 9 Aug",
+      "start": "2026-08-03",
+      "end": "2026-08-09",
+      "partial": false,
+      "by_project": {
+        "AICHAT": {
+          "created": 1,
+          "escape_defect": 0,
+          "support_request": 1,
+          "done": 0,
+          "open": 1,
+          "zendesk": 2
+        },
+        "AWARE": {
           "created": 2,
           "escape_defect": 0,
           "support_request": 2,
@@ -375,45 +472,464 @@
           "open": 0,
           "zendesk": 2
         },
-        "DEVOPS": {
-          "created": 4,
+        "RESP": {
+          "created": 0,
           "escape_defect": 0,
-          "support_request": 4,
-          "done": 4,
+          "support_request": 0,
+          "done": 0,
           "open": 0,
-          "zendesk": 4
+          "zendesk": 0
+        },
+        "COM": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DD": {
+          "created": 5,
+          "escape_defect": 0,
+          "support_request": 5,
+          "done": 1,
+          "open": 4,
+          "zendesk": 7
+        },
+        "DE": {
+          "created": 1,
+          "escape_defect": 0,
+          "support_request": 1,
+          "done": 1,
+          "open": 0,
+          "zendesk": 1
+        },
+        "DEVOPS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "FILTER": {
-          "created": 14,
-          "escape_defect": 8,
-          "support_request": 6,
-          "done": 2,
-          "open": 12,
-          "zendesk": 25
+          "created": 3,
+          "escape_defect": 0,
+          "support_request": 3,
+          "done": 1,
+          "open": 2,
+          "zendesk": 4
         },
         "FLEX": {
-          "created": 11,
-          "escape_defect": 10,
-          "support_request": 1,
-          "done": 5,
-          "open": 6,
-          "zendesk": 64
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "HOME": {
-          "created": 7,
-          "escape_defect": 2,
-          "support_request": 5,
-          "done": 4,
-          "open": 3,
-          "zendesk": 8
+          "created": 4,
+          "escape_defect": 1,
+          "support_request": 3,
+          "done": 3,
+          "open": 1,
+          "zendesk": 4
         },
         "MDMCLASS": {
-          "created": 51,
+          "created": 6,
+          "escape_defect": 0,
+          "support_request": 6,
+          "done": 3,
+          "open": 3,
+          "zendesk": 10
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PAGESCAN": {
+          "created": 2,
+          "escape_defect": 1,
+          "support_request": 1,
+          "done": 2,
+          "open": 0,
+          "zendesk": 2
+        },
+        "PASS": {
+          "created": 2,
+          "escape_defect": 1,
+          "support_request": 1,
+          "done": 1,
+          "open": 1,
+          "zendesk": 2
+        }
+      },
+      "totals": {
+        "created": 26,
+        "escape_defect": 3,
+        "support_request": 23,
+        "done": 14,
+        "open": 12,
+        "zendesk": 34
+      }
+    },
+    {
+      "id": "2026-W33",
+      "label": "10 Aug \u2013 16 Aug",
+      "start": "2026-08-10",
+      "end": "2026-08-16",
+      "partial": false,
+      "by_project": {
+        "AICHAT": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "AWARE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "RESP": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "COM": {
+          "created": 2,
           "escape_defect": 2,
-          "support_request": 49,
-          "done": 26,
-          "open": 25,
-          "zendesk": 61
+          "support_request": 0,
+          "done": 1,
+          "open": 1,
+          "zendesk": 2
+        },
+        "DD": {
+          "created": 3,
+          "escape_defect": 0,
+          "support_request": 3,
+          "done": 1,
+          "open": 2,
+          "zendesk": 3
+        },
+        "DE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DEVOPS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "FILTER": {
+          "created": 3,
+          "escape_defect": 2,
+          "support_request": 1,
+          "done": 1,
+          "open": 2,
+          "zendesk": 3
+        },
+        "FLEX": {
+          "created": 2,
+          "escape_defect": 2,
+          "support_request": 0,
+          "done": 1,
+          "open": 1,
+          "zendesk": 4
+        },
+        "HOME": {
+          "created": 1,
+          "escape_defect": 1,
+          "support_request": 0,
+          "done": 1,
+          "open": 0,
+          "zendesk": 2
+        },
+        "MDMCLASS": {
+          "created": 10,
+          "escape_defect": 0,
+          "support_request": 10,
+          "done": 8,
+          "open": 2,
+          "zendesk": 10
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PAGESCAN": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 1,
+          "open": 1,
+          "zendesk": 2
+        },
+        "PASS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        }
+      },
+      "totals": {
+        "created": 23,
+        "escape_defect": 7,
+        "support_request": 16,
+        "done": 14,
+        "open": 9,
+        "zendesk": 26
+      }
+    },
+    {
+      "id": "2026-W34",
+      "label": "17 Aug \u2013 23 Aug",
+      "start": "2026-08-17",
+      "end": "2026-08-23",
+      "partial": false,
+      "by_project": {
+        "AICHAT": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "AWARE": {
+          "created": 1,
+          "escape_defect": 0,
+          "support_request": 1,
+          "done": 1,
+          "open": 0,
+          "zendesk": 1
+        },
+        "RESP": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "COM": {
+          "created": 1,
+          "escape_defect": 1,
+          "support_request": 0,
+          "done": 1,
+          "open": 0,
+          "zendesk": 1
+        },
+        "DD": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 0,
+          "open": 2,
+          "zendesk": 2
+        },
+        "DE": {
+          "created": 1,
+          "escape_defect": 0,
+          "support_request": 1,
+          "done": 1,
+          "open": 0,
+          "zendesk": 1
+        },
+        "DEVOPS": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 2,
+          "open": 0,
+          "zendesk": 2
+        },
+        "FILTER": {
+          "created": 5,
+          "escape_defect": 3,
+          "support_request": 2,
+          "done": 0,
+          "open": 5,
+          "zendesk": 14
+        },
+        "FLEX": {
+          "created": 6,
+          "escape_defect": 6,
+          "support_request": 0,
+          "done": 3,
+          "open": 3,
+          "zendesk": 57
+        },
+        "HOME": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "MDMCLASS": {
+          "created": 20,
+          "escape_defect": 2,
+          "support_request": 18,
+          "done": 12,
+          "open": 8,
+          "zendesk": 26
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PAGESCAN": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 1,
+          "open": 1,
+          "zendesk": 2
+        },
+        "PASS": {
+          "created": 2,
+          "escape_defect": 2,
+          "support_request": 0,
+          "done": 2,
+          "open": 0,
+          "zendesk": 19
+        }
+      },
+      "totals": {
+        "created": 42,
+        "escape_defect": 14,
+        "support_request": 28,
+        "done": 23,
+        "open": 19,
+        "zendesk": 125
+      }
+    },
+    {
+      "id": "2026-W35",
+      "label": "24 Aug \u2013 27 Aug",
+      "start": "2026-08-24",
+      "end": "2026-08-27",
+      "partial": true,
+      "by_project": {
+        "AICHAT": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "AWARE": {
+          "created": 3,
+          "escape_defect": 0,
+          "support_request": 3,
+          "done": 0,
+          "open": 3,
+          "zendesk": 3
+        },
+        "RESP": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "COM": {
+          "created": 3,
+          "escape_defect": 2,
+          "support_request": 1,
+          "done": 0,
+          "open": 3,
+          "zendesk": 3
+        },
+        "DD": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 0,
+          "open": 2,
+          "zendesk": 2
+        },
+        "DE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DEVOPS": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 2,
+          "open": 0,
+          "zendesk": 2
+        },
+        "FILTER": {
+          "created": 3,
+          "escape_defect": 3,
+          "support_request": 0,
+          "done": 0,
+          "open": 3,
+          "zendesk": 4
+        },
+        "FLEX": {
+          "created": 3,
+          "escape_defect": 2,
+          "support_request": 1,
+          "done": 1,
+          "open": 2,
+          "zendesk": 3
+        },
+        "HOME": {
+          "created": 2,
+          "escape_defect": 0,
+          "support_request": 2,
+          "done": 0,
+          "open": 2,
+          "zendesk": 2
+        },
+        "MDMCLASS": {
+          "created": 15,
+          "escape_defect": 0,
+          "support_request": 15,
+          "done": 3,
+          "open": 12,
+          "zendesk": 15
         },
         "PRODUCT24": {
           "created": 1,
@@ -424,29 +940,29 @@
           "zendesk": 1
         },
         "PAGESCAN": {
-          "created": 6,
-          "escape_defect": 1,
-          "support_request": 5,
-          "done": 4,
-          "open": 2,
-          "zendesk": 6
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         },
         "PASS": {
-          "created": 4,
-          "escape_defect": 3,
-          "support_request": 1,
-          "done": 3,
-          "open": 1,
-          "zendesk": 21
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
         }
       },
       "totals": {
-        "created": 125,
-        "escape_defect": 32,
-        "support_request": 93,
-        "done": 57,
-        "open": 68,
-        "zendesk": 220
+        "created": 34,
+        "escape_defect": 8,
+        "support_request": 26,
+        "done": 6,
+        "open": 28,
+        "zendesk": 35
       }
     }
   ],
@@ -471,12 +987,12 @@
       "resolved": "2026-08-06T05:41:38.173000-04:00",
       "resolved_date": "2026-08-06",
       "statuscategorychangedate": "2026-08-06T05:41:38.205000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-06T05:41:38.205000-04:00",
@@ -503,12 +1019,12 @@
       "resolved": "2026-08-04T06:00:34.519000-04:00",
       "resolved_date": "2026-08-04",
       "statuscategorychangedate": "2026-08-05T03:15:36.924000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-05T03:15:36.924000-04:00",
@@ -535,12 +1051,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T12:48:41.309000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T12:48:41.309000-04:00",
@@ -567,12 +1083,12 @@
       "resolved": "2026-08-17T02:24:50.816000-04:00",
       "resolved_date": "2026-08-17",
       "statuscategorychangedate": "2026-08-19T01:58:24.861000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-19T01:58:24.861000-04:00",
@@ -599,12 +1115,12 @@
       "resolved": "2026-08-14T15:38:10.582000-04:00",
       "resolved_date": "2026-08-14",
       "statuscategorychangedate": "2026-08-14T15:38:10.617000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-14T15:38:10.617000-04:00",
@@ -631,12 +1147,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-14T13:38:42.507000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -663,12 +1179,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-03T16:07:21.517000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -695,12 +1211,12 @@
       "resolved": "2026-08-05T02:18:27.063000-04:00",
       "resolved_date": "2026-08-05",
       "statuscategorychangedate": "2026-08-12T06:46:48.380000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-12T06:46:48.380000-04:00",
@@ -727,12 +1243,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-03T17:06:19.696000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -759,12 +1275,12 @@
       "resolved": "2026-08-25T13:34:13.334000-04:00",
       "resolved_date": "2026-08-25",
       "statuscategorychangedate": "2026-08-25T13:34:13.417000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T13:34:13.417000-04:00",
@@ -791,12 +1307,12 @@
       "resolved": "2026-08-18T06:20:21.810000-04:00",
       "resolved_date": "2026-08-18",
       "statuscategorychangedate": "2026-08-18T06:20:21.845000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-18T06:20:21.845000-04:00",
@@ -823,12 +1339,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-04T13:43:45.751000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -855,12 +1371,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T10:19:46.450000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-18T10:19:46.450000-04:00",
@@ -887,12 +1403,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T06:16:01.415000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -919,12 +1435,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T09:06:46.071000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T09:06:46.071000-04:00",
@@ -951,12 +1467,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T12:21:54.482000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-24T12:21:54.482000-04:00",
@@ -983,12 +1499,12 @@
       "resolved": "2026-08-19T08:46:25.294000-04:00",
       "resolved_date": "2026-08-19",
       "statuscategorychangedate": "2026-08-19T08:46:25.322000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-19T08:46:25.322000-04:00",
@@ -1015,12 +1531,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-12T10:18:05.571000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1047,12 +1563,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-05T20:18:17.814000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1079,12 +1595,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-06T11:37:02.730000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1111,12 +1627,12 @@
       "resolved": "2026-08-26T13:18:41.874000-04:00",
       "resolved_date": "2026-08-26",
       "statuscategorychangedate": "2026-08-17T12:48:43.135000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1143,12 +1659,12 @@
       "resolved": "2026-08-24T00:40:30.145000-04:00",
       "resolved_date": "2026-08-24",
       "statuscategorychangedate": "2026-08-24T00:40:27.438000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1175,12 +1691,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-07T12:47:42.415000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-07T12:47:42.415000-04:00",
@@ -1207,12 +1723,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-07T09:38:09.245000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1239,12 +1755,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-13T16:03:54.278000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1271,12 +1787,12 @@
       "resolved": "2026-08-19T02:26:11.486000-04:00",
       "resolved_date": "2026-08-19",
       "statuscategorychangedate": "2026-08-18T00:50:56.940000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W32",
+        "label": "3 Aug \u2013 9 Aug",
+        "start": "2026-08-03",
+        "end": "2026-08-09",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-18T00:50:56.940000-04:00",
@@ -1303,12 +1819,12 @@
       "resolved": "2026-08-13T01:32:01.223000-04:00",
       "resolved_date": "2026-08-13",
       "statuscategorychangedate": "2026-08-13T03:11:38.931000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-13T03:11:38.931000-04:00",
@@ -1335,12 +1851,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T07:51:45.538000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1367,12 +1883,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-11T00:43:07.924000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-11T00:43:07.924000-04:00",
@@ -1399,12 +1915,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-11T11:03:49.495000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-11T11:03:49.495000-04:00",
@@ -1431,12 +1947,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T18:42:07.243000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T18:42:07.243000-04:00",
@@ -1463,12 +1979,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-14T08:55:52.784000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-14T08:55:52.784000-04:00",
@@ -1495,12 +2011,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-12T11:28:39.304000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1527,12 +2043,12 @@
       "resolved": "2026-08-14T06:18:41.814000-04:00",
       "resolved_date": "2026-08-14",
       "statuscategorychangedate": "2026-08-17T09:27:23.720000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T09:27:23.720000-04:00",
@@ -1559,12 +2075,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-19T10:09:24.452000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-19T10:09:24.452000-04:00",
@@ -1591,12 +2107,12 @@
       "resolved": "2026-08-24T07:41:15.562000-04:00",
       "resolved_date": "2026-08-24",
       "statuscategorychangedate": "2026-08-18T03:09:15.533000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1623,12 +2139,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-13T15:14:32.883000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1655,12 +2171,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-14T09:28:07.524000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-14T09:28:07.524000-04:00",
@@ -1687,12 +2203,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T14:16:04.613000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1719,12 +2235,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T07:53:21.858000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1751,12 +2267,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-14T11:57:13.094000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1783,12 +2299,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T18:43:00.721000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T18:43:00.721000-04:00",
@@ -1815,12 +2331,12 @@
       "resolved": "2026-08-17T02:42:53.479000-04:00",
       "resolved_date": "2026-08-17",
       "statuscategorychangedate": "2026-08-17T02:42:59.218000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T02:42:59.218000-04:00",
@@ -1847,12 +2363,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T14:00:38.068000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1879,12 +2395,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T16:39:12.121000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -1911,12 +2427,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T03:56:09.202000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T03:56:09.202000-04:00",
@@ -1943,12 +2459,12 @@
       "resolved": "2026-08-18T11:14:14.358000-04:00",
       "resolved_date": "2026-08-18",
       "statuscategorychangedate": "2026-08-21T06:17:56.151000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T06:17:56.151000-04:00",
@@ -1975,12 +2491,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T12:40:09.125000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T12:40:09.125000-04:00",
@@ -2007,12 +2523,12 @@
       "resolved": "2026-08-17T06:38:44.108000-04:00",
       "resolved_date": "2026-08-17",
       "statuscategorychangedate": "2026-08-17T06:38:44.271000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W33",
+        "label": "10 Aug \u2013 16 Aug",
+        "start": "2026-08-10",
+        "end": "2026-08-16",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T06:38:44.271000-04:00",
@@ -2039,12 +2555,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T12:07:30.739000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2071,12 +2587,12 @@
       "resolved": "2026-08-17T12:23:03.763000-04:00",
       "resolved_date": "2026-08-17",
       "statuscategorychangedate": "2026-08-17T12:23:03.839000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T12:23:03.839000-04:00",
@@ -2103,12 +2619,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T11:48:22.848000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T11:48:22.848000-04:00",
@@ -2135,12 +2651,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T12:26:42.584000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T12:26:42.584000-04:00",
@@ -2167,12 +2683,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T11:06:22.812000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-18T11:06:22.812000-04:00",
@@ -2199,12 +2715,12 @@
       "resolved": "2026-08-20T01:16:54.223000-04:00",
       "resolved_date": "2026-08-20",
       "statuscategorychangedate": "2026-08-25T16:08:43.332000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2231,12 +2747,12 @@
       "resolved": "2026-08-17T14:12:28.821000-04:00",
       "resolved_date": "2026-08-17",
       "statuscategorychangedate": "2026-08-17T14:12:28.902000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-17T14:12:28.902000-04:00",
@@ -2263,12 +2779,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-23T22:59:31.164000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2295,12 +2811,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T11:33:46.694000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2327,12 +2843,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-17T15:31:44.017000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2359,12 +2875,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T10:08:26.721000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T10:08:26.721000-04:00",
@@ -2391,12 +2907,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T08:00:28.295000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2423,12 +2939,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-18T08:54:47.992000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2455,12 +2971,12 @@
       "resolved": "2026-08-21T09:08:10.035000-04:00",
       "resolved_date": "2026-08-21",
       "statuscategorychangedate": "2026-08-25T09:23:04.698000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T09:23:04.698000-04:00",
@@ -2487,12 +3003,12 @@
       "resolved": "2026-08-20T01:17:05.564000-04:00",
       "resolved_date": "2026-08-20",
       "statuscategorychangedate": "2026-08-20T02:24:54.227000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T02:24:54.227000-04:00",
@@ -2519,12 +3035,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T23:09:49.410000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2551,12 +3067,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T12:29:47.242000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-24T12:29:47.242000-04:00",
@@ -2583,12 +3099,12 @@
       "resolved": "2026-08-19T03:42:45.028000-04:00",
       "resolved_date": "2026-08-19",
       "statuscategorychangedate": "2026-08-19T04:19:24.839000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-19T04:19:24.839000-04:00",
@@ -2615,12 +3131,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T06:37:38.160000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T06:37:38.160000-04:00",
@@ -2647,12 +3163,12 @@
       "resolved": "2026-08-24T04:23:06.953000-04:00",
       "resolved_date": "2026-08-24",
       "statuscategorychangedate": "2026-08-27T02:09:58.435000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T02:09:58.435000-04:00",
@@ -2679,12 +3195,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-19T14:21:35.109000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2711,12 +3227,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T17:44:24.503000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T17:44:24.503000-04:00",
@@ -2743,12 +3259,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-19T15:29:27.573000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2775,12 +3291,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T05:28:20.640000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T05:28:20.640000-04:00",
@@ -2807,12 +3323,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-19T15:38:56.399000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2839,12 +3355,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T07:15:29.615000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2871,12 +3387,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-20T03:38:44.058000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-20T03:38:44.058000-04:00",
@@ -2903,12 +3419,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T10:14:35.375000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -2935,12 +3451,12 @@
       "resolved": "2026-08-21T03:38:27.571000-04:00",
       "resolved_date": "2026-08-21",
       "statuscategorychangedate": "2026-08-21T03:38:27.629000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T03:38:27.629000-04:00",
@@ -2967,12 +3483,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T13:06:37.889000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T13:06:37.889000-04:00",
@@ -2999,12 +3515,12 @@
       "resolved": "2026-08-27T02:29:52.357000-04:00",
       "resolved_date": "2026-08-27",
       "statuscategorychangedate": "2026-08-27T02:13:37.793000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3031,12 +3547,12 @@
       "resolved": "2026-08-21T09:29:10.622000-04:00",
       "resolved_date": "2026-08-21",
       "statuscategorychangedate": "2026-08-21T10:21:03.751000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T10:21:03.751000-04:00",
@@ -3063,12 +3579,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T13:16:24.562000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-24T13:16:24.562000-04:00",
@@ -3095,12 +3611,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T08:30:47.918000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-21T08:30:47.918000-04:00",
@@ -3127,12 +3643,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T10:50:31.973000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-26T10:50:31.973000-04:00",
@@ -3159,12 +3675,12 @@
       "resolved": "2026-08-24T01:32:27.685000-04:00",
       "resolved_date": "2026-08-24",
       "statuscategorychangedate": "2026-08-24T01:32:27.804000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-24T01:32:27.804000-04:00",
@@ -3191,12 +3707,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T09:45:30.691000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3223,12 +3739,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T13:21:44.024000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3255,12 +3771,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T13:42:25.106000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3287,12 +3803,12 @@
       "resolved": "2026-08-24T08:17:23.420000-04:00",
       "resolved_date": "2026-08-24",
       "statuscategorychangedate": "2026-08-25T02:49:58.049000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T02:49:58.049000-04:00",
@@ -3319,12 +3835,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T08:40:53.938000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3351,12 +3867,12 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-21T16:08:54.007000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
-        "partial": true
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3383,11 +3899,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T08:03:51.701000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3415,11 +3931,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T08:16:47.019000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3447,11 +3963,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T08:38:09.382000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3479,11 +3995,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T00:11:53.176000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3511,11 +4027,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T11:20:57.283000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3543,11 +4059,11 @@
       "resolved": "2026-08-25T13:06:02.691000-04:00",
       "resolved_date": "2026-08-25",
       "statuscategorychangedate": "2026-08-25T13:06:02.778000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3575,11 +4091,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T13:31:22.472000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3607,11 +4123,11 @@
       "resolved": "2026-08-26T13:26:10.701000-04:00",
       "resolved_date": "2026-08-26",
       "statuscategorychangedate": "2026-08-26T13:26:10.772000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3639,11 +4155,11 @@
       "resolved": "2026-08-25T02:51:32.799000-04:00",
       "resolved_date": "2026-08-25",
       "statuscategorychangedate": "2026-08-25T03:29:38.445000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3671,11 +4187,11 @@
       "resolved": "2026-08-26T12:40:21.375000-04:00",
       "resolved_date": "2026-08-26",
       "statuscategorychangedate": "2026-08-26T12:40:21.470000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3703,11 +4219,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-24T16:59:16.167000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3735,11 +4251,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T07:33:28.838000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3767,11 +4283,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T10:43:14.445000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3799,11 +4315,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T11:28:07.336000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3831,11 +4347,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T11:46:13.508000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3863,11 +4379,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T18:05:28.920000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3895,11 +4411,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T07:23:14.787000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": true,
@@ -3927,11 +4443,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-27T00:49:45.480000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3959,11 +4475,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T23:08:07.477000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -3991,11 +4507,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T15:38:18.921000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4023,11 +4539,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T16:17:56.824000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4055,11 +4571,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-25T16:44:14.704000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4087,11 +4603,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T10:05:01.440000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4119,11 +4635,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T15:23:07.483000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4151,11 +4667,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T10:12:48.685000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4183,11 +4699,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T10:52:47.905000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4215,11 +4731,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T11:48:40.304000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4247,11 +4763,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T13:00:45.523000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4279,11 +4795,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T13:24:45.170000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4311,11 +4827,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T15:09:40.819000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4343,11 +4859,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T15:41:31.317000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4375,11 +4891,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T17:03:56.848000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4407,11 +4923,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T17:17:43.186000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4439,11 +4955,11 @@
       "resolved": null,
       "resolved_date": null,
       "statuscategorychangedate": "2026-08-26T21:11:11.907000-04:00",
-      "created_month": {
-        "id": "2026-08",
-        "label": "Aug 2026",
-        "start": "2026-08-01",
-        "end": "2026-08-31",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 27 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-27",
         "partial": true
       },
       "is_done": false,
@@ -4452,9 +4968,9 @@
       "time_to_done_days": null
     }
   ],
-  "headline": "125 Zendesk-linked tickets created since 1 Aug 2026 (32 Escape Defect, 93 Support Request). 57 Done (statusCategory = Done) vs 68 not Done (statusCategory != Done). Average time from created to Done is 4.8 days across 57 of 57 Done tickets. Highest intake: MDM Class 51, Filter 14, DD 12, Flex 11, Home 7. No matching tickets yet: Case Manager.",
+  "headline": "125 Zendesk-linked tickets created since 1 Aug 2026 (32 Escape Defect, 93 Support Request). 57 Done (statusCategory = Done) vs 68 not Done (statusCategory != Done). Highest intake: MDM Class 51, Filter 14, DD 12, Flex 11, Home 7. No matching tickets yet: Case Manager.",
   "notes": {
-    "scope": "Includes AIChat, Aware, Case Manager (RESP), Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, and Pass. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done. Average time to Done is created \u2192 statuscategorychangedate (when the ticket entered Done), falling back to resolutiondate if the category-change date is missing or after the snapshot (for example if the ticket was later reopened).",
-    "window": "Aug 2026 (partial) through the live Jira refresh."
+    "scope": "Includes AIChat, Aware, Case Manager (RESP), Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, and Pass. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done. Created tickets are grouped into Monday\u2013Sunday weeks with the date range shown for each week.",
+    "window": "Weeks 1 Aug \u2013 2 Aug (partial), 3 Aug \u2013 9 Aug, 10 Aug \u2013 16 Aug, 17 Aug \u2013 23 Aug, 24 Aug \u2013 27 Aug (partial) (Mon\u2013Sun, clipped to the dashboard window) through the live Jira refresh."
   }
 }
