@@ -195,7 +195,7 @@ def write_html(data: dict) -> str:
     payload = json.dumps(data, ensure_ascii=True)
     from_label = created_from_label(data)
     title = esc(data["title"])
-    return f"""<!DOCTYPE html>
+    head = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -232,6 +232,7 @@ def write_html(data: dict) -> str:
   header {{ padding:24px 28px; border-bottom:1px solid var(--line);
     background:var(--header-bg); }}
   .header-row {{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }}
+  .header-actions {{ display:flex; gap:8px; flex-shrink:0; }}
   .theme-toggle {{
     background:var(--panel2); color:var(--ink); border:1px solid var(--line);
     border-radius:999px; padding:8px 14px; cursor:pointer; font-size:13px; font-weight:600;
@@ -343,6 +344,15 @@ def write_html(data: dict) -> str:
   .note {{ color:var(--muted); font-size:12px; margin-top:10px; }}
   code {{ background:var(--panel2); padding:1px 5px; border-radius:4px; }}
   footer {{ color:var(--muted); font-size:12px; padding:22px 28px; border-top:1px solid var(--line); }}
+  .jira-panel {{
+    display:none; margin:12px 28px 0; padding:14px 16px; background:var(--panel);
+    border:1px solid var(--line); border-radius:10px; flex-wrap:wrap; gap:8px; align-items:center;
+  }}
+  .jira-panel.open {{ display:flex; }}
+  .jira-panel p {{ margin:0; color:var(--muted); font-size:12px; flex:1 1 320px; line-height:1.45; }}
+  .jira-panel input {{ min-width:180px; }}
+  .jira-panel a {{ color:var(--accent); font-size:12px; }}
+  #jiraMsg {{ color:var(--warn); font-size:12px; }}
   .callout {{ background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--warn);
     border-radius:10px; padding:12px 16px; margin:8px 0 20px; color:var(--muted); }}
   .callout b {{ color:var(--ink); }}
@@ -362,9 +372,25 @@ def write_html(data: dict) -> str:
         · grouped by calendar week (Mon–Sun)
       </div>
     </div>
-    <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
+    <div class="header-actions">
+      <button type="button" id="jiraToggle" class="theme-toggle" aria-pressed="false">Connect Jira</button>
+      <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
+    </div>
   </div>
 </header>
+<div id="jiraPanel" class="jira-panel">
+  <p>
+    Save a Jira API token in this browser so every refresh queries live ticket counts from
+    <code>api.atlassian.com</code>. The token stays in local storage and is not uploaded to GitHub.
+    Create a token at
+    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">id.atlassian.com</a>.
+  </p>
+  <input id="jiraEmail" type="email" autocomplete="username" placeholder="you@securly.com"/>
+  <input id="jiraToken" type="password" autocomplete="off" placeholder="Jira API token"/>
+  <button type="button" id="jiraSave" class="theme-toggle">Save and refresh</button>
+  <button type="button" id="jiraClear" class="theme-toggle">Disconnect</button>
+  <span id="jiraMsg"></span>
+</div>
 <div class="wrap">
   <div class="links" id="links"></div>
   <div class="cards overview" id="overview"></div>
@@ -412,7 +438,7 @@ def write_html(data: dict) -> str:
   <p class="note" id="notes"></p>
 </div>
 <footer>
-  Git-hosted report · live numbers refresh from Jira on each page load
+  Git-hosted report · Connect Jira once in this browser to pull live counts on every refresh
   · fallback snapshot in <code>docs/live.json</code>
   · also published at <code>docs/index.html</code> for GitHub Pages
 </footer>
@@ -510,9 +536,9 @@ function paint() {{
   if (DATA.live) {{
     setLiveStatus(`live from Jira · ${{DATA.generated_at || DATA.snapshot_date}}`, 'ok');
   }} else if (DATA._fromLiveApi) {{
-    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · set JIRA_EMAIL / JIRA_API_TOKEN to re-query on refresh`, 'stale');
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · Connect Jira to pull live counts on refresh`, 'stale');
   }} else {{
-    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · refresh pulls latest when the live server is running`, 'stale');
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · Connect Jira to pull live counts on refresh`, 'stale');
   }}
   $('links').innerHTML = [
     [`Created since ${{from}}`, DATA.links.created],
@@ -731,16 +757,26 @@ async function loadLive() {{
   return null;
 }}
 
-(async function boot() {{
+"""
+    live_js = (ROOT / "jira-live.js").read_text(encoding="utf-8")
+    tail = """
+bindJiraPanel();
+(async function boot() {
   paint();
   setLiveStatus('refreshing from Jira…', '');
-  await loadLive();
+  try {
+    await refreshDashboard();
+  } catch (e) {
+    setLiveStatus('Jira refresh failed · ' + (e.message || e), 'stale');
+    await loadLive();
+  }
   paint();
-}})();
+})();
 </script>
 </body>
 </html>
 """
+    return head + live_js + tail
 
 
 def main() -> None:
