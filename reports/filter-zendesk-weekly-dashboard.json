@@ -1,7 +1,7 @@
 {
   "title": "Monthly Escape Defect and Support Request Dashboard",
-  "generated_at": "2026-08-28T07:14:00Z",
-  "snapshot_date": "2026-08-28",
+  "generated_at": "2026-08-31T13:59:07Z",
+  "snapshot_date": "2026-08-31",
   "live": false,
   "source": "https://securly.atlassian.net",
   "projects": [
@@ -97,15 +97,15 @@
     "created_done": "https://securly.atlassian.net/issues/?jql=project%20in%20%28AICHAT%2C%20AWARE%2C%20RESP%2C%20COM%2C%20DD%2C%20DE%2C%20DEVOPS%2C%20FILTER%2C%20FLEX%2C%20HOME%2C%20MDMCLASS%2C%20PRODUCT24%2C%20PAGESCAN%2C%20PASS%29%20AND%20issuetype%20in%20%28%22Escape%20Defect%22%2C%20%22Support%20Request%22%29%20AND%20%22Zendesk%20Ticket%20Count%22%20%3E%200%20AND%20created%20%3E%3D%20%222026-08-01%22%20AND%20statusCategory%20%3D%20Done%20ORDER%20BY%20created%20ASC"
   },
   "kpis": {
-    "created": 131,
-    "created_escape_defect": 33,
-    "created_support_request": 98,
-    "created_done": 64,
-    "created_open": 67,
-    "done_pct": 49,
-    "not_done_pct": 51,
-    "avg_days_to_done": 4.57,
-    "done_with_time": 64
+    "created": 141,
+    "created_escape_defect": 36,
+    "created_support_request": 105,
+    "created_done": 71,
+    "created_open": 70,
+    "done_pct": 50,
+    "not_done_pct": 50,
+    "avg_days_to_done": 4.82,
+    "done_with_time": 71
   },
   "product_kpis": [
     {
@@ -130,13 +130,13 @@
       "created": 6,
       "escape_defect": 0,
       "support_request": 6,
-      "done": 3,
-      "open": 3,
+      "done": 4,
+      "open": 2,
       "zendesk": 6,
-      "done_pct": 50,
-      "not_done_pct": 50,
-      "avg_days_to_done": 11.29,
-      "done_with_time": 3
+      "done_pct": 67,
+      "not_done_pct": 33,
+      "avg_days_to_done": 9.85,
+      "done_with_time": 4
     },
     {
       "key": "RESP",
@@ -202,31 +202,31 @@
       "key": "DEVOPS",
       "name": "ops_devops",
       "label": "DevOps",
-      "created": 5,
+      "created": 6,
       "escape_defect": 0,
-      "support_request": 5,
-      "done": 4,
+      "support_request": 6,
+      "done": 5,
       "open": 1,
-      "zendesk": 5,
-      "done_pct": 80,
-      "not_done_pct": 20,
-      "avg_days_to_done": 1.81,
-      "done_with_time": 4
+      "zendesk": 6,
+      "done_pct": 83,
+      "not_done_pct": 17,
+      "avg_days_to_done": 1.45,
+      "done_with_time": 5
     },
     {
       "key": "FILTER",
       "name": "product_FILTER",
       "label": "Filter",
-      "created": 15,
-      "escape_defect": 8,
-      "support_request": 7,
-      "done": 2,
-      "open": 13,
-      "zendesk": 26,
-      "done_pct": 13,
-      "not_done_pct": 87,
-      "avg_days_to_done": 8.52,
-      "done_with_time": 2
+      "created": 18,
+      "escape_defect": 10,
+      "support_request": 8,
+      "done": 4,
+      "open": 14,
+      "zendesk": 29,
+      "done_pct": 22,
+      "not_done_pct": 78,
+      "avg_days_to_done": 10.72,
+      "done_with_time": 4
     },
     {
       "key": "FLEX",
@@ -235,26 +235,26 @@
       "created": 11,
       "escape_defect": 10,
       "support_request": 1,
-      "done": 5,
-      "open": 6,
-      "zendesk": 67,
-      "done_pct": 45,
-      "not_done_pct": 55,
-      "avg_days_to_done": 2.9,
-      "done_with_time": 5
+      "done": 6,
+      "open": 5,
+      "zendesk": 69,
+      "done_pct": 55,
+      "not_done_pct": 45,
+      "avg_days_to_done": 4.21,
+      "done_with_time": 6
     },
     {
       "key": "HOME",
       "name": "product_HOME",
       "label": "Home",
-      "created": 7,
+      "created": 8,
       "escape_defect": 2,
-      "support_request": 5,
+      "support_request": 6,
       "done": 5,
-      "open": 2,
-      "zendesk": 8,
-      "done_pct": 71,
-      "not_done_pct": 29,
+      "open": 3,
+      "zendesk": 9,
+      "done_pct": 62,
+      "not_done_pct": 38,
       "avg_days_to_done": 5.15,
       "done_with_time": 5
     },
@@ -262,16 +262,16 @@
       "key": "MDMCLASS",
       "name": "product_MDM_CLASSROOM",
       "label": "MDM Class",
-      "created": 53,
+      "created": 57,
       "escape_defect": 2,
-      "support_request": 51,
-      "done": 31,
-      "open": 22,
-      "zendesk": 63,
+      "support_request": 55,
+      "done": 33,
+      "open": 24,
+      "zendesk": 68,
       "done_pct": 58,
       "not_done_pct": 42,
-      "avg_days_to_done": 3.12,
-      "done_with_time": 31
+      "avg_days_to_done": 3.17,
+      "done_with_time": 33
     },
     {
       "key": "PRODUCT24",
@@ -307,14 +307,14 @@
       "key": "PASS",
       "name": "Pass",
       "label": "Pass",
-      "created": 4,
-      "escape_defect": 3,
+      "created": 5,
+      "escape_defect": 4,
       "support_request": 1,
       "done": 3,
-      "open": 1,
-      "zendesk": 21,
-      "done_pct": 75,
-      "not_done_pct": 25,
+      "open": 2,
+      "zendesk": 22,
+      "done_pct": 60,
+      "not_done_pct": 40,
       "avg_days_to_done": 4.73,
       "done_with_time": 3
     }
@@ -516,8 +516,8 @@
           "created": 3,
           "escape_defect": 0,
           "support_request": 3,
-          "done": 1,
-          "open": 2,
+          "done": 2,
+          "open": 1,
           "zendesk": 4
         },
         "FLEX": {
@@ -542,7 +542,7 @@
           "support_request": 6,
           "done": 3,
           "open": 3,
-          "zendesk": 10
+          "zendesk": 11
         },
         "PRODUCT24": {
           "created": 0,
@@ -573,9 +573,9 @@
         "created": 26,
         "escape_defect": 3,
         "support_request": 23,
-        "done": 14,
-        "open": 12,
-        "zendesk": 34
+        "done": 15,
+        "open": 11,
+        "zendesk": 35
       }
     },
     {
@@ -771,20 +771,20 @@
           "zendesk": 2
         },
         "FILTER": {
-          "created": 5,
-          "escape_defect": 3,
+          "created": 6,
+          "escape_defect": 4,
           "support_request": 2,
-          "done": 0,
+          "done": 1,
           "open": 5,
-          "zendesk": 14
+          "zendesk": 15
         },
         "FLEX": {
           "created": 6,
           "escape_defect": 6,
           "support_request": 0,
-          "done": 3,
-          "open": 3,
-          "zendesk": 60
+          "done": 4,
+          "open": 2,
+          "zendesk": 62
         },
         "HOME": {
           "created": 0,
@@ -828,20 +828,20 @@
         }
       },
       "totals": {
-        "created": 42,
-        "escape_defect": 14,
+        "created": 43,
+        "escape_defect": 15,
         "support_request": 28,
-        "done": 24,
-        "open": 18,
-        "zendesk": 128
+        "done": 26,
+        "open": 17,
+        "zendesk": 131
       }
     },
     {
       "id": "2026-W35",
-      "label": "24 Aug \u2013 28 Aug",
+      "label": "24 Aug \u2013 30 Aug",
       "start": "2026-08-24",
-      "end": "2026-08-28",
-      "partial": true,
+      "end": "2026-08-30",
+      "partial": false,
       "by_project": {
         "AICHAT": {
           "created": 0,
@@ -855,8 +855,8 @@
           "created": 3,
           "escape_defect": 0,
           "support_request": 3,
-          "done": 0,
-          "open": 3,
+          "done": 1,
+          "open": 2,
           "zendesk": 3
         },
         "RESP": {
@@ -892,20 +892,20 @@
           "zendesk": 0
         },
         "DEVOPS": {
-          "created": 3,
+          "created": 4,
           "escape_defect": 0,
-          "support_request": 3,
-          "done": 2,
+          "support_request": 4,
+          "done": 3,
           "open": 1,
-          "zendesk": 3
+          "zendesk": 4
         },
         "FILTER": {
-          "created": 4,
-          "escape_defect": 3,
-          "support_request": 1,
+          "created": 6,
+          "escape_defect": 4,
+          "support_request": 2,
           "done": 0,
-          "open": 4,
-          "zendesk": 5
+          "open": 6,
+          "zendesk": 7
         },
         "FLEX": {
           "created": 3,
@@ -916,20 +916,20 @@
           "zendesk": 3
         },
         "HOME": {
-          "created": 2,
+          "created": 3,
           "escape_defect": 0,
-          "support_request": 2,
+          "support_request": 3,
           "done": 1,
-          "open": 1,
-          "zendesk": 2
+          "open": 2,
+          "zendesk": 3
         },
         "MDMCLASS": {
-          "created": 17,
+          "created": 21,
           "escape_defect": 0,
-          "support_request": 17,
-          "done": 8,
-          "open": 9,
-          "zendesk": 17
+          "support_request": 21,
+          "done": 10,
+          "open": 11,
+          "zendesk": 21
         },
         "PRODUCT24": {
           "created": 1,
@@ -957,12 +957,141 @@
         }
       },
       "totals": {
-        "created": 40,
-        "escape_defect": 9,
-        "support_request": 31,
-        "done": 12,
-        "open": 28,
-        "zendesk": 41
+        "created": 48,
+        "escape_defect": 10,
+        "support_request": 38,
+        "done": 16,
+        "open": 32,
+        "zendesk": 49
+      }
+    },
+    {
+      "id": "2026-W36",
+      "label": "31 Aug",
+      "start": "2026-08-31",
+      "end": "2026-08-31",
+      "partial": true,
+      "by_project": {
+        "AICHAT": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "AWARE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "RESP": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "COM": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DD": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DE": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "DEVOPS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "FILTER": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "FLEX": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "HOME": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "MDMCLASS": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PRODUCT24": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PAGESCAN": {
+          "created": 0,
+          "escape_defect": 0,
+          "support_request": 0,
+          "done": 0,
+          "open": 0,
+          "zendesk": 0
+        },
+        "PASS": {
+          "created": 1,
+          "escape_defect": 1,
+          "support_request": 0,
+          "done": 0,
+          "open": 1,
+          "zendesk": 1
+        }
+      },
+      "totals": {
+        "created": 1,
+        "escape_defect": 1,
+        "support_request": 0,
+        "done": 0,
+        "open": 1,
+        "zendesk": 1
       }
     }
   ],
@@ -1326,8 +1455,8 @@
       "type": "Support Request",
       "priority": "P2",
       "zendesk_count": 1,
-      "status": "Backlog",
-      "status_category": "To Do",
+      "status": "In Progress",
+      "status_category": "In Progress",
       "resolution": null,
       "assignee": "Suhas Pawar",
       "reporter": "\u2014",
@@ -1338,7 +1467,7 @@
       "created_date": "2026-08-04",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-04T13:43:45.751000-04:00",
+      "statuscategorychangedate": "2026-08-30T23:14:08.735000-04:00",
       "created_week": {
         "id": "2026-W32",
         "label": "3 Aug \u2013 9 Aug",
@@ -1454,10 +1583,10 @@
       "type": "Support Request",
       "priority": "P1",
       "zendesk_count": 1,
-      "status": "Confirmation",
+      "status": "Done",
       "status_category": "Done",
       "resolution": null,
-      "assignee": "Shawn Nicol",
+      "assignee": "Ankit Jain",
       "reporter": "\u2014",
       "project_key": "AWARE",
       "project_name": "product_AWARE",
@@ -1582,8 +1711,8 @@
       "type": "Support Request",
       "priority": "P3",
       "zendesk_count": 1,
-      "status": "Backlog",
-      "status_category": "To Do",
+      "status": "In Progress",
+      "status_category": "In Progress",
       "resolution": null,
       "assignee": "Suhas Pawar",
       "reporter": "\u2014",
@@ -1594,7 +1723,7 @@
       "created_date": "2026-08-06",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-06T11:37:02.730000-04:00",
+      "statuscategorychangedate": "2026-08-31T00:12:06.292000-04:00",
       "created_week": {
         "id": "2026-W32",
         "label": "3 Aug \u2013 9 Aug",
@@ -1646,8 +1775,8 @@
       "type": "Support Request",
       "priority": "P2",
       "zendesk_count": 1,
-      "status": "Ready for QA",
-      "status_category": "In Progress",
+      "status": "QA Verified",
+      "status_category": "Done",
       "resolution": null,
       "assignee": "Shashank Tiwari",
       "reporter": "\u2014",
@@ -1658,7 +1787,7 @@
       "created_date": "2026-08-07",
       "resolved": "2026-08-24T00:40:30.145000-04:00",
       "resolved_date": "2026-08-24",
-      "statuscategorychangedate": "2026-08-24T00:40:27.438000-04:00",
+      "statuscategorychangedate": "2026-08-28T08:28:07.185000-04:00",
       "created_week": {
         "id": "2026-W32",
         "label": "3 Aug \u2013 9 Aug",
@@ -1666,10 +1795,10 @@
         "end": "2026-08-09",
         "partial": false
       },
-      "is_done": false,
-      "done_at": null,
-      "done_date": null,
-      "time_to_done_days": null
+      "is_done": true,
+      "done_at": "2026-08-28T08:28:07.185000-04:00",
+      "done_date": "2026-08-28",
+      "time_to_done_days": 20.99
     },
     {
       "key": "MDMCLASS-18634",
@@ -1741,7 +1870,7 @@
       "summary": "CLASSROOM | Multiple tab issue",
       "type": "Support Request",
       "priority": "P2",
-      "zendesk_count": 4,
+      "zendesk_count": 5,
       "status": "In Review",
       "status_category": "To Do",
       "resolution": null,
@@ -2797,9 +2926,9 @@
       "summary": "Flex schools not able to create autosync grade level groups",
       "type": "Escape Defect",
       "priority": "P2",
-      "zendesk_count": 15,
-      "status": "QA in Progress",
-      "status_category": "In Progress",
+      "zendesk_count": 16,
+      "status": "Done",
+      "status_category": "Done",
       "resolution": null,
       "assignee": "Ayush Hiran",
       "reporter": "\u2014",
@@ -2810,7 +2939,7 @@
       "created_date": "2026-08-17",
       "resolved": "2026-08-28T01:14:43.408000-04:00",
       "resolved_date": "2026-08-28",
-      "statuscategorychangedate": "2026-08-20T11:33:46.694000-04:00",
+      "statuscategorychangedate": "2026-08-28T07:37:43.280000-04:00",
       "created_week": {
         "id": "2026-W34",
         "label": "17 Aug \u2013 23 Aug",
@@ -2818,10 +2947,10 @@
         "end": "2026-08-23",
         "partial": false
       },
-      "is_done": false,
-      "done_at": null,
-      "done_date": null,
-      "time_to_done_days": null
+      "is_done": true,
+      "done_at": "2026-08-28T07:37:43.280000-04:00",
+      "done_date": "2026-08-28",
+      "time_to_done_days": 10.71
     },
     {
       "key": "FILTER-16404",
@@ -3336,6 +3465,38 @@
       "time_to_done_days": null
     },
     {
+      "key": "FILTER-16491",
+      "url": "https://securly.atlassian.net/browse/FILTER-16491",
+      "summary": "Create bypass for www.google.com/recaptcha/**",
+      "type": "Escape Defect",
+      "priority": "P1",
+      "zendesk_count": 1,
+      "status": "Closed(Done)",
+      "status_category": "Done",
+      "resolution": null,
+      "assignee": "Shashank Tiwari",
+      "reporter": "\u2014",
+      "project_key": "FILTER",
+      "project_name": "product_FILTER",
+      "project_label": "Filter",
+      "created": "2026-08-19T16:25:36.060000-04:00",
+      "created_date": "2026-08-19",
+      "resolved": "2026-08-24T13:11:24.689000-04:00",
+      "resolved_date": "2026-08-24",
+      "statuscategorychangedate": "2026-08-24T13:11:24.730000-04:00",
+      "created_week": {
+        "id": "2026-W34",
+        "label": "17 Aug \u2013 23 Aug",
+        "start": "2026-08-17",
+        "end": "2026-08-23",
+        "partial": false
+      },
+      "is_done": true,
+      "done_at": "2026-08-24T13:11:24.730000-04:00",
+      "done_date": "2026-08-24",
+      "time_to_done_days": 4.87
+    },
+    {
       "key": "FLEX-4566",
       "url": "https://securly.atlassian.net/browse/FLEX-4566",
       "summary": "Classes not appearing in Flex - Germantown HS",
@@ -3789,7 +3950,7 @@
       "summary": "Attendance files failing - multiple schools. ",
       "type": "Escape Defect",
       "priority": "P3",
-      "zendesk_count": 5,
+      "zendesk_count": 6,
       "status": "Confirmation",
       "status_category": "Done",
       "resolution": null,
@@ -3901,10 +4062,10 @@
       "statuscategorychangedate": "2026-08-24T08:03:51.701000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3933,10 +4094,10 @@
       "statuscategorychangedate": "2026-08-24T08:16:47.019000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3965,10 +4126,10 @@
       "statuscategorychangedate": "2026-08-24T08:38:09.382000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -3997,10 +4158,10 @@
       "statuscategorychangedate": "2026-08-25T00:11:53.176000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4014,10 +4175,10 @@
       "type": "Support Request",
       "priority": "P3",
       "zendesk_count": 1,
-      "status": "In Review",
-      "status_category": "To Do",
+      "status": "Waiting on support",
+      "status_category": "In Progress",
       "resolution": null,
-      "assignee": "Eugene Timoshchuk",
+      "assignee": "Shana Good",
       "reporter": "\u2014",
       "project_key": "MDMCLASS",
       "project_name": "product_MDM_CLASSROOM",
@@ -4026,13 +4187,13 @@
       "created_date": "2026-08-24",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-24T11:20:57.283000-04:00",
+      "statuscategorychangedate": "2026-08-28T13:14:53.426000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4061,10 +4222,10 @@
       "statuscategorychangedate": "2026-08-25T13:06:02.778000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T13:06:02.778000-04:00",
@@ -4093,10 +4254,10 @@
       "statuscategorychangedate": "2026-08-24T13:31:22.472000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4125,10 +4286,10 @@
       "statuscategorychangedate": "2026-08-26T13:26:10.772000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-26T13:26:10.772000-04:00",
@@ -4157,10 +4318,10 @@
       "statuscategorychangedate": "2026-08-25T03:29:38.445000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-25T03:29:38.445000-04:00",
@@ -4189,10 +4350,10 @@
       "statuscategorychangedate": "2026-08-26T12:40:21.470000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-26T12:40:21.470000-04:00",
@@ -4206,8 +4367,8 @@
       "type": "Support Request",
       "priority": "P2",
       "zendesk_count": 1,
-      "status": "Backlog",
-      "status_category": "To Do",
+      "status": "Waiting on support",
+      "status_category": "In Progress",
       "resolution": null,
       "assignee": "Chris Wainner",
       "reporter": "\u2014",
@@ -4218,13 +4379,13 @@
       "created_date": "2026-08-24",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-24T16:59:16.167000-04:00",
+      "statuscategorychangedate": "2026-08-28T19:30:10.914000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4253,10 +4414,10 @@
       "statuscategorychangedate": "2026-08-26T07:33:28.838000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-26T07:33:28.838000-04:00",
@@ -4270,10 +4431,10 @@
       "type": "Support Request",
       "priority": "P3",
       "zendesk_count": 1,
-      "status": "In Progress",
-      "status_category": "In Progress",
+      "status": "Closed",
+      "status_category": "Done",
       "resolution": null,
-      "assignee": "Mike Noskov",
+      "assignee": "Shana Good",
       "reporter": "\u2014",
       "project_key": "MDMCLASS",
       "project_name": "product_MDM_CLASSROOM",
@@ -4282,18 +4443,18 @@
       "created_date": "2026-08-25",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-27T12:51:46.099000-04:00",
+      "statuscategorychangedate": "2026-08-31T07:43:10.475000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
-      "is_done": false,
-      "done_at": null,
-      "done_date": null,
-      "time_to_done_days": null
+      "is_done": true,
+      "done_at": "2026-08-31T07:43:10.475000-04:00",
+      "done_date": "2026-08-31",
+      "time_to_done_days": 5.87
     },
     {
       "key": "MDMCLASS-18801",
@@ -4317,10 +4478,10 @@
       "statuscategorychangedate": "2026-08-27T07:55:47.391000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T07:55:47.391000-04:00",
@@ -4349,10 +4510,10 @@
       "statuscategorychangedate": "2026-08-27T09:05:24.033000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T09:05:24.033000-04:00",
@@ -4366,8 +4527,8 @@
       "type": "Support Request",
       "priority": "P1",
       "zendesk_count": 1,
-      "status": "Waiting on support",
-      "status_category": "In Progress",
+      "status": "Done",
+      "status_category": "Done",
       "resolution": null,
       "assignee": "Damien Godwin",
       "reporter": "\u2014",
@@ -4376,20 +4537,20 @@
       "project_label": "Aware",
       "created": "2026-08-25T12:16:57.258000-04:00",
       "created_date": "2026-08-25",
-      "resolved": null,
-      "resolved_date": null,
-      "statuscategorychangedate": "2026-08-27T07:25:16.615000-04:00",
+      "resolved": "2026-08-31T01:04:02.511000-04:00",
+      "resolved_date": "2026-08-31",
+      "statuscategorychangedate": "2026-08-31T01:04:02.537000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
-      "is_done": false,
-      "done_at": null,
-      "done_date": null,
-      "time_to_done_days": null
+      "is_done": true,
+      "done_at": "2026-08-31T01:04:02.537000-04:00",
+      "done_date": "2026-08-31",
+      "time_to_done_days": 5.53
     },
     {
       "key": "DEVOPS-11890",
@@ -4413,10 +4574,10 @@
       "statuscategorychangedate": "2026-08-26T07:23:14.787000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-26T07:23:14.787000-04:00",
@@ -4442,13 +4603,13 @@
       "created_date": "2026-08-25",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-28T01:06:02.601000-04:00",
+      "statuscategorychangedate": "2026-08-31T01:38:15.883000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4477,10 +4638,10 @@
       "statuscategorychangedate": "2026-08-25T23:08:07.477000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4509,10 +4670,10 @@
       "statuscategorychangedate": "2026-08-27T12:27:47.839000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T12:27:47.839000-04:00",
@@ -4541,10 +4702,10 @@
       "statuscategorychangedate": "2026-08-25T16:17:56.824000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4561,7 +4722,7 @@
       "status": "Backlog",
       "status_category": "To Do",
       "resolution": null,
-      "assignee": "Manasi Kulkarni",
+      "assignee": "Vijay Karale",
       "reporter": "\u2014",
       "project_key": "FLEX",
       "project_name": "Flex",
@@ -4573,10 +4734,10 @@
       "statuscategorychangedate": "2026-08-25T16:44:14.704000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4605,10 +4766,10 @@
       "statuscategorychangedate": "2026-08-28T02:49:01.988000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-28T02:49:01.988000-04:00",
@@ -4637,10 +4798,10 @@
       "statuscategorychangedate": "2026-08-27T07:06:32.677000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T07:06:32.677000-04:00",
@@ -4669,10 +4830,10 @@
       "statuscategorychangedate": "2026-08-26T10:12:48.685000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4701,10 +4862,10 @@
       "statuscategorychangedate": "2026-08-27T12:47:00.422000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": true,
       "done_at": "2026-08-27T12:47:00.422000-04:00",
@@ -4733,10 +4894,10 @@
       "statuscategorychangedate": "2026-08-26T11:48:40.304000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4765,10 +4926,10 @@
       "statuscategorychangedate": "2026-08-26T13:00:45.523000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4782,8 +4943,8 @@
       "type": "Support Request",
       "priority": "P3",
       "zendesk_count": 1,
-      "status": "In Progress",
-      "status_category": "In Progress",
+      "status": "Closed",
+      "status_category": "Done",
       "resolution": null,
       "assignee": "Mike Noskov",
       "reporter": "\u2014",
@@ -4792,20 +4953,20 @@
       "project_label": "MDM Class",
       "created": "2026-08-26T13:24:44.575000-04:00",
       "created_date": "2026-08-26",
-      "resolved": null,
-      "resolved_date": null,
-      "statuscategorychangedate": "2026-08-27T13:14:25.808000-04:00",
+      "resolved": "2026-08-28T12:52:20.341000-04:00",
+      "resolved_date": "2026-08-28",
+      "statuscategorychangedate": "2026-08-28T12:52:20.414000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
-      "is_done": false,
-      "done_at": null,
-      "done_date": null,
-      "time_to_done_days": null
+      "is_done": true,
+      "done_at": "2026-08-28T12:52:20.414000-04:00",
+      "done_date": "2026-08-28",
+      "time_to_done_days": 1.98
     },
     {
       "key": "MDMCLASS-18821",
@@ -4829,10 +4990,42 @@
       "statuscategorychangedate": "2026-08-27T06:40:30.735000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "MDMCLASS-18822",
+      "url": "https://securly.atlassian.net/browse/MDMCLASS-18822",
+      "summary": "Google Classroom classes are not importing into Securly Classroom ",
+      "type": "Support Request",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "Waiting on support",
+      "status_category": "In Progress",
+      "resolution": null,
+      "assignee": "Paul Lindeman",
+      "reporter": "\u2014",
+      "project_key": "MDMCLASS",
+      "project_name": "product_MDM_CLASSROOM",
+      "project_label": "MDM Class",
+      "created": "2026-08-26T15:20:04.466000-04:00",
+      "created_date": "2026-08-26",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T13:14:37.118000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4861,10 +5054,10 @@
       "statuscategorychangedate": "2026-08-26T15:41:31.317000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4893,10 +5086,10 @@
       "statuscategorychangedate": "2026-08-26T17:03:56.848000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4910,10 +5103,10 @@
       "type": "Support Request",
       "priority": "P2",
       "zendesk_count": 1,
-      "status": "In Review",
-      "status_category": "To Do",
+      "status": "Waiting on support",
+      "status_category": "In Progress",
       "resolution": null,
-      "assignee": "Mike Noskov",
+      "assignee": "Jerry Case",
       "reporter": "\u2014",
       "project_key": "MDMCLASS",
       "project_name": "product_MDM_CLASSROOM",
@@ -4922,13 +5115,13 @@
       "created_date": "2026-08-26",
       "resolved": null,
       "resolved_date": null,
-      "statuscategorychangedate": "2026-08-26T17:17:43.186000-04:00",
+      "statuscategorychangedate": "2026-08-28T07:31:49.181000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4957,10 +5150,10 @@
       "statuscategorychangedate": "2026-08-26T21:11:11.907000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -4989,10 +5182,10 @@
       "statuscategorychangedate": "2026-08-28T01:48:42.394000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -5021,10 +5214,42 @@
       "statuscategorychangedate": "2026-08-27T13:31:57.312000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "MDMCLASS-18844",
+      "url": "https://securly.atlassian.net/browse/MDMCLASS-18844",
+      "summary": "Google Classroom roster sync fails after ~2,300 items and current-year classes do not import \u2013 Three Rivers Local SD",
+      "type": "Support Request",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "Waiting on support",
+      "status_category": "In Progress",
+      "resolution": null,
+      "assignee": "Paul Lindeman",
+      "reporter": "\u2014",
+      "project_key": "MDMCLASS",
+      "project_name": "product_MDM_CLASSROOM",
+      "project_label": "MDM Class",
+      "created": "2026-08-27T14:26:43.272000-04:00",
+      "created_date": "2026-08-27",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T13:13:26.336000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -5053,10 +5278,10 @@
       "statuscategorychangedate": "2026-08-27T15:02:07.101000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -5068,7 +5293,7 @@
       "url": "https://securly.atlassian.net/browse/FILTER-16681",
       "summary": "docs.google.com presenter view blocked by about:blank",
       "type": "Support Request",
-      "priority": "P3",
+      "priority": "P2",
       "zendesk_count": 1,
       "status": "Backlog",
       "status_category": "To Do",
@@ -5085,10 +5310,10 @@
       "statuscategorychangedate": "2026-08-27T15:29:58.738000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -5117,10 +5342,10 @@
       "statuscategorychangedate": "2026-08-28T01:23:50.667000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
-        "partial": true
+        "end": "2026-08-30",
+        "partial": false
       },
       "is_done": false,
       "done_at": null,
@@ -5149,9 +5374,233 @@
       "statuscategorychangedate": "2026-08-27T17:01:07.107000-04:00",
       "created_week": {
         "id": "2026-W35",
-        "label": "24 Aug \u2013 28 Aug",
+        "label": "24 Aug \u2013 30 Aug",
         "start": "2026-08-24",
-        "end": "2026-08-28",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "FILTER-16695",
+      "url": "https://securly.atlassian.net/browse/FILTER-16695",
+      "summary": "UK SmartPAC intermittently redirects embedded resources to Azure login despite injected user and enabled cookies",
+      "type": "Escape Defect",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "ESCALATION EVAL",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Unassigned",
+      "reporter": "\u2014",
+      "project_key": "FILTER",
+      "project_name": "product_FILTER",
+      "project_label": "Filter",
+      "created": "2026-08-28T03:27:51.962000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T03:27:52.478000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "MDMCLASS-18850",
+      "url": "https://securly.atlassian.net/browse/MDMCLASS-18850",
+      "summary": "CLASSROOM | Windows teacher screen-share prompt intermittently disappears when \u201cLock students to screen share session\u201d is enabled",
+      "type": "Support Request",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "In Review",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Chris Wainner",
+      "reporter": "\u2014",
+      "project_key": "MDMCLASS",
+      "project_name": "product_MDM_CLASSROOM",
+      "project_label": "MDM Class",
+      "created": "2026-08-28T10:27:57.095000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T10:27:57.589000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "DEVOPS-11956",
+      "url": "https://securly.atlassian.net/browse/DEVOPS-11956",
+      "summary": "Remove /fbx and /logos DB18 entries just for google.com",
+      "type": "Support Request",
+      "priority": "P1",
+      "zendesk_count": 1,
+      "status": "Done",
+      "status_category": "Done",
+      "resolution": null,
+      "assignee": "Akshay Nalawade",
+      "reporter": "\u2014",
+      "project_key": "DEVOPS",
+      "project_name": "ops_devops",
+      "project_label": "DevOps",
+      "created": "2026-08-28T11:29:17.611000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T11:46:41.893000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": true,
+      "done_at": "2026-08-28T11:46:41.893000-04:00",
+      "done_date": "2026-08-28",
+      "time_to_done_days": 0.01
+    },
+    {
+      "key": "HOME-5745",
+      "url": "https://securly.atlassian.net/browse/HOME-5745",
+      "summary": "Home App is not showing Pause button - securlyadmin@iowacityschools.org",
+      "type": "Support Request",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "Backlog",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Unassigned",
+      "reporter": "\u2014",
+      "project_key": "HOME",
+      "project_name": "product_HOME",
+      "project_label": "Home",
+      "created": "2026-08-28T12:55:04.350000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T12:55:06.628000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "MDMCLASS-18851",
+      "url": "https://securly.atlassian.net/browse/MDMCLASS-18851",
+      "summary": "Windows Classroom agent 1.3.10.105 repeatedly exits Chrome 152 full-screen video",
+      "type": "Support Request",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "In Review",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Chris Wainner",
+      "reporter": "\u2014",
+      "project_key": "MDMCLASS",
+      "project_name": "product_MDM_CLASSROOM",
+      "project_label": "MDM Class",
+      "created": "2026-08-28T16:08:21.868000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T16:08:22.389000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "FILTER-16723",
+      "url": "https://securly.atlassian.net/browse/FILTER-16723",
+      "summary": "Google Chat flagged when chat is disabled for student OUs",
+      "type": "Support Request",
+      "priority": "P1",
+      "zendesk_count": 1,
+      "status": "Backlog",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Shashank Tiwari",
+      "reporter": "\u2014",
+      "project_key": "FILTER",
+      "project_name": "product_FILTER",
+      "project_label": "Filter",
+      "created": "2026-08-28T16:59:48.948000-04:00",
+      "created_date": "2026-08-28",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-28T16:59:49.524000-04:00",
+      "created_week": {
+        "id": "2026-W35",
+        "label": "24 Aug \u2013 30 Aug",
+        "start": "2026-08-24",
+        "end": "2026-08-30",
+        "partial": false
+      },
+      "is_done": false,
+      "done_at": null,
+      "done_date": null,
+      "time_to_done_days": null
+    },
+    {
+      "key": "PASS-8156",
+      "url": "https://securly.atlassian.net/browse/PASS-8156",
+      "summary": "Missing Grad Year data in School Insights",
+      "type": "Escape Defect",
+      "priority": "P3",
+      "zendesk_count": 1,
+      "status": "ESCALATION EVAL",
+      "status_category": "To Do",
+      "resolution": null,
+      "assignee": "Manasi Kulkarni",
+      "reporter": "\u2014",
+      "project_key": "PASS",
+      "project_name": "Pass",
+      "project_label": "Pass",
+      "created": "2026-08-31T09:55:00.761000-04:00",
+      "created_date": "2026-08-31",
+      "resolved": null,
+      "resolved_date": null,
+      "statuscategorychangedate": "2026-08-31T09:55:02.346000-04:00",
+      "created_week": {
+        "id": "2026-W36",
+        "label": "31 Aug",
+        "start": "2026-08-31",
+        "end": "2026-08-31",
         "partial": true
       },
       "is_done": false,
@@ -5160,9 +5609,9 @@
       "time_to_done_days": null
     }
   ],
-  "headline": "131 Zendesk-linked tickets created since 1 Aug 2026 (33 Escape Defect, 98 Support Request). 64 Done (statusCategory = Done) vs 67 not Done (statusCategory != Done). Highest intake: MDM Class 53, Filter 15, DD 12, Flex 11, Comm 7. No matching tickets yet: Case Manager.",
+  "headline": "141 Zendesk-linked tickets created since 1 Aug 2026 (36 Escape Defect, 105 Support Request). 71 Done (statusCategory = Done) vs 70 not Done (statusCategory != Done). Highest intake: MDM Class 57, Filter 18, DD 12, Flex 11, Home 8. No matching tickets yet: Case Manager.",
   "notes": {
     "scope": "Includes AIChat, Aware, Case Manager (RESP), Comm, DD, DE, DevOps, Filter, Flex, Home, MDM Class, On-Call (PRODUCT24), PageScan, and Pass. Products with 0 had no Escape Defect or Support Request with Zendesk Ticket Count > 0 since 1 Aug 2026. Done vs not Done uses Jira statusCategory = Done versus statusCategory != Done. Created tickets are grouped into Monday\u2013Sunday weeks with the date range shown for each week.",
-    "window": "Weeks 1 Aug \u2013 2 Aug (partial), 3 Aug \u2013 9 Aug, 10 Aug \u2013 16 Aug, 17 Aug \u2013 23 Aug, 24 Aug \u2013 28 Aug (partial) (Mon\u2013Sun, clipped to the dashboard window) through the live Jira refresh."
+    "window": "Weeks 1 Aug \u2013 2 Aug (partial), 3 Aug \u2013 9 Aug, 10 Aug \u2013 16 Aug, 17 Aug \u2013 23 Aug, 24 Aug \u2013 30 Aug, 31 Aug (partial) (Mon\u2013Sun, clipped to the dashboard window) through the live Jira refresh."
   }
 }

@@ -1,5 +1,7 @@
 const JIRA_CLOUD_ID = '28cddaa0-3ea8-450b-b2e6-df904c378dc4';
-const JIRA_SEARCH = 'https://api.atlassian.com/ex/jira/' + JIRA_CLOUD_ID + '/rest/api/3/search/jql';
+const JIRA_API = 'https://api.atlassian.com/ex/jira/' + JIRA_CLOUD_ID + '/rest/api/3';
+const JIRA_SEARCH = JIRA_API + '/search/jql';
+const JIRA_MYSELF = JIRA_API + '/myself';
 const ISSUE_FIELDS = [
   'summary', 'status', 'issuetype', 'priority', 'created', 'updated',
   'resolutiondate', 'statuscategorychangedate', 'project', 'assignee',
@@ -7,6 +9,7 @@ const ISSUE_FIELDS = [
 ];
 const CRED_EMAIL = 'zd-jira-email';
 const CRED_TOKEN = 'zd-jira-token';
+const SESSION_TIMEOUT_MS = 4000;
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function getJiraCreds() {
@@ -237,12 +240,13 @@ function assembleFromJira(rawIssues, base) {
   };
 }
 
-async function fetchJiraIssues(email, token) {
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: 'Basic ' + btoa(email + ':' + token),
-  };
+function fetchWithTimeout(url, opts, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
+}
+
+async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
   for (let i = 0; i < 20; i++) {
@@ -257,7 +261,7 @@ async function fetchJiraIssues(email, token) {
       headers,
       body: JSON.stringify(body),
       cache: 'no-store',
-      credentials: 'omit',
+      credentials,
     });
     if (!r.ok) {
       const text = await r.text();
@@ -271,10 +275,49 @@ async function fetchJiraIssues(email, token) {
   return issues;
 }
 
+async function fetchJiraWithToken(email, token) {
+  return fetchJiraIssues({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + btoa(email + ':' + token),
+  }, 'omit');
+}
+
+async function fetchJiraWithSession() {
+  const me = await fetchWithTimeout(JIRA_MYSELF, {
+    method: 'GET',
+    headers: { Accept: 'application/json' },
+    cache: 'no-store',
+    credentials: 'include',
+  }, SESSION_TIMEOUT_MS);
+  if (!me.ok) return null;
+  const profile = await me.json();
+  if (!profile || !profile.accountId) return null;
+  const issues = await fetchJiraIssues({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }, 'include');
+  if (!issues.length) return null;
+  return issues;
+}
+
+function applyLiveIssues(raw, source) {
+  DATA = assembleFromJira(raw, DATA);
+  DATA._fromLiveApi = true;
+  DATA._liveSource = source;
+  return source;
+}
+
 function syncJiraButton() {
   const btn = $('jiraToggle');
   if (!btn) return;
   const creds = getJiraCreds();
+  const live = DATA && DATA.live && DATA._liveSource;
+  if (live === 'session') {
+    btn.textContent = 'Jira session';
+    btn.setAttribute('aria-pressed', 'true');
+    return;
+  }
   btn.textContent = creds ? 'Jira connected' : 'Connect Jira';
   btn.setAttribute('aria-pressed', creds ? 'true' : 'false');
 }
@@ -305,7 +348,7 @@ function bindJiraPanel() {
     try {
       await refreshDashboard();
       paint();
-      msg.textContent = 'Connected. Counts refresh from Jira on every page load.';
+      msg.textContent = 'Connected. Reload queries Jira with this token.';
       panel.classList.remove('open');
     } catch (e) {
       msg.textContent = e.message || String(e);
@@ -321,12 +364,15 @@ function bindJiraPanel() {
 }
 
 async function refreshDashboard() {
+  try {
+    const sessionIssues = await fetchJiraWithSession();
+    if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
+  } catch (e) {}
   const creds = getJiraCreds();
   if (creds) {
-    const raw = await fetchJiraIssues(creds.email, creds.token);
-    DATA = assembleFromJira(raw, DATA);
-    DATA._fromLiveApi = true;
-    return 'jira';
+    const raw = await fetchJiraWithToken(creds.email, creds.token);
+    if (!raw.length) throw new Error('Jira returned 0 matching tickets');
+    return applyLiveIssues(raw, 'token');
   }
   return loadLive();
 }
