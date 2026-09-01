@@ -866,6 +866,10 @@ function scopedTokenHelp() {
   return 'Jira rejected this token (401). This page can only call api.atlassian.com, which needs a scoped token. At id.atlassian.com choose Create API token with scopes → Jira → read:jira-work and read:jira-user. A classic Create API token will 401 here. Use the same Atlassian email that created the token.';
 }
 
+function isUnauthorized(err) {
+  return /HTTP 401|Unauthorized/i.test((err && err.message) || '');
+}
+
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
@@ -878,14 +882,13 @@ async function fetchJiraIssues(headers, credentials) {
     if (next) body.nextPageToken = next;
     const r = await fetch(JIRA_SEARCH, {
       method: 'POST',
-      headers,
+      headers: Object.assign({ 'X-Atlassian-Token': 'nocheck' }, headers),
       body: JSON.stringify(body),
       cache: 'no-store',
       credentials,
     });
     if (!r.ok) {
       const text = await r.text();
-      if (r.status === 401) throw new Error(scopedTokenHelp());
       throw new Error('Jira HTTP ' + r.status + (text ? ': ' + text.slice(0, 180) : ''));
     }
     const page = await r.json();
@@ -903,29 +906,33 @@ async function fetchJiraWithToken(email, token) {
       return await fetchJiraIssues(attempt.headers, 'omit');
     } catch (e) {
       lastErr = e;
-      if ((e.message || '') === scopedTokenHelp()) continue;
+      if (isUnauthorized(e)) continue;
       throw e;
     }
   }
-  throw lastErr || new Error(scopedTokenHelp());
+  throw new Error(scopedTokenHelp());
 }
 
 async function fetchJiraWithSession() {
-  const me = await fetchWithTimeout(JIRA_MYSELF, {
-    method: 'GET',
-    headers: { Accept: 'application/json' },
-    cache: 'no-store',
-    credentials: 'include',
-  }, SESSION_TIMEOUT_MS);
-  if (!me.ok) return null;
-  const profile = await me.json();
-  if (!profile || !profile.accountId) return null;
-  const issues = await fetchJiraIssues({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  }, 'include');
-  if (!issues.length) return null;
-  return issues;
+  try {
+    const me = await fetchWithTimeout(JIRA_MYSELF, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      credentials: 'include',
+    }, SESSION_TIMEOUT_MS);
+    if (!me.ok) return null;
+    const profile = await me.json();
+    if (!profile || !profile.accountId) return null;
+    const issues = await fetchJiraIssues({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }, 'include');
+    if (!issues.length) return null;
+    return issues;
+  } catch (e) {
+    return null;
+  }
 }
 
 function applyLiveIssues(raw, source) {
@@ -973,7 +980,7 @@ function bindJiraPanel() {
     syncJiraButton();
     setLiveStatus('refreshing from Jira…', '');
     try {
-      await refreshDashboard();
+      await refreshDashboard({ requireToken: true });
       paint();
       msg.textContent = 'Connected. Reload queries Jira with this token.';
       panel.classList.remove('open');
@@ -990,16 +997,22 @@ function bindJiraPanel() {
   });
 }
 
-async function refreshDashboard() {
-  try {
-    const sessionIssues = await fetchJiraWithSession();
-    if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
-  } catch (e) {}
+async function refreshDashboard(opts) {
+  const requireToken = opts && opts.requireToken;
   const creds = getJiraCreds();
   if (creds) {
-    const raw = await fetchJiraWithToken(creds.email, creds.token);
-    if (!raw.length) throw new Error('Jira returned 0 matching tickets');
-    return applyLiveIssues(raw, 'token');
+    try {
+      const raw = await fetchJiraWithToken(creds.email, creds.token);
+      if (!raw.length) throw new Error('Jira returned 0 matching tickets');
+      return applyLiveIssues(raw, 'token');
+    } catch (e) {
+      if (requireToken) throw e;
+    }
+  } else {
+    try {
+      const sessionIssues = await fetchJiraWithSession();
+      if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
+    } catch (e) {}
   }
   return loadLive();
 }
