@@ -260,7 +260,7 @@ function basicAuthHeader(email, token) {
 
 function tokenAuthAttempts(email, token) {
   const value = cleanToken(token);
-  const json = { Accept: 'application/json', 'Content-Type': 'application/json' };
+  const json = { Accept: 'application/json' };
   return [
     { name: 'basic', headers: { ...json, Authorization: basicAuthHeader(email, value) } },
     { name: 'bearer', headers: { ...json, Authorization: 'Bearer ' + value } },
@@ -271,8 +271,16 @@ function scopedTokenHelp() {
   return 'Jira rejected this token (401). This page can only call api.atlassian.com, which needs a scoped token. At id.atlassian.com choose Create API token with scopes → Jira → read:jira-work and read:jira-user. A classic Create API token will 401 here. Use the same Atlassian email that created the token.';
 }
 
+function xsrfHelp() {
+  return 'Jira blocked the browser request (XSRF). Hard-refresh this page after the latest deploy — search must be GET, not POST. Then use Create API token with scopes for Jira (read:jira-work and read:jira-user).';
+}
+
 function isUnauthorized(err) {
   return /HTTP 401|Unauthorized/i.test((err && err.message) || '');
+}
+
+function isXsrf(err) {
+  return /XSRF/i.test((err && err.message) || '');
 }
 
 async function fetchJiraIssues(headers, credentials) {
@@ -313,10 +321,11 @@ async function fetchJiraWithToken(email, token) {
       return await fetchJiraIssues(attempt.headers, 'omit');
     } catch (e) {
       lastErr = e;
-      if (isUnauthorized(e)) continue;
+      if (isUnauthorized(e) || isXsrf(e)) continue;
       throw e;
     }
   }
+  if (lastErr && isXsrf(lastErr) && !isUnauthorized(lastErr)) throw new Error(xsrfHelp());
   throw new Error(scopedTokenHelp());
 }
 

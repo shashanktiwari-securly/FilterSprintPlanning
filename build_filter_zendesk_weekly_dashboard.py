@@ -408,11 +408,12 @@ def write_html(data: dict) -> str:
 </header>
 <div id="jiraPanel" class="jira-panel">
   <p>
-    This page talks to <code>api.atlassian.com</code>, so a classic
-    “Create API token” returns 401. Create an
+    This page talks to <code>api.atlassian.com</code> with GET.
+    A classic “Create API token” returns 401, and an older POST page returns XSRF 403.
+    Create an
     <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">API token with scopes</a>
     for <b>Jira</b> and include <code>read:jira-work</code> and <code>read:jira-user</code>.
-    Use the same Atlassian email that created the token. It stays in this browser only.
+    Use the same Atlassian email that created the token, then hard-refresh. It stays in this browser only.
   </p>
   <input id="jiraEmail" type="email" autocomplete="username" placeholder="you@securly.com"/>
   <input id="jiraToken" type="password" autocomplete="off" placeholder="Jira API token"/>
