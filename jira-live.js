@@ -318,7 +318,13 @@ async function fetchJiraWithToken(email, token) {
   let lastErr = null;
   for (const attempt of tokenAuthAttempts(email, token)) {
     try {
-      return await fetchJiraIssues(attempt.headers, 'omit');
+      const issues = await fetchJiraIssues(attempt.headers, 'omit');
+      // Unauthenticated api.atlassian.com search returns 200 with issues: [].
+      if (!issues.length) {
+        lastErr = new Error('Jira HTTP 401');
+        continue;
+      }
+      return issues;
     } catch (e) {
       lastErr = e;
       if (isUnauthorized(e) || isXsrf(e)) continue;
@@ -419,7 +425,7 @@ async function refreshDashboard(opts) {
   if (creds) {
     try {
       const raw = await fetchJiraWithToken(creds.email, creds.token);
-      if (!raw.length) throw new Error('Jira returned 0 matching tickets');
+      if (!raw.length) throw new Error(scopedTokenHelp());
       return applyLiveIssues(raw, 'token');
     } catch (e) {
       if (requireToken) throw e;
