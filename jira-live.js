@@ -246,6 +246,31 @@ function fetchWithTimeout(url, opts, ms) {
   return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
 }
 
+function cleanToken(token) {
+  return String(token || '').replace(/^Bearer\s+/i, '').replace(/\s+/g, '').trim();
+}
+
+function basicAuthHeader(email, token) {
+  const raw = email + ':' + token;
+  const bytes = new TextEncoder().encode(raw);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return 'Basic ' + btoa(bin);
+}
+
+function tokenAuthAttempts(email, token) {
+  const value = cleanToken(token);
+  const json = { Accept: 'application/json', 'Content-Type': 'application/json' };
+  return [
+    { name: 'basic', headers: { ...json, Authorization: basicAuthHeader(email, value) } },
+    { name: 'bearer', headers: { ...json, Authorization: 'Bearer ' + value } },
+  ];
+}
+
+function scopedTokenHelp() {
+  return 'Jira rejected this token (401). This page can only call api.atlassian.com, which needs a scoped token. At id.atlassian.com choose Create API token with scopes → Jira → read:jira-work and read:jira-user. A classic Create API token will 401 here. Use the same Atlassian email that created the token.';
+}
+
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
@@ -265,6 +290,7 @@ async function fetchJiraIssues(headers, credentials) {
     });
     if (!r.ok) {
       const text = await r.text();
+      if (r.status === 401) throw new Error(scopedTokenHelp());
       throw new Error('Jira HTTP ' + r.status + (text ? ': ' + text.slice(0, 180) : ''));
     }
     const page = await r.json();
@@ -276,11 +302,17 @@ async function fetchJiraIssues(headers, credentials) {
 }
 
 async function fetchJiraWithToken(email, token) {
-  return fetchJiraIssues({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: 'Basic ' + btoa(email + ':' + token),
-  }, 'omit');
+  let lastErr = null;
+  for (const attempt of tokenAuthAttempts(email, token)) {
+    try {
+      return await fetchJiraIssues(attempt.headers, 'omit');
+    } catch (e) {
+      lastErr = e;
+      if ((e.message || '') === scopedTokenHelp()) continue;
+      throw e;
+    }
+  }
+  throw lastErr || new Error(scopedTokenHelp());
 }
 
 async function fetchJiraWithSession() {

@@ -154,10 +154,10 @@
     border:1px solid var(--line); border-radius:10px; flex-wrap:wrap; gap:8px; align-items:center;
   }
   .jira-panel.open { display:flex; }
-  .jira-panel p { margin:0; color:var(--muted); font-size:12px; flex:1 1 320px; line-height:1.45; }
+  .jira-panel p { margin:0; color:var(--muted); font-size:12px; flex:1 1 100%; line-height:1.45; }
   .jira-panel input { min-width:180px; }
   .jira-panel a { color:var(--accent); font-size:12px; }
-  #jiraMsg { color:var(--warn); font-size:12px; }
+  #jiraMsg { color:var(--warn); font-size:12px; flex:1 1 100%; line-height:1.45; }
   .callout { background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--warn);
     border-radius:10px; padding:12px 16px; margin:8px 0 20px; color:var(--muted); }
   .callout b { color:var(--ink); }
@@ -185,11 +185,11 @@
 </header>
 <div id="jiraPanel" class="jira-panel">
   <p>
-    Reload tries your Atlassian login first, then a saved API token, then the last snapshot.
-    If the browser blocks the Jira session, save a token here so every refresh queries
-    <code>api.atlassian.com</code>. The token stays in this browser only.
-    Create a token at
-    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">id.atlassian.com</a>.
+    This page talks to <code>api.atlassian.com</code>, so a classic
+    “Create API token” returns 401. Create an
+    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">API token with scopes</a>
+    for <b>Jira</b> and include <code>read:jira-work</code> and <code>read:jira-user</code>.
+    Use the same Atlassian email that created the token. It stays in this browser only.
   </p>
   <input id="jiraEmail" type="email" autocomplete="username" placeholder="you@securly.com"/>
   <input id="jiraToken" type="password" autocomplete="off" placeholder="Jira API token"/>
@@ -841,6 +841,31 @@ function fetchWithTimeout(url, opts, ms) {
   return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
 }
 
+function cleanToken(token) {
+  return String(token || '').replace(/^Bearer\s+/i, '').replace(/\s+/g, '').trim();
+}
+
+function basicAuthHeader(email, token) {
+  const raw = email + ':' + token;
+  const bytes = new TextEncoder().encode(raw);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return 'Basic ' + btoa(bin);
+}
+
+function tokenAuthAttempts(email, token) {
+  const value = cleanToken(token);
+  const json = { Accept: 'application/json', 'Content-Type': 'application/json' };
+  return [
+    { name: 'basic', headers: { ...json, Authorization: basicAuthHeader(email, value) } },
+    { name: 'bearer', headers: { ...json, Authorization: 'Bearer ' + value } },
+  ];
+}
+
+function scopedTokenHelp() {
+  return 'Jira rejected this token (401). This page can only call api.atlassian.com, which needs a scoped token. At id.atlassian.com choose Create API token with scopes → Jira → read:jira-work and read:jira-user. A classic Create API token will 401 here. Use the same Atlassian email that created the token.';
+}
+
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
@@ -860,6 +885,7 @@ async function fetchJiraIssues(headers, credentials) {
     });
     if (!r.ok) {
       const text = await r.text();
+      if (r.status === 401) throw new Error(scopedTokenHelp());
       throw new Error('Jira HTTP ' + r.status + (text ? ': ' + text.slice(0, 180) : ''));
     }
     const page = await r.json();
@@ -871,11 +897,17 @@ async function fetchJiraIssues(headers, credentials) {
 }
 
 async function fetchJiraWithToken(email, token) {
-  return fetchJiraIssues({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: 'Basic ' + btoa(email + ':' + token),
-  }, 'omit');
+  let lastErr = null;
+  for (const attempt of tokenAuthAttempts(email, token)) {
+    try {
+      return await fetchJiraIssues(attempt.headers, 'omit');
+    } catch (e) {
+      lastErr = e;
+      if ((e.message || '') === scopedTokenHelp()) continue;
+      throw e;
+    }
+  }
+  throw lastErr || new Error(scopedTokenHelp());
 }
 
 async function fetchJiraWithSession() {

@@ -377,10 +377,10 @@ def write_html(data: dict) -> str:
     border:1px solid var(--line); border-radius:10px; flex-wrap:wrap; gap:8px; align-items:center;
   }}
   .jira-panel.open {{ display:flex; }}
-  .jira-panel p {{ margin:0; color:var(--muted); font-size:12px; flex:1 1 320px; line-height:1.45; }}
+  .jira-panel p {{ margin:0; color:var(--muted); font-size:12px; flex:1 1 100%; line-height:1.45; }}
   .jira-panel input {{ min-width:180px; }}
   .jira-panel a {{ color:var(--accent); font-size:12px; }}
-  #jiraMsg {{ color:var(--warn); font-size:12px; }}
+  #jiraMsg {{ color:var(--warn); font-size:12px; flex:1 1 100%; line-height:1.45; }}
   .callout {{ background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--warn);
     border-radius:10px; padding:12px 16px; margin:8px 0 20px; color:var(--muted); }}
   .callout b {{ color:var(--ink); }}
@@ -408,11 +408,11 @@ def write_html(data: dict) -> str:
 </header>
 <div id="jiraPanel" class="jira-panel">
   <p>
-    Reload tries your Atlassian login first, then a saved API token, then the last snapshot.
-    If the browser blocks the Jira session, save a token here so every refresh queries
-    <code>api.atlassian.com</code>. The token stays in this browser only.
-    Create a token at
-    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">id.atlassian.com</a>.
+    This page talks to <code>api.atlassian.com</code>, so a classic
+    “Create API token” returns 401. Create an
+    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">API token with scopes</a>
+    for <b>Jira</b> and include <code>read:jira-work</code> and <code>read:jira-user</code>.
+    Use the same Atlassian email that created the token. It stays in this browser only.
   </p>
   <input id="jiraEmail" type="email" autocomplete="username" placeholder="you@securly.com"/>
   <input id="jiraToken" type="password" autocomplete="off" placeholder="Jira API token"/>
