@@ -246,20 +246,59 @@ function fetchWithTimeout(url, opts, ms) {
   return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
 }
 
+function cleanToken(token) {
+  return String(token || '').replace(/^Bearer\s+/i, '').replace(/\s+/g, '').trim();
+}
+
+function basicAuthHeader(email, token) {
+  const raw = email + ':' + token;
+  const bytes = new TextEncoder().encode(raw);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return 'Basic ' + btoa(bin);
+}
+
+function tokenAuthAttempts(email, token) {
+  const value = cleanToken(token);
+  const json = { Accept: 'application/json' };
+  return [
+    { name: 'basic', headers: { ...json, Authorization: basicAuthHeader(email, value) } },
+    { name: 'bearer', headers: { ...json, Authorization: 'Bearer ' + value } },
+  ];
+}
+
+function scopedTokenHelp() {
+  return 'Jira rejected this token (401). This page can only call api.atlassian.com, which needs a scoped token. At id.atlassian.com choose Create API token with scopes → Jira → read:jira-work and read:jira-user. A classic Create API token will 401 here. Use the same Atlassian email that created the token.';
+}
+
+function xsrfHelp() {
+  return 'Jira blocked the browser request (XSRF). Hard-refresh this page after the latest deploy — search must be GET, not POST. Then use Create API token with scopes for Jira (read:jira-work and read:jira-user).';
+}
+
+function isUnauthorized(err) {
+  return /HTTP 401|Unauthorized/i.test((err && err.message) || '');
+}
+
+function isXsrf(err) {
+  return /XSRF/i.test((err && err.message) || '');
+}
+
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
+  const reqHeaders = {
+    Accept: 'application/json',
+    Authorization: headers.Authorization,
+  };
   for (let i = 0; i < 20; i++) {
-    const body = {
-      jql: DATA.jql.created,
-      maxResults: 100,
-      fields: ISSUE_FIELDS,
-    };
-    if (next) body.nextPageToken = next;
-    const r = await fetch(JIRA_SEARCH, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body),
+    const params = new URLSearchParams();
+    params.set('jql', DATA.jql.created);
+    params.set('maxResults', '100');
+    params.set('fields', ISSUE_FIELDS.join(','));
+    if (next) params.set('nextPageToken', next);
+    const r = await fetch(JIRA_SEARCH + '?' + params.toString(), {
+      method: 'GET',
+      headers: reqHeaders,
       cache: 'no-store',
       credentials,
     });
@@ -276,29 +315,46 @@ async function fetchJiraIssues(headers, credentials) {
 }
 
 async function fetchJiraWithToken(email, token) {
-  return fetchJiraIssues({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: 'Basic ' + btoa(email + ':' + token),
-  }, 'omit');
+  let lastErr = null;
+  for (const attempt of tokenAuthAttempts(email, token)) {
+    try {
+      const issues = await fetchJiraIssues(attempt.headers, 'omit');
+      // Unauthenticated api.atlassian.com search returns 200 with issues: [].
+      if (!issues.length) {
+        lastErr = new Error('Jira HTTP 401');
+        continue;
+      }
+      return issues;
+    } catch (e) {
+      lastErr = e;
+      if (isUnauthorized(e) || isXsrf(e)) continue;
+      throw e;
+    }
+  }
+  if (lastErr && isXsrf(lastErr) && !isUnauthorized(lastErr)) throw new Error(xsrfHelp());
+  throw new Error(scopedTokenHelp());
 }
 
 async function fetchJiraWithSession() {
-  const me = await fetchWithTimeout(JIRA_MYSELF, {
-    method: 'GET',
-    headers: { Accept: 'application/json' },
-    cache: 'no-store',
-    credentials: 'include',
-  }, SESSION_TIMEOUT_MS);
-  if (!me.ok) return null;
-  const profile = await me.json();
-  if (!profile || !profile.accountId) return null;
-  const issues = await fetchJiraIssues({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  }, 'include');
-  if (!issues.length) return null;
-  return issues;
+  try {
+    const me = await fetchWithTimeout(JIRA_MYSELF, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      credentials: 'include',
+    }, SESSION_TIMEOUT_MS);
+    if (!me.ok) return null;
+    const profile = await me.json();
+    if (!profile || !profile.accountId) return null;
+    const issues = await fetchJiraIssues({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }, 'include');
+    if (!issues.length) return null;
+    return issues;
+  } catch (e) {
+    return null;
+  }
 }
 
 function applyLiveIssues(raw, source) {
@@ -346,7 +402,7 @@ function bindJiraPanel() {
     syncJiraButton();
     setLiveStatus('refreshing from Jira…', '');
     try {
-      await refreshDashboard();
+      await refreshDashboard({ requireToken: true });
       paint();
       msg.textContent = 'Connected. Reload queries Jira with this token.';
       panel.classList.remove('open');
@@ -363,16 +419,22 @@ function bindJiraPanel() {
   });
 }
 
-async function refreshDashboard() {
-  try {
-    const sessionIssues = await fetchJiraWithSession();
-    if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
-  } catch (e) {}
+async function refreshDashboard(opts) {
+  const requireToken = opts && opts.requireToken;
   const creds = getJiraCreds();
   if (creds) {
-    const raw = await fetchJiraWithToken(creds.email, creds.token);
-    if (!raw.length) throw new Error('Jira returned 0 matching tickets');
-    return applyLiveIssues(raw, 'token');
+    try {
+      const raw = await fetchJiraWithToken(creds.email, creds.token);
+      if (!raw.length) throw new Error(scopedTokenHelp());
+      return applyLiveIssues(raw, 'token');
+    } catch (e) {
+      if (requireToken) throw e;
+    }
+  } else {
+    try {
+      const sessionIssues = await fetchJiraWithSession();
+      if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
+    } catch (e) {}
   }
   return loadLive();
 }
