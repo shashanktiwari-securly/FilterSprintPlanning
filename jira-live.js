@@ -278,17 +278,19 @@ function isUnauthorized(err) {
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
+  const reqHeaders = {
+    Accept: 'application/json',
+    Authorization: headers.Authorization,
+  };
   for (let i = 0; i < 20; i++) {
-    const body = {
-      jql: DATA.jql.created,
-      maxResults: 100,
-      fields: ISSUE_FIELDS,
-    };
-    if (next) body.nextPageToken = next;
-    const r = await fetch(JIRA_SEARCH, {
-      method: 'POST',
-      headers: Object.assign({ 'X-Atlassian-Token': 'nocheck' }, headers),
-      body: JSON.stringify(body),
+    const params = new URLSearchParams();
+    params.set('jql', DATA.jql.created);
+    params.set('maxResults', '100');
+    params.set('fields', ISSUE_FIELDS.join(','));
+    if (next) params.set('nextPageToken', next);
+    const r = await fetch(JIRA_SEARCH + '?' + params.toString(), {
+      method: 'GET',
+      headers: reqHeaders,
       cache: 'no-store',
       credentials,
     });
