@@ -147,6 +147,32 @@ def write_markdown(data: dict) -> str:
         lines.append(md_row(created_cells))
         lines.append(md_row(done_cells))
         lines.append(md_row(open_cells))
+    weekly_rows = data.get("weekly") or data.get("monthly") or []
+    if weekly_rows:
+        product_totals = {p["key"]: {"created": 0, "done": 0, "open": 0} for p in projects}
+        grand = {"created": 0, "done": 0, "open": 0}
+        for m in weekly_rows:
+            for p in projects:
+                bp = m["by_project"][p["key"]]
+                product_totals[p["key"]]["created"] += bp["created"]
+                product_totals[p["key"]]["done"] += bp["done"]
+                product_totals[p["key"]]["open"] += bp["open"]
+            grand["created"] += m["totals"]["created"]
+            grand["done"] += m["totals"]["done"]
+            grand["open"] += m["totals"]["open"]
+        created_cells = ["**Total**", "Created"]
+        done_cells = ["**Total**", "Done"]
+        open_cells = ["**Total**", "Not Done"]
+        for p in projects:
+            created_cells.append(f"**{product_totals[p['key']]['created']}**")
+            done_cells.append(f"**{product_totals[p['key']]['done']}**")
+            open_cells.append(f"**{product_totals[p['key']]['open']}**")
+        created_cells.append(f"**{grand['created']}**")
+        done_cells.append(f"**{grand['done']}**")
+        open_cells.append(f"**{grand['open']}**")
+        lines.append(md_row(created_cells))
+        lines.append(md_row(done_cells))
+        lines.append(md_row(open_cells))
     lines += [
         "",
         "## Created ticket list",
@@ -195,7 +221,7 @@ def write_html(data: dict) -> str:
     payload = json.dumps(data, ensure_ascii=True)
     from_label = created_from_label(data)
     title = esc(data["title"])
-    return f"""<!DOCTYPE html>
+    head = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -232,6 +258,7 @@ def write_html(data: dict) -> str:
   header {{ padding:24px 28px; border-bottom:1px solid var(--line);
     background:var(--header-bg); }}
   .header-row {{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }}
+  .header-actions {{ display:flex; gap:8px; flex-shrink:0; }}
   .theme-toggle {{
     background:var(--panel2); color:var(--ink); border:1px solid var(--line);
     border-radius:999px; padding:8px 14px; cursor:pointer; font-size:13px; font-weight:600;
@@ -279,6 +306,8 @@ def write_html(data: dict) -> str:
   tr.row-done td {{ background:var(--row-done); }}
   tr.row-open td {{ background:var(--row-open); }}
   tr.row-label td {{ color:var(--muted); font-weight:600; }}
+  tr.row-total td {{ border-top:2px solid var(--accent); font-weight:700; }}
+  tr.row-total + tr.row-total td {{ border-top:none; }}
   .legend .swatch {{ display:inline-block; width:10px; height:10px; border-radius:2px; margin:0 4px 0 10px; vertical-align:middle; }}
   .legend .swatch.done {{ background:var(--good); }}
   .legend .swatch.open {{ background:var(--warn); }}
@@ -343,6 +372,15 @@ def write_html(data: dict) -> str:
   .note {{ color:var(--muted); font-size:12px; margin-top:10px; }}
   code {{ background:var(--panel2); padding:1px 5px; border-radius:4px; }}
   footer {{ color:var(--muted); font-size:12px; padding:22px 28px; border-top:1px solid var(--line); }}
+  .jira-panel {{
+    display:none; margin:12px 28px 0; padding:14px 16px; background:var(--panel);
+    border:1px solid var(--line); border-radius:10px; flex-wrap:wrap; gap:8px; align-items:center;
+  }}
+  .jira-panel.open {{ display:flex; }}
+  .jira-panel p {{ margin:0; color:var(--muted); font-size:12px; flex:1 1 320px; line-height:1.45; }}
+  .jira-panel input {{ min-width:180px; }}
+  .jira-panel a {{ color:var(--accent); font-size:12px; }}
+  #jiraMsg {{ color:var(--warn); font-size:12px; }}
   .callout {{ background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--warn);
     border-radius:10px; padding:12px 16px; margin:8px 0 20px; color:var(--muted); }}
   .callout b {{ color:var(--ink); }}
@@ -362,9 +400,26 @@ def write_html(data: dict) -> str:
         · grouped by calendar week (Mon–Sun)
       </div>
     </div>
-    <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
+    <div class="header-actions">
+      <button type="button" id="jiraToggle" class="theme-toggle" aria-pressed="false">Connect Jira</button>
+      <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false">Light mode</button>
+    </div>
   </div>
 </header>
+<div id="jiraPanel" class="jira-panel">
+  <p>
+    Reload tries your Atlassian login first, then a saved API token, then the last snapshot.
+    If the browser blocks the Jira session, save a token here so every refresh queries
+    <code>api.atlassian.com</code>. The token stays in this browser only.
+    Create a token at
+    <a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" rel="noopener">id.atlassian.com</a>.
+  </p>
+  <input id="jiraEmail" type="email" autocomplete="username" placeholder="you@securly.com"/>
+  <input id="jiraToken" type="password" autocomplete="off" placeholder="Jira API token"/>
+  <button type="button" id="jiraSave" class="theme-toggle">Save and refresh</button>
+  <button type="button" id="jiraClear" class="theme-toggle">Disconnect</button>
+  <span id="jiraMsg"></span>
+</div>
 <div class="wrap">
   <div class="links" id="links"></div>
   <div class="cards overview" id="overview"></div>
@@ -382,7 +437,7 @@ def write_html(data: dict) -> str:
   <div class="scroll" style="margin-top:16px"><table id="compare"></table></div>
 
   <h2>Weekly created by product</h2>
-  <div class="legend">Each week is split into Created, Done, and Not Done so the statusCategory comparison is visible by week. Weeks run Monday–Sunday; the first and last weeks are clipped to the dashboard window and show that date range. On-Call (PRODUCT24) and Case Manager (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
+  <div class="legend">Each week is split into Created, Done, and Not Done so the statusCategory comparison is visible by week. Weeks run Monday–Sunday; the first and last weeks are clipped to the dashboard window and show that date range. The bottom rows are the total per product across all weeks. On-Call (PRODUCT24) and Case Manager (RESP) stay in the table even when the count is 0. Products are listed alphabetically.</div>
   <div class="scroll" style="margin-top:16px"><table id="weekly"></table></div>
 
   <h2>Ticket list</h2>
@@ -412,7 +467,7 @@ def write_html(data: dict) -> str:
   <p class="note" id="notes"></p>
 </div>
 <footer>
-  Git-hosted report · live numbers refresh from Jira on each page load
+  Git-hosted report · reload queries Jira from this browser when a session or token is available
   · fallback snapshot in <code>docs/live.json</code>
   · also published at <code>docs/index.html</code> for GitHub Pages
 </footer>
@@ -508,11 +563,12 @@ function paint() {{
   if (createdTab) createdTab.textContent = `Created since ${{from}}`;
   $('prodCount').textContent = PRODUCTS.length;
   if (DATA.live) {{
-    setLiveStatus(`live from Jira · ${{DATA.generated_at || DATA.snapshot_date}}`, 'ok');
+    const src = DATA._liveSource === 'session' ? 'Atlassian session' : (DATA._liveSource === 'token' ? 'saved token' : 'Jira');
+    setLiveStatus(`live from ${{src}} · ${{DATA.generated_at || DATA.snapshot_date}}`, 'ok');
   }} else if (DATA._fromLiveApi) {{
-    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · set JIRA_EMAIL / JIRA_API_TOKEN to re-query on refresh`, 'stale');
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · login or Connect Jira for live counts`, 'stale');
   }} else {{
-    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · refresh pulls latest when the live server is running`, 'stale');
+    setLiveStatus(`Jira snapshot ${{DATA.snapshot_date}} · login or Connect Jira for live counts`, 'stale');
   }}
   $('links').innerHTML = [
     [`Created since ${{from}}`, DATA.links.created],
@@ -592,6 +648,34 @@ function paint() {{
       mt += `<td class="${{tcls}}">${{m.totals[field]}}</td></tr>`;
     }}
   }}
+  const productTotals = {{}};
+  const grand = {{ created:0, done:0, open:0 }};
+  for (const p of PRODUCTS) productTotals[p.key] = {{ created:0, done:0, open:0 }};
+  for (const m of periods()) {{
+    for (const p of PRODUCTS) {{
+      const bp = m.by_project[p.key];
+      productTotals[p.key].created += bp.created;
+      productTotals[p.key].done += bp.done;
+      productTotals[p.key].open += bp.open;
+    }}
+    grand.created += m.totals.created;
+    grand.done += m.totals.done;
+    grand.open += m.totals.open;
+  }}
+  const totalSlices = [
+    ['Created', 'row-label', 'created', null],
+    ['Done', 'row-done', 'done', 'done'],
+    ['Not Done', 'row-open', 'open', 'open'],
+  ];
+  for (const [name, rowCls, field, numCls] of totalSlices) {{
+    mt += `<tr class="${{rowCls}} row-total"><td><b>Total</b></td><td><b>${{name}}</b></td>`;
+    for (const p of PRODUCTS) {{
+      const cls = numCls ? `num ${{numCls}}` : 'num';
+      mt += `<td class="${{cls}}"><b>${{productTotals[p.key][field]}}</b></td>`;
+    }}
+    const tcls = numCls ? `num ${{numCls}}` : 'num';
+    mt += `<td class="${{tcls}}"><b>${{grand[field]}}</b></td></tr>`;
+  }}
   mt += '</tbody>';
   $('weekly').innerHTML = mt;
 
@@ -619,6 +703,7 @@ function paint() {{
     `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
     JQL: <code>${{DATA.jql.created}}</code>`;
   render();
+  if (typeof syncJiraButton === 'function') syncJiraButton();
 }}
 
 function sourceRows() {{
@@ -731,16 +816,26 @@ async function loadLive() {{
   return null;
 }}
 
-(async function boot() {{
+"""
+    live_js = (ROOT / "jira-live.js").read_text(encoding="utf-8")
+    tail = """
+bindJiraPanel();
+(async function boot() {
   paint();
   setLiveStatus('refreshing from Jira…', '');
-  await loadLive();
+  try {
+    await refreshDashboard();
+  } catch (e) {
+    setLiveStatus('Jira refresh failed · ' + (e.message || e), 'stale');
+    await loadLive();
+  }
   paint();
-}})();
+})();
 </script>
 </body>
 </html>
 """
+    return head + live_js + tail
 
 
 def main() -> None:
