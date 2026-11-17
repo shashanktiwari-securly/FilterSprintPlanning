@@ -283,13 +283,19 @@ function isXsrf(err) {
   return /XSRF/i.test((err && err.message) || '');
 }
 
+function jiraRequestHeaders(headers) {
+  // Omit Authorization unless the caller supplied one. `Authorization: undefined`
+  // is sent as the header value "undefined", and Jira then rejects the request
+  // instead of accepting the Atlassian session cookie.
+  const reqHeaders = { Accept: 'application/json' };
+  if (headers && headers.Authorization) reqHeaders.Authorization = headers.Authorization;
+  return reqHeaders;
+}
+
 async function fetchJiraIssues(headers, credentials) {
   const issues = [];
   let next = null;
-  const reqHeaders = {
-    Accept: 'application/json',
-    Authorization: headers.Authorization,
-  };
+  const reqHeaders = jiraRequestHeaders(headers);
   for (let i = 0; i < 20; i++) {
     const params = new URLSearchParams();
     params.set('jql', DATA.jql.created);
@@ -437,4 +443,8 @@ async function refreshDashboard(opts) {
     } catch (e) {}
   }
   return loadLive();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { jiraRequestHeaders };
 }
