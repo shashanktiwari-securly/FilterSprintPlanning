@@ -396,17 +396,17 @@ function bindJiraPanel() {
       msg.textContent = 'Email and API token are required.';
       return;
     }
-    setJiraCreds(email, token);
     $('jiraToken').value = '';
     msg.textContent = 'Querying Jira…';
-    syncJiraButton();
     setLiveStatus('refreshing from Jira…', '');
     try {
-      await refreshDashboard({ requireToken: true });
+      await connectWithToken(email, token);
+      syncJiraButton();
       paint();
       msg.textContent = 'Connected. Reload queries Jira with this token.';
       panel.classList.remove('open');
     } catch (e) {
+      syncJiraButton();
       msg.textContent = e.message || String(e);
       setLiveStatus('Jira connect failed · ' + (e.message || e), 'stale');
     }
@@ -417,6 +417,18 @@ function bindJiraPanel() {
     $('jiraMsg').textContent = 'Disconnected. Reload uses the last snapshot until you connect again.';
     syncJiraButton();
   });
+}
+
+async function connectWithToken(email, token) {
+  const previous = getJiraCreds();
+  setJiraCreds(email, token);
+  try {
+    return await refreshDashboard({ requireToken: true });
+  } catch (err) {
+    if (previous) setJiraCreds(previous.email, previous.token);
+    else clearJiraCreds();
+    throw err;
+  }
 }
 
 async function refreshDashboard(opts) {
@@ -430,11 +442,14 @@ async function refreshDashboard(opts) {
     } catch (e) {
       if (requireToken) throw e;
     }
-  } else {
-    try {
-      const sessionIssues = await fetchJiraWithSession();
-      if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
-    } catch (e) {}
   }
+  try {
+    const sessionIssues = await fetchJiraWithSession();
+    if (sessionIssues) return applyLiveIssues(sessionIssues, 'session');
+  } catch (e) {}
   return loadLive();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { refreshDashboard, connectWithToken, getJiraCreds };
 }
