@@ -171,6 +171,23 @@ def week_for(created: datetime) -> dict:
     return WEEKS[-1]
 
 
+def canonical_status_category(status: dict) -> str:
+    """Map a Jira status to the English category name.
+
+    statusCategory.name is translated for the requesting user. The key is not:
+    done, indeterminate, or new.
+    """
+    cat = (status or {}).get("statusCategory") or {}
+    key = str(cat.get("key") or "").lower()
+    if key == "done":
+        return "Done"
+    if key == "indeterminate":
+        return "In Progress"
+    if key == "new":
+        return "To Do"
+    return cat.get("name") or ""
+
+
 def load_issues(paths: list[Path]) -> list[dict]:
     seen: dict[str, dict] = {}
     for path in paths:
@@ -191,7 +208,7 @@ def load_issues(paths: list[Path]) -> list[dict]:
             resolved = parse_jira_dt(fields.get("resolutiondate"))
             status_cat_changed = parse_jira_dt(fields.get("statuscategorychangedate"))
             status = fields.get("status") or {}
-            status_cat = ((status.get("statusCategory") or {}).get("name")) or ""
+            status_cat = canonical_status_category(status)
             issuetype = (fields.get("issuetype") or {}).get("name") or ""
             assignee = fields.get("assignee") or {}
             priority = fields.get("priority") or {}

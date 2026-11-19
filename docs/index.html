@@ -712,6 +712,17 @@ function weekFor(weeks, createdDate) {
   return weeks[weeks.length - 1];
 }
 
+// statusCategory.name follows the viewer's Jira language ("完成", "Listo", …).
+// The key does not: done, indeterminate, new.
+function canonicalStatusCategory(status) {
+  const cat = (status && status.statusCategory) || {};
+  const key = String(cat.key || '').toLowerCase();
+  if (key === 'done') return 'Done';
+  if (key === 'indeterminate') return 'In Progress';
+  if (key === 'new') return 'To Do';
+  return cat.name || '';
+}
+
 function mapRawIssue(raw, projectsByKey, weeks, createdFrom) {
   const fields = raw.fields || {};
   const project = fields.project || {};
@@ -725,7 +736,7 @@ function mapRawIssue(raw, projectsByKey, weeks, createdFrom) {
   zd = parseInt(zd, 10);
   if (!Number.isFinite(zd)) zd = 0;
   const status = fields.status || {};
-  const statusCat = ((status.statusCategory || {}).name) || '';
+  const statusCat = canonicalStatusCategory(status);
   const week = weekFor(weeks, createdDate);
   return {
     key: raw.key,
