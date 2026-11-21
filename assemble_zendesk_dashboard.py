@@ -363,7 +363,20 @@ def fetch_jira_search_pages() -> list[dict]:
 def fetch_jira_issues() -> list[dict]:
     if not os.environ.get("JIRA_EMAIL") or not os.environ.get("JIRA_API_TOKEN"):
         raise RuntimeError("JIRA_EMAIL and JIRA_API_TOKEN are required for a live Jira pull")
-    return load_issue_payload({"issues": fetch_jira_search_pages()})
+    raw = fetch_jira_search_pages()
+    # Search allows anonymous access. A revoked or rejected token is HTTP 200
+    # with issues: [], not 401. Publishing that page would wipe the snapshot.
+    if not raw:
+        raise RuntimeError(
+            "Jira search returned no issues; refusing to replace the snapshot"
+        )
+    issues = load_issue_payload({"issues": raw})
+    if not issues:
+        raise RuntimeError(
+            "Jira search returned no issues in the dashboard window; "
+            "refusing to replace the snapshot"
+        )
+    return issues
 
 
 def load_issue_payload(payload: dict) -> list[dict]:
@@ -498,23 +511,48 @@ def write_dashboard(data: dict) -> None:
         )
 
 
-def live_dashboard() -> dict:
-    set_clock()
+def saved_dashboard() -> dict | None:
+    """Published dashboard file, unchanged. Empty or unreadable files are ignored."""
+    if not OUT.exists():
+        return None
+    try:
+        data = json.loads(OUT.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if isinstance(data, dict) and data.get("created_issues"):
+        return data
+    return None
+
+
+def live_dashboard(*, require_live: bool = False) -> dict:
+    """Pull Jira and assemble a live dashboard.
+
+    A failed pull must not be rebuilt under today's date. Callers that publish
+    (``require_live=True``) get an error instead of rewriting the snapshot.
+    The local server keeps serving the last saved file.
+    """
     dump = ROOT / "reports" / "jira-live-issues.json"
     try:
+        set_clock()
         issues = fetch_jira_issues()
         print(f"live Jira pull: {len(issues)} issues", flush=True)
         return build_dashboard(issues, live=True)
     except Exception as exc:
-        print(f"live Jira pull unavailable ({exc}); using local snapshot", flush=True)
-    if dump.exists():
+        print(f"live Jira pull unavailable ({exc}); keeping the last snapshot", flush=True)
+        failure: Exception = exc
+    saved = saved_dashboard()
+    if saved is not None and not require_live:
+        return saved
+    if dump.exists() and not require_live:
         return build_dashboard(load_all([dump]), live=False)
-    if OUT.exists():
-        return build_dashboard(load_all([OUT]), live=False)
+    if saved is not None or dump.exists():
+        raise RuntimeError(
+            f"Jira refresh failed ({failure}); leaving the published snapshot unchanged"
+        ) from failure
     raise RuntimeError(
         "No Jira credentials and no local snapshot. Set JIRA_EMAIL and "
-        "JIRA_API_TOKEN, or provide reports/jira-live-issues.json."
-    )
+        "JIRA_API_TOKEN, or provide reports/filter-zendesk-weekly-dashboard.json."
+    ) from failure
 
 
 def main(paths: list[str]) -> None:
@@ -528,7 +566,10 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) == 2 and sys.argv[1] in {"--live", "live"}:
-        write_dashboard(live_dashboard())
+        try:
+            write_dashboard(live_dashboard(require_live=True))
+        except RuntimeError as exc:
+            raise SystemExit(f"error: {exc}") from exc
     elif len(sys.argv) < 2:
         raise SystemExit(
             "usage: assemble_zendesk_dashboard.py <jira-page.json> [...]"
