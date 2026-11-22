@@ -30,6 +30,11 @@ def esc(s: object) -> str:
     )
 
 
+def script_json(data: dict) -> str:
+    """JSON for an inline script. Ticket text must not be able to close the tag."""
+    return json.dumps(data, ensure_ascii=True).replace("<", "\\u003c")
+
+
 def md_row(cells: list[object]) -> str:
     return "| " + " | ".join(str(c) for c in cells) + " |"
 
@@ -218,7 +223,7 @@ def write_markdown(data: dict) -> str:
 
 
 def write_html(data: dict) -> str:
-    payload = json.dumps(data, ensure_ascii=True)
+    payload = script_json(data)
     from_label = created_from_label(data)
     title = esc(data["title"])
     head = f"""<!DOCTYPE html>
@@ -511,6 +516,14 @@ function fmtDays(d) {{
   if (n < 1) return (n * 24).toFixed(1) + 'h';
   return n.toFixed(1) + 'd';
 }}
+function escHtml(s) {{
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}}
 function pillType(t) {{
   return t === 'Escape Defect'
     ? '<span class="pill p-ed">Escape Defect</span>'
@@ -518,16 +531,16 @@ function pillType(t) {{
 }}
 function pillPrio(p) {{
   const cls = p === 'P1' ? 'p-p1' : p === 'P2' ? 'p-p2' : 'p-p3';
-  return `<span class="pill ${{cls}}">${{p || '—'}}</span>`;
+  return `<span class="pill ${{cls}}">${{escHtml(p || '—')}}</span>`;
 }}
 function pillStatus(issue) {{
   const cat = issue.status_category;
   const cls = cat === 'Done' ? 'st-done' : cat === 'In Progress' ? 'st-progress' : 'st-todo';
-  return `<span class="pill ${{cls}}">${{issue.status}}</span>`;
+  return `<span class="pill ${{cls}}">${{escHtml(issue.status)}}</span>`;
 }}
 function pillProj(issue) {{
   const cls = PROJ_PILL[issue.project_key] || 'p-p3';
-  return `<span class="pill ${{cls}}">${{issue.project_label}}</span>`;
+  return `<span class="pill ${{cls}}">${{escHtml(issue.project_label)}}</span>`;
 }}
 
 let tab = 'created';
@@ -575,12 +588,12 @@ function paint() {{
     [`Created since ${{from}}`, DATA.links.created],
     ['statusCategory != Done', DATA.links.created_open],
     ['statusCategory = Done', DATA.links.created_done],
-  ].map(([l,u]) => `<a href="${{u}}" target="_blank" rel="noopener">${{l}}</a>`).join('');
+  ].map(([l,u]) => `<a href="${{escHtml(u)}}" target="_blank" rel="noopener">${{escHtml(l)}}</a>`).join('');
 
   const k = DATA.kpis;
   const donePct = k.done_pct != null ? k.done_pct : (k.created ? Math.round(100*k.created_done/k.created) : 0);
   const openPct = k.not_done_pct != null ? k.not_done_pct : (k.created ? Math.round(100*k.created_open/k.created) : 0);
-  const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{l}}</div><div class="l">${{s}}</div>${{split||''}}</div>`;
+  const cardHtml = ([n,l,s,cls,split]) => `<div class="card ${{cls}}"><div class="n">${{n}}</div><div class="l">${{escHtml(l)}}</div><div class="l">${{escHtml(s)}}</div>${{split||''}}</div>`;
   $('overview').innerHTML = [
     [k.created, `Created since ${{from}}`, `${{k.created_escape_defect}} ED · ${{k.created_support_request}} SR · ${{PRODUCTS.length}} products`, '', ''],
     [k.created_done, 'Done', `statusCategory = Done · ${{donePct}}% of created`, 'good done', ''],
@@ -594,13 +607,13 @@ function paint() {{
     return cardHtml([p.created, p.label, `${{p.done}} Done · ${{p.open}} not Done · ${{p.escape_defect}} ED / ${{p.support_request}} SR`, cls, split]);
   }}).join('');
 
-  $('headline').innerHTML = `<b>${{DATA.headline || ''}}</b>`;
+  $('headline').innerHTML = `<b>${{escHtml(DATA.headline || '')}}</b>`;
 
   const maxCreated = Math.max(...PRODUCT_KPIS.map(p => p.created), 1);
   $('compareChart').innerHTML = PRODUCT_KPIS.map(p => {{
     const doneW = p.created ? (100 * p.done / maxCreated) : 0;
     const openW = p.created ? (100 * p.open / maxCreated) : 0;
-    return `<div>${{p.label}}</div>
+    return `<div>${{escHtml(p.label)}}</div>
       <div class="bar stack">
         <span class="done" style="width:${{doneW}}%"></span>
         <span class="open" style="width:${{openW}}%"></span>
@@ -611,8 +624,8 @@ function paint() {{
   let ct = '<thead><tr><th>Product</th><th>Key</th><th class="num">Created</th><th class="num done">Done</th><th class="num open">Not Done</th><th class="num">Done %</th><th class="num">Not Done %</th></tr></thead><tbody>';
   for (const p of PRODUCT_KPIS) {{
     ct += `<tr>
-      <td>${{p.label}}</td>
-      <td><code>${{p.key}}</code></td>
+      <td>${{escHtml(p.label)}}</td>
+      <td><code>${{escHtml(p.key)}}</code></td>
       <td class="num">${{p.created}}</td>
       <td class="num done">${{p.done}}</td>
       <td class="num open">${{p.open}}</td>
@@ -630,10 +643,10 @@ function paint() {{
   </tr></tbody>`;
   $('compare').innerHTML = ct;
 
-  let mt = '<thead><tr><th>Week</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{p.label}}</th>`).join('') +
+  let mt = '<thead><tr><th>Week</th><th>Slice</th>' + PRODUCTS.map(p => `<th class="num">${{escHtml(p.label)}}</th>`).join('') +
            '<th class="num">Total</th></tr></thead><tbody>';
   for (const m of periods()) {{
-    const label = `${{m.label}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
+    const label = `${{escHtml(m.label)}}${{m.partial?' <span style="color:var(--muted)">(partial)</span>':''}}`;
     const slices = [
       ['Created', 'row-label', 'created', null],
       ['Done', 'row-done', 'done', 'done'],
@@ -701,8 +714,8 @@ function paint() {{
   if ([...weekSel.options].some(o => o.value === prevWeek)) weekSel.value = prevWeek;
 
   $('notes').innerHTML =
-    `${{(DATA.notes && DATA.notes.scope) || ''}} ${{(DATA.notes && DATA.notes.window) || ''}}
-    JQL: <code>${{DATA.jql.created}}</code>`;
+    `${{escHtml((DATA.notes && DATA.notes.scope) || '')}} ${{escHtml((DATA.notes && DATA.notes.window) || '')}}
+    JQL: <code>${{escHtml(DATA.jql && DATA.jql.created)}}</code>`;
   render();
   if (typeof syncJiraButton === 'function') syncJiraButton();
 }}
@@ -766,16 +779,16 @@ function render() {{
   for (const i of rows) {{
     const period = issuePeriod(i);
     html += `<tr>
-      <td>${{period ? period.label : '—'}}</td>
+      <td>${{period ? escHtml(period.label) : '—'}}</td>
       <td>${{pillProj(i)}}</td>
-      <td><a class="key" href="${{i.url}}" target="_blank" rel="noopener">${{i.key}}</a></td>
+      <td><a class="key" href="${{escHtml(i.url)}}" target="_blank" rel="noopener">${{escHtml(i.key)}}</a></td>
       <td>${{pillType(i.type)}}</td>
       <td>${{pillPrio(i.priority)}}</td>
-      <td class="num">${{i.zendesk_count}}</td>
-      <td class="num">${{i.created_date || '—'}}</td>
+      <td class="num">${{escHtml(i.zendesk_count)}}</td>
+      <td class="num">${{escHtml(i.created_date || '—')}}</td>
       <td>${{pillStatus(i)}}</td>
-      <td>${{i.assignee}}</td>
-      <td class="summary">${{i.summary}}</td>
+      <td>${{escHtml(i.assignee)}}</td>
+      <td class="summary">${{escHtml(i.summary)}}</td>
     </tr>`;
   }}
   html += '</tbody>';
